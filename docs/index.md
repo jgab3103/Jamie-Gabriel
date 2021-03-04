@@ -1,4 +1,4 @@
-I set up this page to hold links to the various research study notes I have being writing up, mostly in math and computer science. The plan is to slowly work through my messy Github repos, clean things up and post them here to have an easy point of reference.
+I set up this page to hold links to the various research study notes I have being writing up, or templates/resources that I use alot, and mostly in math and computer science. The plan is to slowly work through my messy Github repos, clean things up and post them here to have an easy point of reference.
 
 
 Most of these notes have been created either by:
