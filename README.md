@@ -1,1 +1,1 @@
-# Math-Notes
+# Jamie Gabriel
