@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Solving_Polynomial_Equations_3</title>
+<title>Solving_Polynomial_Equations_1</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13116,17 +13116,26 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Solving-Polynomial-Equations:-3">Solving Polynomial Equations: 3<a class="anchor-link" href="#Solving-Polynomial-Equations:-3">&#182;</a></h3>
+<p><i>A note on setup</i>:</p>
+<div>I have written these notes in a Sage JupyterLab environment running on Docker. For full details of the Docker Image see <a href = "https://hub.docker.com/r/cemulate/sagemath-jupyterlab/">https://hub.docker.com/r/cemulate/sagemath-jupyterlab/</a>. I upgraded a couple of things, really just to install Pandas as well in this environment and had to update NumPy, so running <code>sage --pip install numpy -U</code> and <code>sage --python -m easy_install pandas</code>inside the Docker container.
+
+<br/>Note that Sage is pretty fully featured and the docs seem a little tricky at times, so wherever possible for this notebook, I have used the Python <a href="https://www.sympy.org/en/index.html">SymPy</a> library - seems a gentle way to get into programming mathematics in Python. As such, this notebook should also work wtih a standard <a href="https://www.anaconda.com/products/individual">Anaconda Python</a> install. Many SymPy functions seem pretty straightforward and I will include comments if I need to do anything that seems unintuitive. I haven't used the library too much as yet so feel free to send me a pull request with any changes if there are better ways to do things</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solving-Polynomial-Equations:-1">Solving Polynomial Equations: 1<a class="anchor-link" href="#Solving-Polynomial-Equations:-1">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[253]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 </pre></div>
 
@@ -13138,41 +13147,311 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Lots of interesting things to consider as we move into part 3. Now, to a degree 9 power series at least, we have values of $x$ for our general quadratic equation. Thanks to the Sloane Ecyclopedia, we have also found a generating function that may underlie the how these solutions are created. But the question is whether, as we move to higher order equations, these things still hold. 
+<div>Video 1 introduces the idea of finding roots of polynomials, and takes us on a tour with examples of the more classical ways that polynomials can be solved (meaning via the work of del Ferro, Tataglia, Cardano). Things start out simple enough, but we quickly see that finding roots of equations beyond quadratic (such as cubic, quartic etc.) can become difficult indeed.</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Start by creating some variables:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a, b, x&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now create a very simple equation and get a solution:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">s1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle - \frac{a}{b}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>No issues so far! Time to examine something slightly more complicated:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">r2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 5 x^{2} - 3 x + 2 = 0$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now lets solve it:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+<span class="c1"># SymPy Note:Note also that SymPy often provides a a nice latex output, but this doesn&#39;t happen with lists of solutions, so we will use </span>
+<span class="c1"># the SymPy pretty_print function</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>⎡3    √31⋅ⅈ  3    √31⋅ⅈ⎤
+⎢── - ─────, ── + ─────⎥
+⎣10     10   10     10 ⎦
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So finding the roots for this is starting to get difficult - Complex roots! 
+<br/></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that the complex numbers arise because of the nature of the discriminant in a quadratic equation. If it is negative, 
+we will be dealing with negative square roots. Lets verify this on the quadratic equation by using SymPy discriminant function:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">discriminant</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \text{True}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We could of course avoid this complex roots issues by just ensuring we don't get a negative discriminant (althought this will not get us very far!):</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">9</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">r3</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 5 x^{2} - 9 x + 2 = 0$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We get the following solution:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">r3</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>⎡⎧   9    √41⎫  ⎧   √41   9 ⎫⎤
+⎢⎨x: ── - ───⎬, ⎨x: ─── + ──⎬⎥
+⎣⎩   10    10⎭  ⎩    10   10⎭⎦
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Even without the complex numbers, we still see solutions in standard form involving surds, coming from the applictation of the quadratic formula. The problem with surds is that we often cannot get from them to a complete solution. Think of it as the $ \sqrt{2} $ problem, where we have not really got an answer, but an algorithm that can be run forever that will only ever provide an approximation. 
 <br/><br/>
-Before moving into the cubic case, lets recap on the findings in part 2. To get started, we will simply copy the equations from that Jupyter Notebook into this one. To start though, we will need to recreate some variables to hold everything:</p>
+Let's see this in action, aa numerical solution that is an approximation to a limited number of places:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[254]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_0</span><span class="p">,</span> <span class="n">c_1</span><span class="p">,</span> <span class="n">c_2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a_0</span><span class="p">,</span> <span class="n">a_1</span><span class="p">,</span> <span class="n">a_2</span><span class="p">,</span> <span class="n">a_3</span><span class="p">,</span> <span class="n">a_4</span><span class="p">,</span> <span class="n">a_5</span><span class="p">,</span> <span class="n">a_6</span><span class="p">,</span> <span class="n">a_7</span><span class="p">,</span> <span class="n">a_8</span><span class="p">,</span> <span class="n">a_9</span><span class="p">,</span> <span class="n">x_1</span><span class="p">,</span> <span class="n">x_2</span><span class="p">,</span> <span class="n">s_1</span><span class="p">,</span> <span class="n">s_2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;c_0, c_1, c_2, x, t, a_0, a_1, a_2, a_3, a_4, a_5, a_6, a_7, a_8, a_9, x_1, x_2, s_1, s_2&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Here is our $x_1$ value from part 2:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[255]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">x_1</span><span class="p">,</span> <span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="n">c_1</span> <span class="o">-</span> <span class="n">c_2</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">7</span> <span class="o">-</span> <span class="mi">14</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">5</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">9</span> <span class="o">-</span> <span class="mi">42</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">5</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">6</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">11</span> <span class="o">-</span> <span class="mi">132</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">6</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">7</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">13</span> <span class="o">-</span> <span class="mi">429</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">7</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">8</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">15</span> <span class="o">-</span> <span class="mi">1430</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">8</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">9</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">17</span><span class="p">)</span>
-<span class="n">x_1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">n</span><span class="p">())</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s3</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -13185,13 +13464,25 @@ Before moving into the cubic case, lets recap on the findings in part 2. To get 
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[255]:</div>
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.259687576256715
+1.54031242374328
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
 
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle x_{1} = - \frac{t}{c_{1}} - \frac{c_{2} t^{2}}{c_{1}^{3}} - \frac{2 c_{2}^{2} t^{3}}{c_{1}^{5}} - \frac{5 c_{2}^{3} t^{4}}{c_{1}^{7}} - \frac{14 c_{2}^{4} t^{5}}{c_{1}^{9}} - \frac{42 c_{2}^{5} t^{6}}{c_{1}^{11}} - \frac{132 c_{2}^{6} t^{7}}{c_{1}^{13}} - \frac{429 c_{2}^{7} t^{8}}{c_{1}^{15}} - \frac{1430 c_{2}^{8} t^{9}}{c_{1}^{17}}$
+<div class="output_text output_subarea output_execute_result">
+<pre>[None, None]</pre>
 </div>
 
 </div>
@@ -13203,18 +13494,19 @@ $\displaystyle x_{1} = - \frac{t}{c_{1}} - \frac{c_{2} t^{2}}{c_{1}^{3}} - \frac
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>And our $x_2$ value from part 2:</p>
+<p>So it seems that for many quadratics, we cannot solve them beyond getting a numerical approximation. <br/><br/>
+And things only get messier when we look at cubics:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[256]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">x_2</span><span class="p">,</span> <span class="o">-</span><span class="n">c_1</span><span class="o">/</span><span class="n">c_2</span> <span class="o">+</span> <span class="n">t</span><span class="o">/</span><span class="n">c_1</span> <span class="o">+</span> <span class="n">c_2</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">7</span> <span class="o">+</span> <span class="mi">14</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">5</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">9</span> <span class="o">+</span> <span class="mi">42</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">5</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">6</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">11</span> <span class="o">+</span> <span class="mi">132</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">6</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">7</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">13</span> <span class="o">+</span> <span class="mi">429</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">7</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">8</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">15</span> <span class="o">+</span> <span class="mi">1430</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">8</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">9</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">17</span><span class="p">)</span>
-<span class="n">x_2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">r4</span>
 </pre></div>
 
     </div>
@@ -13227,13 +13519,13 @@ $\displaystyle x_{1} = - \frac{t}{c_{1}} - \frac{c_{2} t^{2}}{c_{1}^{3}} - \frac
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[256]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
 
 <div class="output_latex output_subarea output_execute_result">
-$\displaystyle x_{2} = - \frac{c_{1}}{c_{2}} + \frac{t}{c_{1}} + \frac{c_{2} t^{2}}{c_{1}^{3}} + \frac{2 c_{2}^{2} t^{3}}{c_{1}^{5}} + \frac{5 c_{2}^{3} t^{4}}{c_{1}^{7}} + \frac{14 c_{2}^{4} t^{5}}{c_{1}^{9}} + \frac{42 c_{2}^{5} t^{6}}{c_{1}^{11}} + \frac{132 c_{2}^{6} t^{7}}{c_{1}^{13}} + \frac{429 c_{2}^{7} t^{8}}{c_{1}^{15}} + \frac{1430 c_{2}^{8} t^{9}}{c_{1}^{17}}$
+$\displaystyle 4 x^{3} - 2 x^{2} + x + 3 = 0$
 </div>
 
 </div>
@@ -13245,7 +13537,1242 @@ $\displaystyle x_{2} = - \frac{c_{1}}{c_{2}} + \frac{t}{c_{1}} + \frac{c_{2} t^{
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Recall we also tested these values against the original quadratic function by plugging them in and expanding things out, so we will includ these results also. <br/> For $x_1$ going into the general quadratic $t + c_0x + c_1x^2 = 0$:</p>
+<p>We can solve it using a formula, and get a numerical approximation, but again, it doesn't give a precise answer:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">r4</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">n</span><span class="p">())</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s4</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.597298399134921 + 0.850292734117196*I
+0.597298399134921 - 0.850292734117196*I
+-0.694596798269842
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[None, None, None]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Looking at the answer in terms of surds and complex numbers really starts to make things complicated. This equation has 3 solutions, 2 complex and 1 real, and we can only know them approximately and find ourselves looking at this kind or representation:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">(</span><span class="n">s4</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>⎡⎧                                                            ______________⎫ 
+⎢⎪                                           ⎛  1   √3⋅ⅈ⎞    ╱ 169   9⋅√353 ⎪ 
+⎢⎪                                           ⎜- ─ - ────⎟⋅3 ╱  ─── + ────── ⎪ 
+⎢⎪   1                   1                   ⎝  2    2  ⎠ ╲╱    16     16   ⎪ 
+⎢⎨x: ─ + ───────────────────────────────── - ───────────────────────────────⎬,
+⎢⎪   6                      ______________                  3               ⎪ 
+⎢⎪         ⎛  1   √3⋅ⅈ⎞    ╱ 169   9⋅√353                                   ⎪ 
+⎢⎪       6⋅⎜- ─ - ────⎟⋅3 ╱  ─── + ──────                                   ⎪ 
+⎣⎩         ⎝  2    2  ⎠ ╲╱    16     16                                     ⎭ 
+
+ ⎧                        ______________                                    ⎫ 
+ ⎪       ⎛  1   √3⋅ⅈ⎞    ╱ 169   9⋅√353                                     ⎪ 
+ ⎪       ⎜- ─ + ────⎟⋅3 ╱  ─── + ──────                                     ⎪ 
+ ⎪   1   ⎝  2    2  ⎠ ╲╱    16     16                      1                ⎪ 
+ ⎨x: ─ - ─────────────────────────────── + ─────────────────────────────────⎬,
+ ⎪   6                  3                                     ______________⎪ 
+ ⎪                                           ⎛  1   √3⋅ⅈ⎞    ╱ 169   9⋅√353 ⎪ 
+ ⎪                                         6⋅⎜- ─ + ────⎟⋅3 ╱  ─── + ────── ⎪ 
+ ⎩                                           ⎝  2    2  ⎠ ╲╱    16     16   ⎭ 
+
+ ⎧         ______________                           ⎫⎤
+ ⎪        ╱ 169   9⋅√353                            ⎪⎥
+ ⎪     3 ╱  ─── + ──────                            ⎪⎥
+ ⎪     ╲╱    16     16               1             1⎪⎥
+ ⎨x: - ────────────────── + ──────────────────── + ─⎬⎥
+ ⎪             3                  ______________   6⎪⎥
+ ⎪                               ╱ 169   9⋅√353     ⎪⎥
+ ⎪                          6⋅3 ╱  ─── + ──────     ⎪⎥
+ ⎩                            ╲╱    16     16       ⎭⎦
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lets have a look at higher order equations:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r5</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x</span><span class="o">^</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">r5</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle - x^{4} + 5 x^{3} - 2 x^{2} + x + 3 = 0$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s5</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">r5</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">n</span><span class="p">())</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s5</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.5 - 0.866025403784439*I
+0.5 + 0.866025403784439*I
+-0.645751311064591
+4.64575131106459
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[None, None, None, None]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">(</span><span class="n">s5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>⎡⎧   1   √3⋅ⅈ⎫  ⎧   1   √3⋅ⅈ⎫                          ⎤
+⎢⎨x: ─ - ────⎬, ⎨x: ─ + ────⎬, {x: 2 - √7}, {x: 2 + √7}⎥
+⎣⎩   2    2  ⎭  ⎩   2    2  ⎭                          ⎦
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So sometimes it looks like, as the leading coefficient term gets higher things do not more complicated. But the above example still has surds and complex numbers. 
+<br/><br/>
+Here is another example:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r6</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">-</span>  <span class="mi">7</span> <span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">r6</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle - 7 x^{4} + 5 x^{3} - 2 x^{2} + x + 3 = 0$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lets solve for a numerical solution, and then a solution with surds and complex numbers:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s6</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">r6</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">n</span><span class="p">())</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s6</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1.00000000000000
+0.146399152654902 + 0.848164704395753*I
+0.146399152654902 - 0.848164704395753*I
+-0.578512591024090
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[18]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[None, None, None, None]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">(</span><span class="n">s6</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>⎡        ⎧                                                                   _
+⎢        ⎪                                                  ⎛  1   √3⋅ⅈ⎞    ╱ 
+⎢        ⎪                                                  ⎜- ─ - ────⎟⋅3 ╱  
+⎢        ⎪     2                      80                    ⎝  2    2  ⎠ ╲╱   
+⎢{x: 1}, ⎨x: - ── + ───────────────────────────────────── - ──────────────────
+⎢        ⎪     21                        ________________                   3 
+⎢        ⎪              ⎛  1   √3⋅ⅈ⎞    ╱ 3481   9⋅√3569                      
+⎢        ⎪          147⋅⎜- ─ - ────⎟⋅3 ╱  ──── + ───────                      
+⎣        ⎩              ⎝  2    2  ⎠ ╲╱   686       98                        
+
+_______________⎫  ⎧                           ________________                
+3481   9⋅√3569 ⎪  ⎪          ⎛  1   √3⋅ⅈ⎞    ╱ 3481   9⋅√3569                 
+──── + ─────── ⎪  ⎪          ⎜- ─ + ────⎟⋅3 ╱  ──── + ───────                 
+686       98   ⎪  ⎪     2    ⎝  2    2  ⎠ ╲╱   686       98                   
+───────────────⎬, ⎨x: - ── - ───────────────────────────────── + ─────────────
+               ⎪  ⎪     21                   3                                
+               ⎪  ⎪                                                  ⎛  1   √3
+               ⎪  ⎪                                              147⋅⎜- ─ + ──
+               ⎭  ⎩                                                  ⎝  2    2
+
+                        ⎫  ⎧         ________________                         
+                        ⎪  ⎪        ╱ 3481   9⋅√3569                          
+                        ⎪  ⎪     3 ╱  ──── + ───────                          
+     80                 ⎪  ⎪     ╲╱   686       98      2               80    
+────────────────────────⎬, ⎨x: - ──────────────────── - ── + ─────────────────
+        ________________⎪  ⎪              3             21           _________
+⋅ⅈ⎞    ╱ 3481   9⋅√3569 ⎪  ⎪                                        ╱ 3481   9
+──⎟⋅3 ╱  ──── + ─────── ⎪  ⎪                                 147⋅3 ╱  ──── + ─
+  ⎠ ╲╱   686       98   ⎭  ⎩                                     ╲╱   686     
+
+       ⎫⎤
+       ⎪⎥
+       ⎪⎥
+       ⎪⎥
+───────⎬⎥
+_______⎪⎥
+⋅√3569 ⎪⎥
+────── ⎪⎥
+  98   ⎭⎦
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Turns out last time we just got lucky. As powers get highs, things get more complicated. And therein lies the problem. Again, what we are seeing here is the classical story around the ways to obtain roots from polynomials. This approach aims to transform these types of equtions so they be expressed with radicals, and and it tells us about the orientation of del Ferro, Tartaglia and Cardano. 
+<br/><br/>
+But is there another way to approach this problem, so we could avoid radicals, to come to a more legitimate solution? Can we adopt another point of view?
+<br/><br/></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Investigation-1">Investigation 1<a class="anchor-link" href="#Investigation-1">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So let's start again, from a quadratic equation and see how we might solve it in a way that does not involve radicals. 
+<br/><br/>
+The overall strategy here wil be</p>
+<ul>
+<li>Return to the quadratic case, in its most general form of $ c_0 + c_1x + c_2x^2 = 0 $</li>
+<li>Use a substitution for x and $c_0$ using some terms from a Power Series </li>
+<li>From here, find solutions for $x$ that that do not involve radicals (and, interestingly, turn out to be Catalan numbers)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Start by creating variables we need:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_0</span><span class="p">,</span> <span class="n">c_1</span><span class="p">,</span> <span class="n">c_2</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;c_0, c_1, c_2, x&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From there, create a general form of the quadratic equation:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r7</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">c_0</span>  <span class="o">+</span> <span class="n">c_1</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c_2</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">r7</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[21]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle c_{0} + c_{1} x + c_{2} x^{2} = 0$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that from the outset we should to assume that:</p>
+<ul>
+<li><b>$c_0 \ne 0$</b> - if this was not the case, we could just find a solution by factoring (for example: $ 3x \times x^2 \Rightarrow x(3 + x)  \Rightarrow x = 0, x= -3)$ . </li>
+<li><b>$c_2 \ne 0$</b> - again, if this was not the case, this pushes us back to linear equation. </li>
+<li><b>$t^6 = 0$</b> - Note we haven't introduced $t$ yet. We will shortly and this resriction will apply and be explained.</li>
+</ul>
+<p>Apart from that, assume nothing! We are not even assuming we know anything about the nature of each of the coefficients $c_0, c_1, c_2$. They are just kind of mathatematic object, maybe be a power series of some kind, maybe a polynumber.</p>
+<p>And from here, we want to solve for x in terms of $c_0, c_1$ and $c_2$ and get solution that do not involve radicals.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><hr/>
+We are going to begin by utilising a power series to see if that will help us. Regardless of problems of power series (which often manifests itself as some kind of infinite structure), using a subset of power series terms might allow us to have some insights into solving this quadratic. More specifically we use a subset of terms only up to a power of 6. Why 6? No reason except it makes things managable and might shed some light for future investigation. Its a logical place to start. <br/><br/>
+Generally, this is a really powerful strategy in mathematics exploration: letting one mathematical object stand in place of another one, and leveraging off that second object's properties to gain some insight and different view of what is happening. 
+<br/><br/>
+Create some more variables tha twe are going to need:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get some new variables, and go up to degree 5</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">a_0</span><span class="p">,</span> <span class="n">a_1</span><span class="p">,</span> <span class="n">a_2</span><span class="p">,</span> <span class="n">a_3</span><span class="p">,</span> <span class="n">a_4</span><span class="p">,</span> <span class="n">a_5</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t, a_0, a_1, a_2, a_3, a_4, a_5&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lets make a subsitution. Let $c_0 = t$:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r8</span> <span class="o">=</span> <span class="n">r7</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">c_0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">r8</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[23]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle c_{1} x + c_{2} x^{2} + t = 0$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now let's make another substitution. We are going to use some terms from a power series that can take the place of $x$. Note that we are using a small number of terms, just 6, which has arbitrarily chosen to see if we can see some kind of pattern. Note also that because we are restricting the terms, anything above $t^5$ we will regard as 0. Hence the above supposition, that $t^6$ can be regarded as 0. Here is our new value of $x$:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r8_5</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a_0</span> <span class="o">+</span> <span class="n">a_1</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">a_2</span><span class="o">*</span> <span class="n">t</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a_3</span> <span class="o">*</span> <span class="n">t</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="n">a_4</span><span class="o">*</span> <span class="n">t</span><span class="o">^</span><span class="mi">4</span> <span class="o">+</span> <span class="n">a_5</span><span class="o">*</span><span class="n">t</span><span class="o">^</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">r8_5</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[24]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle x = a_{0} + a_{1} t + a_{2} t^{2} + a_{3} t^{3} + a_{4} t^{4} + a_{5} t^{5}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's subsitute this new value we have for $x$ into the original equation:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r9</span> <span class="o">=</span> <span class="n">r8</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">r8_5</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="n">r8_5</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
+<span class="n">r9</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle c_{1} \left(a_{0} + a_{1} t + a_{2} t^{2} + a_{3} t^{3} + a_{4} t^{4} + a_{5} t^{5}\right) + c_{2} \left(a_{0} + a_{1} t + a_{2} t^{2} + a_{3} t^{3} + a_{4} t^{4} + a_{5} t^{5}\right)^{2} + t = 0$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now expand the equation:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r10</span> <span class="o">=</span> <span class="n">r9</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+<span class="n">r10</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle a_{0}^{2} c_{2} + 2 a_{0} a_{1} c_{2} t + 2 a_{0} a_{2} c_{2} t^{2} + 2 a_{0} a_{3} c_{2} t^{3} + 2 a_{0} a_{4} c_{2} t^{4} + 2 a_{0} a_{5} c_{2} t^{5} + a_{0} c_{1} + a_{1}^{2} c_{2} t^{2} + 2 a_{1} a_{2} c_{2} t^{3} + 2 a_{1} a_{3} c_{2} t^{4} + 2 a_{1} a_{4} c_{2} t^{5} + 2 a_{1} a_{5} c_{2} t^{6} + a_{1} c_{1} t + a_{2}^{2} c_{2} t^{4} + 2 a_{2} a_{3} c_{2} t^{5} + 2 a_{2} a_{4} c_{2} t^{6} + 2 a_{2} a_{5} c_{2} t^{7} + a_{2} c_{1} t^{2} + a_{3}^{2} c_{2} t^{6} + 2 a_{3} a_{4} c_{2} t^{7} + 2 a_{3} a_{5} c_{2} t^{8} + a_{3} c_{1} t^{3} + a_{4}^{2} c_{2} t^{8} + 2 a_{4} a_{5} c_{2} t^{9} + a_{4} c_{1} t^{4} + a_{5}^{2} c_{2} t^{10} + a_{5} c_{1} t^{5} + t = 0$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that we can group the equation in terms of $t$:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r10</span><span class="o">.</span><span class="n">lhs</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[27]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle a_{0}^{2} c_{2} + a_{0} c_{1} + 2 a_{4} a_{5} c_{2} t^{9} + a_{5}^{2} c_{2} t^{10} + t^{8} \left(2 a_{3} a_{5} c_{2} + a_{4}^{2} c_{2}\right) + t^{7} \left(2 a_{2} a_{5} c_{2} + 2 a_{3} a_{4} c_{2}\right) + t^{6} \left(2 a_{1} a_{5} c_{2} + 2 a_{2} a_{4} c_{2} + a_{3}^{2} c_{2}\right) + t^{5} \left(2 a_{0} a_{5} c_{2} + 2 a_{1} a_{4} c_{2} + 2 a_{2} a_{3} c_{2} + a_{5} c_{1}\right) + t^{4} \left(2 a_{0} a_{4} c_{2} + 2 a_{1} a_{3} c_{2} + a_{2}^{2} c_{2} + a_{4} c_{1}\right) + t^{3} \left(2 a_{0} a_{3} c_{2} + 2 a_{1} a_{2} c_{2} + a_{3} c_{1}\right) + t^{2} \left(2 a_{0} a_{2} c_{2} + a_{1}^{2} c_{2} + a_{2} c_{1}\right) + t \left(2 a_{0} a_{1} c_{2} + a_{1} c_{1} + 1\right)$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recall that because $t^6 = 0$, we can truncate this equation to ignore the higher power of $t$ above 6:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">coeffs</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Poly</span><span class="p">(</span><span class="n">r10</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">coeffs</span><span class="p">()</span>
+<span class="n">r11</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">t</span><span class="o">**</span><span class="n">n</span> <span class="o">*</span> <span class="n">coeffs</span><span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">order</span><span class="p">))</span>
+<span class="n">r11</span>
+<span class="c1"># Note on Sympy: to do this we convert the equation to a Polynomial in Sympy, and iterate through it to remove higher powers of t. There is probably  </span>
+<span class="c1"># more elegant way to do this</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[28]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle a_{0}^{2} c_{2} + a_{0} c_{1} + t^{5} \left(2 a_{0} a_{5} c_{2} + 2 a_{1} a_{4} c_{2} + 2 a_{2} a_{3} c_{2} + a_{5} c_{1}\right) + t^{4} \left(2 a_{0} a_{4} c_{2} + 2 a_{1} a_{3} c_{2} + a_{2}^{2} c_{2} + a_{4} c_{1}\right) + t^{3} \left(2 a_{0} a_{3} c_{2} + 2 a_{1} a_{2} c_{2} + a_{3} c_{1}\right) + t^{2} \left(2 a_{0} a_{2} c_{2} + a_{1}^{2} c_{2} + a_{2} c_{1}\right) + t \left(2 a_{0} a_{1} c_{2} + a_{1} c_{1} + 1\right)$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The last couple of calculations have created an expression, so lets set things back to an equation set to 0. We will also put it back into the Sympy Poly form again, which has methods that will help us work through the calculations:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r12</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">r11</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">r13</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Poly</span><span class="p">(</span><span class="n">r12</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">r13</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[29]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \operatorname{Poly}{\left( \left(2 a_{0} a_{5} c_{2} + 2 a_{1} a_{4} c_{2} + 2 a_{2} a_{3} c_{2} + a_{5} c_{1}\right) t^{5} + \left(2 a_{0} a_{4} c_{2} + 2 a_{1} a_{3} c_{2} + a_{2}^{2} c_{2} + a_{4} c_{1}\right) t^{4} + \left(2 a_{0} a_{3} c_{2} + 2 a_{1} a_{2} c_{2} + a_{3} c_{1}\right) t^{3} + \left(2 a_{0} a_{2} c_{2} + a_{1}^{2} c_{2} + a_{2} c_{1}\right) t^{2} + \left(2 a_{0} a_{1} c_{2} + a_{1} c_{1} + 1\right) t + a_{0}^{2} c_{2} + a_{0} c_{1}, t, domain=\mathbb{Z}\left[a_{0}, a_{1}, a_{2}, a_{3}, a_{4}, a_{5}, c_{1}, c_{2}\right] \right)}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lets start with the very simple case that assumes that $t = 0$. This means that everything multiplied by $t$ becomes 0, and is leaves the constant term of this polynomial in $t$:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r14</span> <span class="o">=</span> <span class="n">r13</span><span class="o">.</span><span class="n">coeffs</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">r14</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[30]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle a_{0}^{2} c_{2} + a_{0} c_{1}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's set it to 0:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r14</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">r14</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">r14</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[31]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle a_{0}^{2} c_{2} + a_{0} c_{1} = 0$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And now solve it:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r15</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">factor</span><span class="p">(</span><span class="n">r14</span><span class="p">,</span> <span class="n">a_0</span><span class="p">)</span>
+<span class="n">r16</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">r15</span><span class="p">,</span> <span class="n">a_0</span><span class="p">,</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">(</span><span class="n">r16</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>⎡         ⎧    -c₁ ⎫⎤
+⎢{a₀: 0}, ⎨a₀: ────⎬⎥
+⎣         ⎩     c₂ ⎭⎦
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So we end up with two solutions of what $a_0$. Lets focus on the first case:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r16</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[33]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{a_0: 0}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note the coeffients of this polynomial in $t$. One quick thing to do would be to substitute in 0 for $a_0$ wherever it appears:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r13</span><span class="o">.</span><span class="n">coeffs</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[34]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[2*a_0*a_5*c_2 + 2*a_1*a_4*c_2 + 2*a_2*a_3*c_2 + a_5*c_1,
+ 2*a_0*a_4*c_2 + 2*a_1*a_3*c_2 + a_2**2*c_2 + a_4*c_1,
+ 2*a_0*a_3*c_2 + 2*a_1*a_2*c_2 + a_3*c_1,
+ 2*a_0*a_2*c_2 + a_1**2*c_2 + a_2*c_1,
+ 2*a_0*a_1*c_2 + a_1*c_1 + 1,
+ a_0**2*c_2 + a_0*c_1]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r17</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Poly</span><span class="p">(</span><span class="n">r13</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a_0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">r17</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[35]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \operatorname{Poly}{\left( \left(2 a_{1} a_{4} c_{2} + 2 a_{2} a_{3} c_{2} + a_{5} c_{1}\right) t^{5} + \left(2 a_{1} a_{3} c_{2} + a_{2}^{2} c_{2} + a_{4} c_{1}\right) t^{4} + \left(2 a_{1} a_{2} c_{2} + a_{3} c_{1}\right) t^{3} + \left(a_{1}^{2} c_{2} + a_{2} c_{1}\right) t^{2} + \left(a_{1} c_{1} + 1\right) t, t, domain=\mathbb{Z}\left[a_{1}, a_{2}, a_{3}, a_{4}, a_{5}, c_{1}, c_{2}\right] \right)}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we have a value of $a_0$, we can work iteratively through all the other parts of the polynomical and solve for $a_0, a_1, a_2, a_3, a_4$ and $a_5$. Start by turning the polynomial into a system of equations:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#So lets now wet all these to zero</span>
+<span class="c1"># and solve the system</span>
+<span class="n">r18</span> <span class="o">=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">r17</span><span class="o">.</span><span class="n">coeffs</span><span class="p">()[</span><span class="n">i</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r17</span><span class="o">.</span><span class="n">coeffs</span><span class="p">()))]</span>
+<span class="n">r18</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[36]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[Eq(2*a_1*a_4*c_2 + 2*a_2*a_3*c_2 + a_5*c_1, 0),
+ Eq(2*a_1*a_3*c_2 + a_2**2*c_2 + a_4*c_1, 0),
+ Eq(2*a_1*a_2*c_2 + a_3*c_1, 0),
+ Eq(a_1**2*c_2 + a_2*c_1, 0),
+ Eq(a_1*c_1 + 1, 0)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now solve the system:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># solve the system </span>
+<span class="n">values_to_solve</span> <span class="o">=</span>  <span class="p">[</span><span class="n">a_0</span><span class="p">,</span> <span class="n">a_1</span><span class="p">,</span> <span class="n">a_2</span><span class="p">,</span> <span class="n">a_3</span><span class="p">,</span> <span class="n">a_4</span><span class="p">,</span> <span class="n">a_5</span><span class="p">]</span>
+<span class="n">r19</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nonlinsolve</span><span class="p">(</span><span class="n">r18</span><span class="p">,</span> <span class="n">values_to_solve</span><span class="p">)</span>
+<span class="n">solutions_as_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r19</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">r19</span><span class="p">,</span> <span class="n">solutions_as_list</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[37]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>({(a_0, -1/c_1, -c_2/c_1**3, -2*c_2**2/c_1**5, -5*c_2**3/c_1**7, -14*c_2**4/c_1**9)},
+ [a_0,
+  -1/c_1,
+  -c_2/c_1**3,
+  -2*c_2**2/c_1**5,
+  -5*c_2**3/c_1**7,
+  -14*c_2**4/c_1**9])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s20</span> <span class="o">=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">solutions_as_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">values_to_solve</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">solutions_as_list</span><span class="p">))]</span>
+<span class="n">s20</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[38]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[True,
+ Eq(-1/c_1, a_1),
+ Eq(-c_2/c_1**3, a_2),
+ Eq(-2*c_2**2/c_1**5, a_3),
+ Eq(-5*c_2**3/c_1**7, a_4),
+ Eq(-14*c_2**4/c_1**9, a_5)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So now we have values for $a_0, a_1, a_2, a_3, a_4$ and $a_5$ in terms of $c_1$ and $c_2$ for the case where $a_0$ is 0. Recall our original plan was to get a value for $x$. So we can now substitute back into get values for $x$</p>
 
 </div>
 </div>
@@ -13255,8 +14782,19 @@ $\displaystyle x_{2} = - \frac{c_{1}}{c_{2}} + \frac{t}{c_{1}} + \frac{c_{2} t^{
 <div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s_1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="mi">4862</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">9</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">10</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">18</span> <span class="o">+</span> <span class="mi">7072</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">10</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">11</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">20</span> <span class="o">+</span> <span class="mi">15470</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">11</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">12</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">22</span> <span class="o">+</span> <span class="mi">37400</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">12</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">13</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">24</span> <span class="o">+</span> <span class="mi">93500</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">13</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">14</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">26</span> <span class="o">+</span> <span class="mi">233376</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">14</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">15</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">28</span> <span class="o">+</span> <span class="mi">561561</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">15</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">16</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">30</span> <span class="o">+</span> <span class="mi">1226940</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">16</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">17</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">32</span> <span class="o">+</span> <span class="mi">2044900</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">17</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">18</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">34</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">s_1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">values_to_solve</span> <span class="o">=</span> <span class="n">values_to_solve</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">solutions_as_list</span> <span class="o">=</span> <span class="n">solutions_as_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">r21</span> <span class="o">=</span> <span class="n">r8_5</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">values_to_solve</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">solutions_as_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">r21</span> <span class="o">=</span> <span class="n">r21</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">values_to_solve</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">solutions_as_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">r21</span> <span class="o">=</span> <span class="n">r21</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">values_to_solve</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">solutions_as_list</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">r21</span> <span class="o">=</span> <span class="n">r21</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">values_to_solve</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">solutions_as_list</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">r21</span> <span class="o">=</span> <span class="n">r21</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">values_to_solve</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">solutions_as_list</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">r21</span> <span class="o">=</span> <span class="n">r21</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a_0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">r21</span>
+<span class="c1">#SymPy Note: Seeing Scientific Workplace make such light work of these types of tasks suggests there are far more </span>
+<span class="c1"># elegant ways to do this which I have not noticed. Feel free to to provide something more elegant!</span>
 </pre></div>
 
     </div>
@@ -13275,7 +14813,7 @@ $\displaystyle x_{2} = - \frac{c_{1}}{c_{2}} + \frac{t}{c_{1}} + \frac{c_{2} t^{
 
 
 <div class="output_latex output_subarea output_execute_result">
-$\displaystyle \frac{4862 c_{2}^{9} t^{10}}{c_{1}^{18}} + \frac{7072 c_{2}^{10} t^{11}}{c_{1}^{20}} + \frac{15470 c_{2}^{11} t^{12}}{c_{1}^{22}} + \frac{37400 c_{2}^{12} t^{13}}{c_{1}^{24}} + \frac{93500 c_{2}^{13} t^{14}}{c_{1}^{26}} + \frac{233376 c_{2}^{14} t^{15}}{c_{1}^{28}} + \frac{561561 c_{2}^{15} t^{16}}{c_{1}^{30}} + \frac{1226940 c_{2}^{16} t^{17}}{c_{1}^{32}} + \frac{2044900 c_{2}^{17} t^{18}}{c_{1}^{34}} = 0$
+$\displaystyle x = - \frac{t}{c_{1}} - \frac{c_{2} t^{2}}{c_{1}^{3}} - \frac{2 c_{2}^{2} t^{3}}{c_{1}^{5}} - \frac{5 c_{2}^{3} t^{4}}{c_{1}^{7}} - \frac{14 c_{2}^{4} t^{5}}{c_{1}^{9}}$
 </div>
 
 </div>
@@ -13287,766 +14825,11 @@ $\displaystyle \frac{4862 c_{2}^{9} t^{10}}{c_{1}^{18}} + \frac{7072 c_{2}^{10} 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>And for $x_2$:</p>
+<p>So what is this series of numbers that appears to be emerging? And it looks like there may be some kind of algebraic way of getting at our usual answers involving square roots. And what about these coefficents of $c_2$? The numbers are: 1, 1, 2, 5, 14. Well, it turns out these numbers can be found in a sequence of numbers that is ubiquitous throughout various fields of mathematics: The Catalan Numbers!</p>
+<p>Lots more to investigate! But that is the end of Part 1</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s_2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="mi">4862</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">9</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">10</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">18</span> <span class="o">+</span> <span class="mi">7072</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">10</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">11</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">20</span> <span class="o">+</span> <span class="mi">15470</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">11</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">12</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">22</span> <span class="o">+</span> <span class="mi">37400</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">12</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">13</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">24</span> <span class="o">+</span> <span class="mi">93500</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">13</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">14</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">26</span> <span class="o">+</span> <span class="mi">233376</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">14</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">15</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">28</span> <span class="o">+</span> <span class="mi">561561</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">15</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">16</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">30</span> <span class="o">+</span> <span class="mi">1226940</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">16</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">17</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">32</span> <span class="o">+</span> <span class="mi">2044900</span><span class="o">*</span><span class="n">c_2</span><span class="o">**</span><span class="mi">17</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">18</span><span class="o">/</span><span class="n">c_1</span><span class="o">**</span><span class="mi">34</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">s_2</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[40]:</div>
-
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \frac{4862 c_{2}^{9} t^{10}}{c_{1}^{18}} + \frac{7072 c_{2}^{10} t^{11}}{c_{1}^{20}} + \frac{15470 c_{2}^{11} t^{12}}{c_{1}^{22}} + \frac{37400 c_{2}^{12} t^{13}}{c_{1}^{24}} + \frac{93500 c_{2}^{13} t^{14}}{c_{1}^{26}} + \frac{233376 c_{2}^{14} t^{15}}{c_{1}^{28}} + \frac{561561 c_{2}^{15} t^{16}}{c_{1}^{30}} + \frac{1226940 c_{2}^{16} t^{17}}{c_{1}^{32}} + \frac{2044900 c_{2}^{17} t^{18}}{c_{1}^{34}} = 0$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>It is of course quite cumbersome to write out the values of $x_1$ and $x_2$ above. So lets adjust our notation, taking advantage that these values relate to the Catalan Numbers. Lets rewrite $x_1$ in this way: 
-$$  x_1 = -\sum_{k=1}^9 C(k - 1)\frac{c_2^{k-1}}{c_1^{2k - 1}}t^k$$</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>and also $x_2$ in this way:</p>
-$$  x_2 = -\frac{c_1}{c_2} + \sum_{k=1}^9 C(k - 1)\frac{c_2^{k-1}}{c_1^{2k - 1}}t^k   $$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Important to keep in mind, that nothing has changed. We are simply using the summation notation to express $x_1$ and $x_2$.  Now we need to be clear that still can only say with certainty what happens up to degree 9, but at the same time it makes sense to also the more general case which, while still unproven, describes where things are heading. So for $x_1$:</p>
-$$  x_1 = -\sum_{k=1}^+ C(k - 1)\frac{c_2^{k-1}}{c_1^{2k - 1}}t^k$$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>And for $x_2$:</p>
-$$  x_2 = -\frac{c_1}{c_2} + \sum_{k=1}^+ C(k - 1)\frac{c_2^{k-1}}{c_1^{2k - 1}}t^k   $$
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Also keep in mind that the implication of the above that these things are infinite: we are not pretending we can get to infinity. Rather, these formulas should be viewed as expressions on that describe how arithmetic in question works. It may be something that is ongoing, but it is expected that it can be finitely specifiable, and finitely checkable. <br/><br/>
-In any case, there is much more work to be done before we can arrive at a proven formula. We haven't proven the above in the quadratic case, though we have made some calculations that are shedding light on the situation. And we haven't moved to a cubic case. So let's do that now.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-cubic-case">The cubic case<a class="anchor-link" href="#The-cubic-case">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Set up is similiar to before. We will start with a general equation (cubic this time), let $t = 0$, let $x$ be an unknown power series in $t$, solve for the $a_i$ values come across, and put the values back into the original equation. 
-And we will assume $c_0$ and $c_2$ are not 0, $t^8 = 0$
-<br/><br/>
-Start by creating some variables:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[257]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a_0</span><span class="p">,</span> <span class="n">a_1</span><span class="p">,</span> <span class="n">a_2</span><span class="p">,</span> <span class="n">a_3</span><span class="p">,</span> <span class="n">a_4</span><span class="p">,</span> <span class="n">a_5</span><span class="p">,</span> <span class="n">a_6</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">c_1</span><span class="p">,</span> <span class="n">c_2</span><span class="p">,</span> <span class="n">c_3</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a_0, a_1, a_2, a_3, a_4, a_5, a_6, t, c_1, c_2, c_3, x &#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Here is our general cubic equation:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[258]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">c_1</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c_2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c_3</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">s1</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[258]:</div>
-
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle c_{1} x + c_{2} x^{2} + c_{3} x^{3} + t = 0$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We will need our power series subsitution for x:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[259]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">subs_for_x</span> <span class="o">=</span> <span class="n">a_0</span> <span class="o">+</span> <span class="n">a_1</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="n">a_2</span><span class="o">*</span><span class="n">t</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a_3</span><span class="o">*</span><span class="n">t</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="n">a_4</span><span class="o">*</span><span class="n">t</span><span class="o">^</span><span class="mi">4</span> <span class="o">+</span> <span class="n">a_5</span><span class="o">*</span><span class="n">t</span><span class="o">^</span><span class="mi">5</span> <span class="o">+</span> <span class="n">a_6</span><span class="o">*</span><span class="n">t</span><span class="o">^</span><span class="mi">6</span> <span class="o">+</span> <span class="n">a_7</span><span class="o">*</span><span class="n">t</span><span class="o">^</span><span class="mi">7</span>
-<span class="n">subs_for_x</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[259]:</div>
-
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle a_{0} + a_{1} t + a_{2} t^{2} + a_{3} t^{3} + a_{4} t^{4} + a_{5} t^{5} + a_{6} t^{6} + a_{7} t^{7}$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>And now substitute it into the general cubic:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">s1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">subs_for_x</span><span class="p">)</span>
-<span class="n">s2</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[47]:</div>
-
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle c_{1} \left(a_{0} + a_{1} t + a_{2} t^{2} + a_{3} t^{3} + a_{4} t^{4} + a_{5} t^{5} + a_{6} t^{6} + a_{7} t^{7}\right) + c_{2} \left(a_{0} + a_{1} t + a_{2} t^{2} + a_{3} t^{3} + a_{4} t^{4} + a_{5} t^{5} + a_{6} t^{6} + a_{7} t^{7}\right)^{2} + c_{3} \left(a_{0} + a_{1} t + a_{2} t^{2} + a_{3} t^{3} + a_{4} t^{4} + a_{5} t^{5} + a_{6} t^{6} + a_{7} t^{7}\right)^{3} + t = 0$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now expand it out:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[262]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s3</span> <span class="o">=</span> <span class="n">s2</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
-<span class="n">s3</span>
-<span class="c1"># SymPy Note: Jupyer notebook seems to get a little laggy once there are quite a few big outputs like below. So you might </span>
-<span class="c1"># consider printing everything out as you go if you find this.</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[262]:</div>
-
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle a_{0}^{3} c_{3} + 3 a_{0}^{2} a_{1} c_{3} t + 3 a_{0}^{2} a_{2} c_{3} t^{2} + 3 a_{0}^{2} a_{3} c_{3} t^{3} + 3 a_{0}^{2} a_{4} c_{3} t^{4} + 3 a_{0}^{2} a_{5} c_{3} t^{5} + 3 a_{0}^{2} a_{6} c_{3} t^{6} + 3 a_{0}^{2} a_{7} c_{3} t^{7} + a_{0}^{2} c_{2} + 3 a_{0} a_{1}^{2} c_{3} t^{2} + 6 a_{0} a_{1} a_{2} c_{3} t^{3} + 6 a_{0} a_{1} a_{3} c_{3} t^{4} + 6 a_{0} a_{1} a_{4} c_{3} t^{5} + 6 a_{0} a_{1} a_{5} c_{3} t^{6} + 6 a_{0} a_{1} a_{6} c_{3} t^{7} + 6 a_{0} a_{1} a_{7} c_{3} t^{8} + 2 a_{0} a_{1} c_{2} t + 3 a_{0} a_{2}^{2} c_{3} t^{4} + 6 a_{0} a_{2} a_{3} c_{3} t^{5} + 6 a_{0} a_{2} a_{4} c_{3} t^{6} + 6 a_{0} a_{2} a_{5} c_{3} t^{7} + 6 a_{0} a_{2} a_{6} c_{3} t^{8} + 6 a_{0} a_{2} a_{7} c_{3} t^{9} + 2 a_{0} a_{2} c_{2} t^{2} + 3 a_{0} a_{3}^{2} c_{3} t^{6} + 6 a_{0} a_{3} a_{4} c_{3} t^{7} + 6 a_{0} a_{3} a_{5} c_{3} t^{8} + 6 a_{0} a_{3} a_{6} c_{3} t^{9} + 6 a_{0} a_{3} a_{7} c_{3} t^{10} + 2 a_{0} a_{3} c_{2} t^{3} + 3 a_{0} a_{4}^{2} c_{3} t^{8} + 6 a_{0} a_{4} a_{5} c_{3} t^{9} + 6 a_{0} a_{4} a_{6} c_{3} t^{10} + 6 a_{0} a_{4} a_{7} c_{3} t^{11} + 2 a_{0} a_{4} c_{2} t^{4} + 3 a_{0} a_{5}^{2} c_{3} t^{10} + 6 a_{0} a_{5} a_{6} c_{3} t^{11} + 6 a_{0} a_{5} a_{7} c_{3} t^{12} + 2 a_{0} a_{5} c_{2} t^{5} + 3 a_{0} a_{6}^{2} c_{3} t^{12} + 6 a_{0} a_{6} a_{7} c_{3} t^{13} + 2 a_{0} a_{6} c_{2} t^{6} + 3 a_{0} a_{7}^{2} c_{3} t^{14} + 2 a_{0} a_{7} c_{2} t^{7} + a_{0} c_{1} + a_{1}^{3} c_{3} t^{3} + 3 a_{1}^{2} a_{2} c_{3} t^{4} + 3 a_{1}^{2} a_{3} c_{3} t^{5} + 3 a_{1}^{2} a_{4} c_{3} t^{6} + 3 a_{1}^{2} a_{5} c_{3} t^{7} + 3 a_{1}^{2} a_{6} c_{3} t^{8} + 3 a_{1}^{2} a_{7} c_{3} t^{9} + a_{1}^{2} c_{2} t^{2} + 3 a_{1} a_{2}^{2} c_{3} t^{5} + 6 a_{1} a_{2} a_{3} c_{3} t^{6} + 6 a_{1} a_{2} a_{4} c_{3} t^{7} + 6 a_{1} a_{2} a_{5} c_{3} t^{8} + 6 a_{1} a_{2} a_{6} c_{3} t^{9} + 6 a_{1} a_{2} a_{7} c_{3} t^{10} + 2 a_{1} a_{2} c_{2} t^{3} + 3 a_{1} a_{3}^{2} c_{3} t^{7} + 6 a_{1} a_{3} a_{4} c_{3} t^{8} + 6 a_{1} a_{3} a_{5} c_{3} t^{9} + 6 a_{1} a_{3} a_{6} c_{3} t^{10} + 6 a_{1} a_{3} a_{7} c_{3} t^{11} + 2 a_{1} a_{3} c_{2} t^{4} + 3 a_{1} a_{4}^{2} c_{3} t^{9} + 6 a_{1} a_{4} a_{5} c_{3} t^{10} + 6 a_{1} a_{4} a_{6} c_{3} t^{11} + 6 a_{1} a_{4} a_{7} c_{3} t^{12} + 2 a_{1} a_{4} c_{2} t^{5} + 3 a_{1} a_{5}^{2} c_{3} t^{11} + 6 a_{1} a_{5} a_{6} c_{3} t^{12} + 6 a_{1} a_{5} a_{7} c_{3} t^{13} + 2 a_{1} a_{5} c_{2} t^{6} + 3 a_{1} a_{6}^{2} c_{3} t^{13} + 6 a_{1} a_{6} a_{7} c_{3} t^{14} + 2 a_{1} a_{6} c_{2} t^{7} + 3 a_{1} a_{7}^{2} c_{3} t^{15} + 2 a_{1} a_{7} c_{2} t^{8} + a_{1} c_{1} t + a_{2}^{3} c_{3} t^{6} + 3 a_{2}^{2} a_{3} c_{3} t^{7} + 3 a_{2}^{2} a_{4} c_{3} t^{8} + 3 a_{2}^{2} a_{5} c_{3} t^{9} + 3 a_{2}^{2} a_{6} c_{3} t^{10} + 3 a_{2}^{2} a_{7} c_{3} t^{11} + a_{2}^{2} c_{2} t^{4} + 3 a_{2} a_{3}^{2} c_{3} t^{8} + 6 a_{2} a_{3} a_{4} c_{3} t^{9} + 6 a_{2} a_{3} a_{5} c_{3} t^{10} + 6 a_{2} a_{3} a_{6} c_{3} t^{11} + 6 a_{2} a_{3} a_{7} c_{3} t^{12} + 2 a_{2} a_{3} c_{2} t^{5} + 3 a_{2} a_{4}^{2} c_{3} t^{10} + 6 a_{2} a_{4} a_{5} c_{3} t^{11} + 6 a_{2} a_{4} a_{6} c_{3} t^{12} + 6 a_{2} a_{4} a_{7} c_{3} t^{13} + 2 a_{2} a_{4} c_{2} t^{6} + 3 a_{2} a_{5}^{2} c_{3} t^{12} + 6 a_{2} a_{5} a_{6} c_{3} t^{13} + 6 a_{2} a_{5} a_{7} c_{3} t^{14} + 2 a_{2} a_{5} c_{2} t^{7} + 3 a_{2} a_{6}^{2} c_{3} t^{14} + 6 a_{2} a_{6} a_{7} c_{3} t^{15} + 2 a_{2} a_{6} c_{2} t^{8} + 3 a_{2} a_{7}^{2} c_{3} t^{16} + 2 a_{2} a_{7} c_{2} t^{9} + a_{2} c_{1} t^{2} + a_{3}^{3} c_{3} t^{9} + 3 a_{3}^{2} a_{4} c_{3} t^{10} + 3 a_{3}^{2} a_{5} c_{3} t^{11} + 3 a_{3}^{2} a_{6} c_{3} t^{12} + 3 a_{3}^{2} a_{7} c_{3} t^{13} + a_{3}^{2} c_{2} t^{6} + 3 a_{3} a_{4}^{2} c_{3} t^{11} + 6 a_{3} a_{4} a_{5} c_{3} t^{12} + 6 a_{3} a_{4} a_{6} c_{3} t^{13} + 6 a_{3} a_{4} a_{7} c_{3} t^{14} + 2 a_{3} a_{4} c_{2} t^{7} + 3 a_{3} a_{5}^{2} c_{3} t^{13} + 6 a_{3} a_{5} a_{6} c_{3} t^{14} + 6 a_{3} a_{5} a_{7} c_{3} t^{15} + 2 a_{3} a_{5} c_{2} t^{8} + 3 a_{3} a_{6}^{2} c_{3} t^{15} + 6 a_{3} a_{6} a_{7} c_{3} t^{16} + 2 a_{3} a_{6} c_{2} t^{9} + 3 a_{3} a_{7}^{2} c_{3} t^{17} + 2 a_{3} a_{7} c_{2} t^{10} + a_{3} c_{1} t^{3} + a_{4}^{3} c_{3} t^{12} + 3 a_{4}^{2} a_{5} c_{3} t^{13} + 3 a_{4}^{2} a_{6} c_{3} t^{14} + 3 a_{4}^{2} a_{7} c_{3} t^{15} + a_{4}^{2} c_{2} t^{8} + 3 a_{4} a_{5}^{2} c_{3} t^{14} + 6 a_{4} a_{5} a_{6} c_{3} t^{15} + 6 a_{4} a_{5} a_{7} c_{3} t^{16} + 2 a_{4} a_{5} c_{2} t^{9} + 3 a_{4} a_{6}^{2} c_{3} t^{16} + 6 a_{4} a_{6} a_{7} c_{3} t^{17} + 2 a_{4} a_{6} c_{2} t^{10} + 3 a_{4} a_{7}^{2} c_{3} t^{18} + 2 a_{4} a_{7} c_{2} t^{11} + a_{4} c_{1} t^{4} + a_{5}^{3} c_{3} t^{15} + 3 a_{5}^{2} a_{6} c_{3} t^{16} + 3 a_{5}^{2} a_{7} c_{3} t^{17} + a_{5}^{2} c_{2} t^{10} + 3 a_{5} a_{6}^{2} c_{3} t^{17} + 6 a_{5} a_{6} a_{7} c_{3} t^{18} + 2 a_{5} a_{6} c_{2} t^{11} + 3 a_{5} a_{7}^{2} c_{3} t^{19} + 2 a_{5} a_{7} c_{2} t^{12} + a_{5} c_{1} t^{5} + a_{6}^{3} c_{3} t^{18} + 3 a_{6}^{2} a_{7} c_{3} t^{19} + a_{6}^{2} c_{2} t^{12} + 3 a_{6} a_{7}^{2} c_{3} t^{20} + 2 a_{6} a_{7} c_{2} t^{13} + a_{6} c_{1} t^{6} + a_{7}^{3} c_{3} t^{21} + a_{7}^{2} c_{2} t^{14} + a_{7} c_{1} t^{7} + t = 0$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Its seems pretty unweildy, but the good news that we can truncate this, and take advantage of our assumption that $t^8=0$:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[263]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">coeffs</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Poly</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">coeffs</span><span class="p">()</span>
-<span class="n">s4</span><span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">t</span><span class="o">**</span><span class="n">n</span> <span class="o">*</span> <span class="n">coeffs</span><span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">order</span><span class="p">))</span>
-<span class="n">s4</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[263]:</div>
-
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle a_{0}^{3} c_{3} + a_{0}^{2} c_{2} + a_{0} c_{1} + t^{7} \left(3 a_{0}^{2} a_{7} c_{3} + 6 a_{0} a_{1} a_{6} c_{3} + 6 a_{0} a_{2} a_{5} c_{3} + 6 a_{0} a_{3} a_{4} c_{3} + 2 a_{0} a_{7} c_{2} + 3 a_{1}^{2} a_{5} c_{3} + 6 a_{1} a_{2} a_{4} c_{3} + 3 a_{1} a_{3}^{2} c_{3} + 2 a_{1} a_{6} c_{2} + 3 a_{2}^{2} a_{3} c_{3} + 2 a_{2} a_{5} c_{2} + 2 a_{3} a_{4} c_{2} + a_{7} c_{1}\right) + t^{6} \left(3 a_{0}^{2} a_{6} c_{3} + 6 a_{0} a_{1} a_{5} c_{3} + 6 a_{0} a_{2} a_{4} c_{3} + 3 a_{0} a_{3}^{2} c_{3} + 2 a_{0} a_{6} c_{2} + 3 a_{1}^{2} a_{4} c_{3} + 6 a_{1} a_{2} a_{3} c_{3} + 2 a_{1} a_{5} c_{2} + a_{2}^{3} c_{3} + 2 a_{2} a_{4} c_{2} + a_{3}^{2} c_{2} + a_{6} c_{1}\right) + t^{5} \left(3 a_{0}^{2} a_{5} c_{3} + 6 a_{0} a_{1} a_{4} c_{3} + 6 a_{0} a_{2} a_{3} c_{3} + 2 a_{0} a_{5} c_{2} + 3 a_{1}^{2} a_{3} c_{3} + 3 a_{1} a_{2}^{2} c_{3} + 2 a_{1} a_{4} c_{2} + 2 a_{2} a_{3} c_{2} + a_{5} c_{1}\right) + t^{4} \left(3 a_{0}^{2} a_{4} c_{3} + 6 a_{0} a_{1} a_{3} c_{3} + 3 a_{0} a_{2}^{2} c_{3} + 2 a_{0} a_{4} c_{2} + 3 a_{1}^{2} a_{2} c_{3} + 2 a_{1} a_{3} c_{2} + a_{2}^{2} c_{2} + a_{4} c_{1}\right) + t^{3} \left(3 a_{0}^{2} a_{3} c_{3} + 6 a_{0} a_{1} a_{2} c_{3} + 2 a_{0} a_{3} c_{2} + a_{1}^{3} c_{3} + 2 a_{1} a_{2} c_{2} + a_{3} c_{1}\right) + t^{2} \left(3 a_{0}^{2} a_{2} c_{3} + 3 a_{0} a_{1}^{2} c_{3} + 2 a_{0} a_{2} c_{2} + a_{1}^{2} c_{2} + a_{2} c_{1}\right) + t \left(3 a_{0}^{2} a_{1} c_{3} + 2 a_{0} a_{1} c_{2} + a_{1} c_{1} + 1\right)$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Looking more manageable now. Let's set it to 0 as our equation became and expression in that last step:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[264]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s5</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">s4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">s5</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[264]:</div>
-
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle a_{0}^{3} c_{3} + a_{0}^{2} c_{2} + a_{0} c_{1} + t^{7} \left(3 a_{0}^{2} a_{7} c_{3} + 6 a_{0} a_{1} a_{6} c_{3} + 6 a_{0} a_{2} a_{5} c_{3} + 6 a_{0} a_{3} a_{4} c_{3} + 2 a_{0} a_{7} c_{2} + 3 a_{1}^{2} a_{5} c_{3} + 6 a_{1} a_{2} a_{4} c_{3} + 3 a_{1} a_{3}^{2} c_{3} + 2 a_{1} a_{6} c_{2} + 3 a_{2}^{2} a_{3} c_{3} + 2 a_{2} a_{5} c_{2} + 2 a_{3} a_{4} c_{2} + a_{7} c_{1}\right) + t^{6} \left(3 a_{0}^{2} a_{6} c_{3} + 6 a_{0} a_{1} a_{5} c_{3} + 6 a_{0} a_{2} a_{4} c_{3} + 3 a_{0} a_{3}^{2} c_{3} + 2 a_{0} a_{6} c_{2} + 3 a_{1}^{2} a_{4} c_{3} + 6 a_{1} a_{2} a_{3} c_{3} + 2 a_{1} a_{5} c_{2} + a_{2}^{3} c_{3} + 2 a_{2} a_{4} c_{2} + a_{3}^{2} c_{2} + a_{6} c_{1}\right) + t^{5} \left(3 a_{0}^{2} a_{5} c_{3} + 6 a_{0} a_{1} a_{4} c_{3} + 6 a_{0} a_{2} a_{3} c_{3} + 2 a_{0} a_{5} c_{2} + 3 a_{1}^{2} a_{3} c_{3} + 3 a_{1} a_{2}^{2} c_{3} + 2 a_{1} a_{4} c_{2} + 2 a_{2} a_{3} c_{2} + a_{5} c_{1}\right) + t^{4} \left(3 a_{0}^{2} a_{4} c_{3} + 6 a_{0} a_{1} a_{3} c_{3} + 3 a_{0} a_{2}^{2} c_{3} + 2 a_{0} a_{4} c_{2} + 3 a_{1}^{2} a_{2} c_{3} + 2 a_{1} a_{3} c_{2} + a_{2}^{2} c_{2} + a_{4} c_{1}\right) + t^{3} \left(3 a_{0}^{2} a_{3} c_{3} + 6 a_{0} a_{1} a_{2} c_{3} + 2 a_{0} a_{3} c_{2} + a_{1}^{3} c_{3} + 2 a_{1} a_{2} c_{2} + a_{3} c_{1}\right) + t^{2} \left(3 a_{0}^{2} a_{2} c_{3} + 3 a_{0} a_{1}^{2} c_{3} + 2 a_{0} a_{2} c_{2} + a_{1}^{2} c_{2} + a_{2} c_{1}\right) + t \left(3 a_{0}^{2} a_{1} c_{3} + 2 a_{0} a_{1} c_{2} + a_{1} c_{1} + 1\right) = 0$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We will assume that $t = 0$ to isolate that first coefficient, which reduced the whole thing to:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[265]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s6</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Poly</span><span class="p">(</span><span class="n">s5</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
-<span class="n">s7</span> <span class="o">=</span> <span class="n">s6</span><span class="o">.</span><span class="n">coeffs</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">s8</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">s7</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">s8</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[265]:</div>
-
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle a_{0}^{3} c_{3} + a_{0}^{2} c_{2} + a_{0} c_{1} = 0$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now factor:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[267]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s9</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">factor</span><span class="p">(</span><span class="n">s8</span><span class="p">,</span> <span class="n">a_0</span><span class="p">)</span>
-<span class="n">s10</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">s9</span><span class="p">,</span> <span class="n">a_0</span><span class="p">,</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">s10</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[267]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[{a_0: 0},
- {a_0: -c_2/(2*c_3) - sqrt(-4*c_1*c_3 + c_2**2)/(2*c_3)},
- {a_0: -c_2/(2*c_3) + sqrt(-4*c_1*c_3 + c_2**2)/(2*c_3)}]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We have 3 solutions, one of them is 0, the others look like quadratics:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[271]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s10</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">a_0</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[271]:</div>
-
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle - \frac{c_{2}}{2 c_{3}} - \frac{\sqrt{- 4 c_{1} c_{3} + c_{2}^{2}}}{2 c_{3}}$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[272]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s10</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">a_0</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[272]:</div>
-
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle - \frac{c_{2}}{2 c_{3}} + \frac{\sqrt{- 4 c_{1} c_{3} + c_{2}^{2}}}{2 c_{3}}$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's start with the case that $a_0 = 0$. The first thing we will do is subsitute in 0 for $a_0$ wherever we can, to minimise all the computation we are about to have to do:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[274]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s11</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Poly</span><span class="p">(</span><span class="n">s6</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a_0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">t</span><span class="p">)</span>
-<span class="n">s11</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[274]:</div>
-
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \operatorname{Poly}{\left( \left(3 a_{1}^{2} a_{5} c_{3} + 6 a_{1} a_{2} a_{4} c_{3} + 3 a_{1} a_{3}^{2} c_{3} + 2 a_{1} a_{6} c_{2} + 3 a_{2}^{2} a_{3} c_{3} + 2 a_{2} a_{5} c_{2} + 2 a_{3} a_{4} c_{2} + a_{7} c_{1}\right) t^{7} + \left(3 a_{1}^{2} a_{4} c_{3} + 6 a_{1} a_{2} a_{3} c_{3} + 2 a_{1} a_{5} c_{2} + a_{2}^{3} c_{3} + 2 a_{2} a_{4} c_{2} + a_{3}^{2} c_{2} + a_{6} c_{1}\right) t^{6} + \left(3 a_{1}^{2} a_{3} c_{3} + 3 a_{1} a_{2}^{2} c_{3} + 2 a_{1} a_{4} c_{2} + 2 a_{2} a_{3} c_{2} + a_{5} c_{1}\right) t^{5} + \left(3 a_{1}^{2} a_{2} c_{3} + 2 a_{1} a_{3} c_{2} + a_{2}^{2} c_{2} + a_{4} c_{1}\right) t^{4} + \left(a_{1}^{3} c_{3} + 2 a_{1} a_{2} c_{2} + a_{3} c_{1}\right) t^{3} + \left(a_{1}^{2} c_{2} + a_{2} c_{1}\right) t^{2} + \left(a_{1} c_{1} + 1\right) t, t, domain=\mathbb{Z}\left[a_{1}, a_{2}, a_{3}, a_{4}, a_{5}, a_{6}, a_{7}, c_{1}, c_{2}, c_{3}\right] \right)}$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now create a system of so we can solve for $a_1, a_2, a_3, a_4, a_5, a_6$, and $a_7$:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[275]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s12</span> <span class="o">=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">s11</span><span class="o">.</span><span class="n">coeffs</span><span class="p">()[</span><span class="n">i</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s11</span><span class="o">.</span><span class="n">coeffs</span><span class="p">()))]</span>
-<span class="n">s12</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[275]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[Eq(3*a_1**2*a_5*c_3 + 6*a_1*a_2*a_4*c_3 + 3*a_1*a_3**2*c_3 + 2*a_1*a_6*c_2 + 3*a_2**2*a_3*c_3 + 2*a_2*a_5*c_2 + 2*a_3*a_4*c_2 + a_7*c_1, 0),
- Eq(3*a_1**2*a_4*c_3 + 6*a_1*a_2*a_3*c_3 + 2*a_1*a_5*c_2 + a_2**3*c_3 + 2*a_2*a_4*c_2 + a_3**2*c_2 + a_6*c_1, 0),
- Eq(3*a_1**2*a_3*c_3 + 3*a_1*a_2**2*c_3 + 2*a_1*a_4*c_2 + 2*a_2*a_3*c_2 + a_5*c_1, 0),
- Eq(3*a_1**2*a_2*c_3 + 2*a_1*a_3*c_2 + a_2**2*c_2 + a_4*c_1, 0),
- Eq(a_1**3*c_3 + 2*a_1*a_2*c_2 + a_3*c_1, 0),
- Eq(a_1**2*c_2 + a_2*c_1, 0),
- Eq(a_1*c_1 + 1, 0)]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now carry our the solving of the system: <br/><br/>
-<i>BE CAREFUL HERE: I am not sure why (given Scientific Workplace does it so quickly) but this next bit of code takes about 2 minutes to run. I will get to the bottom of it, but don't panic if its taking a while!</i></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[276]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">values_to_solve</span> <span class="o">=</span>  <span class="p">[</span><span class="n">a_0</span><span class="p">,</span> <span class="n">a_1</span><span class="p">,</span> <span class="n">a_2</span><span class="p">,</span> <span class="n">a_3</span><span class="p">,</span> <span class="n">a_4</span><span class="p">,</span> <span class="n">a_5</span><span class="p">,</span> <span class="n">a_6</span><span class="p">,</span> <span class="n">a_7</span><span class="p">]</span>
-<span class="n">s13</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nonlinsolve</span><span class="p">(</span><span class="n">s12</span><span class="p">,</span> <span class="n">values_to_solve</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Hopefully you came out ok on the other side! We now have a group of solutions. Let's fix the formatting a little, and set up equations for our new values of $a_1, a_2, a_3, a_4, a_5, a_6$, and $a_7$:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[277]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">solutions_as_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">s13</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">r14</span> <span class="o">=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">solutions_as_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">values_to_solve</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">solutions_as_list</span><span class="p">))]</span>
-<span class="n">r14</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[277]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[True,
- Eq(-1/c_1, a_1),
- Eq(-c_2/c_1**3, a_2),
- Eq((c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1, a_3),
- Eq(-(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1, a_4),
- Eq(-(2*c_2*(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1**2 + 3*c_3*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**3 - 2*c_2**2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**4 - 3*c_2**2*c_3/c_1**7)/c_1, a_5),
- Eq(-(c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)**2/c_1**2 + 2*c_2*(2*c_2*(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1**2 + 3*c_3*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**3 - 2*c_2**2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**4 - 3*c_2**2*c_3/c_1**7)/c_1**2 - 3*c_3*(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1**3 + 2*c_2**2*(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1**4 + 6*c_2*c_3*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**5 - c_2**3*c_3/c_1**9)/c_1, a_6),
- Eq(-(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)*(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1**2 + 2*c_2*(c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)**2/c_1**2 + 2*c_2*(2*c_2*(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1**2 + 3*c_3*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**3 - 2*c_2**2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**4 - 3*c_2**2*c_3/c_1**7)/c_1**2 - 3*c_3*(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1**3 + 2*c_2**2*(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1**4 + 6*c_2*c_3*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**5 - c_2**3*c_3/c_1**9)/c_1**2 - 3*c_3*(c_3/c_1**3 - 2*c_2**2/c_1**4)**2/c_1**3 - 3*c_3*(2*c_2*(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1**2 + 3*c_3*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**3 - 2*c_2**2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**4 - 3*c_2**2*c_3/c_1**7)/c_1**3 + 2*c_2**2*(2*c_2*(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1**2 + 3*c_3*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**3 - 2*c_2**2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**4 - 3*c_2**2*c_3/c_1**7)/c_1**4 - 6*c_2*c_3*(-2*c_2*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**2 - 3*c_2*c_3/c_1**5 + c_2**3/c_1**6)/c_1**5 + 3*c_2**2*c_3*(c_3/c_1**3 - 2*c_2**2/c_1**4)/c_1**7)/c_1, a_7)]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>So we end up with these values of  $a_1, a_2, a_3, a_4, a_5, a_6$, and $a_7$. Note that when SymPy brings them back, a little work is needed to around further simplifying/expanding them so they are recogniseable as the results from Scientific Workplace:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[279]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">latex_rendering</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r14</span><span class="p">[</span><span class="mi">1</span><span class="p">:])):</span>
-    <span class="n">latex_rendering</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;$$&quot;</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">expand</span><span class="p">())</span> <span class="o">+</span> <span class="s2">&quot;$$&quot;</span><span class="p">)</span>
-    
-<span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">latex_rendering</span><span class="p">))</span>
-<span class="c1"># Note: how on earth do you left align multiple lines of latex. Need to figure this out </span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[279]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-$$a_{1} = - \frac{1}{c_{1}}$$$$a_{2} = - \frac{c_{2}}{c_{1}^{3}}$$$$a_{3} = \frac{c_{3}}{c_{1}^{4}} - \frac{2 c_{2}^{2}}{c_{1}^{5}}$$$$a_{4} = \frac{5 c_{2} c_{3}}{c_{1}^{6}} - \frac{5 c_{2}^{3}}{c_{1}^{7}}$$$$a_{5} = - \frac{3 c_{3}^{2}}{c_{1}^{7}} + \frac{21 c_{2}^{2} c_{3}}{c_{1}^{8}} - \frac{14 c_{2}^{4}}{c_{1}^{9}}$$$$a_{6} = - \frac{28 c_{2} c_{3}^{2}}{c_{1}^{9}} + \frac{84 c_{2}^{3} c_{3}}{c_{1}^{10}} - \frac{42 c_{2}^{5}}{c_{1}^{11}}$$$$a_{7} = \frac{12 c_{3}^{3}}{c_{1}^{10}} - \frac{180 c_{2}^{2} c_{3}^{2}}{c_{1}^{11}} + \frac{330 c_{2}^{4} c_{3}}{c_{1}^{12}} - \frac{132 c_{2}^{6}}{c_{1}^{13}}$$
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>So now we can subs back into our x value</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
