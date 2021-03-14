@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+    sagemath:
+        image: cemulate/sagemath-jupyterlab-m2
+        ports:
+            - 5000:8888
+        volumes:
+            - ./Notebooks:/home/sage/Notebooks
