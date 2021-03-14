@@ -7,4 +7,6 @@ def calculate_cross_product(v1, v2):
 def calculate_signed_area(points, origin_is_one_of_points = True):
     if origin_is_one_of_points:
         area = points[1][0] * points[2][1] - points[1][1] * points[2][0]
+    else:
+        area = points[0][0] * points[1][1] - points[0][1] * points[1][0]
     return((area/2).factor())
