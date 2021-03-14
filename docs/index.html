@@ -21,9 +21,10 @@
 
     <br/><br/>
     <div class="row">
-      <div class="col s12">  This page holds links to my reseach notes, projects and templates, mostly in the are of math and computer science.<br/><br/>
-      -- Jamie Gabriel<br/><br/>
-      Reach me via Github:&nbsp;&nbsp;<a href="https://github.com/jgab3103/"> <i class="fa fa-github-square fa-lg" aria-hidden="true"></i></a>
+      <div class="col s12">  This page holds links to my <a href="#">reseach notes</a>, <a href="#">projects</a> and <a href="#">templates</a>, mostly in the are of math and computer science.<br/><br/>
+      
+      Get in contact: &nbsp;&nbsp;<a href="https://github.com/jgab3103/"> <i class="fa fa-github-square fa-lg" aria-hidden="true"></i></a> &nbsp; <a href="https://www.linkedin.com/in/jamie-gabriel-b41a0059/"> <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a> 
+
       </div>
 
     </div>
@@ -106,6 +107,19 @@
 
  <hr/>
   <h4>Templates</h4>
+
+  <div class = "row">
+    <div class = "col s12">
+
+      <b>Setup</b><br/>
+        <div>        
+          I have written these notes in a Sage JupyterLab environment running on Docker. For full details of the Docker Image see https://hub.docker.com/r/cemulate/sagemath-jupyterlab/. I upgraded a couple of things, really just to install Pandas as well in this environment and had to update NumPy, so running sage --pip install numpy -U and sage --python -m easy_install pandasinside the Docker container.
+        </div>
+        <div>
+        Note that Sage is pretty fully featured and the docs seem a little tricky at times, so wherever possible for this notebook, I have used the Python SymPy library - seems a gentle way to get into programming mathematics in Python. As such, this notebook should also work wtih a standard Anaconda Python install. Many SymPy functions seem pretty straightforward and I will include comments if I need to do anything that seems unintuitive. I haven't used the library too much as yet so feel free to send me a pull request with any changes if there are better ways to do things
+        </div>
+    </div>
+  </div>
 
 
 </main><!-- /.container -->
