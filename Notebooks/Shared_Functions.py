@@ -10,3 +10,34 @@ def calculate_signed_area(points, origin_is_one_of_points = True):
     else:
         area = points[0][0] * points[1][1] - points[0][1] * points[1][0]
     return((area/2).factor())
+
+
+
+
+# law of 3 points O, A, B
+
+#OA = OB + BA
+
+
+# and recall that for colinearity, 
+# cross product = 0
+def test_for_collinearity(points):
+    
+    current_slope = (points[1][1] - points[0][1]) / (points[1][0] - points[0][0])
+    points_are_collinear = False
+    
+    for i in range(len(points)):
+        
+        if len(points[i:]) <= 1:
+            return(points_are_collinear)
+        else:
+            
+            p2 = points[i + 1]
+            p1 = points[i]
+            slope = (p2[1] - p1[1]) / (p2[0] - p1[0])
+            points_are_collinear = slope == current_slope
+            
+
+   
+    
+# iterate and determine slope
