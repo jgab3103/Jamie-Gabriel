@@ -1,16 +1,18 @@
-# There are some better functions in Sympy and Sage to do this, but we want to keep things as simple as possible for te moment
-def calculate_cross_product(v1, v2):
-    return(v1[0] * v2[1] - v1[1]*v2[0])
+import numpy as np
+import sympy as sp
 
+def compute_vector_from_2_points(points_list):
+    v = np.array([points_list[1][0] - points_list[0][0], points_list[1][1] - points_list[0][1]])
+    return(v)
+             
+def compute_cross_product_from_two_vectors(vector_list):
+    c = vector_list[0][0] * vector_list[1][1] - vector_list[0][1] * vector_list[1][0]
+    return(c)
 
-
-def calculate_signed_area(points, origin_is_one_of_points = True):
-    if origin_is_one_of_points:
-        area = points[1][0] * points[2][1] - points[1][1] * points[2][0]
-    else:
-        area = points[0][0] * points[1][1] - points[0][1] * points[1][0]
-    return((area/2).factor())
-
+def compute_signed_area_of_triangle_from_two_vectors(vector_list):
+    c = compute_cross_product_from_two_vectors(vector_list)
+    signed_area = c / 2
+    return(signed_area)
 
 
 
