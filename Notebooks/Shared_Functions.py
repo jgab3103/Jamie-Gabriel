@@ -1,19 +1,27 @@
 import numpy as np
 import sympy as sp
 
-def compute_vector_from_2_points(points_list):
-    v = np.array([points_list[1][0] - points_list[0][0], points_list[1][1] - points_list[0][1]])
-    return(v)
-             
-def compute_cross_product_from_two_vectors(vector_list):
-    c = vector_list[0][0] * vector_list[1][1] - vector_list[0][1] * vector_list[1][0]
+def compute_cross_product_from_two_points(points_list):
+    c = points_list[0][0] * points_list[1][1] - points_list[0][1] * points_list[1][0]
     return(c)
 
-def compute_signed_area_of_triangle_from_two_vectors(vector_list):
-    c = compute_cross_product_from_two_vectors(vector_list)
+def compute_signed_area_from_two_points(points_list):
+    c = compute_cross_product_from_two_points(points_list)
     signed_area = c / 2
     return(signed_area)
 
+def compute_signed_area_using_meisters_formula(points_list, is_cyclic):
+
+    total_signed_area = 0
+    for each_point in range(len(points_list) - 1):
+        signed_area = compute_signed_area_from_two_points([points_list[each_point], points_list[each_point + 1]])
+        total_signed_area = total_signed_area + signed_area
+    
+    if is_cyclic:
+        final_signed_area = compute_signed_area_from_two_points([points_list[-1], points_list[0]])
+        total_signed_area = total_signed_area + final_signed_area
+        
+    return(total_signed_area)
 
 
 # and recall that for colinearity, 
