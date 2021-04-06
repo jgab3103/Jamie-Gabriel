@@ -1,0 +1,5 @@
+wcwidth
+
+[tests]
+pytest
+pytest-cov
