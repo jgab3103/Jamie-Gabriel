@@ -6,22 +6,22 @@ I set up this repo to hold links to my study notes, projects and templates, most
 
 Setup:
 
-For Windows, there are currently issues running htm code. Use the Sage Docker Compose file and <code>docker-compose up</code>
+If you just want to read what's in the various Jupyter Notebooks, just go to the associated Github Pages site at <a href='https://www.ladatavita.com/'>https://www.ladatavita.com/</a>. Once I complete them, I will post a html version.
 
-For Mac, use docker run -p 8888:8888 --user root -v /Users/jamiegabriel/Desktop/Jamie-Gabriel/Notebooks:/home jupyter/datascience-notebook as a base image and add in htm.core compilation
+To run all the math notebooks in this repo, you can use a Sage Docker image. Just run <code>docker-compose up</code> in this directory and go to localhost:5000. This will work with no issues and Mac and Windows. I am in the process of moving many of my Sage notebooks to standard Python 3 notebooks so will update setup once this is done. 
 
-I will fix this at some point 
-
-then jump in and update
-
-git clone https://github.com/htm-community/htm
+To run the HTM notebooks, I use Docker Data Science Jupyter Image (found <a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html">here</a>). I am have amended it to include the compiled htm.core code base in python and C++. TO do this:
 
 
+1. Download or clone this repo
+2. cd into the Notebooks folder in the repo
+3. Run the command: docker run -p 8888:8888 --user root -v /Users/jamiegabriel/Desktop/Jamie-Gabriel/Notebooks:/home jupyter/datascience-notebook where "/Users/jamiegabriel/Desktop/Jamie-Gabriel/Notebooks" gets replaced with the absolute path you are in (i.e. from running pwd)
+4. This will start the container. Go into the container with <code> docker exec -it <YOUR CONTAINER ID> bash</code>
+5. Run <code>apt-get update</code>
+6. Run <code>apt-get install cmake </code>
+7. Run <code git clone https://github.com/htm-community/htm </code>
+8. Follow in the instructions at <a href="https://github.com/htm-community/htm">https://github.com/htm-community/htm</a> to install the Python release. Basically, just cd'ing into the relevant folder and running <code>python setup.py install --user --force</code>
+9. Follow the instructions to compile the C++ release
+10. Follow the instructions to compile the docs (just cd into the docs folder, and run doxygene - there are instructions inside this docs ReadME.md file)
 
-apt-get install cmake
-
-python setup.py install --user --force
-
-then set up docs
-
-then set up C++
+Note that for this set up does not work on Windows (something do with more recent versions of running Docker Jupyter images which has permissions issues. I will get around to sorting this out)
