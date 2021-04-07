@@ -17,7 +17,7 @@ To do this on Mac or Linux:
 1. Download or clone this repo
 2. cd into the Notebooks folder in the repo
 3. Run the command: <code>docker run -p 8888:8888 --user root -v /Users/jamiegabriel/Desktop/Jamie-Gabriel/Notebooks:/home jupyter/datascience-notebook</code> where <code>"/Users/jamiegabriel/Desktop/Jamie-Gabriel/Notebooks"</code> gets replaced with the absolute path you are in (i.e. from running pwd)
-4. This will start the container. Go into the container with <code> docker exec -it <YOUR CONTAINER ID> bash</code>
+4. This will start the container. Go into the container with <code> docker exec -it [YOUR CONTAINER ID] bash</code>
 5. Run <code>apt-get update</code>
 6. Run <code>apt-get install cmake </code>
 7. Run <code git clone https://github.com/htm-community/htm </code>
