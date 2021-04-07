@@ -20,7 +20,7 @@ To do this on Mac or Linux:
 4. This will start the container. Go into the container with <code> docker exec -it [YOUR CONTAINER ID] bash</code>
 5. Run <code>apt-get update</code>
 6. Run <code>apt-get install cmake </code>
-7. Run <code git clone https://github.com/htm-community/htm </code>
+7. Run <code> git clone https://github.com/htm-community/htm </code>
 8. Follow in the instructions at <a href="https://github.com/htm-community/htm">https://github.com/htm-community/htm</a> to install the Python release. Basically, just cd'ing into the relevant folder and running <code>python setup.py install --user --force</code>
 9. Follow the instructions to compile the C++ release
 10. Follow the instructions to compile the docs (just cd into the docs folder, and run doxygene - there are instructions inside this docs ReadME.md file)
