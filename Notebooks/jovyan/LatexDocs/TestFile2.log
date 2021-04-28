@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.8)  8 APR 2021 21:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.8)  28 APR 2021 16:44
 entering extended mode
 **./TestFile2.tex
 (TestFile2.tex
@@ -241,8 +241,7 @@ pdftex.def
 File: l3backend-pdftex.def 2021-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count269
 \l__pdf_internal_box=\box49
-)
-No file TestFile2.aux.
+) (TestFile2.aux)
 \openout1 = `TestFile2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
@@ -259,6 +258,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
 LaTeX Font Info:    ... okay on input line 61.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
 LaTeX Font Info:    ... okay on input line 61.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -367,9 +367,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {C:/Users/60133165/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
 (TestFile2.aux) ) 
 Here is how much of TeX's memory you used:
- 4438 strings out of 479334
- 74344 string characters out of 2855660
- 370044 words of memory out of 3000000
+ 4440 strings out of 479334
+ 74443 string characters out of 2855660
+ 370061 words of memory out of 3000000
  21851 multiletter control sequences out of 15000+200000
  409495 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -380,7 +380,7 @@ nts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/60133165/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/60133165/AppData/Lo
 cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/60133165/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb>
-Output written on TestFile2.pdf (1 page, 54233 bytes).
+Output written on TestFile2.pdf (1 page, 54753 bytes).
 PDF statistics:
  26 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
