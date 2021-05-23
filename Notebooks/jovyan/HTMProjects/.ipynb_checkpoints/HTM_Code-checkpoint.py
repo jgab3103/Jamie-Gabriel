@@ -7,10 +7,10 @@ import sys
 
 
 #################### SDR FUNCTIONS ########################################################
-def create_randomised_sdr(capacity, population):
+def create_randomised_sdr(sdr_size, number_of_active_bits):
     sdr = set()
-    while len(sdr) < population:
-        sdr.add(np.random.randint(low=1, high=capacity))
+    while len(sdr) < number_of_active_bits:
+        sdr.add(np.random.randint(low=1, high=sdr_size))
 
     return(list(sdr))
 
