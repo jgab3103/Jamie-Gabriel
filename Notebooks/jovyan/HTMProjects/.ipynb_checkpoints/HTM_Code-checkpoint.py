@@ -15,14 +15,13 @@ def create_randomised_sdr(sdr_size, number_of_active_bits):
     return(list(sdr))
 
 
-def randomly_flip_percentage_of_bits(SDR, array_size, percentage_to_flip):
-    to_remove = int(percentage_to_flip * len(SDR))
-    randomised_SDR = np.random.shuffle(SDR)
-    del SDR[0:to_remove]
-    noise = create_randominsed_sdr(np.sqrt(array_size), np.sqrt(array_size), to_remove)
-    sdr_with_noise = noise + SDR
+def randomly_flip_percentage_of_bits(sdr, sdr_size, percentage_to_flip):
+    rd.shuffle(sdr)
+    count_of_bits_to_be_flipped = int(percentage_to_flip * len(sdr))
+    new_sdr = sdr[count_of_bits_to_be_flipped:]  
+    noise = create_randomised_sdr(sdr_size, count_of_bits_to_be_flipped)
+    sdr_with_noise = noise + new_sdr
     return(sdr_with_noise)
-
 
 
 
@@ -35,6 +34,13 @@ def compute_union_and_overlap(SDR1_on_bits, SDR2_on_bits):
     
     return({"union": union, "overlap": overlap})
 
+def compute_match(SDR1_active_bits, SDR2_active_bits, sdr_size, match_threshold):
+    match = {}
+    match['overlap'] = len(compute_union_and_overlap(s1, s2)['overlap'])
+    match['overlap_as_percentage_of_sdr_size'] = (match['overlap'] / sdr_size) * 100
+    match['is_match'] = match_threshold < (match['overlap_as_percentage_of_sdr_size'])
+    
+    return(match)
 
 
 def compute_overlap_set_cardinality(n, w0, w1, b, provide_summary = True):
