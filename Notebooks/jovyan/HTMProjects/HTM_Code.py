@@ -68,71 +68,126 @@ def create_and_compare_sdrs_over_multiple_iterations(iterations, sdr_size, popul
     return({"union_comparison": sdr_unions_for_comparison, "overlap_comparison": sdr_overlaps_for_comparison})
 
 
-################### SCALAR ENCODER ###################################################
-class CreateScalarEncoder:
+################### ENCODER ###################################################
+class Encoder:
     def __init__(self, bit_space_size = None,
-                number_of_bits_per_value = None,
+                number_of_bits_used_to_encode_value = None,
                 min_val = None,
-                max_val = None):
+                max_val = None,
+                is_randomly_distributed = None,
+                clip_values_outside_range = None):
+
         self.bit_space_size = bit_space_size
-        self.number_of_bits_per_value = number_of_bits_per_value
-        self.unique_bits_per_encoded_value = 1
+        self.number_of_bits_used_to_encode_value = number_of_bits_used_to_encode_value
+        self.clip_values_outside_range = clip_values_outside_range
+        self.is_periodic = False
+        self.is_randomly_distributed = is_randomly_distributed
+
+        self.resolution = 1
+        self.uniqueness = 1
         self.min_value_to_encode = min_val
         self.max_value_to_encode = max_val
-        self.buckets = self.compute_bucket_capacity(self.bit_space_size, self.number_of_bits_per_value)
-        self.max_bucket_starting_indice = self.buckets - 1
-        self.offset = 1
-        self.current_encoded_value = None
-        self.bit_locations_for_current_encoded_value = 1
-        self.previously_encoded_values = np.array([])
-        self.bit_locations_for_previously_encoded_values = []
-        self.current_and_previous_encoded_values_comparison = None
-        self.is_periodic = False
+        self.max_bit_space_value = bit_space_size
+        self.min_bit_space_value = 0
+        self.encoded_values = []
+        self.encoded_values_bit_locations = []
+        self.offset_for_array_indice = 1
+        
+        self.bucket_capacity = self.compute_bucket_capacity(self.bit_space_size, self.number_of_bits_used_to_encode_value)
+        
+        if self.is_randomly_distributed:
+            self.initial_encoding = np.array(hc.create_randomised_sdr(self.bit_space_size, self.number_of_bits_used_to_encode_value))
+
+            self.encoded_values_and_bit_locations = {str(self.min_value_to_encode):self.initial_encoding}
+            self.encoded_values.append(self.min_value_to_encode)
+            self.encoded_values_bit_locations.append(np.array(self.initial_encoding))
         
     def get_summary(self):
         print("----------------- SUMMARY -------------------------")
-        print("Bit Space Size: ", self.bit_space_size)
-        print("Number of bits used to encode each value:", self.number_of_bits_per_value)
-        print("Range of values to be encoded: From ", self.min_value_to_encode, ' to ', self.max_value_to_encode)
-        print("Number of unique bits per encoded value: ", self.unique_bits_per_encoded_value)
-        print("Number of buckets available in bit space:", self.buckets)
-        print("Max bucket starting indice:", self.max_bucket_starting_indice)
-        print("Current encoded value: ", self.current_encoded_value)
-        print("Previously encoded values: ", self.previously_encoded_values)
-        print("Bit locations for current encoded value: ", self.bit_locations_for_current_encoded_value)
-        print("Bit locations for previously encoded values: ", self.bit_locations_for_previously_encoded_values)
-        print("Current and previous encoded values comparison: ", self.current_and_previous_encoded_values_comparison)
-        print("Encode periodically: ", self.is_periodic)
-    
+        print("|L3| Bit Space Size: ", self.bit_space_size)
+        print("|L4| Number of bits to be used when encoding each value:", self.number_of_bits_used_to_encode_value)
+        print("|L5| Range of values that can be encoded: From ", self.min_value_to_encode, ' to ', self.max_value_to_encode)
+        print("|L6| Number of buckets available in bit space:", float(self.bucket_capacity))
+        print("|L1| Encode periodically: ", self.is_periodic)
+        print("|L1| Values are encoded as are randomly distributed arrays: ", self.is_randomly_distributed)
+        print("|L1| Resolution: ", self.resolution)
+        print("|L1| Unique active bits per bucket: ", self.uniqueness)
+        print("|L2| Values outside range will to be clipped: ",self.clip_values_outside_range)
+        print("|L7| Encoded values bit locations:\n ", self.encoded_values_bit_locations)
+        print("|L8| Encoded values", self.encoded_values)
+        print("----------------------------------------------------")
+
+        
     def compute_bucket_capacity(self, n, w):
-        return(n - w + 1)
-
-    def compare_current_and_previously_encoded_value(self):
-        self.current_and_previous_encoded_values_comparison = np.abs(self.current_encoded_value / self.bit_space_size - self.previously_encoded_values[0] / self.bit_space_size)
-    
-    def encode_value_in_bit_space(self, value_choice):
-        
-        # check if value is outside range
-        if (value_choice < self.min_value_to_encode) or (value_choice > self.max_value_to_encode):
-            print('Not a valid value to encode as is outside specified range')
-            return()
-        
-        if self.current_encoded_value is not None:
-            self.previously_encoded_values = np.append(self.previously_encoded_values, self.current_encoded_value)
-            self.bit_locations_for_previously_encoded_values.append(self.bit_locations_for_current_encoded_value)
-            self.compare_current_and_previously_encoded_value()
-        self.current_encoded_value = value_choice
-        
-        if (value_choice > self.max_bucket_starting_indice):
-            value_to_encode = self.max_bucket_starting_indice
+        if self.is_randomly_distributed:
+            return(sp.binomial(self.bit_space_size, self.number_of_bits_used_to_encode_value))
         else:
-            value_to_encode = value_choice
-            
-        window = [value_to_encode, value_to_encode + self.number_of_bits_per_value - self.offset]
-        all_values = np.arange(window[0], window[1] + self.offset)
-        self.bit_locations_for_current_encoded_value = all_values
-    
+            return(n - w + 1)
 
+    def create_buckets_for_randomly_encoded_values(self, iterations_needed):
+        
+        for i in range(0, iterations_needed):
+            random_bit_index_to_move = np.random.randint(0, self.number_of_bits_used_to_encode_value, 1)[0]
+            random_direction_to_move = np.random.randint(0, 2, 1)
+
+            next_sdr = self.encoded_values_bit_locations[-1].copy()
+            value = next_sdr[random_bit_index_to_move]
+            
+            if random_direction_to_move == 1:
+                value = next_sdr[random_bit_index_to_move] + 1
+            else: 
+                value = next_sdr[random_bit_index_to_move] - 1
+                
+            if value > self.max_bit_space_value:
+                value = value - 2
+            elif value < 0:
+                value = value + 2
+
+            next_sdr[random_bit_index_to_move] = value
+
+            self.encoded_values_bit_locations.append(next_sdr.copy())
+            self.encoded_values.append(np.array(self.encoded_values[-1] + 1))
+            self.encoded_values_and_bit_locations[str(self.encoded_values[-1])] = next_sdr.copy()
+  
+
+    def encode_value_in_bit_space(self, value_choice):
+        print("\nEncoding the value ->", value_choice)
+        unclipped_value = value_choice
+        if self.clip_values_outside_range:
+            if value_choice < self.min_value_to_encode or value_choice > self.max_value_to_encode:
+                if value_choice < self.min_value_to_encode:
+                    value_choice = self.min_value_to_encode
+                else:
+                    value_choice = self.max_value_to_encode
+                print("The value of: ", unclipped_value, "has been clipped to ->", value_choice)
+            elif value_choice > self.min_value_to_encode or value_choice < self.max_value_to_encode:
+                pass
+        else:
+            print("Not a valid choice, ", value_choice, " is outside encoder range")
+            return
+
+        
+        if self.is_randomly_distributed:
+            if (value_choice < self.encoded_values[-1]):
+                print("There is a bucket already created for the value", value_choice, "-> ", self.encoded_values_and_bit_locations[str(value_choice)])
+                if unclipped_value < self.min_value_to_encode or unclipped_value > self.max_value_to_encode:
+                    print("This bucket will be used to encode", unclipped_value)
+                    self.encoded_values_and_bit_locations[str(unclipped_value)] = self.encoded_values_and_bit_locations[str(value_choice)]
+                return
+            
+            buckets_needed_to_encode_value = value_choice - self.encoded_values[-1]
+            print("Current number of buckets: " , len(self.encoded_values))
+            print("Value held in first bucket: ", self.min_value_to_encode)
+            print("Number of additional buckets required to accomodate the value choice of", value_choice, ": ", buckets_needed_to_encode_value)
+            self.create_buckets_for_randomly_encoded_values(buckets_needed_to_encode_value)
+            self.encoded_values_and_bit_locations[str(unclipped_value)] = self.encoded_values_and_bit_locations[str(value_choice)]
+        
+        else:
+            window = [value_choice, value_choice + self.number_of_bits_used_to_encode_value]
+            all_values = np.arange(window[0], window[1])
+            self.encoded_values_bit_locations.append(all_values)
+            self.encoded_values.append(value_choice)
+ 
 
     
 ######################## VISUALISATION FUNCTIONS ############################################
