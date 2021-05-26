@@ -196,7 +196,7 @@ def create_axis_for_sdr(ax, x_limit, y_limit, population, label, create_label = 
     
     if create_label:
         label_add = np.round((population / (x_limit * y_limit)) * 100, 2)
-        label = label + ' (Sparsity: {}%)'.format(label_add)
+        #label = label + ' (Sparsity: {}%)'.format(label_add)
         ax.set_xlabel(label)
         
     ax.set_xticks(range(int(x_limit)))
