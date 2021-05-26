@@ -96,7 +96,7 @@ class Encoder:
         self.bucket_capacity = self.compute_bucket_capacity(self.bit_space_size, self.number_of_bits_used_to_encode_value)
         
         if self.is_randomly_distributed:
-            self.initial_encoding = np.array(hc.create_randomised_sdr(self.bit_space_size, self.number_of_bits_used_to_encode_value))
+            self.initial_encoding = np.array(create_randomised_sdr(self.bit_space_size, self.number_of_bits_used_to_encode_value))
 
             self.encoded_values_and_bit_locations = {str(self.min_value_to_encode):self.initial_encoding}
             self.encoded_values.append(self.min_value_to_encode)
