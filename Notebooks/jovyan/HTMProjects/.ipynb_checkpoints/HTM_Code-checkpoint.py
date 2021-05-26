@@ -210,30 +210,56 @@ def create_axis_for_sdr(ax, x_limit, y_limit, population, label, create_label = 
     return(ax)
 
 
-def convert_sdr_to_tuple_for_visualisation(sdr, sdr_size):    
-    counting_offset = 1
-    # create array of complete sdrs
 
+def compute_multiples(n):
+    result = set()
+    for i in range(1, int(n ** 0.5) + 1):
+        div, mod = divmod(n, i)
+        if mod == 0:
+            result |= {i, div}
+    result_as_list = list(result)
+    result_as_list.sort()
+    return(result_as_list)
+
+def compute_middle_factors(n): 
+    if n < 20:
+        print("The chosen SDR size is too small and does not make sense to visualize in this way")
+        return
+    result = compute_multiples(n)
+    
+    is_prime = len(result) == 2
+    if is_prime:
+        print("Prime number SDR sizes not supported")
+        return
+    if len(result) < 5:
+        print("There are only" , len(result), "factors of", n, " so the dimensions grid will be unbalanced. Better to choose a different sdr_size")
+    if sp.ntheory.primetest.is_square(n):
+        dim_one = result[sp.floor(len(result) / 2)]
+        dim_two = dim_one
+    else:
+        dim_one = result[sp.floor(len(result) / 2) - 1]
+        dim_two = result[sp.floor(len(result) / 2)]
+
+
+    return [dim_one, dim_two]
+
+
+
+def convert_sdr_to_tuple_for_visualisation(sdr, sdr_size): 
+    counting_offset = 1
     m = np.zeros(sdr_size)
     for i in sdr:
         m[i] = m[i] + 1
     
-    # find dimensions of visualisation
-    n = sp.symbols('n')
-    e = sp.Eq(2**n, sdr_size)
-    s = sp.solve(e, n)
-    middle_index = np.floor(float(s[0] / 2))
-    
-    if s[0] % 2 == 0:
-        dimensions = [2**middle_index, 2**middle_index]
-    else:
-        dimensions = [2**middle_index, 2**(middle_index + 1)]
-    
+    dimensions = compute_middle_factors(sdr_size)
+
+    if dimensions == None:
+        return
     d = np.reshape(m, [int(v) for v in dimensions])
     v = np.where(d == 1)
-
+    
     
     coords = [(v[1][i], (dimensions[1] - counting_offset) - v[0][i]) for i in range(len(v[1]))]
+
     
     return(coords)
-
