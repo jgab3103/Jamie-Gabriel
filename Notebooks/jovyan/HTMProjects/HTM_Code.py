@@ -24,6 +24,19 @@ def randomly_flip_percentage_of_bits(sdr, sdr_size, percentage_to_flip):
     return(sdr_with_noise)
 
 
+class SDR:
+    def __init__(self, input_space_size, number_of_active_bits, label):
+        self.input_space_size = input_space_size
+        self.number_of_active_bits= number_of_active_bits
+        self.active_bits = hc.create_randomised_sdr(self.input_space_size, self.number_of_active_bits)
+        self.label = label
+    def get_summary(self):
+        print("----------------- SUMMARY -------------------------")
+        print("|L1| Label:", self.label)
+        print("|L1| Input space size of SDR:", self.input_space_size)
+        print("|L2| Number of active bits in SDR:", self.number_of_active_bits)
+        print("|L3| Percentage of active bits:", (self.number_of_active_bits / self.input_space_size) * 100, "%")
+        print("|L3| Active bits:", self.active_bits)
 
 
 
