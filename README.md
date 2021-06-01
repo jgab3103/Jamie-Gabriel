@@ -24,8 +24,8 @@ docker exec -it [docker container ID] bash
 Note you can get the ID of the Docker Container from running: docker container ls
 
 Now you will be in the Docker container as the root user root. From here, just run two comands:
-apt-get update
-apt-get install cmake
+`apt-get update`
+`apt-get install cmake`
 
 Now, while you are still in the container's shell run:
 git clone https://github.com/htm-community/htm . This will clone the htm.core repo into the docker container. You will notice it downloads to the \home folder in the Docker container which has been synced with your local folder you created with that -v command, so the cloned repo will appear in your local machine folder as well
