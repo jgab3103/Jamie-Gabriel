@@ -28,7 +28,7 @@ class SDR:
     def __init__(self, input_space_size, number_of_active_bits, label):
         self.input_space_size = input_space_size
         self.number_of_active_bits= number_of_active_bits
-        self.active_bits = hc.create_randomised_sdr(self.input_space_size, self.number_of_active_bits)
+        self.active_bits = create_randomised_sdr(self.input_space_size, self.number_of_active_bits)
         self.label = label
     def get_summary(self):
         print("----------------- SUMMARY -------------------------")
