@@ -219,6 +219,8 @@ def create_axis_for_sdr(ax, x_limit, y_limit, population, label, create_label = 
     ax.set_yticklabels([])
     ax.set_xticklabels([])
     ax.grid(color='k', linestyle='-', linewidth=.5)
+    ax.tick_params(axis = "both", which = "both", bottom = False, top = False)
+
     
     return(ax)
 
@@ -276,3 +278,13 @@ def convert_sdr_to_tuple_for_visualisation(sdr, sdr_size):
 
     
     return(coords)
+
+def compute_color(c, min_in_range, max_in_range):
+    ival = np.interp(c,[min_in_range,max_in_range],[0,1])
+    rgb = colorsys.hsv_to_rgb(0, ival,  1)
+    return(rgb)
+
+def offset_coords_for_visualisation(c, offset_amount):
+    coords = np.array(c)
+    coords = coords + offset_amount
+    return(tuple(coords))
