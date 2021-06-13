@@ -1,0 +1,17 @@
+
+#################################################
+This is a handy sript you can add to the Advanced Settings Editor in the Settings Menu. Just open that up, and paste this in User Prefrences, overwriting the "{}" that is already there. 
+
+Once you do this, you can just run "Ctrl Shift U" to restart the notebook and reload libraries. This is handy when you just want to reload libraries/functions that you have been working on
+#################################################
+{"shortcuts":
+    [
+        {
+            "command": "runmenu:restart-and-run-all",
+            "keys": [
+                "Ctrl Shift U"
+            ],
+            "selector": "[data-jp-code-runner]"
+        }
+    ]
+}
