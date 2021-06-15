@@ -87,120 +87,175 @@ class Encoder:
                 number_of_bits_used_to_encode_value = None,
                 min_val = None,
                 max_val = None,
+                resolution = None,
                 is_randomly_distributed = None,
-                clip_values_outside_range = None):
+                clip_values_outside_range = None,
+                is_periodic = None):
 
         self.bit_space_size = bit_space_size
         self.number_of_bits_used_to_encode_value = number_of_bits_used_to_encode_value
         self.clip_values_outside_range = clip_values_outside_range
-        self.is_periodic = False
+        self.is_periodic = is_periodic
         self.is_randomly_distributed = is_randomly_distributed
 
-        self.resolution = 1
+        self.resolution = resolution
         self.uniqueness = 1
+        self.permittedSimiliarityBetweenEncodings = .90 
+        self.similiarityIsPercentage = True
         self.min_value_to_encode = min_val
         self.max_value_to_encode = max_val
         self.max_bit_space_value = bit_space_size
         self.min_bit_space_value = 0
-        self.encoded_values = []
+        self.buckets = []
         self.encoded_values_bit_locations = []
         self.offset_for_array_indice = 1
+        self.encodedValues = {}
         
-        self.bucket_capacity = self.compute_bucket_capacity(self.bit_space_size, self.number_of_bits_used_to_encode_value)
+        self.bucket_capacity = self.computeBucketCapacity()
         
         if self.is_randomly_distributed:
-            self.initial_encoding = np.array(create_randomised_sdr(self.bit_space_size, self.number_of_bits_used_to_encode_value))
+            self.initial_encoding = np.array(hc.create_randomised_sdr(self.bit_space_size, self.number_of_bits_used_to_encode_value))
 
             self.encoded_values_and_bit_locations = {str(self.min_value_to_encode):self.initial_encoding}
-            self.encoded_values.append(self.min_value_to_encode)
+            self.buckets.append(self.min_value_to_encode)
             self.encoded_values_bit_locations.append(np.array(self.initial_encoding))
         
     def get_summary(self):
         print("----------------- SUMMARY -------------------------")
         print("|L3| Bit Space Size: ", self.bit_space_size)
         print("|L4| Number of bits to be used when encoding each value:", self.number_of_bits_used_to_encode_value)
+        
         print("|L5| Range of values that can be encoded: From ", self.min_value_to_encode, ' to ', self.max_value_to_encode)
-        print("|L6| Number of buckets available in bit space:", float(self.bucket_capacity))
+        if self.is_periodic:
+            print("|L6| Number of buckets available in bit space: Unlimited (is periodic)")
+        else:
+            print("|L6| Number of buckets available in bit space:", float(self.bucket_capacity))
         print("|L1| Encode periodically: ", self.is_periodic)
         print("|L1| Values are encoded as are randomly distributed arrays: ", self.is_randomly_distributed)
         print("|L1| Resolution: ", self.resolution)
-        print("|L1| Unique active bits per bucket: ", self.uniqueness)
+        print("|L1| Similiarity between encodings: ", self.uniqueness)
         print("|L2| Values outside range will to be clipped: ",self.clip_values_outside_range)
         print("|L7| Encoded values bit locations:\n ", self.encoded_values_bit_locations)
-        print("|L8| Encoded values", self.encoded_values)
+        #print("|L8| Number of buckets created so far:", len(set(self.buckets)))
         print("----------------------------------------------------")
 
         
-    def compute_bucket_capacity(self, n, w):
+    def computeBucketCapacity(self):
+        """The purpose of this function is compute bucket capacity. Bucket capacity"""
         if self.is_randomly_distributed:
-            return(sp.binomial(self.bit_space_size, self.number_of_bits_used_to_encode_value))
+            return(np.floor(sp.binomial(self.bit_space_size, self.number_of_bits_used_to_encode_value) / self.resolution))
         else:
-            return(n - w + 1)
+            return(np.floor((self.bit_space_size - self.number_of_bits_used_to_encode_value + 1)/ self.resolution))
 
-    def create_buckets_for_randomly_encoded_values(self, iterations_needed):
+    def makeRandomMove(self):
         
-        for i in range(0, iterations_needed):
+        newBitLocationsMayHaveClashWithExistingBitLocations = True
+        
+        while(newBitLocationsMayHaveClashWithExistingBitLocations):
             random_bit_index_to_move = np.random.randint(0, self.number_of_bits_used_to_encode_value, 1)[0]
             random_direction_to_move = np.random.randint(0, 2, 1)
 
             next_sdr = self.encoded_values_bit_locations[-1].copy()
             value = next_sdr[random_bit_index_to_move]
-            
+
             if random_direction_to_move == 1:
                 value = next_sdr[random_bit_index_to_move] + 1
             else: 
                 value = next_sdr[random_bit_index_to_move] - 1
-                
+
             if value > self.max_bit_space_value:
-                value = value - 2
-            elif value < 0:
-                value = value + 2
+                if self.is_periodic:
+                    value = self.min_bit_space_value
+                else:
+                    value = value - 2
+            elif value < self.min_bit_space_value:
+                if self.is_periodic:
+                    value = self.max_bit_space_value
+                else:
+                    value = value + 2
 
             next_sdr[random_bit_index_to_move] = value
-
+            newBitLocationsMayHaveClashWithExistingBitLocations = np.any(np.all(next_sdr == self.encoded_values_bit_locations, axis=1))
+            
+        return(next_sdr)
+    
+    def createBucketsForRandomlyEncodedValues(self, iterations_needed):
+        for i in range(0, iterations_needed):
+            next_sdr = self.makeRandomMove()
             self.encoded_values_bit_locations.append(next_sdr.copy())
-            self.encoded_values.append(np.array(self.encoded_values[-1] + 1))
-            self.encoded_values_and_bit_locations[str(self.encoded_values[-1])] = next_sdr.copy()
-  
+            self.buckets.append(np.array(self.buckets[-1] + 1))
+            self.encoded_values_and_bit_locations[str(self.buckets[-1])] = next_sdr.copy()
 
+    
+    def checkWhichBucket(self, valueChoice):
+        bucket = np.floor(valueChoice / self.resolution)
+        return(int(bucket))
+        
+    def updateEncodedValuesDictionary(self):
+        for i in range(len(self.buckets)):
+
+            self.encodedValues[str(self.buckets[i])] = {"bitLocations": self.encoded_values_bit_locations[i],
+                                                        "encodedValues": np.arange(start=(self.buckets[i] * self.resolution), 
+                                                         stop=(self.buckets[i] * self.resolution) + self.resolution, step=1)}
+                    
+        print(self.encodedValues)
+    
     def encode_value_in_bit_space(self, value_choice):
+
+        bucket = self.checkWhichBucket(value_choice)
+        
+        value_choice = bucket
+        
         print("\nEncoding the value ->", value_choice)
-        unclipped_value = value_choice
-        if self.clip_values_outside_range:
-            if value_choice < self.min_value_to_encode or value_choice > self.max_value_to_encode:
+        
+        if (value_choice < self.min_value_to_encode or value_choice > self.max_value_to_encode): 
+            if self.clip_values_outside_range:
+                valuePriorToClipping = value_choice
                 if value_choice < self.min_value_to_encode:
                     value_choice = self.min_value_to_encode
                 else:
                     value_choice = self.max_value_to_encode
-                print("The value of: ", unclipped_value, "has been clipped to ->", value_choice)
-            elif value_choice > self.min_value_to_encode or value_choice < self.max_value_to_encode:
-                pass
-        else:
-            print("Not a valid choice, ", value_choice, " is outside encoder range")
-            return
+                print("The value of: ", valuePriorToClipping, "has been clipped to ->", value_choice)
+            else:
+                print("Not a valid choice (clipValuesOutsideRange has been set to False)")
+                return
 
-        
+
         if self.is_randomly_distributed:
-            if (value_choice < self.encoded_values[-1]):
-                print("There is a bucket already created for the value", value_choice, "-> ", self.encoded_values_and_bit_locations[str(value_choice)])
-                if unclipped_value < self.min_value_to_encode or unclipped_value > self.max_value_to_encode:
-                    print("This bucket will be used to encode", unclipped_value)
-                    self.encoded_values_and_bit_locations[str(unclipped_value)] = self.encoded_values_and_bit_locations[str(value_choice)]
+            if (value_choice < self.buckets[-1]):
+                print("There is a bucket already created for the value", value_choice, "-> ", 
+                      self.encoded_values_and_bit_locations[str(value_choice)])
                 return
             
-            buckets_needed_to_encode_value = value_choice - self.encoded_values[-1]
-            print("Current number of buckets: " , len(self.encoded_values))
-            print("Value held in first bucket: ", self.min_value_to_encode)
+            buckets_needed_to_encode_value = value_choice - self.buckets[-1]
+            print("Current number of encoded values: " , len(self.buckets))
+  
+            print("Value encoded in first bucket: ", self.min_value_to_encode)
             print("Number of additional buckets required to accomodate the value choice of", value_choice, ": ", buckets_needed_to_encode_value)
-            self.create_buckets_for_randomly_encoded_values(buckets_needed_to_encode_value)
-            self.encoded_values_and_bit_locations[str(unclipped_value)] = self.encoded_values_and_bit_locations[str(value_choice)]
+            self.createBucketsForRandomlyEncodedValues(buckets_needed_to_encode_value)
         
         else:
             window = [value_choice, value_choice + self.number_of_bits_used_to_encode_value]
-            all_values = np.arange(window[0], window[1])
-            self.encoded_values_bit_locations.append(all_values)
-            self.encoded_values.append(value_choice)
+
+            if self.is_periodic:
+
+                inputValues = np.arange(0,self.bit_space_size)
+                all_values =  []
+
+                for eachValue in range(window[0], window[1]):
+                    all_values.append(inputValues[eachValue % self.bit_space_size])
+    
+                self.encoded_values_bit_locations.append(all_values)
+                self.buckets.append(value_choice)
+
+            else:
  
+                all_values = np.arange(window[0], window[1])
+                self.encoded_values_bit_locations.append(all_values)
+                self.buckets.append(value_choice)
+   
+           
+
 
     
 ######################## VISUALISATION FUNCTIONS ############################################
