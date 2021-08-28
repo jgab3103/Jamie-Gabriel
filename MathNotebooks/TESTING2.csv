@@ -1,0 +1,141 @@
+,col
+0,"<tt>1, 1, 1, <b style=""color:black;font-size:120%;"">1, 2, 3, 6, 11, 23, 47, 106, 235</b>, 551, 1301, 3159, 7741, 19320, 48629, 123867, 317955, 823065, 2144505, 5623756, 14828074, 39299897, 104636890, 279793450, 751065460, 2023443032, 5469566585, 14830871802, 40330829030, 109972410221, 300628862480, 823779631721, 2262366343746, 6226306037178</tt>"
+1,"<tt>0,5</tt>"
+2,"<tt>Also, number of unlabeled 2-gonal 2-trees with n 2-gons.</tt>"
+3,"<tt>Main diagonal of <a href=""/A054924"" title=""Triangle read by rows: T(n,k) = number of nonisomorphic unlabeled connected graphs with n nodes and k edges (n &gt;= 1, 0 &lt;= k ..."">A054924</a>.</tt>"
+4,"<tt>Left border of <a href=""/A157905"" title=""Triangle read by rows, T(n,k) = A000055(n-k) * (A157904 * 0^(n-k))"">A157905</a>. - <a href=""/wiki/User:Gary_W._Adamson"">Gary W. Adamson</a>, Mar 08 2009</tt>"
+5,"<tt>From <a href=""/wiki/User:Robert_Munafo"">Robert Munafo</a>, Jan 24 2010: (Start)</tt>"
+6,"<tt>Also counts classifications of n items that require exactly n-1 binary partitions; see Munafo link at <a href=""/A005646"" title=""Classifications of n elements."">A005646</a>, also <a href=""/A171871"" title=""Triangle read by rows: Distinct classifications of N elements containing exactly R binary partitions."">A171871</a> and <a href=""/A171872"" title=""Triangle read by columns: Distinct classifications of N elements containing exactly R binary partitions."">A171872</a>.</tt>"
+7,<tt>The 11 trees for n = 7 are illustrated at the Munafo web link.</tt>
+8,"<tt>Link to <a href=""/A171871"" title=""Triangle read by rows: Distinct classifications of N elements containing exactly R binary partitions."">A171871</a>/<a href=""/A171872"" title=""Triangle read by columns: Distinct classifications of N elements containing exactly R binary partitions."">A171872</a> conjectured by <a href=""/wiki/User:Robert_Munafo"">Robert Munafo</a>, then proved by <a href=""/wiki/User:Andrew_Weimholt"">Andrew Weimholt</a> and <a href=""/wiki/User:Franklin_T._Adams-Watters"">Franklin T. Adams-Watters</a> on Dec 29 2009. (End)</tt>"
+9,"<tt>This is also ""Number of tree perfect graphs on n nodes"" [see Hougardy]. - <a href=""/wiki/User:N._J._A._Sloane"">N. J. A. Sloane</a>, Dec 04 2015</tt>"
+10,"<tt>For n &gt; 0, a(n) is the number of ways to arrange n-1 unlabeled non-intersecting circles on a sphere. - <a href=""/wiki/User:Vladimir_Reshetnikov"">Vladimir Reshetnikov</a>, Aug 25 2016</tt>"
+11,"<tt>All trees for n=1 through n=12 are depicted in Chapter 1 of the Steinbach reference. On p. 6 appear encircled two trees (with n=10) which seem inequivalent only when considered as ordered (planar) trees. Earlier instances of such possibly (in)equivalent trees could appear from n=6 on (and from n=9 on without equivalence modulo plane symmetry) but are not drawn separately there. - <a href=""/wiki/User:M._F._Hasler"">M. F. Hasler</a>, Aug 29 2017</tt>"
+12,"<tt>F. Bergeron, G. Labelle and P. Leroux, Combinatorial Species and Tree-Like Structures, Camb. 1998, p. 279.</tt>"
+13,"<tt>Miklos Bona, editor, Handbook of Enumerative Combinatorics, CRC Press, 2015, page 55.</tt>"
+14,"<tt>N. L. Biggs et al., Graph Theory 1736-1936, Oxford, 1976, p. 49.</tt>"
+15,"<tt>A. Cayley, On the analytical forms called trees, with application to the theory of chemical combinations, Reports British Assoc. Advance. Sci. 45 (1875), 257-305 = Math. Papers, Vol. 9, 427-460 (see p. 459).</tt>"
+16,"<tt>S. R. Finch, Mathematical Constants, Cambridge, 2003, pp. 295-316.</tt>"
+17,"<tt>J. L. Gross and J. Yellen, eds., Handbook of Graph Theory, CRC Press, 2004; p. 526.</tt>"
+18,"<tt>F. Harary, Graph Theory. Addison-Wesley, Reading, MA, 1969, p. 232.</tt>"
+19,"<tt>F. Harary and E. M. Palmer, Graphical Enumeration, Academic Press, NY, 1973, p. 58 and 244.</tt>"
+20,"<tt>D. E. Knuth, Fundamental Algorithms, 3d Ed. 1997, pp. 386-88.</tt>"
+21,"<tt>R. C. Read and R. J. Wilson, An Atlas of Graphs, Oxford, 1998.</tt>"
+22,"<tt>J. Riordan, An Introduction to Combinatorial Analysis, Wiley, 1958, p. 138.</tt>"
+23,"<tt>N. J. A. Sloane, A Handbook of Integer Sequences, Academic Press, 1973 (includes this sequence).</tt>"
+24,"<tt>N. J. A. Sloane and Simon Plouffe, The Encyclopedia of Integer Sequences, Academic Press, 1995 (includes this sequence).</tt>"
+25,"<tt>Wakhare, Tanay, Eric Wityk, and Charles R. Johnson. ""The proportion of trees that are linear."" Discrete Mathematics 343.10 (2020): 112008. Also arXiv:1901.08502v2. See Tables 1 and 2 (but beware errors).</tt>"
+26,"<tt>R. J. Mathar and Robert G. Wilson v, <a href=""/A000055/b000055.txt"">Table of n, a(n) for n = 0..1000</a></tt>"
+27,"<tt>Jeremy C. Adcock, Sam Morley-Short, Joshua W. Silverstone, and Mark G. Thompson, <a href=""https://arxiv.org/abs/1806.03263"">Hard limits on the postselectability of optical graph states</a>, arXiv:1806.03263 [quant-ph], 2018.</tt>"
+28,"<tt>H. R. Afshar, E. A. Bergshoeff, and W. Merbis, <a href=""http://arxiv.org/abs/1410.6164"">Interacting spin-2 fields in three dimensions</a>, arXiv preprint arXiv:1410.6164 [hep-th], 2014-2015.</tt>"
+29,"<tt>Ruggero Bandiera and Florian Schaetz, <a href=""https://arxiv.org/abs/1702.08907"">Eulerian idempotent, pre-Lie logarithm and combinatorics of trees</a>, arXiv:1702.08907 [math.CO], 2017. Mentions this sequence.</tt>"
+30,"<tt>Madeleine Burkhart and Joel Foisy, <a href=""https://doi.org/10.7566/JPSJ.86.104003"">Enumerating spherical n-links</a>, Involve, Vol. 11 (2018), No. 2, 195-206.</tt>"
+31,"<tt>P. J. Cameron, <a href=""http://www.cs.uwaterloo.ca/journals/JIS/VOL3/groups.html"">Sequences realized by oligomorphic permutation groups</a>, J. Integ. Seqs. Vol. 3 (2000), #00.1.5.</tt>"
+32,"<tt>A. Cayley, <a href=""http://www.jstor.org/stable/2369158"">On the analytical forms called trees</a>, Amer. J. Math., 4 (1881), 266-268.</tt>"
+33,"<tt>CombOS - Combinatorial Object Server, <a href=""http://combos.org/nauty"">generate graphs</a></tt>"
+34,"<tt>R. Ferrer-i-Cancho, <a href=""http://arxiv.org/abs/1411.2645"">Non-crossing dependencies: least effort, not grammar</a>, arXiv preprint arXiv:1411.2645 [cs.CL], 2014.</tt>"
+35,"<tt>S. R. Finch, <a href=""http://web.archive.org/web/20010207195939/http://www.mathsoft.com/asolve/constant/otter/otter.html"">Otter's Tree Enumeration Constants</a></tt>"
+36,"<tt>P. Flajolet and R. Sedgewick, <a href=""http://algo.inria.fr/flajolet/Publications/books.html"">Analytic Combinatorics</a>, 2009; see page 481.</tt>"
+37,"<tt>Andrew Gainer-Dewar, <a href=""https://doi.org/10.37236/2615"">Gamma-Species and the Enumeration of k-Trees</a>, Electronic Journal of Combinatorics, Volume 19 (2012), #P45 and <a href=""http://arxiv.org/abs/1208.5993"">arXiv:1208.5993</a> [math.CO], 2012.</tt>"
+38,"<tt>Xiangrui Gao, Song He, and Yong Zhang, <a href=""https://arxiv.org/abs/1708.08701"">Labelled tree graphs, Feynman diagrams and disk integrals</a> arxiv:1708.08701 [hep-th], 2017, see p. 4.</tt>"
+39,"<tt>D. D. Grant, <a href=""http://dx.doi.org/10.1007/BFb0057373"">The stability index of graphs</a>, pp. 29-52 of Combinatorial Mathematics (Proceedings 2nd Australian Conf.), Lect. Notes Math. 403, 1974. Gives first 45 terms.</tt>"
+40,"<tt>Paul E. Gunnells, <a href=""https://arxiv.org/abs/2102.05121"">Generalized Catalan numbers from hypergraphs</a>, arXiv:2102.05121 [math.CO], 2021. Mentions this sequence p. 3.</tt>"
+41,"<tt>T. Hoppe and A. Petrone, <a href=""http://arxiv.org/abs/1408.3644"">Integer sequence discovery from small graphs</a>, arXiv preprint arXiv:1408.3644 [math.CO], 2014.</tt>"
+42,"<tt>S. Hougardy, <a href=""http://dx.doi.org/10.1016/j.disc.2006.05.021"">Classes of perfect graphs</a>, Discr. Math. 306 (2006), 2529-2571.</tt>"
+43,"<tt>House of Graphs, <a href=""https://hog.grinvin.org/Trees"">Trees</a></tt>"
+44,"<tt>Andrew Jobbings, <a href=""http://www.arbelos.co.uk/Papers/Enumerating-nets.pdf"">Enumerating nets</a>, Preprint 2015.</tt>"
+45,"<tt>Elena V. Konstantinova and Maxim V. Vidyuk, <a href=""http://dx.doi.org/10.1021/ci025659y"">Discriminating tests of information and topological indices. Animals and trees</a>, J. Chem. Inf. Comput. Sci. 43 (2003), 1860-1871. See Table 15, column 1 on page 1868.</tt>"
+46,"<tt>G. Labelle, C. Lamathe and P. Leroux, <a href=""http://arxiv.org/abs/math.CO/0312424"">Labeled and unlabeled enumeration of k-gonal 2-trees</a>, arXiv:math/0312424 [math.CO], 2003.</tt>"
+47,"<tt>Steve Lawford and Yll Mehmeti, <a href=""https://arxiv.org/abs/1806.05866"">Cliques and a new measure of clustering: with application to U.S. domestic airlines</a>, arXiv:1806.05866 [cs.SI], 2018.</tt>"
+48,"<tt>P. Leroux and B. Miloudi, <a href=""/A000081/a000081_2.pdf"">Généralisations de la formule d'Otter</a>, Ann. Sci. Math. Québec, Vol. 16, No. 1, pp. 53-80, 1992. (Annotated scanned copy)</tt>"
+49,"<tt>R. J. Mathar, <a href=""http://arxiv.org/abs/1603.00077"">Topologically Distinct Sets of Non-intersecting Circles in the Plane</a>, arXiv:1603.00077 [math.CO], 2016.</tt>"
+50,"<tt>Richard J. Mathar, <a href=""https://arxiv.org/abs/1808.06264"">Counting Connected Graphs without Overlapping Cycles</a>, arXiv:1808.06264 [math.CO], 2018.</tt>"
+51,"<tt>R. Munafo, <a href=""http://mrob.com/pub/seq/a005646.html#trees"">Relation to Tree Graphs</a></tt>"
+52,"<tt>R. Otter, <a href=""http://www.jstor.org/stable/1969046"">The number of trees</a>, Ann. of Math. (2) 49 (1948), 583-599.</tt>"
+53,"<tt>Igor Pak, <a href=""https://arxiv.org/abs/1803.06636"">Complexity problems in enumerative combinatorics</a>, arXiv:1803.06636 [math.CO], 2018.</tt>"
+54,"<tt>E. M. Palmer and A. J. Schwenk, <a href=""http://dx.doi.org/10.1016/0095-8956(79)90073-X"">On the number of trees in a random forest</a>, J. Combin. Theory, B 27 (1979), 109-121.</tt>"
+55,"<tt>Sebastian Piec, Krzysztof Malarz and Krzysztof Kulakowski. <a href=""http://arxiv.org/abs/cond-mat/0501594"">How to count trees?</a>, arXiv:cond-mat/0501594 [cond-mat.stat-mech], 2005; Int. J. Modern Phys., C16 (2005) 1527-1534.</tt>"
+56,"<tt>N. Pippenger, <a href=""http://dx.doi.org/10.1137/S0895480100368463"">Enumeration of equicolorable trees</a>, SIAM J. Discrete Math., 14 (2001), 93-115.</tt>"
+57,"<tt>J. M. Plotkin and J. W. Rosenthal, <a href=""https://doi.org/10.1017/S1446788700034777"">How to obtain an asymptotic expansion of a sequence from an analytic identity satisfied by its generating function</a>, J. Austral. Math. Soc. (Series A), Vol. 56 (1994), 131-143.</tt>"
+58,"<tt>E. M. Rains and N. J. A. Sloane, <a href=""https://cs.uwaterloo.ca/journals/JIS/cayley.html"">On Cayley's Enumeration of Alkanes (or 4-Valent Trees)</a>, J. Integer Sequences, Vol. 2 (1999), Article 99.1.1.</tt>"
+59,"<tt>R. W. Robinason, <a href=""/A000055/a000055.png"">Letter to N. J. A. Sloane, Jul 29 1980</a></tt>"
+60,"<tt>Sage, <a href=""http://doc.sagemath.org/html/en/reference/graphs/sage/graphs/graph_generators.html"">Common Graphs</a></tt>"
+61,"<tt>A. J. Schwenk, <a href=""/A002988/a002988.pdf"">Letter to N. J. A. Sloane, Aug 1972</a></tt>"
+62,"<tt>N. J. A. Sloane, <a href=""/A000055/a000055.gif"">Illustration of initial terms</a></tt>"
+63,"<tt>Peter Steinbach, <a href=""/A000055/a000055.txt"">Field Guide to Simple Graphs, Volume 3, Overview of the following 12 Parts</a>: <a href=""/A000055/a000055_1.pdf"">Cover</a>, <a href=""/A000055/a000055_2.pdf"">Front matter</a>, <a href=""/A000055/a000055_3.pdf"">Chapter 1: Trees</a>, <a href=""/A000055/a000055_4.pdf"">Trees (cont'd: pt.2)</a>, <a href=""/A000055/a000055_5.pdf"">Trees (cont'd: pt.3)</a>, <a href=""/A000055/a000055_6.pdf"">Trees (cont'd: pt.4)</a>, <a href=""/A000055/a000055_7.pdf"">Chapter 2: Centers and Centroids</a>, <a href=""/A000055/a000055_8.pdf"">Chap.2 (cont'd)</a>, <a href=""/A000055/a000055_9.pdf"">Chapter 3: Random Trees</a>, <a href=""/A000055/a000055_10.pdf"">Chapter 4: Rooted Trees</a>, <a href=""/A000055/a000055_11.pdf"">Chapter 5: Homeomorphically Irreducible Trees</a>, <a href=""/A000055/a000055_12.pdf"">Chapter 6: Tables</a> (For Volumes 1, 2, 3, 4 of this book see <a href=""/A000088"" title=""Number of graphs on n unlabeled nodes."">A000088</a>, <a href=""/A008406"" title=""Triangle T(n,k) read by rows, giving number of graphs with n nodes (n &gt;= 1) and k edges (0 &lt;= k &lt;= n(n-1)/2)."">A008406</a>, <a href=""/A000055"" title=""Number of trees with n unlabeled nodes."">A000055</a>, <a href=""/A000664"" title=""Number of graphs with n edges."">A000664</a>, respectively.)</tt>"
+64,"<tt>Eric Weisstein's World of Mathematics, <a href=""http://mathworld.wolfram.com/Tree.html"">Tree</a></tt>"
+65,"<tt>Pascal Welke, Tamás Horváth, and Stefan Wrobel, <a href=""https://doi.org/10.1007/s10994-019-05779-1"">Probabilistic and exact frequent subtree mining in graphs beyond forests</a>, Machine Learning (2019), 1-28.</tt>"
+66,"<tt>Robert Alan Wright, Bruce Richmond, Andrew Odlyzko, and Brendan D. McKay, <a href=""https://doi.org/10.1137/0215039"">Constant Time Generation of Free Trees</a>, SIAM Journal of Computing, vol. 15, no. 2, pp. 540-548, (1986) [<a href=""https://www.researchgate.net/publication/234811301"">preprint</a>].</tt>"
+67,"<tt><a href=""/index/Tra#trees"">Index entries for sequences related to trees</a></tt>"
+68,"<tt><a href=""/index/Cor#core"">Index entries for ""core"" sequences</a></tt>"
+69,"<tt>G.f.: A(x) = 1 + T(x) - T^2(x)/2 + T(x^2)/2, where T(x) = x + x^2 + 2*x^3 + ... is the g.f. for <a href=""/A000081"" title=""Number of unlabeled rooted trees with n nodes (or connected functions with a fixed point)."">A000081</a>.</tt>"
+70,"<tt>a(n) ~ <a href=""/A086308"" title=""Decimal expansion of Otter's asymptotic constant beta for the number of unrooted trees."">A086308</a> * <a href=""/A051491"" title=""Decimal expansion of Otter's rooted tree constant: lim_{n-&gt;inf} A000081(n+1)/A000081(n)."">A051491</a>^n * n^(-5/2). - <a href=""/wiki/User:Vaclav_Kotesovec"">Vaclav Kotesovec</a>, Jan 04 2013</tt>"
+71,"<tt>a(n) = <a href=""/A000081"" title=""Number of unlabeled rooted trees with n nodes (or connected functions with a fixed point)."">A000081</a>(n) - <a href=""/A217420"" title=""Number of rooted unlabeled trees where the root node has degree 2 and both branches are distinct."">A217420</a>(n+1), n &gt; 0. - <a href=""/wiki/User:R._J._Mathar"">R. J. Mathar</a>, Sep 19 2016</tt>"
+72,"<tt>a(n) = <a href=""/A000676"" title=""Number of centered trees with n nodes."">A000676</a>(n)+<a href=""/A000677"" title=""Number of bicentered trees with n nodes."">A000677</a>(n). - <a href=""/wiki/User:R._J._Mathar"">R. J. Mathar</a>, Aug 13 2018</tt>"
+73,<tt>a(1) = 1 [o]; a(2) = 1 [o-o]; a(3) = 1 [o-o-o];</tt>
+74,<tt>a(4) = 2 [o-o-o and o-o-o-o]</tt>
+75,<tt>........... | ..............</tt>
+76,<tt>........... o ..............</tt>
+77,<tt>G.f. = 1 + x + x^2 + x^3 + 2*x^4 + 3*x^5 + 6*x^6 + 11*x^7 + 23*x^8 + ...</tt>
+78,"<tt>G000055 := series(1+G000081-G000081^2/2+subs(x=x^2, G000081)/2, x, 31); <a href=""/A000055"" title=""Number of trees with n unlabeled nodes."">A000055</a> := n-&gt;coeff(G000055, x, n); # where G000081 is g.f. for <a href=""/A000081"" title=""Number of unlabeled rooted trees with n nodes (or connected functions with a fixed point)."">A000081</a> starting with n=1 term</tt>"
+79,"<tt>with(numtheory): b:= proc(n) option remember; `if`(n&lt;=1, n, (add(add(d*b(d), d=divisors(j)) *b(n-j), j=1..n-1))/ (n-1)) end: a:= n-&gt; `if`(n=0, 1, b(n) -(add(b(k) *b(n-k), k=0..n) -`if`(irem(n, 2)=0, b(n/2), 0))/2):</tt>"
+80,"<tt>seq(a(n), n=0..50);</tt>"
+81,"<tt># <a href=""/wiki/User:Alois_P._Heinz"">Alois P. Heinz</a>, Aug 21 2008</tt>"
+82,<tt># Program to create b-file b000055.txt:</tt>
+83,"<tt><a href=""/A000081"" title=""Number of unlabeled rooted trees with n nodes (or connected functions with a fixed point)."">A000081</a> := proc(n) option remember; local d, j;</tt>"
+84,<tt>if n &lt;= 1 then n else</tt>
+85,"<tt>    add(add(d*procname(d), d=numtheory[divisors](j))*procname(n-j), j=1..n-1)/(n-1);</tt>"
+86,<tt>fi end:</tt>
+87,"<tt><a href=""/A000055"" title=""Number of trees with n unlabeled nodes."">A000055</a> := proc(nmax) local a81, n, t, a, j, i ;</tt>"
+88,"<tt>a81 := [seq(<a href=""/A000081"" title=""Number of unlabeled rooted trees with n nodes (or connected functions with a fixed point)."">A000081</a>(i), i=0..nmax)] ; a := [] ;</tt>"
+89,<tt>for n from 0 to nmax do</tt>
+90,<tt>    if n = 0 then</tt>
+91,"<tt>        t := 1+op(n+1, a81) ;</tt>"
+92,<tt>    else</tt>
+93,"<tt>        t := op(n+1, a81) ;</tt>"
+94,<tt>    fi;</tt>
+95,"<tt>    if type(n, even) then</tt>"
+96,"<tt>        t := t-op(1+n/2, a81)^2/2 ;</tt>"
+97,"<tt>        t := t+op(1+n/2, a81)/2 ;</tt>"
+98,<tt>    fi;</tt>
+99,<tt>    for j from 0 to (n-1)/2 do</tt>
+100,"<tt>        t := t-op(j+1, a81)*op(n-j+1, a81) ;</tt>"
+101,<tt>    od:</tt>
+102,"<tt>    a := [op(a), t] ;</tt>"
+103,<tt>od:</tt>
+104,<tt>a end:</tt>
+105,"<tt>L := <a href=""/A000055"" title=""Number of trees with n unlabeled nodes."">A000055</a>(1000) ;</tt>"
+106,"<tt>#  <a href=""/wiki/User:R._J._Mathar"">R. J. Mathar</a>, Mar 06 2009</tt>"
+107,"<tt>s[n_, k_] := s[n, k] = a[n + 1 - k] + If[n &lt; 2k, 0, s[n - k, k]]; a[1] = 1; a[n_] := a[n] = Sum[a[i] s[n-1, i] i, {i, 1, n-1}] / (n-1); Table[a[i] - Sum[a[j] a[i-j], {j, 1, i/2}] + If[OddQ[i], 0, a[i/2] (a[i/2] + 1)/2], {i, 1, 50}] (* <a href=""/wiki/User:Robert_A._Russell"">Robert A. Russell</a> *)</tt>"
+108,"<tt>b[0] = 0; b[1] = 1; b[n_] := b[n] = Sum[d*b[d]*b[n-j], {j, 1, n-1}, {d, Divisors[j]}]/(n-1); a[0] = 1; a[n_] := b[n] - (Sum[b[k]*b[n-k], {k, 0, n}] - If[Mod[n, 2] == 0, b[n/2], 0])/2; Table[a[n], {n, 0, 50}] (* <a href=""/wiki/User:Jean-François_Alcover"">Jean-François Alcover</a>, Apr 09 2014, after <a href=""/wiki/User:Alois_P._Heinz"">Alois P. Heinz</a> *)</tt>"
+109,"<tt>(PARI) {a(n) = local(A, A1, an, i, t); if( n&lt;2, n&gt;=0, an = Vec(A = A1 = 1 + O('x^n)); for(m=2, n, i=m\2; an[m] = sum(k=1, i, an[k] * an[m-k]) + (t = polcoeff( if( m%2, A *= (A1 - 'x^i)^-an[i], A), m-1))); t + if( n%2==0, binomial( -polcoeff(A, i-1), 2)))}; /* <a href=""/wiki/User:Michael_Somos"">Michael Somos</a> */</tt>"
+110,<tt>(PARI)</tt>
+111,"<tt>N=66;  A=vector(N+1, j, 1);</tt>"
+112,"<tt>for (n=1, N, A[n+1] = 1/n * sum(k=1, n, sumdiv(k, d, d * A[d]) * A[n-k+1] ) );</tt>"
+113,"<tt><a href=""/A000081"" title=""Number of unlabeled rooted trees with n nodes (or connected functions with a fixed point)."">A000081</a>=concat([0], A);</tt>"
+114,"<tt>H(t)=subst(Ser(<a href=""/A000081"" title=""Number of unlabeled rooted trees with n nodes (or connected functions with a fixed point)."">A000081</a>, 't), 't, t);</tt>"
+115,<tt>x='x+O('x^N);</tt>
+116,<tt>Vec( 1 + H(x) - 1/2*( H(x)^2 - H(x^2) ) )</tt>
+117,"<tt>\\ <a href=""/wiki/User:Joerg_Arndt"">Joerg Arndt</a>, Jul 10 2014</tt>"
+118,<tt>(MAGMA)</tt>
+119,"<tt>N := 30; P&lt;x&gt; := PowerSeriesRing(Rationals(), N+1); f := func&lt; A | x*&amp;*[Exp(Evaluate(A, x^k)/k) : k in [1..N]]&gt;; G := x; for i in [1..N] do G := f(G); end for; G000081 := G; G000055 := 1 + G - G^2/2 + Evaluate(G, x^2)/2; <a href=""/A000055"" title=""Number of trees with n unlabeled nodes."">A000055</a> := Eltseq(G000055); // Geoff Baileu (geoff(AT)maths.usyd.edu.au), Nov 30 2009</tt>"
+120,<tt>(SageMath)</tt>
+121,"<tt>[len(list(graphs.trees(n))) for n in range(16)] # <a href=""/wiki/User:Peter_Luschny"">Peter Luschny</a>, Mar 01 2020</tt>"
+122,<tt>(Haskell)</tt>
+123,<tt>import Data.List (generic_index)</tt>
+124,<tt>import Data.OEIS (a000081)</tt>
+125,<tt>triangle x = (x * x + x) `div` 2</tt>
+126,"<tt>a000055 n = let {r = a000081; (m, nEO) = divMod n 2}</tt>"
+127,"<tt>            in  r n - sum (zipWith (*) (map r [1..m]) (map r [n-1, n-2..]))</tt>"
+128,<tt>                + (1-nEO) * (triangle (r m + 1))</tt>
+129,"<tt>-- <a href=""/wiki/User:Walt_Rorie-Baety"">Walt Rorie-Baety</a>, Jun 11 2021</tt>"
+130,"<tt>Cf. <a href=""/A000676"" title=""Number of centered trees with n nodes."">A000676</a> (centered trees), <a href=""/A000677"" title=""Number of bicentered trees with n nodes."">A000677</a> (bicentered trees), <a href=""/A027416"" title=""Number of unlabeled (and unrooted) trees on n nodes having a centroid."">A027416</a> (trees with a centroid), <a href=""/A102011"" title=""Indices of primes in sequence defined by A(0) = 19, A(n) = 10*A(n-1) - 61 for n &gt; 0."">A102011</a> (trees with a bicentroid), <a href=""/A034853"" title=""Triangle giving number of trees with n &gt;= 3 nodes and diameter d &gt;= 2."">A034853</a> (refined by diameter), <a href=""/A238414"" title=""Triangle read by rows: T(n,k) is the number of trees with n vertices having maximum vertex degree k (n&gt;=1, 0&lt;=k&lt;=n-1)."">A238414</a> (refined by maximum vertex degree).</tt>"
+131,"<tt>Cf. <a href=""/A000081"" title=""Number of unlabeled rooted trees with n nodes (or connected functions with a fixed point)."">A000081</a> (rooted trees), <a href=""/A000272"" title=""Number of trees on n labeled nodes: n^(n-2) with a(0)=1."">A000272</a> (labeled trees), <a href=""/A000169"" title=""Number of labeled rooted trees with n nodes: n^(n-1)."">A000169</a> (labeled rooted trees), <a href=""/A212809"" title=""Decimal expansion of radius of convergence of g.f. for unlabeled trees (A000055)."">A212809</a> (radius of convergence).</tt>"
+132,"<tt>Cf. <a href=""/A036361"" title=""Number of labeled 2-trees with n nodes."">A036361</a> (labeled 2-trees), <a href=""/A036362"" title=""Number of labeled 3-trees with n nodes."">A036362</a> (labeled 3-trees), <a href=""/A036506"" title=""Number of labeled 4-trees with n nodes."">A036506</a> (labeled 4-trees), <a href=""/A054581"" title=""Number of unlabeled 2-trees with n nodes."">A054581</a> (unlabeled 2-trees).</tt>"
+133,"<tt>Cf. <a href=""/A157904"" title=""INVERT transform of A000055."">A157904</a>, <a href=""/A157905"" title=""Triangle read by rows, T(n,k) = A000055(n-k) * (A157904 * 0^(n-k))"">A157905</a>, <a href=""/A005195"" title=""Number of forests with n unlabeled nodes."">A005195</a> (Euler transform = forests), <a href=""/A095133"" title=""Triangle of numbers of forests on n nodes containing k trees."">A095133</a> (multisets).</tt>"
+134,"<tt>Column 0 of <a href=""/A335362"" title=""Triangle T(n,d) read by rows: the number of mixed trees with n&gt;=1 nodes and 0&lt;=d&lt;n arcs."">A335362</a>.</tt>"
+135,"<tt>Related to <a href=""/A005646"" title=""Classifications of n elements."">A005646</a>; see <a href=""/A171871"" title=""Triangle read by rows: Distinct classifications of N elements containing exactly R binary partitions."">A171871</a> and <a href=""/A171872"" title=""Triangle read by columns: Distinct classifications of N elements containing exactly R binary partitions."">A171872</a>.</tt>"
+136,"<tt>Cf. also <a href=""/A000088"" title=""Number of graphs on n unlabeled nodes."">A000088</a>, <a href=""/A008406"" title=""Triangle T(n,k) read by rows, giving number of graphs with n nodes (n &gt;= 1) and k edges (0 &lt;= k &lt;= n(n-1)/2)."">A008406</a>, <a href=""/A051491"" title=""Decimal expansion of Otter's rooted tree constant: lim_{n-&gt;inf} A000081(n+1)/A000081(n)."">A051491</a>, <a href=""/A086308"" title=""Decimal expansion of Otter's asymptotic constant beta for the number of unrooted trees."">A086308</a>.</tt>"
+137,"<tt><span title=""a sequence of nonnegative numbers"">nonn</span>,<span title=""it is very easy to produce terms of sequence"">easy</span>,<span title=""an exceptionally nice sequence"">nice</span>,<span title=""an important sequence"">core</span></tt>"
+138,"<tt><a href=""/wiki/User:N._J._A._Sloane"">N. J. A. Sloane</a></tt>"
+139,<tt>approved</tt>

@@ -7,51 +7,52 @@ import sys
 
 
 #################### SDR FUNCTIONS ########################################################
-def create_randomised_sdr(sdr_size, number_of_active_bits):
+def createRandomisedSdr(size, numberOfActiveBits):
     sdr = set()
-    while len(sdr) < number_of_active_bits:
-        sdr.add(np.random.randint(low=1, high=sdr_size))
+    while len(sdr) < numberOfActiveBits:
+        sdr.add(np.random.randint(low=1, high=size))
 
     return(list(sdr))
 
-
-def randomly_flip_percentage_of_bits(sdr, sdr_size, percentage_to_flip):
-    rd.shuffle(sdr)
-    count_of_bits_to_be_flipped = int(percentage_to_flip * len(sdr))
-    new_sdr = sdr[count_of_bits_to_be_flipped:]  
-    noise = create_randomised_sdr(sdr_size, count_of_bits_to_be_flipped)
-    sdr_with_noise = noise + new_sdr
-    return(sdr_with_noise)
-
-
 class SDR:
-    def __init__(self, input_space_size, number_of_active_bits, label):
-        self.input_space_size = input_space_size
-        self.number_of_active_bits= number_of_active_bits
-        self.active_bits = create_randomised_sdr(self.input_space_size, self.number_of_active_bits)
+    def __init__(self, size, numberOfActiveBits, label):
+        self.size = size
+        self.numberOfActiveBits= numberOfActiveBits
+        self.activeBits = createRandomisedSdr(self.size, self.numberOfActiveBits)
         self.label = label
-    def get_summary(self):
+    
+    def getSummary(self):
         print("----------------- SUMMARY -------------------------")
         print("|L1| Label:", self.label)
-        print("|L1| Input space size of SDR:", self.input_space_size)
-        print("|L2| Number of active bits in SDR:", self.number_of_active_bits)
-        print("|L3| Percentage of active bits:", (self.number_of_active_bits / self.input_space_size) * 100, "%")
-        print("|L3| Active bits:", self.active_bits)
+        print("|L1| Input space size of SDR:", self.size)
+        print("|L2| Number of active bits in SDR:", self.numberOfActiveBits)
+        print("|L3| Percentage of active bits:", (self.numberOfActiveBits / self.size) * 100, "%")
+        print("|L3| Active bits:", self.activeBits)
+    
+    def overWriteActiveBits(self, updatedActiveBits):
+        self.activeBits = updatedActiveBits
 
+def randomlyFlipPercentageOfBits(SDRChoice, size, percentageOfBitsToFlip):
+    rd.shuffle(SDRChoice.activeBits)
+    countOfBitsToBeFlipped = int(percentageOfBitsToFlip * len(SDRChoice.activeBits))
+    newSDR = SDRChoice.activeBits[countOfBitsToBeFlipped:]  
+    noise = SDR(size, countOfBitsToBeFlipped, 'dd')
+    SDRWithNoise = noise.activeBits + newSDR
+    return(SDRWithNoise)
 
 
 ############## METRICS FUNCTIONS ###################################################
-def compute_union_and_overlap(SDR1_on_bits, SDR2_on_bits):
+def computeUnionAndOverlap(SDR1_on_bits, SDR2_on_bits):
     union = list(set(SDR1_on_bits).union(SDR2_on_bits))
     overlap = list(set(SDR1_on_bits).intersection(SDR2_on_bits))
     
     return({"union": union, "overlap": overlap})
 
-def compute_match(SDR1_active_bits, SDR2_active_bits, sdr_size, match_threshold):
+def computeMatch(SDR1, SDR2, size, matchThreshold):
     match = {}
-    match['overlap'] = len(compute_union_and_overlap(s1, s2)['overlap'])
-    match['overlap_as_percentage_of_sdr_size'] = (match['overlap'] / sdr_size) * 100
-    match['is_match'] = match_threshold < (match['overlap_as_percentage_of_sdr_size'])
+    match['overlap'] = len(computeUnionAndOverlap(SDR1.activeBits, SDR2.activeBits)['overlap'])
+    match['overlapAsPercentageOfSDRSize'] = (match['overlap'] / size) * 100
+    match['isMatch'] = matchThreshold < (match['overlapAsPercentageOfSDRSize'])
     
     return(match)
 
@@ -67,13 +68,13 @@ def compute_overlap_set_cardinality(n, w0, w1, b, provide_summary = True):
     return(overlap_set)
 
 
-def create_and_compare_sdrs_over_multiple_iterations(iterations, sdr_size, population):
+def createAndCompareSDRsOverMultipleIterations(iterations, size, population):
     sdr_unions_for_comparison = []
     sdr_overlaps_for_comparison = []
     for x in range(iterations):
-        SDR1 = create_randomised_sdr(sdr_size, population)
-        SDR2 =create_randomised_sdr(sdr_size, population)
-        sdr_comparison = compute_union_and_overlap(SDR1, SDR2)
+        SDR1 = SDR(size, activeBits, "SDR1")
+        SDR2 = SDR(size, activeBits, "SDR2")
+        sdr_comparison = computeUnionAndOverlap(SDR1.activeBits, SDR2.activeBits)
         sdr_unions_for_comparison.append(len(sdr_comparison['union']))
         sdr_overlaps_for_comparison.append(len(sdr_comparison['overlap']))
     print("Average union: ", str(sum(sdr_unions_for_comparison) / len(sdr_unions_for_comparison)))
@@ -264,7 +265,7 @@ def create_axis_for_sdr(ax, x_limit, y_limit, population, label, create_label = 
     
     if create_label:
         label_add = np.round((population / (x_limit * y_limit)) * 100, 2)
-        #label = label + ' (Sparsity: {}%)'.format(label_add)
+        label = label + ' (Sparsity: {}%)'.format(label_add)
         ax.set_xlabel(label)
         
     ax.set_xticks(range(int(x_limit)))
@@ -278,8 +279,6 @@ def create_axis_for_sdr(ax, x_limit, y_limit, population, label, create_label = 
 
     
     return(ax)
-
-
 
 def compute_multiples(n):
     result = set()
