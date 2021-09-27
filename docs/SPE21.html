@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SPE13_14</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>SPE21</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14265,13 +14265,13 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[121]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">Image</span>
 <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
@@ -14280,15 +14280,15 @@ a.anchor-link {
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">treelib</span> <span class="k">as</span> <span class="nn">tr</span>
 
-<span class="c1">#</span>
 
 <span class="c1"># function to print latex</span>
 <span class="k">def</span> <span class="nf">renderListToLatex</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
     <span class="n">latex_rendering</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)):</span>
-        <span class="n">latex_rendering</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;$$&quot;</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;$$&lt;br/&gt;&quot;</span><span class="p">)</span>
+        <span class="n">latex_rendering</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;$$&quot;</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;$$&quot;</span><span class="p">)</span>
     
     <span class="k">return</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">latex_rendering</span><span class="p">[</span><span class="mi">0</span><span class="p">:])))</span>
 </pre></div>
@@ -14301,32 +14301,28 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Solving-Polynomial-Equations-(13-&amp;-14)">Solving Polynomial Equations (13 &amp; 14)<a class="anchor-link" href="#Solving-Polynomial-Equations-(13-&amp;-14)">&#182;</a></h3>
+<h3 id="Solving-Polynomial-Equations-(21)">Solving Polynomial Equations (21)<a class="anchor-link" href="#Solving-Polynomial-Equations-(21)">&#182;</a></h3>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <hr/>
 
-<p><b>Aim</b>: Create a BiTri Conjecture for Catalan and Fuss numbers</p>
+<p><b>Aim</b>: Explore ternary operations on Fuss polygonal subdivisions and thier associated ternary trees</p>
+<p><b>Methodology</b>: Consider the structure of the first row of numbers in the matrix of coefficients returned by the function $C$</p>
 <hr/>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: a solution to a general cubic equation</p>
-$$C(m_2, m_3)  \equiv(-1)^{m_3 + 1} \frac{(2 m_{2} + 3 m_{3})!}{(1 + m_{2} + 2 m_{3})!m_2!m_3!} \frac{c_0^{1 + m_{2} + 2 m_{3}} c_2^{m_2} c_3^{m_3} }{c_1^{2 m_{2} + 3 m_{3} + 1}}$$
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $F1$ for a function that implements $C$.</p>
+<p><b>Observe</b>: Recall the solution to a general cubic equation from a previous notebook.</p>
+$$C(m_2, m_3)  \equiv(-1)^{m_3 + 1} \frac{(2 m_{2} + 3 m_{3})!}{(1 + m_{2} + 2 m_{3})!m_2!m_3!} \frac{c_0^{1 + m_{2} + 2 m_{3}} c_2^{m_2} c_3^{m_3} }{c_1^{2 m_{2} + 3 m_{3} + 1}}$$<p><b>Let</b> $F1$ for a function that implements $C$.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">F1</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">m3</span><span class="p">,</span> <span class="n">returnCoefficientsOnly</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">returnCoefficientsOnlyWithoutSigns</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">returnCoefficientsAsFactorialStrings</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
@@ -14362,13 +14358,13 @@ $$C(m_2, m_3)  \equiv(-1)^{m_3 + 1} \frac{(2 m_{2} + 3 m_{3})!}{(1 + m_{2} + 2 m
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P3$ be a matrix of values retlating the part of the formula that calculates unsigned coefficients: $ \frac{(2 m_{2} + 3 m_{3})!}{(1 + m_{2} + 2 m_{3})!m_2!m_3!}$</p>
+<p><b>Let</b> $P3$ be a matrix of values relating the part of the formula that calculates unsigned coefficients: $ \frac{(2 m_{2} + 3 m_{3})!}{(1 + m_{2} + 2 m_{3})!m_2!m_3!}$</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">P1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
@@ -14390,7 +14386,7 @@ $$C(m_2, m_3)  \equiv(-1)^{m_3 + 1} \frac{(2 m_{2} + 3 m_{3})!}{(1 + m_{2} + 2 m
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
 
 
 
@@ -14408,32 +14404,17 @@ $\displaystyle \left[\begin{matrix}1 &amp; 1 &amp; 3 &amp; 12 &amp; 55 &amp; 273
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $C$ to be a formula that returns only the coefficients from $C$ (note the change of $m_2, m_3$ to $m, n$):</p>
-$$C(m, n) \equiv  \frac{(2 m + 3 n)!}{(1 + m + 2 n)!m!n!} $$
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: It has been shown in previous notebooks that that $C$ generates numbers which relate to the number of ways of mapping triangles and quadrilaterals into polygons of different sizes.</p>
-<p><b>Observe</b>: The numbers generated from $C$ arise from only considering non-interior vertices (i.e. where a polygon is subdivided into as many different combinations of non overlapping triangles and quadrilaterals), and returns a natural number.</p>
-<p><b>Observe</b>: The formula for $C$ calculates a <b>submultinomial coefficient</b> (defined previously) based on $m$ and $n$.</p>
-<p><b>Observe</b>: It has been seen previously that the numbers generated from the formula $\frac{(2 m + 3 n)!}{(1 + m + 2 n)!m!n!}$ can be related to polygon and triangle subdivisions for n-gons with $(2 + m + 2n)$ sides.</p>
+<p>Let $P4$ be the first row of numbers in this matrix, also called the Fuss numbers.</p>
 
 </div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Let $F2$ be a function that implements $(2 + m + 2n)$. which generates the number of sides of different polygons.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[41]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">F2</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-    <span class="k">return</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P4</span> <span class="o">=</span> <span class="n">P3</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">P4</span>
 </pre></div>
 
      </div>
@@ -14441,21 +14422,158 @@ $$C(m, n) \equiv  \frac{(2 m + 3 n)!}{(1 + m + 2 n)!m!n!} $$
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
+
+
+
+
+<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
+$\displaystyle \left[\begin{matrix}1 &amp; 1 &amp; 3 &amp; 12 &amp; 55 &amp; 273 &amp; 1428 &amp; 7752\end{matrix}\right]$
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P6$ be a matrix created from $F2$. Consider $P6$ in conjunction with $P3$.</p>
+<p><b>Observe</b> The Fuss numbers can be generated by the following function $q$ relating to the OEIS entry A001764</p>
+$$ F = \Sigma_{k = 0}^7 \frac{1}{2k + 1}  \binom{3k}{k} q ^k$$
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><b>Let</b> $P5$ be a list of numbers generated from the function $F$.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[122]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">P5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">F2</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">P4</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">P4</span><span class="p">])</span>
-<span class="n">P6</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">P5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">P5</span> <span class="o">=</span> <span class="n">renderListToLatex</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span> <span class="o">*</span> <span class="n">q</span><span class="o">**</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)])</span>
+<span class="n">P5</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[122]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+$$1$$$$q$$$$3 q^{2}$$$$12 q^{3}$$$$55 q^{4}$$$$273 q^{5}$$$$1428 q^{6}$$$$7752 q^{7}$$
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><b>Conjecture</b>: the coefficients in $P5$ count the number of diagonal subdivisions of a polygon into quadrilaterals</p>
+<p><b>Observe</b>: This conjecture implies that:</p>
+<ul>
+<li>There is 1 way to subdivide a 2-gon into quadrialaterals (being a degenerate case)</li>
+<li>There are 55 ways of subdividing a 10-gon into quadrilaterals</li>
+<li>There are 7752 ways of subdividing a 16-gon into quadrilaterals</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><b>Observe</b>: In the same manner as introducing a new operation to to join binary trees (using $\overline{\triangledown}$), it is possible to introduce a ternery operation on polygonal subdivisions into quadrilaterals. For this, the symbol $\overline{\square}$ will be used.</p>
+<p><b>Observe</b>: The $\overline{\square}$ operator can be used in the context of $\overline{\square}\text{ }(P, Q, R)$ where $P, Q, R$ represent polygonal sudivisions into quadrilaterals with distinguished roots.</p>
+<p><b>Observe</b>: The result of this operation will be a new polygonal subdivision.</p>
+<p><b>Strategy</b>: To undertaken operation using $\overline{\square}$ with 3 polygons subdivided into quadrilaterals:</p>
+<ul>
+<li>Start with quadrilateral with distinguised top which will leave 3 edges $ \overline{\square} $</li>
+<li>For each of the polygons $P, Q$ and $R$, rotate and glue them to a non-distinuised edge of the $\overline{\square}$ operator</li>
+<li>This will create larger polygon.</li>
+<li>The new polygon will also will be divided into quadrilaterals becase the $\overline{\square}$ operator, as well as $P, Q$ and $R$ have been already divided into quadrilaterals.</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><b>Observe</b>: This operation is not commutative and not associative.</p>
+<p><b>Observe</b>: The total number of quadrilaterals created by using the $\overline{\square}$ operator is one more than the sum of the quadrilaterals in $P, Q$ and $R$</p>
+<p><b>Let</b> $\psi$ be a mapping from from any subdivided polygons (here denoted $P$) into polynomials in q:</p>
+$$ \psi(P) \equiv q^n $$<p>Where $n$ is the number of quadrilaterals in the subdivision of $P$.</p>
+<p><b>Observe</b>: It is the case that that:</p>
+$$ \psi(\bar{\square}\text{ }(P, Q, R) = q\psi(P)\psi(Q)\psi(R)$$
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><b>Observe</b>: The use of $q$ is equivalent to the use of $|$ in the previous notebook, representing single quadrialteral that gets added when the $\overline{\square}$ operation is undertaken.</p>
+<p><b>Observe</b>: The $\overline{\square}$ operation is a ternary operation. It can be extended to multisets of other subdivided polygons in quadrilaterals</p>
+<p><b>Example</b>: If $A$, $B$ and $C$ are msets of subdivided polygons (into quadrilaterals) a ternary product can be taken by:</p>
+$$ \overline\square \text{ }(A, B, C) \equiv [\overline{\square}(P, Q, R) \text{ where } P \in A, Q \in B, R \in C] $$<p><b>Observe</b>: The effect of this operation will take all elements in $A, B, C$ and create a product with all combinations.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><b>Theorem</b>:</p>
+<p>For an ongoing mset, $A$, which contains each subdivided polygon into quadrilaterals with distinguished edge, including the degenerate polygon, ($|$ the 2 sided polygon), the following relation exists:</p>
+$$ A = | + \overline\square \text{ }(A, B, C) $$<p><b>Conjecture</b>: The mapping  $\psi(A)$ to map an mset to monomials in q has the form:</p>
+$$\psi(A)= F = 1 + q + 3q^2 + 12q^3 + 55q^4 + 273q^5 + 1428q^6 + 7752q^7 \ldots $$
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><b>Observe</b>: It is possible to apply $\psi(A)$ in relation to the above theorem:</p>
+$$ F = | +  qF^3 $$
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><b>Observe</b>: Because all combinations are considered, any ternary tree can be connected to $A, B, C$, (and therefor can be represented by $F$) or will be the the degenerate case $|$</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><b>Let</b>: $P6$ be the polynomial in $q$ representing the mapping $\psi(A)$.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[123]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P6</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">q</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">12</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">55</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">273</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">1428</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">6</span> <span class="o">+</span> <span class="mi">7752</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">7</span>  
 <span class="n">P6</span>
 </pre></div>
 
@@ -14472,50 +14590,13 @@ $$C(m, n) \equiv  \frac{(2 m + 3 n)!}{(1 + m + 2 n)!m!n!} $$
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[123]:</div>
 
 
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \left[\begin{matrix}2 &amp; 4 &amp; 6 &amp; 8 &amp; 10 &amp; 12 &amp; 14 &amp; 16\\3 &amp; 5 &amp; 7 &amp; 9 &amp; 11 &amp; 13 &amp; 15 &amp; 17\\4 &amp; 6 &amp; 8 &amp; 10 &amp; 12 &amp; 14 &amp; 16 &amp; 18\\5 &amp; 7 &amp; 9 &amp; 11 &amp; 13 &amp; 15 &amp; 17 &amp; 19\\6 &amp; 8 &amp; 10 &amp; 12 &amp; 14 &amp; 16 &amp; 18 &amp; 20\\7 &amp; 9 &amp; 11 &amp; 13 &amp; 15 &amp; 17 &amp; 19 &amp; 21\\8 &amp; 10 &amp; 12 &amp; 14 &amp; 16 &amp; 18 &amp; 20 &amp; 22\\9 &amp; 11 &amp; 13 &amp; 15 &amp; 17 &amp; 19 &amp; 21 &amp; 23\end{matrix}\right]$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P3</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \left[\begin{matrix}1 &amp; 1 &amp; 3 &amp; 12 &amp; 55 &amp; 273 &amp; 1428 &amp; 7752\\1 &amp; 5 &amp; 28 &amp; 165 &amp; 1001 &amp; 6188 &amp; 38760 &amp; 245157\\2 &amp; 21 &amp; 180 &amp; 1430 &amp; 10920 &amp; 81396 &amp; 596904 &amp; 4326300\\5 &amp; 84 &amp; 990 &amp; 10010 &amp; 92820 &amp; 813960 &amp; 6864396 &amp; 56241900\\14 &amp; 330 &amp; 5005 &amp; 61880 &amp; 678300 &amp; 6864396 &amp; 65615550 &amp; 600900300\\42 &amp; 1287 &amp; 24024 &amp; 352716 &amp; 4476780 &amp; 51482970 &amp; 551170620 &amp; 5588372790\\132 &amp; 5005 &amp; 111384 &amp; 1899240 &amp; 27457584 &amp; 354323970 &amp; 4206302100 &amp; 46835886240\\429 &amp; 19448 &amp; 503880 &amp; 9806280 &amp; 159352050 &amp; 2283421140 &amp; 29804654880 &amp; 361913666400\end{matrix}\right]$
+$\displaystyle 7752 q^{7} + 1428 q^{6} + 273 q^{5} + 55 q^{4} + 12 q^{3} + 3 q^{2} + q + 1$
 </div>
 
 </div>
@@ -14527,102 +14608,17 @@ $\displaystyle \left[\begin{matrix}1 &amp; 1 &amp; 3 &amp; 12 &amp; 55 &amp; 273
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: the integers for each entry in $P6$  relate to a number of ways that different n-gons can be subdivided.</p>
-<p><b>Observe</b>: only the first column and first row have a well known explanation (as Catalan and Fuss Numbers).</p>
-<p><b>Observe</b>: Some of the data $P3$ and $P6$ can be interpreted as follows:</p>
-<ul>
-<li>There are 2 ways to subdivde a 4-gon into triangles (relating to the $(2, 0)$ entry in $P3$ and $P6$) </li>
-<li>There are 5 ways to subdivide a 5-gon into triangles (relating to the $(3, 0)$ entry in $P3$ and $P6$) </li>
-<li>There are 14 ways to subdivide a 6-gon into triangles (relating to the $(4, 0)$ entry in $P3$ and $P6$) </li>
-<li>There are 12 ways to subdivide an 8-gon into quadrilaterals and triangles (relating to the $(0, 3)$ entry in $P3$ and $P6$) </li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><hr/>
-<b>Aim</b> Provide a more general conjecture that can explain the relationship between all the numbers returned from the function $C$ and relates this to the number of ways to counts sides of n-gons</p>
-<hr/>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Conjecture:</b> BiTri Numbers</p>
-<p>The <b>BiTri Number</b>,  $C(m, n)$ counts the number of diagonal subdivisions of a $(2 + m + 2n)$ sided polygon into $m$ triangles and $n$ quadrilaterals.</p>
-<p>$C(m, n)$ can be generated by the formula $$C(m, n) =  \frac{(2 m + 3 n)!}{(1 + m + 2 n)!m!n!} $$</p>
-<p>Observe: the choice of name arises due to binary and ternery tree relationships that appear in Catalan and Fuss-Catalan numbers and have prominence in Computer Science.</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<hr/>
-
-<p><b>Aim</b>: Investigate possible recursive relations between columns and rows in $C(m,n)$ using the BiTri Conjecture, to understnad the numbers generated as factors of of Catalan and Fuss numbers.</p>
-<p><b>Method</b>: Examine different inputs to the function $C$, comparing the cases where $m = m, m = 0, m = n + 1$ and $n = n, n = 0, n = n + 1$.</p>
-<hr/>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Let $P7$ be $F1$ evaluated at $(m, 0$)</p>
+<p><b>Let</b> $P8$ be an evaluation of the above theorem, $ F = | +  qF^3 $ where $F = 7752 q^{7} + 1428 q^{6} + 273 q^{5} + 55 q^{4} + 12 q^{3} + 3 q^{2} + q + 1$, evaluated to powers of $t$ up to 7</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[73]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[124]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">C</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;C, m, n, x&#39;</span><span class="p">)</span>
-<span class="n">P7</span> <span class="o">=</span> <span class="n">F1</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">P7</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[73]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(2 m\right)!}{m! \left(m + 1\right)!}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: this returns the formula for Catalan Numbers</p>
-<p><b>Observe</b>: relation between successive elements in in column</p>
-<p><b>Let</b> $P8$ be $F1$ evaluated at ($m + 1, 0)$.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[74]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P8</span> <span class="o">=</span> <span class="n">F1</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P7</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">q</span> <span class="o">*</span> <span class="n">P6</span><span class="o">**</span><span class="mi">3</span>
+<span class="n">P8</span> <span class="o">=</span> <span class="n">P7</span><span class="o">.</span><span class="n">series</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">removeO</span><span class="p">()</span>
 <span class="n">P8</span>
 </pre></div>
 
@@ -14639,13 +14635,13 @@ $\displaystyle \frac{\left(2 m\right)!}{m! \left(m + 1\right)!}$
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[74]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[124]:</div>
 
 
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(2 m + 2\right)!}{\left(m + 1\right)! \left(m + 2\right)!}$
+$\displaystyle 7752 q^{7} + 1428 q^{6} + 273 q^{5} + 55 q^{4} + 12 q^{3} + 3 q^{2} + q + 1$
 </div>
 
 </div>
@@ -14657,17 +14653,23 @@ $\displaystyle \frac{\left(2 m + 2\right)!}{\left(m + 1\right)! \left(m + 2\righ
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: This can be rewritten as a two factors, one of which is the Catalan generating function</p>
-<p><b>Let</b> $P9$ be an equation representing a relationhip between $P7, P8$ and $x$.</p>
+<p><b>Observe</b> Consider thie above in the context of general equation, $\Sigma_{b = 0}^7 b_kq^7$ and evaluate using the theorem $ F = | +  qF^3 $</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><b>Let</b> $P9$ be a general equatiion of the form $\Sigma_{b = 0}^7 b_kq^7$</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[75]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[125]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P9</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">P7</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">P8</span>  <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b0</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span><span class="p">,</span> <span class="n">b5</span><span class="p">,</span> <span class="n">b6</span><span class="p">,</span> <span class="n">b7</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;b0, b1, b2, b3, b4, b5, b6, b7, q&#39;</span><span class="p">)</span>
+<span class="n">P9</span> <span class="o">=</span> <span class="n">b7</span> <span class="o">*</span> <span class="n">q</span><span class="o">**</span><span class="mi">7</span> <span class="o">+</span> <span class="n">b6</span> <span class="o">*</span> <span class="n">q</span><span class="o">**</span><span class="mi">6</span> <span class="o">+</span> <span class="n">b5</span> <span class="o">*</span> <span class="n">q</span> <span class="o">**</span><span class="mi">5</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">q</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">q</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">q</span> <span class="o">+</span> <span class="n">b0</span>
 <span class="n">P9</span>
 </pre></div>
 
@@ -14684,13 +14686,13 @@ $\displaystyle \frac{\left(2 m + 2\right)!}{\left(m + 1\right)! \left(m + 2\righ
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[75]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[125]:</div>
 
 
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(2 m\right)!}{m! \left(m + 1\right)!} = \frac{x \left(2 m + 2\right)!}{\left(m + 1\right)! \left(m + 2\right)!}$
+$\displaystyle b_{0} + b_{1} q + b_{2} q^{2} + b_{3} q^{3} + b_{4} q^{4} + b_{5} q^{5} + b_{6} q^{6} + b_{7} q^{7}$
 </div>
 
 </div>
@@ -14702,21 +14704,16 @@ $\displaystyle \frac{\left(2 m\right)!}{m! \left(m + 1\right)!} = \frac{x \left(
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P10$ be a solution for $x$ of $P9$</p>
+<p><b>Let</b> $P10$ be a power series expansion of $P9$ up to degree 7.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[76]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[106]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P10</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P9</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P10</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P9</span> <span class="o">+</span>  <span class="n">q</span> <span class="o">*</span>  <span class="n">P9</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">series</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">removeO</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">P10</span>
 </pre></div>
 
@@ -14733,13 +14730,13 @@ $\displaystyle \frac{\left(2 m\right)!}{m! \left(m + 1\right)!} = \frac{x \left(
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[76]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[106]:</div>
 
 
 
 
 <div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle x = \frac{m + 2}{2 \left(2 m + 1\right)}$
+$\displaystyle - b_{0} + q^{7} \left(3 b_{0}^{2} b_{6} + 6 b_{0} b_{1} b_{5} + 6 b_{0} b_{2} b_{4} + 3 b_{0} b_{3}^{2} + 3 b_{1}^{2} b_{4} + 6 b_{1} b_{2} b_{3} + b_{2}^{3} - b_{7}\right) + q^{6} \left(3 b_{0}^{2} b_{5} + 6 b_{0} b_{1} b_{4} + 6 b_{0} b_{2} b_{3} + 3 b_{1}^{2} b_{3} + 3 b_{1} b_{2}^{2} - b_{6}\right) + q^{5} \left(3 b_{0}^{2} b_{4} + 6 b_{0} b_{1} b_{3} + 3 b_{0} b_{2}^{2} + 3 b_{1}^{2} b_{2} - b_{5}\right) + q^{4} \left(3 b_{0}^{2} b_{3} + 6 b_{0} b_{1} b_{2} + b_{1}^{3} - b_{4}\right) + q^{3} \left(3 b_{0}^{2} b_{2} + 3 b_{0} b_{1}^{2} - b_{3}\right) + q^{2} \left(3 b_{0}^{2} b_{1} - b_{2}\right) + q \left(b_{0}^{3} - b_{1}\right) + 1$
 </div>
 
 </div>
@@ -14751,18 +14748,18 @@ $\displaystyle x = \frac{m + 2}{2 \left(2 m + 1\right)}$
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: this allows the recursive relation:</p>
-$$ C(m + 1) =\frac{2 \left(2 m + 1\right)}{m + 2} \times C(m) $$<p><b>Let</b> $P11$ be an equivalent to $P10$, created in SymPy for the purpose of manipulation:</p>
+<p><b>Let</b> $P11$ be each term in $P10$ set to 0 in order to solve for all values of $b_i$</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[77]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[126]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P11</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">m</span><span class="p">))</span><span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">C</span> <span class="o">*</span> <span class="n">m</span><span class="p">))</span>
-<span class="n">P11</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P11</span> <span class="o">=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">P10</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">P10</span><span class="o">.</span><span class="n">args</span><span class="p">)))]</span>
+<span class="n">P11</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">b0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">renderListToLatex</span><span class="p">(</span><span class="n">P11</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14778,13 +14775,12 @@ $$ C(m + 1) =\frac{2 \left(2 m + 1\right)}{m + 2} \times C(m) $$<p><b>Let</b> $P
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[77]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[126]:</div>
 
 
 
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle C \left(m + 1\right) = \frac{C m \left(4 m + 2\right)}{m + 2}$
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+$$1 - b_{0} = 0$$$$b_{0}^{3} - b_{1} = 0$$$$3 b_{0}^{2} b_{1} - b_{2} = 0$$$$3 b_{0}^{2} b_{2} + 3 b_{0} b_{1}^{2} - b_{3} = 0$$$$3 b_{0}^{2} b_{3} + 6 b_{0} b_{1} b_{2} + b_{1}^{3} - b_{4} = 0$$$$3 b_{0}^{2} b_{4} + 6 b_{0} b_{1} b_{3} + 3 b_{0} b_{2}^{2} + 3 b_{1}^{2} b_{2} - b_{5} = 0$$$$3 b_{0}^{2} b_{5} + 6 b_{0} b_{1} b_{4} + 6 b_{0} b_{2} b_{3} + 3 b_{1}^{2} b_{3} + 3 b_{1} b_{2}^{2} - b_{6} = 0$$$$3 b_{0}^{2} b_{6} + 6 b_{0} b_{1} b_{5} + 6 b_{0} b_{2} b_{4} + 3 b_{0} b_{3}^{2} + 3 b_{1}^{2} b_{4} + 6 b_{1} b_{2} b_{3} + b_{2}^{3} - b_{7} = 0$$
 </div>
 
 </div>
@@ -14796,17 +14792,16 @@ $\displaystyle C \left(m + 1\right) = \frac{C m \left(4 m + 2\right)}{m + 2}$
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P12$ be a manipulation of $P11$</p>
+<p><b>Let</b>: Let $P12$ be a solution for all values of $b_i$</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[78]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[128]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P12</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">P11</span><span class="o">.</span><span class="n">rhs</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="n">P11</span><span class="o">.</span><span class="n">lhs</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">P12</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P11</span><span class="p">,</span> <span class="p">(</span><span class="n">b0</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span><span class="p">,</span> <span class="n">b5</span><span class="p">,</span> <span class="n">b6</span><span class="p">,</span> <span class="n">b7</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -14822,13 +14817,13 @@ $\displaystyle C \left(m + 1\right) = \frac{C m \left(4 m + 2\right)}{m + 2}$
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[78]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[128]:</div>
 
 
 
 
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle C m \left(4 m + 2\right) = C \left(m + 1\right) \left(m + 2\right)$
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[(1, 1, 3, 12, 55, 273, 1428, 7752)]</pre>
 </div>
 
 </div>
@@ -14840,601 +14835,15 @@ $\displaystyle C m \left(4 m + 2\right) = C \left(m + 1\right) \left(m + 2\right
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b> that $P12$ is a well known forumula:</p>
-$$ C(m) \left(4 m + 2\right) = C \left(m + 1\right) \left(m + 2\right)  $$<p>discovered by Euler.</p>
+<p><b>Observe</b>: This shows that the Fuss numbers are a unique solution.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: it is possible to apply a similiar methodology to both the rows and columns, removing the assumption that $n = 0$</p>
-<p><b>Let</b> $P13$ be $F1$ evaluated at $(m, n)$.</p>
+<p><b>Todo</b>: Figure out recursive formula to explain the structure of numbers being seen in $P11$</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[79]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">C</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;C, m, n, x&#39;</span><span class="p">)</span>
-<span class="n">P13</span> <span class="o">=</span> <span class="n">F1</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
-<span class="n">P13</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[79]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(2 m + 3 n\right)!}{m! n! \left(m + 2 n + 1\right)!}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P14$ be $F1$ evaluated at $(m + 1, n)$.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[80]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P14</span> <span class="o">=</span> <span class="n">F1</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
-<span class="n">P14</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[80]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(2 m + 3 n + 2\right)!}{n! \left(m + 1\right)! \left(m + 2 n + 2\right)!}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P15$ be equation that expresses the relationship between $P13$, $P14$, and unknown type $x$.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[81]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P15</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">P13</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">P14</span><span class="p">)</span>
-<span class="n">P15</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[81]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(2 m + 3 n\right)!}{m! n! \left(m + 2 n + 1\right)!} = \frac{x \left(2 m + 3 n + 2\right)!}{n! \left(m + 1\right)! \left(m + 2 n + 2\right)!}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P16$ be the solution to $P15$ in terms of $x$.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[82]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P16</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P15</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">P16</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[82]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle x = \frac{\left(m + 1\right) \left(m + 2 n + 2\right)}{\left(2 m + 3 n + 1\right) \left(2 m + 3 n + 2\right)}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: Because $C(m, n)$ is equivalent to $\frac{\left(2 m + 3 n\right)!}{m! n! \left(m + 2 n + 1\right)!}$, the following identity is a result from the relationship between $P15$:</p>
-$$  \frac{\left(2 m + 3 n + 1\right) \left(2 m + 3 n + 2\right)}{\left(m + 1\right) \left(m + 2 n + 2\right)} C(m, n) $$<p><b>Observe</b>: this shows the difference between $m$ and $m + 1$ when $n$ is held constant.</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: it is possible to examine moving between columns  in a similiar manner (referring to Fuss Numbers on the top row of $P3$.</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P17$ be $F1$ evaluated at $(0, n)$.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[91]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P17</span> <span class="o">=</span> <span class="n">F1</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-<span class="n">P17</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[91]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(3 n\right)!}{n! \left(2 n + 1\right)!}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P18$ be $F1$ evaluated at $(0, n + 1)$.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[84]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P18</span> <span class="o">=</span> <span class="n">F1</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">P18</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[84]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(3 n + 3\right)!}{\left(n + 1\right)! \left(2 n + 3\right)!}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P19$ be equation that expresses the relationship between $P17$, $P18$, and unknown type $x$.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[85]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P19</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">P18</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">P17</span><span class="p">)</span>
-<span class="n">P19</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[85]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(3 n + 3\right)!}{\left(n + 1\right)! \left(2 n + 3\right)!} = \frac{x \left(3 n\right)!}{n! \left(2 n + 1\right)!}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P20$ be the solution for the unknown type $x$.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[86]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P20</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P19</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">factor</span><span class="p">())</span>
-<span class="n">P20</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[86]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle x = \frac{3 \left(3 n + 1\right) \left(3 n + 2\right)}{2 \left(n + 1\right) \left(2 n + 3\right)}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: Because $C(0, n)$ is equivalent to $ \frac{\left(3 n\right)!}{n! \left(2 n + 1\right)!}$, the following identity is a result from the relationship expressed in $P19$:</p>
-$$   \frac{3 \left(3 n + 1\right) \left(3 n + 2\right)}{2 \left(n + 1\right) \left(2 n + 3\right)} \times C(n)$$<p>to explain the difference between $n$ and $n + 1$ when $m = 0$.</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: $\frac{3 \left(3 n + 1\right) \left(3 n + 2\right)}{2 \left(n + 1\right) \left(2 n + 3\right)} C(n)$ is recursive expression that can be used to generate ongoing Fuss Numbers.</p>
-<p><b>Observe</b>: It is unclear why this would recursive expression relates to the geometrical nature of the Fuss numbers in terms of how this factor can explain the change in the number of quadrilaterals for different sized n-gons.</p>
-<p><b>Observe</b>: There appears to be some kind of relationship between quadrilaterals and this multiplicative factor but not enough is known to prove the BiTri conjecture</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P21$ be $F1$ evaluated at $(m, n)$.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[72]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P21</span> <span class="o">=</span> <span class="n">F1</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-<span class="n">P21</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[72]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(2 m + 3 n\right)!}{m! n! \left(m + 2 n + 1\right)!}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P22$ be $F1$ evaluated at $(m, n + 1)$</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[87]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P22</span> <span class="o">=</span> <span class="n">F1</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">P22</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[87]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(2 m + 3 n + 3\right)!}{m! \left(n + 1\right)! \left(m + 2 n + 3\right)!}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P23$ be equation that expresses the relationship between $P21$, $P22$, and unknown type $x$.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[89]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P23</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">P22</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">P21</span><span class="p">)</span>
-<span class="n">P23</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[89]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle \frac{\left(2 m + 3 n + 3\right)!}{m! \left(n + 1\right)! \left(m + 2 n + 3\right)!} = \frac{x \left(2 m + 3 n\right)!}{m! n! \left(m + 2 n + 1\right)!}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Let</b> $P24$ be the solution for the unknown type $x$:</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[90]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P24</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P23</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">P24</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[90]:</div>
-
-
-
-
-<div class="jp-RenderedLatex jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/latex">
-$\displaystyle x = \frac{\left(2 m + 3 n + 1\right) \left(2 m + 3 n + 2\right) \left(2 m + 3 n + 3\right)}{\left(n + 1\right) \left(m + 2 n + 2\right) \left(m + 2 n + 3\right)}$
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><b>Observe</b>: Because $\frac{\left(2 m + 3 n\right)!}{m! n! \left(m + 2 n + 1\right)!}$ is equivalent to $C(m, n)$ the following identity is a result of the relationship expressed in $P23$:</p>
-$$  \frac{\left(2 m + 3 n + 1\right) \left(2 m + 3 n + 2\right) \left(2 m + 3 n + 3\right)}{\left(n + 1\right) \left(m + 2 n + 2\right) \left(m + 2 n + 3\right)} C(m, n) $$<p><b>Observe</b>: This factor assumes $m$ is held constant, and $n$ increases sequentially by 1</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><hr/>
-<b>Conclusion</b>: The above exploration the demonstrates following relatinoships can be used explain movement horizontally and vertically across the array of numbers: <br/> <br/></p>
-<p><br/></p>
-$$ C(m + 1, n) =  \frac{\left(2 m + 3 n + 1\right) \left(2 m + 3 n + 2\right)}{\left(m + 1\right) \left(m + 2 n + 2\right)} \times C(m, n)   $$<p>and</p>
-$$ C(m, n + 1) =  \frac{\left(2 m + 3 n + 1\right) \left(2 m + 3 n + 2\right) \left(2 m + 3 n + 3\right)}{\left(n + 1\right) \left(m + 2 n + 2\right) \left(m + 2 n + 3\right)} \times C(m, n) $$<p><b>Observe</b>: The first relationship corresponds to going down a column and adding a triangle, while the second relationship corresponds to across a row,  adding a quadrilateral.</p>
-<p><b>Observe</b>: These relationships can be used to movement so we can move in any direction, so is an ideal point from which to prove the BiTri conjecture.</p>
-<p><b>Todo</b>: Use these functions and multiplicative factors to explore movement across this matrix in order to move toward a proof of the BiTri conjecture.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 </body>
 
