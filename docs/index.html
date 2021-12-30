@@ -1,354 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css" integrity="sha384-nNK9n28pDUDDgIiIqZ/MiyO3F4/9vsMtReZK39klb/MtkZI3/LtjSjlmyVPS3KdN" crossorigin="anonymous">
-
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
-
 <body>
 
-  <main class="container">
-    <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">LaDataVita</a>
-    </div>
-    <ul class="nav navbar-nav">
 
-    </ul>
-  </div>
-</nav>
+  <nav id=mainNav
+       class="navbar sticky-top navbar-expand-lg navbar-dark font-weight-bold text-uppercase"
+       style="background-color:#05386b;">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+              aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon text-white"></span>
+      </button>
+      <a class="navbar-brand text-white" style="padding-left:5%;" href="./index.html">Jamie Gabriel</a>
+      <div class="collapse navbar-collapse navbar-white" id="navbarTogglerDemo03" style="padding-right:5%;">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item mx-0 mx-lg-1 active" data-toggle="collapse" data-target="#navbarTogglerDemo03">
+                  <a class="nav-link py-3 px-0 px-lg-3 rounded text-white" href="./index.html">About</a>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1 active" data-toggle="collapse" data-target="#navbarTogglerDemo03">
+                  <a class="nav-link py-3 px-0 px-lg-3 rounded text-white" href="./research.html">Research Notes & Articles</a>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1 active" data-toggle="collapse" data-target="#navbarTogglerDemo03">
+                  <a class="nav-link py-3 px-0 px-lg-3 rounded text-white" href="./music.html">Music & Transcriptions</a>
+              </li>
 
+          </ul>
+      </div>
+  </nav>
 
-    <br/><br/>
- 
-
-
-<div class="row">
-<ul class="nav nav-tabs">
-   <li><a href="#a" data-toggle="tab">&nbsp;&nbsp;&nbsp;&nbsp;General&nbsp;&nbsp;</a></li>
-   <li><a href="#b" data-toggle="tab">&nbsp;&nbsp;&nbsp; Notes</a></li>
-   <li><a href="#c" data-toggle="tab">&nbsp;&nbsp;&nbsp; Projects</a></li>
-   <li><a href="#d" data-toggle="tab">&nbsp;&nbsp;&nbsp; Publications</a></li>
-     <li><a href="#e" data-toggle="tab">&nbsp;&nbsp;&nbsp; Music & Transcriptions</a></li>
-</ul>
-</div>
-
-<div class="tab-content">
-   <div class="tab-pane active" id="a">
-
-      <div class="row">
-    <div class="col-sm-6">
+    <!-- Body -->
+    <div class="container">
       <br/>
-      <h5>Overview</h5>
-      This page holds links to my notes, research and related projects, mostly in the area of math, computer science and music.<br/><br/>
+      <div class = "row">
+        <div class="col-sm-6">
+             <br/>
+             <h5>Overview</h5>
+             I live in Sydney, Australia and currently work as the Chief Data Officer of the NSW Cancer Institute. This is my personal website, which holds links to my reserch notes, and any related projects I happen working on, that mostly tend to be in the area of mathematics and computer science.<br/><br/>
+             Currently my main areas of interest are: formal proof construction, group theory, algebraic graph theory and networks, coding and information theory, and the application of symmetry and invariance in developing models to speed up machine learning problems. I am also interested in using ML techniques to automate data engineering tasks.
+             <br/><br/>
+             Sometimes (though increasingly occasionally these days) I work as a jazz pianist and like to compose music and this site holds some transcriptions, compositions and recordings.
 
-      Jamie Gabriel</br> 
-      <a href="https://github.com/jgab3103/"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-</svg></i></a> &nbsp; <a href="https://www.linkedin.com/in/jamie-gabriel-b41a0059/"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-</svg></a>
-      <hr/>
-      <br/>
-      <h5>General Notebooks</h5>
+             <br/><br/>
 
-       
-           <ul>
-             <li><a href="https://jgab3103.github.io/Jamie-Gabriel/ElasticSearchAcrossNotebooks">Using ElasticSearch to index and search Jupyter Noteboks</a></li>
-             <li><a href="https://jgab3103.github.io/Jamie-Gabriel/ElasticSearchAcrossNotebooks">Undertaking Research Mathematics and Computer Science</a></li>
-            <li><a href="https://jgab3103.github.io/Jamie-Gabriel/M1">Studying Music</a></li>
-           </ul>
-    <br/>
-
-          
-    </div>
-    <div class="col-sm-6">
-      <br/>
-      <h5>Setup</h5>
-       <b>Python for Math</b>
-      <div>
-          I tend not to use Sage these days (in favour of <a href = "https://github.com/jgab3103/Jamie-Gabriel">this kind of setup</a>) but here is a really nice way to install and config the Sage JupyterLab environment running on Docker. For full details of the Docker Image see <a href="https://hub.docker.com/r/cemulate/sagemath-jupyterlab/">https://hub.docker.com/r/cemulate/sagemath-jupyterlab/</a>.
-        </div>
-        <br/>
-        <b>Python for Machine Learning and Hierarchical Temporal Memory (HTM)</b>
-      <div>
-          I use <a href = "https://github.com/jgab3103/Jamie-Gabriel">this docker setup </a>to manage all things related to my research. It is based on this really nice image at <a href="https://hub.docker.com/r/3rdman/htm.core-jupyter">https://hub.docker.com/r/3rdman/htm.core-jupyter</a>. Note that sometimes I have had issues with Windows install, but for MacOS and Linux seems to be ok.
-        </div>
-    </div>
-
-  </div>
-     
-
-  
-   </div>
+             Jamie Gabriel</br>
+             <a href="https://github.com/jgab3103/"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+       </svg></i></a> &nbsp; <a href="https://www.linkedin.com/in/jamie-gabriel-b41a0059/"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+         <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+       </svg></a>
+             <hr/>
+             <br/>
+             <h5>General Notebooks</h5>
 
 
+                  <ul>
+                    <li><a href="https://jgab3103.github.io/Jamie-Gabriel/ElasticSearchAcrossNotebooks">Using ElasticSearch to index and search Jupyter Noteboks</a></li>
+                    <li><a href="https://jgab3103.github.io/Jamie-Gabriel/ElasticSearchAcrossNotebooks">Proof in Mathematics</a></li>
+                     <li><a href="https://jgab3103.github.io/Jamie-Gabriel/M1">On studying Music</a></li>
+                  </ul>
+           <br/>
+           <hr/>
+           <h5>Setup</h5>
 
-   <div class="tab-pane" id="b">
-     <div class = "row">
-        <div class = "col-sm-6">
-          <br/>
-      <h5>Polynomial Equations</h5>
-       <div>Notes exploring methods solving general polynomial equations (that Galois problem) using things like power series Fuss-Catalan numbers to avoid the need to use radicals. Some really interesting applications for computer science</div>
-       <br/>
+         <div>
+             I mostly use JupyterLab running through Docker to manage most things related to research. Full details and set up instructions <a href = "https://github.com/jgab3103/Jamie-Gabriel">here</a>. Occasionally I like to work the HTM Machine Intelligence stuff which can be tricky to get going so I have included that in the notes. This set up is really nice across lots of different math research and works well across different operating systems.
 
-      <ul>
-      <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE1">SPE1: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE2">SPE2: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE3">SPE3: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE4">SPE4: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE5">SPE5: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE6">SPE6: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE7">SPE7: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE8">SPE8: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE9">SPE9: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE10">SPE10: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE11">SPE11: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE13_14">SPE13 & SPE14: Solving Polynomial Equations</a></li>
-               <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE15">SPE15 Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE16">SPE16: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE18">SPE18: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE20">SPE20: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE21">SPE21: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE22">SPE22: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE23">SPE23: Solving Polynomial Equations</a></li>
-         <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE24">SPE24: Solving Polynomial Equations</a></li>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE25">SPE25: Solving Polynomial Equations</a></li>
-               <li><a href="https://jgab3103.github.io/Jamie-Gabriel/SPE26">SPE26: Solving Polynomial Equations</a></li>
+             <br/><br/>
 
-      </ul>
-    </div>
+             If I am not using JupyterLab, it's usually RStudio & R these days and I tend to build anything web related in Shiny with Django as the backend.
+           </div>
 
-  <div class = "col-sm-6">
-    <br/>
-    <h5>Algebraic Calculus and de Castelau Bezier (dCB) Curves</h5>
-   
-    <div>A series of notebooks on selected topics in Algebraic Calculus focusing on de Castelau Bezier (dCB) Curves </div>
-      <br/>
-              <ul>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/DCB1">
-          DCB1: Algebraic Calculus and de Castelau Bezier (dCB) Curves</a></li>
-                 <li><a href="https://jgab3103.github.io/Jamie-Gabriel/DCB2">
-          DCB2: Algebraic Calculus and de Castelau Bezier (dCB) Curves</a></li>
-                        <li><a href="https://jgab3103.github.io/Jamie-Gabriel/DCB3">
-          DCB3: Algebraic Calculus and de Castelau Bezier (dCB) Curves</a></li>
-    
-        </ul>
-
-    <h5>Algebraic Calculus</h5>
-
-   <div>A series of notebooks covering general concepts Algebraic Calculus, a more general theory of Calculus which avoids the issues that arise from computation with real numbers</div>
-
-    <br/>
-      <ul>
-          <li><a href="https://jgab3103.github.io/Jamie-Gabriel/AC2">
-          AC1_2: Algebraic Calculus</a></li>
-            
-           
-        </ul>
-
-    </div>
-
-
-
-     </div>
-     
-         
-   
-
-
-
-
-
-   </div>
-   
-
-
-   <div class="tab-pane" id="c">
-     
-
-<div class = "row" id = "test3">
-    <div class = "col-sm-4">
-      <br/><br/>
-        <b>Maple Project</b>
-        
-        <div><br/><a href="https://github.com/jgab3103/Maple-Project/wiki">Maple</a> is a web application I have created for managing metadata, research and reporting programs of work, data requests, and is well suited for organisations running large scale data science and analytics programs. Maple sets out to elegantly and intuitively solve problems that arise when tracking data assets, data elements, data users and roles, managing data requests and data related projects, and positiion this metadata for analytics. In my last couple of roles I have needed to create applications to manage this kind of thing and decided it was time to stop reinventing the wheel, so open sourcing the code.</div>
-    </div>
-
-    <div class = "col-sm-4">
-       <br/><br/>
-        <b>OEIS Analytics Project</b><br/><br/>
-        <div>The <a href="https://github.com/jgab3103/OEIS-Anaytics-Project">OEIS Analytics Project</a> is built in R Shiny and mines data in the OEIS and does all kinds of analytics and search on it </div>
-    </div>
-
-
-        <div class = "col-sm-4">
-       <br/><br/>
-        <b>Music and AI Project</b><br/><br/>
-        <div>Coming out of PhD work, an application of some interesting Machine Learning techniques of large scale score data. Built in Python and R.</div>
-    </div>
-
-
-
-  </div>
-
-
-   </div>
-   
-
-
-
-   <div class="tab-pane" id="d">
-
-    <br> <div>Coming soon</div>
-
-   </div>
-
-
- <div class="tab-pane" id="e">
-     <div class = "row">
-        <div class = "col-sm-6">
-<!-- 
-          <img source = "https://github.com/jgab3103/Jamie-Gabriel/blob/main/docs/img_1706.jpg" alt = "image is sthere"> -->
-      
-          <br/>
-      <h5>Keith Jarrett Piano Transcriptions</h5>
-     
-
-       <br/>
-       <div>Musescore/MusicXML versions of these solos can be downloaded from <a href="https://github.com/jgab3103/Jamie-Gabriel/tree/main/MusicNotebooksAndTranscriptions/Transcriptions">here</a>. <br/>Some brief notes on ways to learn and practice these solos can be found <a href = "https://jgab3103.github.io/Jamie-Gabriel/M2">here</a>.
-       </div>
 <br/>
-      <ul>
-      <li>
-        <a href="https://jgab3103.github.io/Jamie-Gabriel/KJallTheThingsYouAreKeithJarrettSolo.pdf">
-          Piano Solo: All The Things You Are (Standards, Vol. 1, 1983)
-        </a>
-      </li>
-      <li>
-        <a href="https://jgab3103.github.io/Jamie-Gabriel/KJautumnLeavesKeithJarrettSoloOne.pdf">
-          Piano Solo: Autumn Leaves (Still Live, 1986)
-        </a>
-      </li>
-      <li>
-        <a href="https://jgab3103.github.io/Jamie-Gabriel/KJautumnLeavesKeithJarrettSoloTwo.pdf">
-          Piano Solo: Autumn Leaves  (Tokyo '96, 1996)
-        </a>
-      </li>
-      <li>
-        <a href="https://jgab3103.github.io/Jamie-Gabriel/KJdaysOfWineAndRosesKeithJarrettSolo.pdf">
-          Piano Solo: Days of Wine and Roses (Live at the Blue Note, Vol. 3, 1994)
-        </a>
-      </li>
-      <li>
-        <a href="https://jgab3103.github.io/Jamie-Gabriel/KJgroovinHighKeithJarrettSolo.pdf">
-          Piano Solo: Groovin High (Whisper Not, 1999)
-        </a>
-      </li>
-      <li>
-        <a href="https://jgab3103.github.io/Jamie-Gabriel/KJifIWereABellKeithJarrettSolo.pdf">
-          Piano Solo: If I Were A Bell (Up for It, 2002)
-        </a>
-      </li>
-      <li>
-        <a href="https://jgab3103.github.io/Jamie-Gabriel/KJinLoveInVainKeithJarrettSolo.pdf">
-          Piano Solo: In Love in Vain (Standards, Vol. 2, 1983)
-        </a>
-      </li>
-      <li>
-        <a href="https://jgab3103.github.io/Jamie-Gabriel/KJmyFunnyValentineKeithJarrettSolo.pdf">
-          Piano Solo: My Funny Valentine (Still Live, 1986)
-        </a>
-      </li>
-      <li>
-        <a href="https://jgab3103.github.io/Jamie-Gabriel/KJsomedayMyPrinceWillComeKeithJarrettSolo.pdf">
-          Piano Solo: Someday my prince will come (Up for It, 2002)
-        </a>
-      </li>
-      <li>
-        <a href="https://jgab3103.github.io/Jamie-Gabriel/KJstellaByStarlightKeithJarrettSolo.pdf">
-          Piano Solo: Stella by Starlight (Standards Live, 1983)
-        </a>
-      </li>
+<br/>
+
+            <b>Python for Math</b>
+           <div>
+               I tend not to use Sage these days but here is a really nice way to install and config the Sage JupyterLab environment running on Docker. For full details of the Docker Image see <a href="https://hub.docker.com/r/cemulate/sagemath-jupyterlab/">https://hub.docker.com/r/cemulate/sagemath-jupyterlab/</a>.
+             </div>
+             <br/>
+
+           </div>
+           <div class="col-sm-6">
+             <br/>
+             <h5>Latest</h5>
+<ul>
 
 
-        </ul>
+  <li><i>15th December 21: </i>Ascertaining the uniqueness of algebraic solution to the geometric quintic equation <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE26">(SPE26)</a></li>
+  <br/>
+
+  <li><i>19th December 21: </i>Derivign an algebraic solution of the general quintic polynomial equation <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE25">(SPE25)</a></li>
+  <br/>
+
+
+  <li><i>3rd December 21: </i>An overview of the fundamental structures of Algebraic Calculus and area on a parabola <a href="https://jgab3103.github.io/Jamie-Gabriel/AC2">(AC1_2)</a></li>
+  <br/>
+
+  <li><i>1st December 21: </i>Foundations of Affine geometry to underpin the construction of dCB curves<a href="https://jgab3103.github.io/Jamie-Gabriel/DCB3">(DCB3)</a></li>
+  <br/>
+
+  <li><i>13th November 21: </i>Using De Casteljau's algorithm and splitting dCB curves <a href="https://jgab3103.github.io/Jamie-Gabriel/DCB2">(DCB2)</a></li>
+  <br/>
+
+
+  <li><i>2nd November 21: </i>Transforming the general quintic to geometric form <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE24">(SPE24)</a></li>
+  <br/>
+
+
+  <li><i>27th October 21: </i>Incorporating the patterns found in signs of coefficient to generate a general solution to polynomial equations <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE23">(SPE23)</a></li>
+  <br/>
+
+  <li><i>23rd October 21: </i>Introduction to DeCastelau Bezier Curves and the DCB Parametrization theorem <a href="https://jgab3103.github.io/Jamie-Gabriel/DCB1">(DCB1)</a></li>
+  <br/>
+
+
+  <li><i>10th October 21: </i>Continuing to explore the bridge between BiTri numbers and polygonal subdivisions <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE22">(SPE22)</a></li>
+  <br/>
+
+
+  <li><i>6th October 21: </i>Exploring ternary operations on Fuss polygonal subdivisions and thier associated ternary trees <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE21">(SPE21)</a></li>
+  <br/>
+
+  <li><i>2nd October 21: </i>Exploring the link between polygon subdivisions and polynomial equations <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE20">(SPE20)</a></li>
+  <br/>
+
+  <li><i>22nd September 21: </i>Understanding the formal object that is a sum of all polygons with all of their subdivisions into triangles <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE18">(SPE18)</a></li>
+  <br/>
+
+  <li><i>20th September 21: </i>Understanding how Catalan and Fuss numbers relate to binary and ternary trees and how these trees can be created from n-gons <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE16">(SPE16)</a></li>
+  <br/>
+
+  <li><i>2nd September 21: </i>Exploring the structure of the quartic equation in relation to BiTriQuad numbers <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE15">(SPE15)</a></li>
+  <br/>
+
+<li><i>15th August 21: </i>Exploring the relationship between solutions to polynomial equations, sides of polygons and BiTri numbers <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE13_14">(SPE13_14)</a></li>
+<br/>
+<li><i>10th August 21: </i>Continuing to explore patterns of matrices created by the solutions of polynomial equations, referencing Knuth, Stanley and Dickau <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE11">(SPE11)</a></li>
+<br/>
+<li><i>4th August 21: </i>Exploring different pattterns in the matrices created by the solutions of polynomial equations <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE10">(SPE10)</a></li>
+<br/>
+<li><i>29th July 21: </i>Extending the conjecture beyond Catalan numbers using matrices and examining resulting patterns using OEIS to find Catalan and Fuss numbers <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE9">(SPE9)</a></li>
+<br/>
+<li><i>26th July 21: </i>Comparing the conjecture for a solution to the general cubic using Catalan Numbers to traditional formulas <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE8">(SPE8)</a></li>
+<br/>
+<li><i>15th July 21: </i>Testing a conjecture for a solution to the general cubic using Catalan Numbers <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE7">(SPE7)</a></li>
+<br/>
+<li><i>10th July 21: </i>Extending the power series approach to the quartic case <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE6">(SPE6)</a></li>
+<br/>
+<li><i>28th June 21: </i>Unpacking the structure of coefficients in the solutions of general polynomials <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE5">(SPE5)</a></li>
+<br/>
+<li><i>20th June 21: </i>Finding patterns in solutions of general polynomials <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE4">(SPE4)</a></li>
+<br/>
+<li><i>18th June 21: </i>Extending the power series approach to the cubic case <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE3">(SPE3)</a></li>
+<br/>
+<li><i>7th June 21: </i>Discovering Catalan numbers in the solutions of general quadratics when using power series subsitution <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE2">(SPE2)</a></li>
+<br/>
+<li><i>2nd June 21: </i>The inherent difficulties that arise when solving higher degree polynomials using radicals <a href="https://jgab3103.github.io/Jamie-Gabriel/SPE1">(SPE1)</a></li>
+
+</ul>
+
+           </div>
+
       </div>
 
-       <div class = "col-sm-6">
-     <br/>
-      <h5>Mahler Symphony Midi Files</h5>
-      <br/>
-      <div>
-These files (sourced from <a href="https://gustavmahler.com/"> here</a>) can be opened in anything that can work with MIDI (such as MuseScore, Sibelius, Logic Pro, etc.) and easily converted to MusicXML. This format makes them really useful to explore different questions related to music analysis.
-      </div>
 
 
-      <br/>
-      <ul>
-      <li>
-        <a href="https://github.com/jgab3103/Jamie-Gabriel/tree/main/MusicNotebooksAndTranscriptions/MidiFiles/MahlerSymphonies/symphony1">
-          Symphony No. 1 in D major (1888)
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/jgab3103/Jamie-Gabriel/tree/main/MusicNotebooksAndTranscriptions/MidiFiles/MahlerSymphonies/symphony2">
-          Symphony No. 2
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/jgab3103/Jamie-Gabriel/tree/main/MusicNotebooksAndTranscriptions/MidiFiles/MahlerSymphonies/symphony3">
-          Symphony No. 3
-        </a>
-      </li>
-
-      <li>
-        <a href="https://github.com/jgab3103/Jamie-Gabriel/tree/main/MusicNotebooksAndTranscriptions/MidiFiles/MahlerSymphonies/symphony4">
-          Symphony No. 4
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/jgab3103/Jamie-Gabriel/tree/main/MusicNotebooksAndTranscriptions/MidiFiles/MahlerSymphonies/symphony5">
-          Symphony No. 5
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/jgab3103/Jamie-Gabriel/tree/main/MusicNotebooksAndTranscriptions/MidiFiles/MahlerSymphonies/symphony9">
-          Symphony No. 9
-        </a>
-      </li>
-     <li>
-        <a href="https://github.com/jgab3103/Jamie-Gabriel/tree/main/MusicNotebooksAndTranscriptions/MidiFiles/MahlerSymphonies/symphony10">
-          Symphony No. 10
-        </a>
-      </li>
-
-    </ul>
-
-        </div>
-    </div>
+          </div>
 
 
-
-  </div>
-
-
-</div>
-
-
-
-
-
-
-
-</main>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css" integrity="sha384-nNK9n28pDUDDgIiIqZ/MiyO3F4/9vsMtReZK39klb/MtkZI3/LtjSjlmyVPS3KdN" crossorigin="anonymous">
 
 </body>
+</html>
