@@ -127,7 +127,8 @@ def visualizeScore(scoreData, fromMeasure = None, toMeasure = None, reduce = Fal
 
     f1 = createScoreFormatting(ax1, coords1[1])
 
-
+# THIS FUNCTION ASSUMES THAT YOU HAVE PARSED YOUR MUSICXML FILE USING THE COVERTER.PARSE MUSIC21 FUNCTION. 
+# ONCE YOU HAVE CREATED PARSED TO A MUSIC21 OBJECT, JUST PASS THAT OBJECT INTO THIS FUNCTION
 def convertScoreToDF(scoreData = None, scoreName = None, scoreMovement = None):
     # examine the list of parts
     partList = scoreData.getElementsByClass(mu.stream.Part)
@@ -149,7 +150,7 @@ def convertScoreToDF(scoreData = None, scoreName = None, scoreMovement = None):
 
 
         for el in eachPart.flatten():
-
+        # note that there are all kinds of that you get hold of when iterating through this object - some of these are below (such as pitchname, midi number etc, but by looking at the music21Object you can see all the other info is available) 
             eventDictionary = {}
             eventDictionary['offset'] = el.offset
             eventDictionary['quarterLengthDuration'] = el.duration.quarterLength
