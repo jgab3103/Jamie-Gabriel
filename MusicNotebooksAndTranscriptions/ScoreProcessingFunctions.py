@@ -218,7 +218,7 @@ def convertScoreToDF(scoreData = None, scoreName = None, scoreMovement = None):
 
 
 
-
+## Beginnings of code for midi conversion
 from midiutil import MIDIFile
 
 degrees  = [60, 62, 64, 65, 67, 69, 71, 72] # MIDI note number
