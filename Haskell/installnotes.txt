@@ -1,0 +1,8 @@
+apt-get install haskell-platform -y
+
+-- load this script with gchi FP4_1.hs
+-- reload with :reload
+-- :? help
+-- funcioins are lower case
+-- lists have s suffix
+-- each def in same column - 
