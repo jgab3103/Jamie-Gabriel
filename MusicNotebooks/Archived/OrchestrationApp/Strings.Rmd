@@ -1,0 +1,10 @@
+---
+title: "Strings"
+output: html_document
+date: ''
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+

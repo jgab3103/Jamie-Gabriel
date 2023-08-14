@@ -1,0 +1,28 @@
+Instrument Family,Instrument Name,Clef usually used,Written Range,Sounding Range,Transposition Note,Details
+Woodwinds,Bb Clarinet,Treble,,,Bb,Sounds a major 2nd below the written pitch. 
+Woodwinds,Bb Bass Clarinet,,,,Bb,Sounds an octave and major 2nd below the written pitch. 
+Woodwinds,BBb Contrabass Clarinet,,,,Bb,Sounds 2 octaves and a major 2nd below the written pitch. 
+Woodwinds,Bb Soprano Saxophone,,,,Bb,Sounds a major 2nd below the written pitch. 
+Woodwinds,Bb Tenor Saxophone,,,,Bb,Sounds a major 2nd below the written pitch. 
+Woodwinds,Bb Bass Saxophone,,,,Bb,Sounds a major 2nd below the written pitch. 
+Woodwinds,Bb Piccolo Trumpet,,,,Bb,Sounds a minor 7th above the written pitch. 
+Woodwinds,Bb Trumpet,,,,Bb,Sounds a major 2nd below the written pitch. 
+Woodwinds,English Horn in F,,,,F,Sounds a perfect 5th below the written pitch. 
+Woodwinds,Basset Horn in F,,,,F,Sounds a perfect 5th below the written pitch. 
+Woodwinds,French Horn in F,,,,F,Sounds a perfect 5th below the written pitch. 
+Woodwinds,A Clarinet,Treble,"chalumeau: E3-F4, throat tones: G4-Bb4, clarino: B4-C6 , altissimo: D6-C7 ","chalumeau: Db3-D4, throat tones: E4-G4, clarino: Ab4-A5 , altissimo: B5-A6 ",A,Sounds a minor third below the written pitch. 
+Woodwinds,Oboe D'Amore,Treble,"low: B3-G4, middle: A4-G5 , high: A5-E6 ","low: Ab3-E4, middle: Gb4-E5 , high: Gb5-Db6 ",A,Sounds a minor third below the written pitch. 
+Woodwinds,A Cornet,Treble,"low: Gb3-B3, middle:C4-G5 , high: Ab5-C6","low: Eb3-Ab3, middle:A3-E5 , high: F5-A5",A,Sounds a minor third below the written pitch. 
+Woodwinds,A Horn (Natural),Bass,"low: A3, high: Ab5","low: F3, high: F5",A,Sounds a minor third below the written pitch. 
+Woodwinds,A Bass Clarinet,"Bass, Treble","chalumeau: , throat tones: , clarino: , altissimo: ","chalumeau: , throat tones: , clarino: , altissimo: ",A,Sounds a minor third below the written pitch. 
+Woodwinds,A Basso Horn (Natural,Bass,"low: , high: ","low: , high: ",A,Sounds a minor third below the written pitch. 
+Woodwinds,Eb Clarinet,Treble,,,Eb,Sounds a minor third above the written pitch. 
+Woodwinds,Eb Alto Clarinet,Treble,,,Eb,Sounds a major 6th below the written pitch. 
+Woodwinds,EEb Contra-Alto Clarinet,Treble,,,Eb,Sounds an octave and a major 6th below the written pitch. 
+Woodwinds,Eb Sopranino Saxophone,Treble,,,Eb,Sounds a minor third above the written pitch. 
+Woodwinds,Eb Alto Saxophone,Treble,,,Eb,Sounds a major 6th below the written pitch. 
+Woodwinds,Eb Baritone Saxophone,Treble,,,Eb,Sounds an octave and a major 6th below the written pitch. 
+Woodwinds,Eb Contrabass Saxophone,Treble,,,Eb,Sounds an two octaves and a major 6th below the written pitch. 
+Woodwinds,Bass Trumpet,Treble,,,Eb,Sounds a major 6th below the written pitch. 
+Woodwinds,D Clarinet,,,,D,Sounds a major 2nd above the written pitch. 
+Woodwinds,Alto Flute in G,,,,G,Sounds a perfect 4th below the written pitch. 
