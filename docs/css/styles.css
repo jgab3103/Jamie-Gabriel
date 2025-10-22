@@ -10980,8 +10980,17 @@ body {
 }
 
 #mainNav {
-  min-height: 3.5rem;
-  background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030;
+    background-color: #fff !important; /* white background */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
 }
 #mainNav .navbar-toggler {
   font-size: 80%;
