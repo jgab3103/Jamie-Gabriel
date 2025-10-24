@@ -100,24 +100,96 @@
              <h3>Overview</h3>
            
 
-            <p>The idea of this project is to examine MIDI data that can be  captured in real-time,(whether it's from intruments, effects units or whatever) and undertake analysis on it to capture underlying structures in musical interaction. Once the analysis takes place, new MIDI back into equipment to enehance live performance. The MIDI data that is captured includes note data, rhythmic data, synth parameters, and instrument pedal data, anything that can use the MIDI protocal. Deep learning models applied and the new MIDI data is created in response to the analysis. </p>
+          <p>The core idea of this project is to capture and analyse MIDI data in real time — whether from instruments, effects units, or controllers — to uncover the underlying structures of musical interaction. Each performance gesture, such as modulation sweeps on a Chase Bliss pedal or pitch manipulation on the Korg Modwave, is recorded, timestamped, and analysed live. These micro-decisions form a continuous data stream. This can then be visualised or transformed into responsive feedback to the performer, instrument, and evolving underlying deep learingmodel. I am aiming to capture all available MIDI information, including note, rhythmic, and synthesis parameters, as well as pedal and controller data, anything that can communicate via the MIDI protocol. Deep learning models are then applied to interpret these streams and generate new MIDI data in response, enriching and enhancing the live performance.</p>
+
 
             <p>This project is not about automating performance or mimicking the human ability to improvise and create in real-time. Rather, the idea here is to augment the improvisation experience it, find ways to make it more integrated into what is unfolding in live settings. When working in ensembles,  improvising musicians are in a constant process of perceiving their own and others’ musical decisions. This project is about finding ways to make that experience deeper and more immersive.</p>
 
             <p>The project brings together alot of the things that I am really interested in - improvisation, real-tme sound design, the use of advanced mathematics to augment the experience of collaboration, finding latent patterns in data. A lot of geeky stuff, sure, but the most important aspect of the project is to find ways to hear and experience music. It is not simply about pattern recognition for the sake finding patterns, it about creating ways to have richer musical interations.  </p>
             <p>
-            The end goal is to find new ways to think about interactive creative performance, where data itself becomes a dynamic actor  dialogue between humans and the technolgy, leading to new creative experiences and outcomes.</p>
+            The end goal is to find new ways to think about interactive creative performance, reframes MIDI not as a recording protocol, but as a language of interaction. It enables a new kind of deep listening where performers can explore emergent patterns, rhythmic densities, and collaborative dynamics as they happen — turning data into an active participant in the creative process. where data itself becomes a dynamic actor  dialogue between humans and the technolgy, leading to new creative experiences and outcomes.</p>
         </div>
     </div>
 
     <div class="why-different" id="why-different">
     	 <h3>How is this different?</h3>
 
-  <p>In terms of the field this project is in, it is most closely allingned with Music Information Retrieval (MIR). I completed my PhD in this area a few years ago now (examing ways to search symbolic music data) nlike most MIDI analysis systems, which operate in post-hoc or offline modes, this project is designed for real-time interpretation and feedback. Traditional MIDI data studies focus on pattern mining, expressive timing, or style modeling after performance data has been captured. By contrast, this system listens and responds as the performance unfolds.</p>
+  <p>There are a number of groups especially in the Music Information Retrieval (MIR) space, working with MIDI data. Most of them explore how MIDI can be used in post-hoc or offline modes. Traditional MIDI data studies focus on pattern mining, expressive timing, or style modeling after performance data has been captured. By contrast, this system listens and responds as the performance unfolds.This project this project is designed for real-time interpretation and feedback. </p>
 
-  <p>The aim is not just to analyze musical data, but to augment creative awareness during performance. Every gesture — from a footswitch on the MC8 Pro to modulation sweeps on a Chase Bliss pedal or pitch manipulation on the Korg Modwave — is captured, timestamped, and analyzed live. These micro-decisions form a data stream that can be visualized or transformed into feedback, creating a dialogue between performer, instrument, and algorithm.</p>
+  <p>The aim is not just to analyze musical data, but to augment creative awareness during performance. Every gesture — from a footswitch on the MC8 Pro to 
 
-  <p>This real-time approach reframes MIDI not as a recording protocol, but as a language of interaction. It enables a new kind of deep listening where performers can explore emergent patterns, rhythmic densities, and collaborative dynamics as they happen — turning data into an active participant in the creative process.</p>
+
+
+  </p>
+
+  <section id="ismir-midi-research">
+  <h2>Key ISMIR Researchers and Projects on MIDI Datasets</h2>
+  <p>This table summarises leading contributions from the ISMIR community in developing and analysing MIDI datasets for music information retrieval (MIR), machine learning, and computational creativity research.</p>
+
+  <table style="width:100%; border-collapse:collapse; margin-top:1em;">
+    <thead>
+      <tr style="background-color:#f0f0f0; text-align:left;">
+        <th style="padding:10px; border-bottom:2px solid #ccc;">Researcher / Group</th>
+        <th style="padding:10px; border-bottom:2px solid #ccc;">Project / Dataset</th>
+        <th style="padding:10px; border-bottom:2px solid #ccc;">Focus / Contribution</th>
+        <th style="padding:10px; border-bottom:2px solid #ccc;">Reference (APA7)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:10px;">Hawthorne, C. (Google Magenta)</td>
+        <td style="padding:10px;">MAESTRO Dataset</td>
+        <td style="padding:10px;">High-quality aligned audio–MIDI data from piano performances for transcription and generation tasks.</td>
+        <td style="padding:10px;">Hawthorne, C. et al. (2018). *Enabling factorized piano music modeling and generation with the MAESTRO dataset*. ISMIR.</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;">Simon, I., Roberts, A. (Google Magenta)</td>
+        <td style="padding:10px;">PerformanceRNN / Magenta MIDI Dataset</td>
+        <td style="padding:10px;">Expressive performance modeling and real-time sequence generation using recurrent neural networks.</td>
+        <td style="padding:10px;">Oore, S. et al. (2018). *This time with feeling: Learning expressive musical performance*. Neural Computing and Applications.</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;">Donahue, C. (UCSD)</td>
+        <td style="padding:10px;">MIDI-DDSP</td>
+        <td style="padding:10px;">Neural synthesis conditioned on MIDI control parameters for expressive sound generation.</td>
+        <td style="padding:10px;">Huang, R., & Donahue, C. (2021). *MIDI-DDSP: Detailed control of musical performance via hierarchical modeling*. ISMIR.</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;">Raffel, C. (Columbia / Google)</td>
+        <td style="padding:10px;">Lakh MIDI Dataset</td>
+        <td style="padding:10px;">Large-scale collection of MIDI files aligned with Million Song Dataset for symbolic–audio mapping.</td>
+        <td style="padding:10px;">Raffel, C. (2016). *Learning-based methods for comparing sequences, with applications to audio-to-MIDI alignment and matching*. PhD thesis, Columbia University.</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;">Kim, J., & Bello, J. P. (NYU)</td>
+        <td style="padding:10px;">URMP Dataset</td>
+        <td style="padding:10px;">Synchronized audio–video–MIDI dataset of chamber ensembles for multi-modal music analysis.</td>
+        <td style="padding:10px;">Li, B., Kim, J., & Bello, J. P. (2018). *URMP: A dataset for multimodal music performance analysis*. ISMIR.</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;">MIDI Toolbox (Eerola & Toiviainen)</td>
+        <td style="padding:10px;">MATLAB MIDI Toolbox</td>
+        <td style="padding:10px;">Early symbolic music analysis environment; basis for subsequent MIR dataset handling.</td>
+        <td style="padding:10px;">Eerola, T., & Toiviainen, P. (2004). *MIDI Toolbox: MATLAB tools for music research*. University of Jyväskylä.</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;">Huang, C. A., & Yang, Y.-H. (Academia Sinica)</td>
+        <td style="padding:10px;">POP909 Dataset</td>
+        <td style="padding:10px;">909 full pop songs in aligned MIDI format for melody, harmony, and structure analysis.</td>
+        <td style="padding:10px;">Wang, Z. et al. (2020). *POP909: A pop-song dataset for music arrangement generation*. ISMIR.</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;">Choi, K. et al. (Spotify Research)</td>
+        <td style="padding:10px;">GiantMIDI-Piano</td>
+        <td style="padding:10px;">Automated transcription of piano music into large-scale MIDI dataset for generative models.</td>
+        <td style="padding:10px;">Kong, Q. et al. (2020). *GiantMIDI-Piano: A large-scale MIDI dataset for classical piano music*. ISMIR.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+  <p>This real-time approach </p>
 </div>
 
 
