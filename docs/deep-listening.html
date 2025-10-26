@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Listening Project - Jamie Gabriel</title>
+    <title>Deep Improvisation Project - Jamie Gabriel</title>
     <style>
         body {
             font-family: sans-serif;
@@ -76,8 +76,8 @@
     </style>
 </head>
 <body>
-    <h1>Deep Listening</h1>
-    <h2>Real-Time MIDI Pattern Analysis for Assisted Improvisation</h2>
+    <h1>Deep Improvisation</h1>
+    <h2>Real-Time MIDI Pattern Analysis for Augmented Improvisation</h2>
     <a class="back-link" href="./index.html">← Back</a>
 
     <!-- Table of Contents -->
@@ -86,8 +86,10 @@
         <ul>
             <li><a href="#description">Overview</a></li>
                 <li><a href="#why-different">How is this different</a></li>
-            <li><a href="#background">Background Reading</a></li>
-            <li><a href="#data-collection">Setting up for data dollection</a></li>
+            <li><a href="#background">Some Background Reading</a></li>
+            <li><a href="#data-collection">Example Architecture</a></li>
+             <li><a href="#get-involved">How to get involved</a></li>
+
                     <li><a href="#related-code">Related code</a></li>
             <li><a href="#links">Links & References</a></li>
         </ul>
@@ -108,6 +110,10 @@
             <p>The project brings together alot of the things that I am really interested in - improvisation, real-tme sound design, the use of advanced mathematics to augment the experience of collaboration, finding latent patterns in data. A lot of geeky stuff, sure, but the most important aspect of the project is to find ways to hear and experience music. It is not simply about pattern recognition for the sake finding patterns, it about creating ways to have richer musical interations.  </p>
             <p>
             The end goal is to find new ways to think about interactive creative performance, reframes MIDI not as a recording protocol, but as a language of interaction. It enables a new kind of deep listening where performers can explore emergent patterns, rhythmic densities, and collaborative dynamics as they happen — turning data into an active participant in the creative process. where data itself becomes a dynamic actor  dialogue between humans and the technolgy, leading to new creative experiences and outcomes.</p>
+
+            <p>
+                The title, Deep Listening
+            </p>
         </div>
     </div>
 
@@ -232,7 +238,7 @@
     </div>
 
     <div class="data-collection" id="data-collection">
-        <h3>Setting Up the Data Collection Environment</h3>
+        <h3>Example Architecture</h3>
         <p>Capturing rich, high-resolution musical data is central to the Deep Listening project. To track real-time decisions and interactions across multiple devices, the system relies on MIDI as the core information protocol, integrating controllers, pedals, and synthesizers into a unified data stream.</p>
 
         <h4>1. Devices and Signal Sources</h4>
@@ -262,49 +268,68 @@ Audio Path
              │
              └─B Output──▶ Sonic Cake ABY Box ──▶ FX Loop 2 ─▶ Timeline ─▶ Cloudburst ─▶ Mood MK II ─▶ Source Audio EQ2 ─▶ Return B (LS-2)
 
-Arturia MicroFreak ───────────┘ (joined via Sonic Cake ABY Box for FX Loop 2)
+Arturia MicroFreak/Octotrack/Korg Modwave ───────────┘ (joined via Sonic Cake ABY Box for FX Loop 2)
 
 LS-2 Output ──▶ Blooper ─▶ AER Alpha Amp
 </pre>
 
-        <p>The primary devices used for data collection include:</p>
-        
-<ul>
-    <li>
-        <strong>MC8 Pro (Patch/Scene Controller):</strong> Central hub coordinating device changes, presets, and scene-level commands. Sends and receives MIDI signals to control multiple connected devices simultaneously, ensuring all instruments and pedals stay in sync during performance.
-    </li>
-    <li>
-        <strong>Chase Bliss Blooper (Looper/Effects):</strong> Captures real-time loops, gestures, and effect parameters via MIDI Continuous Controllers (CC). Enables granular control over layering, reverse/forward loops, and experimental sound textures.
-    </li>
-    <li>
-        <strong>Korg Modwave (Synthesizer):</strong> A wavetable and sample-based synthesizer offering expressive multi-dimensional controls. Captures note events, modulation, velocity, aftertouch, and gestures for high-resolution sonic analysis.
-    </li>
-    <li>
-        <strong>Cloudburst (Effects/Controller):</strong> Multi-effects unit with stereo delay, reverb, and modulation. Provides detailed MIDI feedback for expressive timing, modulation, and wet/dry signal blending.
-    </li>
-    <li>
-        <strong>Mood MK II (Looper/Effects):</strong> Real-time looper with MIDI integration. Tracks timing, gesture, and loop length, allowing analysis of rhythmic structure and improvisational layering.
-    </li>
-    <li>
-        <strong>Lost & Found (Looper/Effects):</strong> Provides ring-active MIDI input for loop recording and playback, capturing both live performance gestures and expressive pedal manipulation.
-    </li>
-    <li>
-        <strong>Timeline (Looper/Sampler):</strong> Captures and sequences MIDI and audio loops with precise timing. Allows pattern-based performance analysis, including tempo, note density, and rhythmic variation.
-    </li>
-    <li>
-        <strong>GT-1000 Core (Multi-FX Processor):</strong> Offers a wide range of effects, including amp modeling, modulation, and delay. MIDI input captures dynamic effects changes and expression data during performance.
-    </li>
-    <li>
-        <strong>Arturia MicroFreak (Synthesizer):</strong> Digital oscillator synth with wavetable, FM, and virtual analog modes. Captures note events, pitch modulation, and expressive gestures for sonic and rhythmic pattern analysis.
-    </li>
-</ul>
 
 
-        <p>Other devices can be added as the system scales, including modular synths, drum machines, and pedals with MIDI capability.</p>
+
     </div>
 
 
- <div class="related-code" id="related-code"> <h3>Related Code</h3> <p> This system connects the <strong>Morningstar MC8 Pro</strong> MIDI controller to a computer via USB, allowing Python to listen to and record all incoming MIDI messages in real time. Using the <code>mido</code> and <code>python-rtmidi</code> libraries, the script continuously monitors for MIDI input such as note events, control changes, and pedal actions. </p> <p> Each MIDI message is parsed and timestamped at the moment it arrives. These messages are then written into a local <strong>SQLite database</strong>, creating a structured record of the performance data that includes event type, channel, control value, and precise timing information. </p> <p> The system architecture follows a simple flow: </p> <div style="margin-left: 20px;"> <ol> <li>Initialize MIDI input from the MC8 Pro using the <code>mido</code> library.</li> <li>Listen continuously for incoming messages (e.g., Control Change, Program Change, Note On/Off).</li> <li>Parse and timestamp each message as it arrives.</li> <li>Insert the message data into an SQLite database in real time.</li> <li>Provide live feedback or visualization (optional extension for performance contexts).</li> </ol> </div> <p> This approach allows for <strong>non-destructive, continuous data collection</strong> during live performance — ideal for analyzing gesture patterns, timing, and creative interaction between devices. Because the entire process runs in real time, it enables responsive systems that can analyze or react to performance data as it happens. </p> <p> The complete implementation, including setup instructions and example scripts, is available on GitHub. </p> </div>
+<div class="get-involved" id="get-involved"> </div>
+<h3>How to get involved </h3>
+
+Coming soon
+
+
+<div class="related-code" id="related-code">
+    <h3>Related Code</h3>
+
+    <p>
+        The <strong>Deep Improvisation Project</strong> is supported by several interconnected codebases that together form the foundation for real-time analysis, interaction, and visualization. These repositories allow the system to capture performance data, run machine learning models live, render dynamic visual feedback, and enable distributed collaboration across networked musicians.
+    </p>
+
+    <p>
+        <strong>1. Python (MIDI + Deep Learning)</strong><br/>
+        Python scripts handle all <strong>MIDI messaging and real-time data management</strong>. Built with <code>mido</code> and <code>python-rtmidi</code>, this environment listens continuously for incoming messages — including note, CC, and control data — and records them with microsecond precision into an <strong>SQLite database</strong>. Deep learning models (e.g., PyTorch, TensorFlow) can then process these streams to predict or generate new patterns, supporting <em>live adaptive improvisation</em>.
+    </p>
+
+    <p>
+        <strong>2. SuperCollider (Performance Engine)</strong><br/>
+        The SuperCollider layer manages <strong>sound generation and performance interaction</strong>. It receives interpreted data from the Python process and responds with synthesized gestures, rhythmic patterns, and evolving textures. This setup enables non-linear improvisation structures, linking analytical and auditory domains in real time.
+    </p>
+
+    <p>
+        <strong>3. Node.js (Visualisation Layer)</strong><br/>
+        A Node.js environment provides <strong>interactive visual feedback</strong> using JavaScript libraries such as <code>D3.js</code> and <code>Three.js</code>. It displays rhythmic lattices, gesture maps, and timing densities, offering musicians a visual interface to explore the evolving structure of improvisations. The visualiser connects directly to the Python data stream for low-latency rendering.
+    </p>
+
+    <p>
+        <strong>4. Jamulus (Low-Latency Collaboration Config)</strong><br/>
+        Configuration files define <strong>Jamulus-based network setups</strong> for online improvisation and rehearsal. These allow distributed musicians to connect to the Deep Improvisation environment with minimal latency, integrating the analytical and visual systems into remote collaborative performance.
+    </p>
+
+    <p>
+        Each of these repositories contributes to a modular, extensible framework for <strong>real-time creative AI and human–machine improvisation</strong>. The complete implementations, setup instructions, and example scripts are hosted across four dedicated GitHub repositories:
+    </p>
+
+    <div style="margin-left: 20px;">
+        <ul>
+            <li><a href="#">Deep Improvisation – Python MIDI + ML</a></li>
+            <li><a href="#">Deep Improvisation – SuperCollider Performance</a></li>
+            <li><a href="#">Deep Improvisation – Node.js Visualisation</a></li>
+            <li><a href="#">Deep Improvisation – Jamulus Network Configs</a></li>
+        </ul>
+    </div>
+
+    <p>
+        These systems together form the technical and conceptual backbone of the Deep Improvisation project — a live, evolving conversation between <strong>data, sound, and human creativity</strong>.
+    </p>
+</div>
+
 
 
     <div id="links">
