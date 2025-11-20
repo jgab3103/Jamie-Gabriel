@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>The Sound of Space - Jamie Gabriel</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+            color: #222;
+            background-color: #fff;
+        }
+        h1 { text-align: left; }
+        .intro-flex {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .intro-text { flex: 1; }
+        .intro-image img { width: 150px; height: auto; display:block; }
+        figure { margin: 1rem 0; }
+        figure:first-of-type { margin-top: 0.5rem; }
+        figcaption h3 { margin: 0.2rem 0; font-size: 1.2rem; }
+        figcaption h3 a { color:#000; text-decoration:none; }
+        figcaption h3 .small { font-size:0.9rem; color:#666; }
+        a { color:#007bff; text-decoration:none; }
+        a:hover { text-decoration:underline; }
+        .toc ul { list-style-type: disc; margin-left: 2rem; }
+        table { width:100%; border-collapse:collapse; margin-top:1em; }
+        th, td { padding:10px; border-bottom:2px solid #eee; text-align:left; vertical-align:top; }
+        th { background:#f7f7f7; }
+        pre { font-family: monospace; background:#f7f7f7; padding:1rem; overflow-x:auto; }
+        .citation { font-size:0.85rem; color:#666; margin-top:0.25rem; }
+    </style>
+</head>
+<body>
+    <h1>The Sound of Space</h1>
+    <h2>Investigating how performance spaces shape musical experience, practice and economics</h2>
+    <a class="back-link" href="./index.html">← Back</a>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h3>Contents</h3>
+        <ul>
+            <li><a href="#description">Overview</a></li>
+                <li><a href="#why-different">How is this different</a></li>
+            <li><a href="#background">Some background reading</a></li>
+            <li><a href="#methodology">Example methodology & fieldwork</a></li>
+             <li><a href="#get-involved">Getting involved in this project</a></li>
+            <li><a href="#related-code">Related tools & code</a></li>
+            <li><a href="#links">Links & References</a></li>
+        </ul>
+    </div>
+
+    <div class="intro-flex" id="description">
+        <div class="intro-text">
+            <h3>Overview</h3>
+
+            <p>
+                The Sound of Space is an interdisciplinary research and practice project that investigates how the acoustic, architectural and social properties of performance spaces shape the experience of live music — for performers, audiences and communities. The project combines field recordings, acoustic measurement, ethnography, experimental performances, and critical analysis to ask: how does a tunnel, cathedral, warehouse or hilltop change what music is and what music does?
+            </p>
+
+            <p>
+                The work sits at the intersection of acoustic ecology, site-responsive composition, music psychology, and cultural economy. Practically, the project will map acoustic parameters (RT60, early decay, impulse responses, spatial diffusion, spectral filtering), gather first-person accounts from musicians and audiences, run controlled listening experiments, and produce site-specific performances and recordings that test the expressive affordances of different spaces.
+            </p>
+
+            <p>
+                A parallel strand is the political economy of gigs and places: surveying the economics of where musicians play, how venues (often ill-suited acoustically) shape paid work, and how creative practices can reframe or reclaim unusual spaces for meaningful, remunerative performance. The project is explicitly both academic and activist — seeking to produce scholarship while exploring alternative models for paid, dignified, and site-sensitive performance.
+            </p>
+
+            <p class="citation">
+                Key reference pillars for this project include acoustic ecology and soundscape theory (Schafer), Pauline Oliveros' Deep Listening practice (and examples of recording in resonant sites), and historical/cultural examples of site-specific performance (e.g., Scriabin-inspired Himalayan performances). :contentReference[oaicite:0]{index=0}
+            </p>
+        </div>
+
+        <div class="intro-image">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23eee'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%23666'%3EThe Sound of Space (image placeholder)%3C/text%3E%3C/svg%3E" alt="The Sound of Space"/>
+        </div>
+    </div>
+
+    <div class="why-different" id="why-different">
+        <h3>How is this different?</h3>
+
+        <p>
+            Research on music often treats performance space as a given (a black box) or focuses on sound reinforcement design. The Sound of Space treats space as an active creative collaborator: architectural envelope, material resonance, audience distribution and social context are all variables that alter timbre, temporal perception, emotional response and the labour conditions of musicians. The project intentionally combines empirical acoustic measurement with creative practice and political economy.
+        </p>
+
+        <p>
+            Rather than simply documenting how sound changes with reverberation or geometry, the project asks practical and normative questions: What sites create richer listening for certain repertoires? How do venues that pay poorly also create sonic deficits that harm musicians' craft and audiences' experiences? How could alternative models (site-specific commissions, residency-based modes, or community-run sites) revalue spatially-rich performance?
+        </p>
+    </div>
+
+    <section id="ismir-midi-research">
+        <h2>Key thinkers, traditions and projects (quick map)</h2>
+        <p>Below is a compact map of communities and projects whose ideas the Sound of Space draws on.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Researcher / Tradition</th>
+                    <th>Focus / Contribution</th>
+                    <th>Representative work or example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>R. Murray Schafer / Acoustic Ecology</td>
+                    <td>Framed the “soundscape” as a field of study, linking environment, listening practices and social meaning.</td>
+                    <td><em>The Soundscape / The Tuning of the World</em> — foundational for thinking about sonic environments. :contentReference[oaicite:1]{index=1}</td>
+                </tr>
+                <tr>
+                    <td>Pauline Oliveros / Deep Listening</td>
+                    <td>Practice-based approach that treats listening as active, meditative and site-responsive; notable for recordings in resonant sites (cisterns, caves) that foreground space as part of the instrument.</td>
+                    <td><em>Deep Listening: A Composer’s Sound Practice</em> and the famous cistern recording with long reverberation. :contentReference[oaicite:2]{index=2}</td>
+                </tr>
+                <tr>
+                    <td>Site-specific / Site-responsive composition</td>
+                    <td>Compositional and performance strategies that integrate architectural/landscape acoustics and social site relations into works.</td>
+                    <td>Numerous contemporary projects and thesis work on integrating site acoustics into composition. :contentReference[oaicite:3]{index=3}</td>
+                </tr>
+                <tr>
+                    <td>Historical/ritual examples (Scriabin & modern re-creations)</td>
+                    <td>Scriabin’s mystical spatial/projected-sensory ideas — modern multi-sensory projects (e.g. Scriabin in the Himalayas) show how place and ritual amplify listening.</td>
+                    <td>“Scriabin in the Himalayas” — a contemporary example of place-centered performance. :contentReference[oaicite:4]{index=4}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div class="background-reading" id="background">
+        <h3>Background Reading (select)</h3>
+        <ul>
+            <li>
+                <strong>Acoustic Ecology & Soundscape</strong><br/>
+                Schafer, R. Murray — <em>The Soundscape / The Tuning of the World</em> (core framing for sonic environments and listening ecologies). :contentReference[oaicite:5]{index=5}
+            </li>
+
+            <li>
+                <strong>Deep Listening & Practice</strong><br/>
+                Oliveros, P. (2005) — <em>Deep Listening: A Composer’s Sound Practice</em>. Practical techniques and stories of place-based listening (notably recordings in resonant cisterns and subterranean sites). :contentReference[oaicite:6]{index=6}
+            </li>
+
+            <li>
+                <strong>Perception, Reverberation & Emotion</strong><br/>
+                Empirical studies show reverberation and other spatial cues alter emotional response, perceived presence and timbral qualities of instruments — useful for experimental design. (See recent literature on reverberation time and musical emotion; spatial perception in acoustics). :contentReference[oaicite:7]{index=7}
+            </li>
+
+            <li>
+                <strong>Site-responsive composition & field methods</strong><br/>
+                Theses and practice-led research that integrate room impulse responses, compositional adaptation to site, and ethnographic accounts of audiences and performers. Useful methods papers on integrating site into compositional practice. :contentReference[oaicite:8]{index=8}
+            </li>
+
+            <li>
+                <strong>Case studies / contemporary practice</strong><br/>
+                “Scriabin in the Himalayas” (multi-sensory, place-centered performance) and other contemporary projects that foreground place as dramaturgy. These examples help think about residency, ritual, and multi-modal staging. :contentReference[oaicite:9]{index=9}
+            </li>
+        </ul>
+    </div>
+
+    <div class="data-collection" id="methodology">
+        <h3>Example methodology & fieldwork</h3>
+        <p>
+            The Sound of Space combines measurement, practice and social inquiry. Below is a practical research architecture for exploratory and more controlled work.
+        </p>
+
+        <h4>1. Acoustic measurement (objective)</h4>
+        <ul>
+            <li>Impulse responses (IRs) / RT60 measurement across frequency bands to characterise reverberation and spectral filtering.</li>
+            <li>Early decay time, clarity (C80), definition (D50), centre time (Ts) and binaural cues where possible.</li>
+            <li>Portable measurement kit: omnidirectional source (e.g., dodecahedron or calibrated speaker), measurement mic(s), laptop with REW or similar, and portable DA interface.</li>
+        </ul>
+
+        <h4>2. Sonic field recordings (subjective & documentary)</h4>
+        <ul>
+            <li>High-quality stereo and binaural recordings of full performances, solo instruments and test signals (sweeps, impulses).</li>
+            <li>24-bit, 48/96 kHz capture where possible; consistent microphone placements (stage center, audience center, near walls).</li>
+        </ul>
+
+        <h4>3. Performer-centred practice investigations</h4>
+        <ul>
+            <li>Residencies where musicians play the same material in different spaces and complete reflective logs/structured interviews.</li>
+            <li>Performance experiments that manipulate distance from walls, position in a space, or use reverberant instruments vs. dry sounds to explore affordances.</li>
+        </ul>
+
+        <h4>4. Audience & perceptual testing</h4>
+        <ul>
+            <li>Listening tests comparing emotional response, clarity, presence and preference across recordings or live placements (within-subjects where possible).</li>
+            <li>Use short, validated questionnaires and open-ended prompts; combine with physiological measures where feasible (e.g., heart rate, galvanic response) for affective claims.</li>
+        </ul>
+
+        <h4>5. Economic & ethnographic mapping</h4>
+        <ul>
+            <li>Surveys/interviews with musicians, promoters and venue operators about pay, rehearsal conditions, and how venue acoustics affect booking and pricing.</li>
+            <li>Case studies of alternative site-use models (community-run sites, temporary commissions, site-adaptive residencies) that could provide more dignified income and better sonic fit.</li>
+        </ul>
+
+        <h4>6. Creative outputs & interventions</h4>
+        <ul>
+            <li>Site-specific compositions or arrangements that exploit acoustic affordances (e.g., antiphonal placement, tuned delays from long reverberation).</li>
+            <li>Workshops that demonstrate listening practices (Deep Listening sessions) and invite local community participation to reframe how the site is heard and valued.</li>
+        </ul>
+
+        <h3>Field logistics (example)</h3>
+        <pre>
+Measurement kit:
+ - Laptop (DAW + REW or similar)
+ - USB audio interface (48k/96k)
+ - Measurement microphone(s) + stand
+ - Calibrated source (speaker or dodecahedron) or starter pistol/balloon for impulsive IRs
+ - Binaural rig (optional)
+ - Notebook + consent forms for interviews
+
+Data outputs:
+ - IRs (WAV), stereo/binaural performance recordings, field notes, interview transcripts, acoustic metrics (RT60, C80...), audience survey CSVs.
+        </pre>
+
+        <p class="citation">
+            Empirical work on reverberation and emotional response, and spatial perception in acoustics, offers methodological baselines for designing controlled listening and fieldwork. :contentReference[oaicite:10]{index=10}
+        </p>
+    </div>
+
+    <div class="get-involved" id="get-involved">
+        <h3>Getting involved in this project</h3>
+        <p>Coming soon — possible roles:</p>
+        <ul>
+            <li>Acoustic measurement & sound-engineering volunteers</li>
+            <li>Practitioner-residency musicians who will play the same repertoire across different sites</li>
+            <li>Research assistants for interviews, transcription and data analysis (qualitative + quantitative)</li>
+            <li>Community liaisons to negotiate access and ethical use of unusual sites (tunnels, heritage sites, private buildings)</li>
+        </ul>
+    </div>
+
+    <div class="related-code" id="related-code">
+        <h3>Related tools, code & technical approaches</h3>
+
+        <p>
+            This project doesn’t require heavyweight ML out of the gate — much of the value is in careful measurement and practice-led experimentation. That said, the following software/tools are useful:
+        </p>
+
+        <ul>
+            <li><strong>Room/IR capture and analysis</strong> — REW (Room EQ Wizard), ARTA, EASERA (measurement and IR capture).</li>
+            <li><strong>Binaural rendering / convolution</strong> — Max/MSP, Pure Data, SuperCollider (convolution reverb using site IRs to render site-specific soundscapes).</li>
+            <li><strong>Field recording</strong> — standard multichannel recorder setups (Zoom H6/H8 or higher), binaural rigs for perceptual tests.</li>
+            <li><strong>Data analysis</strong> — Python (scipy, numpy, librosa for spectral analyses), R for statistical tests; simple web dashboards for survey results.</li>
+            <li><strong>Creative implementation</strong> — SuperCollider or Max as the performance engine to inject site-specific convolution IRs, or to route live microphones into spatial feedback chains during performance.</li>
+        </ul>
+
+        <p>
+            GitHub repositories could host measurement scripts, standardised IR-capture workflows, survey instruments, and example Max/SuperCollider patches for site convolution and live spatialization.
+        </p>
+    </div>
+
+    <div id="links">
+        <h3>Links & References</h3>
+        <p>
+            Key online sources and further reading:
+        </p>
+        <ul>
+            <li>Oliveros, P. <em>Deep Listening: A Composer’s Sound Practice</em>. (handbook & recordings). :contentReference[oaicite:11]{index=11}</li>
+            <li>Schafer, R. Murray. <em>The Soundscape / The Tuning of the World</em> — acoustic ecology foundation. :contentReference[oaicite:12]{index=12}</li>
+            <li>Empirical spatial perception & reverberation studies (papers on RT60 and musical emotion; spatial perception in real-life acoustics). :contentReference[oaicite:13]{index=13}</li>
+            <li>Site-specific composition & methodology thesis (practice-led integration of architecture & composition). :contentReference[oaicite:14]{index=14}</li>
+            <li>Contemporary example: Scriabin in the Himalayas (multi-sensory, place-centred performance case study). :contentReference[oaicite:15]{index=15}</li>
+        </ul>
+
+        <p>
+            If you want I can convert this into a GitHub-ready README.md, produce editable templates for your fieldwork surveys, or create an abbreviated academic abstract for grant applications. I can also add a mapping page for candidate sites (tunnels, cisterns, cathedrals, warehouses) with quick acoustic-readiness checklists.
+        </p>
+    </div>
+
+    <figure>
+        <figcaption>
+            <h3 class="small">Notes</h3>
+            <p class="small">This draft is intentionally practice-led — references are a starting point. I included empirical studies on reverberation and spatial perception to ground experimental design; key conceptual framing comes from acoustic ecology and Deep Listening. If you want, I’ll expand the bibliography to an APA-formatted list, add specific measurement protocols (exact microphone placements and test signals), or draft a survey instrument for musician interviews.</p>
+        </figcaption>
+    </figure>
+</body>
+</html>

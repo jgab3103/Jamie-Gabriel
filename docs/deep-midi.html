@@ -85,13 +85,12 @@
         <h3>Contents</h3>
         <ul>
             <li><a href="#description">Overview</a></li>
-                <li><a href="#why-different">How is this different</a></li>
+                <li><a href="#why-different">Existing research projects using MIDI data</a></li>
             <li><a href="#background">Some background reading</a></li>
-            <li><a href="#data-collection">Example architecture</a></li>
-             <li><a href="#get-involved">Getting involved in this project</a></li>
+            <li><a href="#data-collection">Example architecture and related code</a></li>
+   
+                         <li><a href="#get-involved">Getting involved in this project</a></li>
 
-                    <li><a href="#related-code">Related code</a></li>
-            <li><a href="#links">Links & References</a></li>
         </ul>
     </div>
 
@@ -102,35 +101,27 @@
              <h3>Overview</h3>
            
 
-          <p>The core idea of this project is to capture and analyse MIDI data in real time — whether from instruments, effects units, or controllers — to uncover the underlying structures of musical interaction. Each performance gesture, such as modulation sweeps on a Chase Bliss pedal or pitch manipulation on the Korg Modwave, is recorded, timestamped, and analysed live. These micro-decisions form a continuous data stream. This can then be visualised or transformed into responsive feedback to the performer, instrument, and evolving underlying deep learingmodel. I am aiming to capture all available MIDI information, including note, rhythmic, and synthesis parameters, as well as pedal and controller data, anything that can communicate via the MIDI protocol. Deep learning models are then applied to interpret these streams and generate new MIDI data in response, enriching and enhancing the live performance.</p>
+          <p>The purpose of this project is to capture and analyse MIDI data in real time and use it to enhance live improvised performance. The data includes both note-on/note-off events as well as any changes that might be taking place in MIDI enabled effects units (i.e. as values coming from a LFO Filter knob on a synth, or a level change on a guitar effects pedal). All data is recorded, timestamped, and analysed using real-time deep learning models. These models are used to create new MIDI data which is fed back to provide musical stimulus during performances. </p>
 
 
-            <p>This project is not about automating performance or mimicking the human ability to improvise and create in real-time. Rather, the idea here is to augment the improvisation experience it, find ways to make it more integrated into what is unfolding in live settings. When working in ensembles,  improvising musicians are in a constant process of perceiving their own and others’ musical decisions. This project is about finding ways to make that experience deeper and more immersive.</p>
+            <p>This project does not seek to automate performances or to mimick the human ability improvise. Instead, the idea is to find ways to augment the improvisation experience for musicians in the context of live settings. When musicans play in ensemble settings, they are in a constant process of perceiving their own and others’ musical decisions and responding to that. This project is about finding ways to enhance that process by using real-time data that is produced by the musicians.</p>
 
-            <p>The project brings together alot of the things that I am really interested in - improvisation, real-tme sound design, the use of advanced mathematics to augment the experience of collaboration, finding latent patterns in data. A lot of geeky stuff, sure, but the most important aspect of the project is to find ways to hear and experience music. It is not simply about pattern recognition for the sake finding patterns, it about creating ways to have richer musical interations.  </p>
-            <p>
-            The end goal is to find new ways to think about interactive creative performance, reframes MIDI not as a recording protocol, but as a language of interaction. It enables a new kind of deep listening where performers can explore emergent patterns, rhythmic densities, and collaborative dynamics as they happen — turning data into an active participant in the creative process. where data itself becomes a dynamic actor  dialogue between humans and the technolgy, leading to new creative experiences and outcomes.</p>
+            <p>This is a multidiscipllinary project bringing together improvisation practice, real-tme sound design, and the use of advanced mathematics to analyse streaming data and discover latent patterns in data. The end goal is to find new ways to think about interactive creative performance, and reframe the MIDI protocol as a language that can assist creative interactions. It aims to enables a new kind of deep listening where performers can interact with emergent patterns in the data as it is created, and where data can become an active participant in the creative process. </p>
 
             <p>
-                The title, Deep Listening is a nod to Pauline Oliveros' work in this field FIX..
-            </p>
+                The title of this project, Deep MIDI, is a nod to Pauline Oliveros' work in this field, and her committment to create sonic experiences  from which participants (be they listeners or performers) can find new ways to explore and experience music. </p>
+
+
+
         </div>
     </div>
 
     <div class="why-different" id="why-different">
-    	 <h3>How is this different?</h3>
+    	 <h3>Existing research projects using MIDI data</h3>
 
-  <p>There are a number of groups especially in the Music Information Retrieval (MIR) space, working with MIDI data. Most of them explore how MIDI can be used in post-hoc or offline modes. Traditional MIDI data studies focus on pattern mining, expressive timing, or style modeling after performance data has been captured. By contrast, this system listens and responds as the performance unfolds.This project this project is designed for real-time interpretation and feedback. </p>
-
-  <p>The aim is not just to analyze musical data, but to augment creative awareness during performance. Every gesture — from a footswitch on the MC8 Pro to 
+  <p>There are a number of research projects currently taking place Music Information Retrieval (MIR) which utilise MIDI data. Existing studies focus on pattern mining or modeling performance after the data has been been captured. Some of these are listed below.</p>
 
 
-
-  </p>
-
-  <section id="ismir-midi-research">
-  <h2>Key ISMIR Researchers and Projects on MIDI Datasets</h2>
-  <p>This table summarises leading contributions from the ISMIR community in developing and analysing MIDI datasets for music information retrieval (MIR), machine learning, and computational creativity research.</p>
 
   <table style="width:100%; border-collapse:collapse; margin-top:1em;">
     <thead>
@@ -195,15 +186,17 @@
 </section>
 
 
-  <p>This real-time approach </p>
+
 </div>
 
 
     <div class="background-reading" id="background">
         <h3>Background Reading</h3>
+  <p>Some interesting background reading for this topic is listed below. </p>
+
         <ul>
             <li><strong>Deep Listening and Creative Awareness</strong><br/>
-                Oliveros, P. (2005). <em>Deep Listening: A Composer’s Sound Practice</em>. iUniverse.<br/>
+                Oliveros, P. (2005). <em>Deep Listening: A Composer’s Sound Practice</em>. Universe.<br/>
                 A foundational philosophy for this project, framing listening as a creative, meditative, and relational practice.
             </li>
 
@@ -238,12 +231,12 @@
     </div>
 
     <div class="data-collection" id="data-collection">
-        <h3>Example Architecture</h3>
-        <p>Capturing rich, high-resolution musical data is central to the Deep Listening project. To track real-time decisions and interactions across multiple devices, the system relies on MIDI as the core information protocol, integrating controllers, pedals, and synthesizers into a unified data stream.</p>
+        <h3>Example architecture and related code</h3>
+    
 
-        <h4>1. Devices and Signal Sources</h4>
 
-        <h3>MIDI & Audio Routing Diagram</h3>
+
+        <p>The diagram below captures one possible setup of MIDI & audio routing, that I am currently using. There are of course many ways to set this kind of thing up, this is a working example that is currently used to collect data for analysis. </p>
 <pre style="font-family: monospace; background-color: #f7f7f7; padding: 1rem; overflow-x: auto;">
                    ┌─────────────────────┐
                    │  Morningstar        │
@@ -276,7 +269,39 @@ LS-2 Output ──▶ Blooper ─▶ AER Alpha Amp
 
 
 
-    </div>
+ 
+
+    <p>
+        This project is supported by a number of interconnected codebases that work together to collect data, undertake real-time analysis, feed data back to performers for further interaction, and even use in data visualisation. These repositories allow the system to capture performance data, run machine learning models live, render dynamic visual feedback, and enable distributed collaboration across networked musicians.
+    </p>
+
+    <p>
+        <strong>1. Data collection and data analysis</strong>
+        <a href="#"><br/>Link to related code</a><br/> 
+   The purpose of this Python script is to manage all midi data collection messaging and real-time data management<. Built with <code>mido</code> and <code>python-rtmidi</code>, this environment listens continuously for incoming messages — including note, CC, and control data — and records them with microsecond precision into an <strong>SQLite database</strong>. Deep learning models (e.g., PyTorch, TensorFlow) can then process these streams to predict or generate new patterns, supporting <em>live adaptive improvisation</em>.
+    </p>
+
+    <p>
+        <strong>2. Real-time performance templates</strong>
+            <a href="#"><br/>Link to related code</a><br/> 
+        The SuperCollider layer manages <strong>sound generation and performance interaction</strong>. It receives interpreted data from the Python process and responds with synthesized gestures, rhythmic patterns, and evolving textures. This setup enables non-linear improvisation structures, linking analytical and auditory domains in real time.
+    </p>
+
+    <p>
+        <strong>3. Visualisation</strong>
+        <a href="#"><br/>Link to related code</a><br/> 
+        A Node.js environment provides <strong>interactive visual feedback</strong> using JavaScript libraries such as <code>D3.js</code> and <code>Three.js</code>. It displays rhythmic lattices, gesture maps, and timing densities, offering musicians a visual interface to explore the evolving structure of improvisations. The visualiser connects directly to the Python data stream for low-latency rendering.
+    </p>
+
+    <p>
+        <strong>4. Jamulus (Low-Latency Collaboration Config)</strong>
+        <a href="#"><br/>Link to related code</a><br/> 
+        Configuration files define <strong>Jamulus-based network setups</strong> for online improvisation and rehearsal. These allow distributed musicians to connect to the Deep Improvisation environment with minimal latency, integrating the analytical and visual systems into remote collaborative performance.
+    </p>
+
+
+
+</div>
 
 
 <div class="get-involved" id="get-involved"> </div>
@@ -285,60 +310,7 @@ LS-2 Output ──▶ Blooper ─▶ AER Alpha Amp
 Coming soon
 
 
-<div class="related-code" id="related-code">
-    <h3>Related Code</h3>
 
-    <p>
-        The <strong>Deep Improvisation Project</strong> is supported by several interconnected codebases that together form the foundation for real-time analysis, interaction, and visualization. These repositories allow the system to capture performance data, run machine learning models live, render dynamic visual feedback, and enable distributed collaboration across networked musicians.
-    </p>
-
-    <p>
-        <strong>1. Python (MIDI + Deep Learning)</strong><br/>
-        Python scripts handle all <strong>MIDI messaging and real-time data management</strong>. Built with <code>mido</code> and <code>python-rtmidi</code>, this environment listens continuously for incoming messages — including note, CC, and control data — and records them with microsecond precision into an <strong>SQLite database</strong>. Deep learning models (e.g., PyTorch, TensorFlow) can then process these streams to predict or generate new patterns, supporting <em>live adaptive improvisation</em>.
-    </p>
-
-    <p>
-        <strong>2. SuperCollider (Performance Engine)</strong><br/>
-        The SuperCollider layer manages <strong>sound generation and performance interaction</strong>. It receives interpreted data from the Python process and responds with synthesized gestures, rhythmic patterns, and evolving textures. This setup enables non-linear improvisation structures, linking analytical and auditory domains in real time.
-    </p>
-
-    <p>
-        <strong>3. Node.js (Visualisation Layer)</strong><br/>
-        A Node.js environment provides <strong>interactive visual feedback</strong> using JavaScript libraries such as <code>D3.js</code> and <code>Three.js</code>. It displays rhythmic lattices, gesture maps, and timing densities, offering musicians a visual interface to explore the evolving structure of improvisations. The visualiser connects directly to the Python data stream for low-latency rendering.
-    </p>
-
-    <p>
-        <strong>4. Jamulus (Low-Latency Collaboration Config)</strong><br/>
-        Configuration files define <strong>Jamulus-based network setups</strong> for online improvisation and rehearsal. These allow distributed musicians to connect to the Deep Improvisation environment with minimal latency, integrating the analytical and visual systems into remote collaborative performance.
-    </p>
-
-    <p>
-        Each of these repositories contributes to a modular, extensible framework for <strong>real-time creative AI and human–machine improvisation</strong>. The complete implementations, setup instructions, and example scripts are hosted across four dedicated GitHub repositories:
-    </p>
-
-    <div style="margin-left: 20px;">
-        <ul>
-            <li><a href="#">Deep Improvisation – Python MIDI + ML</a></li>
-            <li><a href="#">Deep Improvisation – SuperCollider Performance</a></li>
-            <li><a href="#">Deep Improvisation – Node.js Visualisation</a></li>
-            <li><a href="#">Deep Improvisation – Jamulus Network Configs</a></li>
-        </ul>
-    </div>
-
-    <p>
-        These systems together form the technical and conceptual backbone of the Deep Improvisation project — a live, evolving conversation between <strong>data, sound, and human creativity</strong>.
-    </p>
-</div>
-
-
-
-    <div id="links">
-        <h3>Links & References</h3>
-        <p>
-            <a href="#">Project GitHub / Resources</a><br/>
-            <a href="#">Related Publications</a>
-        </p>
-    </div>
 
     <figure>
         <figcaption>
