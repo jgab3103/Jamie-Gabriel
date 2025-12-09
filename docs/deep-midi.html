@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Improvisation Project - Jamie Gabriel</title>
+    <title>Deep Listening Project - Jamie Gabriel</title>
     <style>
         body {
             font-family: sans-serif;
@@ -19,7 +19,6 @@
             text-align: left;
         }
 
-        /* Flex layout for image on right */
         .intro-flex {
             display: flex;
             align-items: flex-start;
@@ -38,7 +37,7 @@
         }
 
         figure {
-            margin: 1rem 0; /* reduced spacing globally */
+            margin: 1rem 0;
         }
 
         figure:first-of-type {
@@ -76,7 +75,7 @@
     </style>
 </head>
 <body>
-    <h1>Deep MIDI</h1>
+    <h1>Deep Listening</h1>
     <h2>Real-Time MIDI Pattern Analysis for Augmented Improvisation</h2>
     <a class="back-link" href="./index.html">← Back</a>
 
@@ -85,158 +84,184 @@
         <h3>Contents</h3>
         <ul>
             <li><a href="#description">Overview</a></li>
-                <li><a href="#why-different">Existing research projects using MIDI data</a></li>
             <li><a href="#background">Some background reading</a></li>
             <li><a href="#data-collection">Example architecture and related code</a></li>
-   
-                         <li><a href="#get-involved">Getting involved in this project</a></li>
-
+            <li><a href="#get-involved">Getting involved in this project</a></li>
         </ul>
     </div>
 
     <div class="intro-flex" id="description">
-
-
         <div class="intro-text">
-             <h3>Overview</h3>
-           
-
-          <p>The purpose of this project is to capture and analyse MIDI data in real time and use it to enhance live improvised performance. The data includes both note-on/note-off events as well as any changes that might be taking place in MIDI enabled effects units (i.e. as values coming from a LFO Filter knob on a synth, or a level change on a guitar effects pedal). All data is recorded, timestamped, and analysed using real-time deep learning models. These models are used to create new MIDI data which is fed back to provide musical stimulus during performances. </p>
-
-
-            <p>This project does not seek to automate performances or to mimick the human ability improvise. Instead, the idea is to find ways to augment the improvisation experience for musicians in the context of live settings. When musicans play in ensemble settings, they are in a constant process of perceiving their own and others’ musical decisions and responding to that. This project is about finding ways to enhance that process by using real-time data that is produced by the musicians.</p>
-
-            <p>This is a multidiscipllinary project bringing together improvisation practice, real-tme sound design, and the use of advanced mathematics to analyse streaming data and discover latent patterns in data. The end goal is to find new ways to think about interactive creative performance, and reframe the MIDI protocol as a language that can assist creative interactions. It aims to enables a new kind of deep listening where performers can interact with emergent patterns in the data as it is created, and where data can become an active participant in the creative process. </p>
+            <h3>Overview</h3>
 
             <p>
-                The title of this project, Deep MIDI, is a nod to Pauline Oliveros' work in this field, and her committment to create sonic experiences  from which participants (be they listeners or performers) can find new ways to explore and experience music. </p>
+                The purpose of this project is to capture and analyse MIDI data in real time and use it to enhance live improvised performance. The data includes both note-on/note-off events as well as any changes that might be taking place in MIDI-enabled effects units (for example, values coming from an LFO filter knob on a synth, or a level change on a guitar pedal). 
+                All data is recorded, timestamped, and analysed using real-time deep learning models. These models are used to create new MIDI data which can be fed back to performers as musical stimulus during improvisation.
+            </p>
 
+            <p>
+                The goal is not to automate performance or simulate human improvisers. Instead, it is to enhance the improvisational environment by allowing performers to interact with latent musical structures as they emerge — a real-time feedback loop between musician, data, and sound.
+            </p>
 
+            <p>
+                This is a multidisciplinary project combining improvisation practice, live sound design, computational modelling, and symbolic music representation. It explores how performers can engage with high-resolution, continuously evolving musical data, creating a form of <em>deep listening</em> in which the system becomes a responsive participant in the musical dialogue.
+            </p>
 
+            <p>
+                The name <strong>Deep Listening</strong> references Pauline Oliveros’ lifelong work exploring expanded listening practices and the creative, relational potential of sound. This project extends that lineage into real-time algorithmic improvisation.
+            </p>
         </div>
     </div>
-
-    <div class="why-different" id="why-different">
-    	 <h3>Existing research projects using MIDI data</h3>
-
-  <p>There are a number of research projects currently taking place Music Information Retrieval (MIR) which utilise MIDI data. Existing studies focus on pattern mining or modeling performance after the data has been been captured. Some of these are listed below.</p>
-
-
-
-  <table style="width:100%; border-collapse:collapse; margin-top:1em;">
-    <thead>
-      <tr style="background-color:#f0f0f0; text-align:left;">
-        <th style="padding:10px; border-bottom:2px solid #ccc;">Researcher / Group</th>
-        <th style="padding:10px; border-bottom:2px solid #ccc;">Project / Dataset</th>
-        <th style="padding:10px; border-bottom:2px solid #ccc;">Focus / Contribution</th>
-        <th style="padding:10px; border-bottom:2px solid #ccc;">Reference (APA7)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="padding:10px;">Hawthorne, C. (Google Magenta)</td>
-        <td style="padding:10px;">MAESTRO Dataset</td>
-        <td style="padding:10px;">High-quality aligned audio–MIDI data from piano performances for transcription and generation tasks.</td>
-        <td style="padding:10px;">Hawthorne, C. et al. (2018). *Enabling factorized piano music modeling and generation with the MAESTRO dataset*. ISMIR.</td>
-      </tr>
-      <tr>
-        <td style="padding:10px;">Simon, I., Roberts, A. (Google Magenta)</td>
-        <td style="padding:10px;">PerformanceRNN / Magenta MIDI Dataset</td>
-        <td style="padding:10px;">Expressive performance modeling and real-time sequence generation using recurrent neural networks.</td>
-        <td style="padding:10px;">Oore, S. et al. (2018). *This time with feeling: Learning expressive musical performance*. Neural Computing and Applications.</td>
-      </tr>
-      <tr>
-        <td style="padding:10px;">Donahue, C. (UCSD)</td>
-        <td style="padding:10px;">MIDI-DDSP</td>
-        <td style="padding:10px;">Neural synthesis conditioned on MIDI control parameters for expressive sound generation.</td>
-        <td style="padding:10px;">Huang, R., & Donahue, C. (2021). *MIDI-DDSP: Detailed control of musical performance via hierarchical modeling*. ISMIR.</td>
-      </tr>
-      <tr>
-        <td style="padding:10px;">Raffel, C. (Columbia / Google)</td>
-        <td style="padding:10px;">Lakh MIDI Dataset</td>
-        <td style="padding:10px;">Large-scale collection of MIDI files aligned with Million Song Dataset for symbolic–audio mapping.</td>
-        <td style="padding:10px;">Raffel, C. (2016). *Learning-based methods for comparing sequences, with applications to audio-to-MIDI alignment and matching*. PhD thesis, Columbia University.</td>
-      </tr>
-      <tr>
-        <td style="padding:10px;">Kim, J., & Bello, J. P. (NYU)</td>
-        <td style="padding:10px;">URMP Dataset</td>
-        <td style="padding:10px;">Synchronized audio–video–MIDI dataset of chamber ensembles for multi-modal music analysis.</td>
-        <td style="padding:10px;">Li, B., Kim, J., & Bello, J. P. (2018). *URMP: A dataset for multimodal music performance analysis*. ISMIR.</td>
-      </tr>
-      <tr>
-        <td style="padding:10px;">MIDI Toolbox (Eerola & Toiviainen)</td>
-        <td style="padding:10px;">MATLAB MIDI Toolbox</td>
-        <td style="padding:10px;">Early symbolic music analysis environment; basis for subsequent MIR dataset handling.</td>
-        <td style="padding:10px;">Eerola, T., & Toiviainen, P. (2004). *MIDI Toolbox: MATLAB tools for music research*. University of Jyväskylä.</td>
-      </tr>
-      <tr>
-        <td style="padding:10px;">Huang, C. A., & Yang, Y.-H. (Academia Sinica)</td>
-        <td style="padding:10px;">POP909 Dataset</td>
-        <td style="padding:10px;">909 full pop songs in aligned MIDI format for melody, harmony, and structure analysis.</td>
-        <td style="padding:10px;">Wang, Z. et al. (2020). *POP909: A pop-song dataset for music arrangement generation*. ISMIR.</td>
-      </tr>
-      <tr>
-        <td style="padding:10px;">Choi, K. et al. (Spotify Research)</td>
-        <td style="padding:10px;">GiantMIDI-Piano</td>
-        <td style="padding:10px;">Automated transcription of piano music into large-scale MIDI dataset for generative models.</td>
-        <td style="padding:10px;">Kong, Q. et al. (2020). *GiantMIDI-Piano: A large-scale MIDI dataset for classical piano music*. ISMIR.</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-
-
-</div>
 
 
     <div class="background-reading" id="background">
         <h3>Background Reading</h3>
-  <p>Some interesting background reading for this topic is listed below. </p>
+        <p>
+            Below is a consolidated selection of foundational texts and contemporary research relevant to the Deep Listening project. These works span deep listening practice, computational creativity, real-time MIR, and live human–machine improvisation.
+        </p>
 
-        <ul>
-            <li><strong>Deep Listening and Creative Awareness</strong><br/>
-                Oliveros, P. (2005). <em>Deep Listening: A Composer’s Sound Practice</em>. Universe.<br/>
-                A foundational philosophy for this project, framing listening as a creative, meditative, and relational practice.
-            </li>
+<section id="deep-listening-lit">
 
-            <li><strong>Real-Time Music Information Retrieval (MIR)</strong><br/>
-                Fiebrink, R. (2011). <em>Real-Time Human Interaction with Supervised Learning Algorithms for Music Composition and Performance</em> (PhD Thesis, Princeton).<br/>
-                Explores adaptive, performer-in-the-loop systems for real-time learning — a precursor to the live analysis in Deep Listening.<br/>
-                Lartillot, O., et al. (2008). <em>A MATLAB Toolbox for Music Information Retrieval</em>. Proc. ISMIR.<br/>
-                Early example of feature extraction frameworks in MIR, forming the basis for real-time adaptation in creative contexts.
-            </li>
 
-            <li><strong>Computational Creativity and Collaboration</strong><br/>
-                Bown, O., & Martin, A. (2019). <em>Machine Listening: Improvisation with Algorithms</em>. Organised Sound.<br/>
-                Discusses how algorithmic systems can participate in improvisation without deterministic control — central to Deep Listening’s feedback philosophy.<br/>
-                Collins, N. (2008). <em>The Analysis of Generative Music Programs</em>. Organised Sound.<br/>
-                Highlights the tension between generative autonomy and human co-creation; informs this project’s balance between analysis and performer agency.
-            </li>
-
-            <li><strong>Real-Time Pattern Recognition and Deep Learning</strong><br/>
-                Hawthorne, C., et al. (2018). <em>Onsets and Frames: Dual-Objective Piano Transcription</em>. ISMIR.<br/>
-                Demonstrates deep neural architectures for high-resolution MIDI transcription — a model for real-time symbolic representation.<br/>
-                Choi, K., et al. (2017). <em>Towards Music Embeddings: Learning with Triplet Loss</em>. ISMIR.<br/>
-                Provides methods for embedding musical sequences in high-dimensional latent spaces — relevant for identifying emergent meta-sequences in MIDI streams.
-            </li>
-
-            <li><strong>Human–Machine Improvisation Systems</strong><br/>
-                Agres, K., & Herremans, D. (2020). <em>Music and Artificial Intelligence: From Composition to Performance</em>. Frontiers in Artificial Intelligence.<br/>
-                Surveys how AI can engage with human musicians dynamically — a framing for real-time improvisation feedback models.<br/>
-                Lewis, G. E. (2000). <em>Too Many Notes: Computers, Complexity, and Culture in Voyager</em>. Leonardo Music Journal.<br/>
-                Describes the Voyager system, an early model for computer-human improvisation, philosophically aligned with Deep Listening’s interactive ethos.
-            </li>
-        </ul>
+    <!-- OLIVEROS -->
+    <div class="lit-block">
+        <b>Deep Listening & Sonic Awareness</b>
+        <p><strong>Oliveros, P. (2005).</strong> <em>Deep Listening: A Composer’s Sound Practice</em>. iUniverse.</p>
+        <p>
+            Oliveros provides the foundational philosophical framework for this project: listening as an
+            active, relational, and ethical practice rather than passive hearing. Her emphasis on
+            attentiveness, reciprocity, and co-presence directly informs how algorithmic agents in
+            performance should behave—when to respond, when to hold back, and how to maintain musical
+            agency and respect for human partners.
+        </p>
     </div>
 
+    <!-- FIEBRINK -->
+    <div class="lit-block">
+        <b>Real-Time MIR, Interactive Machine Learning & Performer-in-the-Loop Systems</b>
+
+        <p><strong>Fiebrink, R. (2011).</strong> <em>Real-Time Human Interaction with Supervised Learning
+            Algorithms for Music Composition and Performance</em>. Princeton University.</p>
+        <p>
+            Fiebrink’s thesis is a landmark in interactive machine learning for musicians. The work
+            demonstrates how performers can actively train, refine, and reshape ML models during
+            performance, enabling adaptive mappings and personalised behaviours. This directly underpins
+            your Deep Listening system’s design ethos: systems should learn with the performer, not just
+            before the performance.
+        </p>
+
+        <p><strong>Lartillot, O., Toiviainen, P., & Eerola, T. (2008).</strong> A MATLAB Toolbox for Music
+            Information Retrieval. <em>Data Analysis, Machine Learning and Applications</em>.</p>
+        <p>
+            Offers the conceptual foundation for MIR feature extraction. Although your system uses
+            real-time implementations, the vocabulary of features (onsets, chroma, spectral flux,
+            centroids) and their musical interpretations traces back to this lineage.
+        </p>
+    </div>
+
+    <!-- IMPROVISATION / CREATIVITY -->
+    <div class="lit-block">
+        <b>Computational Creativity & Algorithmic Improvisation</b>
+
+        <p><strong>Bown, O., & Martin, A. (2019).</strong> Machine Listening: Improvisation with Algorithms.
+            <em>Organised Sound</em>.</p>
+        <p>
+            Explores algorithmic improvisers as co-creative agents, offering concrete design considerations
+            for making systems “feel musical.” Emphasizes evaluation, responsiveness, and human-centred
+            interaction—all central to Deep Listening.
+        </p>
+
+        <p><strong>Collins, N. (2008).</strong> The Analysis of Generative Music Programs.
+            <em>Organised Sound, 13</em>(3).</p>
+        <p>
+            Provides taxonomy and critical frameworks for generative systems, including autonomy levels,
+            randomness control, and interpretive transparency. Helps contextualise how your system should
+            generate events, respond to performers, and expose control to users.
+        </p>
+    </div>
+
+    <!-- DEEP LEARNING -->
+    <div class="lit-block">
+        <b>Deep Learning for Symbolic & Real-Time Pattern Recognition</b>
+
+        <p><strong>Hawthorne, C., et al. (2018).</strong> Onsets and Frames: Dual-Objective Piano Transcription.
+            <em>ISMIR / arXiv</em>.</p>
+        <p>
+            Demonstrates high-fidelity symbolic representation derived from audio, forming the conceptual
+            basis for real-time symbolic interaction. Onsets–Frames models are useful for detecting performer
+            intent, expressive gesture, and timing information that can feed predictive models.
+        </p>
+
+        <p><strong>Choi, K., Fazekas, G., & Sandler, M. (2017).</strong> Towards Music Embeddings: Learning with
+            Triplet Loss. <em>ISMIR</em>.</p>
+        <p>
+            Shows how embedding spaces can encode short musical phrases for similarity, retrieval, or
+            conditioning. Embeddings become essential tools in your system for:
+        </p>
+
+        <div class="sub-points">
+            <p>• Real-time motif matching</p>
+            <p>• Predictive modelling</p>
+            <p>• Corpus-driven improvisation</p>
+        </div>
+    </div>
+
+    <!-- HUMAN-MACHINE IMPROVISATION -->
+    <div class="lit-block">
+        <b>Human–Machine Improvisation Systems</b>
+
+        <p><strong>Agres, K., & Herremans, D. (2020).</strong> Music and Artificial Intelligence: From Composition
+            to Performance. <em>Frontiers in Artificial Intelligence</em>.</p>
+        <p>
+            A state-of-the-art overview of AI-supported creative systems. This serves as the larger academic
+            context in which your Deep Listening system situates itself—connecting ML, improvisation, and
+            performance research.
+        </p>
+
+        <p><strong>Lewis, G. E. (2000).</strong> Too Many Notes: Computers, Complexity, and Culture in Voyager.
+            <em>Leonardo Music Journal</em>.</p>
+        <p>
+            The Voyager system is the historical prototype for fully autonomous improvising agents. Lewis’s
+            framing—non-hierarchical human–machine interplay, distributed agency, and computational “musical
+            personalities”—is essential theoretical grounding for any modern interactive system.
+        </p>
+    </div>
+
+    <!-- PROTOCOLS -->
+    <div class="lit-block">
+        <h3>Real-Time Protocols, Latency, and Expressive Control</h3>
+
+        <p><strong>Wessel, D., & Wright, M. (2002).</strong> Problems and Prospects for Intimate Musical Control
+            of Computers. <em>Computer Music Journal</em>.</p>
+        <p>
+            Focuses on latency, gesture mapping, and multimodal control — topics central to designing responsive,
+            expressive live systems. Their insights directly shape your system’s technical constraints
+            (e.g., keeping round-trip latency below ~15–30 ms for ensemble-tight interactions).
+        </p>
+
+        <p><strong>Wright, M., & Freed, A. (1997).</strong> Open Sound Control: A New Protocol for Communicating
+            with Sound Synthesizers. <em>ICMC</em>.</p>
+        <p>
+            Outlines OSC’s advantages over MIDI: higher resolution, network friendliness, address hierarchies,
+            and time-tagged bundles. These are essential in your setup where MIDI controllers, a Raspberry Pi,
+            SuperCollider, and Python ML models communicate in real time.
+        </p>
+    </div>
+
+</section>
+
+
+    </div>
+
+
+
     <div class="data-collection" id="data-collection">
-        <h3>Example architecture and related code</h3>
-    
+        <b>Example architecture and related code</b>
 
-
-
-        <p>The diagram below captures one possible setup of MIDI & audio routing, that I am currently using. There are of course many ways to set this kind of thing up, this is a working example that is currently used to collect data for analysis. </p>
+        <p>
+            The diagram below captures one possible setup of MIDI & audio routing currently used in this project. There are many possible variations; this is just the working environment used for data collection and live experimentation.
+        </p>
+<!-- 
 <pre style="font-family: monospace; background-color: #f7f7f7; padding: 1rem; overflow-x: auto;">
                    ┌─────────────────────┐
                    │  Morningstar        │
@@ -265,57 +290,43 @@ Arturia MicroFreak/Octotrack/Korg Modwave ───────────┘ (
 
 LS-2 Output ──▶ Blooper ─▶ AER Alpha Amp
 </pre>
+ -->
+        <p>
+            This project is supported by several interconnected codebases that work together to collect data, process it in real time, generate responsive musical output, and visualise emerging patterns.
+        </p>
 
+        <p>
+            <strong>1. Data collection and analysis (Python)</strong><br/>
+            <a href="#">Link to related code</a><br/>
+            Python scripts using <code>mido</code> and <code>python-rtmidi</code> capture MIDI data with microsecond precision into an SQLite database. Deep learning models (PyTorch/TensorFlow) process streams to generate predictions, embeddings, or new musical material during live performance.
+        </p>
 
+        <p>
+            <strong>2. Real-time performance templates (SuperCollider)</strong><br/>
+            <a href="#">Link to related code</a><br/>
+            SuperCollider receives interpreted data and controls synthesis, gesture responses, and algorithmic textures, enabling real-time interaction between performer and system.
+        </p>
 
+        <p>
+            <strong>3. Visualisation (Node.js)</strong><br/>
+            <a href="#">Link to related code</a><br/>
+            JavaScript visualisers (D3.js, Three.js) display rhythmic lattices, gesture trajectories, and emergent structures. These connect directly to the Python processes for live rendering.
+        </p>
 
- 
+        <p>
+            <strong>4. Jamulus (Network Collaboration)</strong><br/>
+            <a href="#">Link to related code</a><br/>
+            Jamulus configurations enable distributed improvisation with low-latency feedback, integrating Deep Listening tools into remote performance setups.
+        </p>
+    </div>
 
-    <p>
-        This project is supported by a number of interconnected codebases that work together to collect data, undertake real-time analysis, feed data back to performers for further interaction, and even use in data visualisation. These repositories allow the system to capture performance data, run machine learning models live, render dynamic visual feedback, and enable distributed collaboration across networked musicians.
-    </p>
+    <div class="get-involved" id="get-involved"></div>
+    <h3>Getting involved in this project</h3>
 
-    <p>
-        <strong>1. Data collection and data analysis</strong>
-        <a href="#"><br/>Link to related code</a><br/> 
-   The purpose of this Python script is to manage all midi data collection messaging and real-time data management<. Built with <code>mido</code> and <code>python-rtmidi</code>, this environment listens continuously for incoming messages — including note, CC, and control data — and records them with microsecond precision into an <strong>SQLite database</strong>. Deep learning models (e.g., PyTorch, TensorFlow) can then process these streams to predict or generate new patterns, supporting <em>live adaptive improvisation</em>.
-    </p>
-
-    <p>
-        <strong>2. Real-time performance templates</strong>
-            <a href="#"><br/>Link to related code</a><br/> 
-        The SuperCollider layer manages <strong>sound generation and performance interaction</strong>. It receives interpreted data from the Python process and responds with synthesized gestures, rhythmic patterns, and evolving textures. This setup enables non-linear improvisation structures, linking analytical and auditory domains in real time.
-    </p>
-
-    <p>
-        <strong>3. Visualisation</strong>
-        <a href="#"><br/>Link to related code</a><br/> 
-        A Node.js environment provides <strong>interactive visual feedback</strong> using JavaScript libraries such as <code>D3.js</code> and <code>Three.js</code>. It displays rhythmic lattices, gesture maps, and timing densities, offering musicians a visual interface to explore the evolving structure of improvisations. The visualiser connects directly to the Python data stream for low-latency rendering.
-    </p>
-
-    <p>
-        <strong>4. Jamulus (Low-Latency Collaboration Config)</strong>
-        <a href="#"><br/>Link to related code</a><br/> 
-        Configuration files define <strong>Jamulus-based network setups</strong> for online improvisation and rehearsal. These allow distributed musicians to connect to the Deep Improvisation environment with minimal latency, integrating the analytical and visual systems into remote collaborative performance.
-    </p>
-
-
-
-</div>
-
-
-<div class="get-involved" id="get-involved"> </div>
-<h3>Getting involved in this project</h3>
-
-Coming soon
-
-
-
+    <p>Coming soon</p>
 
     <figure>
-        <figcaption>
-            <!-- Optional extra info -->
-        </figcaption>
+        <figcaption></figcaption>
     </figure>
 </body>
 </html>
