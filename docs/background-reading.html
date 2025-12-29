@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Listening Project - Jamie Gabriel</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+            color: #222;
+            background-color: #fff;
+        }
+
+        h1 {
+            text-align: left;
+        }
+
+        .intro-flex {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .intro-text {
+            flex: 1;
+        }
+
+        .intro-image img {
+            width: 150px;
+            height: auto;
+            display: block;
+        }
+
+        figure {
+            margin: 1rem 0;
+        }
+
+        figure:first-of-type {
+            margin-top: 0.5rem;
+        }
+
+        figcaption h3 {
+            margin: 0.2rem 0;
+            font-size: 1.2rem;
+        }
+
+        figcaption h3 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        figcaption h3 .small {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .toc ul {
+            list-style-type: disc;
+            margin-left: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Deep Improv - Background Reading</h1>
+
+    <a class="back-link" href="./deep-improv.html">← Back</a>
+
+    <div class="background-reading" id="background">
+        <h3>Background Reading</h3>
+        <p>
+            When I find interesting related articles and books I try and and find time to pop it here, lit review style. A work in progress. 
+        </p>
+
+<section id="deep-listening-lit">
+
+    <div class="lit-block">
+
+        <p><strong>Agres, K., & Herremans, D. (2020).</strong> Music and Artificial Intelligence: From Composition
+            to Performance. <em>Frontiers in Artificial Intelligence</em>.</p>
+        <p>
+            Nice overview AI-supported creative systems. Give a big picture view of how these types of systems integrate with  ML, improvisation, and
+            performance research.
+        </p>
+
+        <p><strong>Bown, O., & Martin, A. (2019).</strong> Machine Listening: Improvisation with Algorithms.
+            <em>Organised Sound</em>.</p>
+        <p>
+            Cool article - explores algorithmic improvisers as co-creative agents, offering concrete design considerations
+            for making systems “feel musical.” Emphasizes evaluation, responsiveness, and human-centred
+            interaction—all central to Deep Listening.
+        </p>
+
+        <p><strong>Fiebrink, R. (2011).</strong> <em>Real-Time Human Interaction with Supervised Learning
+            Algorithms for Music Composition and Performance</em>. Princeton University.</p>
+        <p>
+            Really thorough and helpful. Rebecca Fiebrink’s thesis is a great starting place for the integration of  machine learning for musicians. Lots of detail here talking about how performers can actively train, refine, and reshape ML models during
+            performance, enabling adaptive mappings and personalised behaviours. There are some really novel approaches in this text in relation to performance. 
+        </p>
+
+        <p><strong>Lartillot, O., Toiviainen, P., & Eerola, T. (2008).</strong> A MATLAB Toolbox for Music
+            Information Retrieval. <em>Data Analysis, Machine Learning and Applications</em>.</p>
+        <p>
+            Not so much a real-time thing, but a good way to get across the language of audio information and how it can be used as features (explaining concepts such as onsets, chroma, spectral flux, centroids etc.) 
+        </p>
+
+        <p><strong>Lewis, G. E. (2000).</strong> Too Many Notes: Computers, Complexity, and Culture in Voyager.
+            <em>Leonardo Music Journal</em>.</p>
+        <p>
+            Examines the the Voyager, kind of a historical prototype for fully autonomous improvising agents. Lewis’s
+            framing—non-hierarchical human–machine interplay, distributed agency, and computational “musical
+            personalities”—is a cool read for thinking about the kind of aesthetic questions that always pop when designing these systems.
+        </p>
+
+        <p><strong>Oliveros, P. (2005).</strong> <em>Deep Listening: A Composer’s Sound Practice</em>. iUniverse.</p>
+        <p>
+            This is an interesting foundational philosophical work, presenting listening as an
+            active, relational, and ethical practice rather than passive activity. There is really intresting emphasis in this writing on
+            attentiveness, reciprocity and co-presence in music. Think of it as a philislophical foundation to undeping how technology might be designed to respond to humans as creative partners.
+        </p>
+
+        <p><strong>Wessel, D., & Wright, M. (2002).</strong> Problems and Prospects for Intimate Musical Control
+            of Computers. <em>Computer Music Journal</em>.</p>
+        <p>
+            Raises some interesting issues around  latency, gesture mapping, and multimodal control — topics central to designing responsive,
+            expressive live systems, and also using a combination or protocols to assist improvisation.
+        </p>
+
+        <p><strong>Wright, M., & Freed, A. (1997).</strong> Open Sound Control: A New Protocol for Communicating
+            with Sound Synthesizers. <em>ICMC</em>.</p>
+        <p>
+            Older article - but just raises this issue around issues with MIDI as a protocol. Outlines OSC’s advantages over MIDI: higher resolution, network friendliness, address hierarchies,
+            and time-tagged bundles. These are essential in your setup where MIDI controllers, a Raspberry Pi,
+            SuperCollider, and Python ML models communicate in real time.
+        </p>
+
+    </div>
+
+</section>
+
+    </div>
+
+</body>
+</html>
