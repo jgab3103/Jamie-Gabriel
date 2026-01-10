@@ -1,76 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About – Jamie Gabriel</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            line-height: 1.6;
-            color: #222;
-            background-color: #fff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About – Jamie Gabriel</title>
 
-        h1 {
-            text-align: left;
-        }
+<style>
+:root {
+    --bg: #0f1115;
+    --panel: rgba(20,24,32,0.85);
+    --ink: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #7aa2ff;
+    --border: rgba(255,255,255,0.08);
+}
 
-        .intro-image img {
-            width: 150px;
-            height: auto;
-            display: block;
-            margin-bottom: 1.5rem;
-        }
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 3rem 1.5rem;
+    line-height: 1.65;
+    color: var(--ink);
 
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
+    background:
+        radial-gradient(700px 350px at 15% 15%, rgba(122,162,255,0.12), transparent 60%),
+        linear-gradient(180deg, #0c0f14, #111827);
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+.main {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem 3rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}
+
+h1 {
+    margin: 0 0 1.6rem;
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
+    color: #f9fafb;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--muted);
+}
+
+p {
+    margin-bottom: 1.2rem;
+    color: var(--ink);
+}
+
+.muted {
+    color: var(--muted);
+}
+</style>
 </head>
+
 <body>
+<div class="main">
 
-    <h1>About me</h1>
+<h1>About</h1>
 
-    <a class="back-link" href="./index.html">← Back</a>
+<a class="back-link" href="./index.html">← Back</a>
 
+<p>
+    I am a musician and computer scientist living in Newcastle, Australia. I have extensive
+    experience across music, teaching, and data science. I studied music at both the
+    Australian Institute of Music and the Sydney Conservatorium of Music, before completing
+    postgraduate studies at Macquarie University and the University of Technology Sydney.
+    I hold a PhD in computational musicology, focused on the application of machine learning
+    models to musicological questions.
+</p>
 
+<p>
+    As part of that research, I developed a symbolic music search engine that enables nuanced
+    querying across large-scale orchestral scores. Over the past two decades I have written
+    a wide range of music software — and other software — using languages including C, C++,
+    Java, R, Haskell, and Python.
+</p>
 
-    <p>
-        I am a musician and computer scientist living in Newcastle, Australia. I have extensive experience in music, teaching, and data science. I studied music at both the Australian Institute of Music and the Sydney Conservatorium of Music, before undertaking my postgrad studies at Macquarie University and the University of Technology in Sydney. I have a PhD in computational musicology which explored the application of machine learning models to questions of musicology. As part of that project I created a symbolic music search engine application which allows nuanced searching across large scale orchestral scores. I have written all kinds of music software over the last couple of decades (all kinds of other software too) using languages such as C, C++, Java, R, Haskell and Python.
-    </p>
+<p>
+    Alongside research and practice, I have extensive experience teaching at university level
+    and in private settings. I have taught across musicology, harmony and analysis, jazz
+    improvisation, music history, and ensemble performance, and have occasionally taught
+    courses in computer science and data science.
+</p>
 
-    <p>
-        I also have extensive experience teaching at university as well as privately. I have taught on lots of different music courses in the areas of musicology, harmony and analysis, jazz improvisation, music history and ensemble performance. From time to time I have also taught on courses in computer science and data science.
-    </p>
+<p>
+    Around 2012, I stepped away from the music sector to work more fully in data science.
+    For roughly a decade I worked in health data, delivering analytics and AI projects,
+    architecting enterprise-scale data platforms, and leading large technical teams.
+    My most recent role was as Chief Data Officer at the Cancer Institute NSW.
+    It was a deeply rewarding and challenging period of work.
+</p>
 
-    <p>
-        Around 2012 I jumped out of the music space for a while, heading into roles with more of a purely data science focus. I worked for about a decade in health data. During this time I delivered all kinds of health-related analytics and AI projects, architected enterprise-level data solutions at scale, and ran large technical teams. My most recent role has been as Chief Data Officer of the Cancer Institute NSW. It has been an amazing, rewarding, and exciting ride. But in recent years I have increasingly felt the call to come back into music. I am really happy to be back.
-    </p>
+<p>
+    In recent years, however, I felt an increasing pull back toward music.
+    Returning to music-making, teaching, and writing has been both grounding and energising.
+    I have been spending more time composing and engaging deeply with sound and synthesis.
+    Many of the articles and projects on this site grow directly out of those interests.
+</p>
 
-    <p>
-        It has been great to find time again for prioritising music in my life — to be able to teach music and write about it, and share the resources from a lifetime of study. I have started to find more time to compose and delve more deeply into the nature of sound and sound synthesis. Many of the articles you will find on this site relate to all of those interests.
-    </p>
+<p>
+    Perhaps the most meaningful part of this return has been reconnecting with collaborative
+    music-making. Playing music with others — within supportive, inclusive creative cultures —
+    remains at the core of what music is for me.
+</p>
 
-    <p>
-        Perhaps the most exciting thing about the move back into music has been finding time to play music with other people, which is always so rewarding and what it is all about. We are in a time when, more than ever before, playing music with others is underpinned by supportive and inclusive culture. This is as it should be — respecting the different ways people come to have music in their life and helping them on the journey.
-    </p>
+<p>
+    In 2024, I began work on a first album with <a href="https://sallyjamila.com/">Sally Jamila</a>,
+    an Aotearoa/New Zealand–based artist. We studied music together as teenagers and had long
+    hoped to collaborate creatively again. The project is due for release in 2025, and the
+    process of reconnecting as creative partners has been a genuine joy.
+</p>
 
-    <p>
-        In 2024 I started working on a first album. I am recording this with <a href="https://sallyjamila.com/">Sally Jamila</a>, an Aotearoa/NZ-based artist, and we are hoping to release this in 2025. Sally and I studied music together as teenagers and have been wanting to make this happen ever since. To reconnect with my creative partner in music and in life has been an absolute joy, and we are really excited about the album release and our upcoming live performances.
-    </p>
+<p>
+    Outside of work and music, I swim at the beach most mornings, have two wonderful children,
+    and continue to think — optimistically — that I should do more yoga.
+</p>
 
-    <p>
-        I think that is pretty much everything. I like to swim at the beach every morning. I have two beautiful children. I feel I should do more yoga. Sometimes I think I might like to get a dog.
-    </p>
-
+</div>
 </body>
 </html>
