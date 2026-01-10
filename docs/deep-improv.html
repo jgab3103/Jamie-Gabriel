@@ -1,203 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Listening Project - Jamie Gabriel</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            line-height: 1.6;
-            color: #222;
-            background-color: #fff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Improv – Jamie Gabriel</title>
 
-        h1 {
-            text-align: left;
-        }
+<style>
+:root {
+    --bg: #0f1115;
+    --panel: rgba(20,24,32,0.85);
+    --ink: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #7aa2ff;
+    --border: rgba(255,255,255,0.08);
+}
 
-        .intro-flex {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
+/* Page background */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 3rem 1.5rem;
+    line-height: 1.65;
+    color: var(--ink);
 
-        .intro-text {
-            flex: 1;
-        }
+    background:
+        radial-gradient(700px 350px at 15% 15%, rgba(122,162,255,0.12), transparent 60%),
+        radial-gradient(500px 300px at 85% 25%, rgba(99,102,241,0.08), transparent 55%),
+        linear-gradient(180deg, #0c0f14, #111827);
+}
 
-        .intro-image img {
-            width: 150px;
-            height: auto;
-            display: block;
-        }
+/* Main container */
+.main {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem 3rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}
 
-        figure {
-            margin: 1rem 0;
-        }
+/* Headings */
+h1 {
+    margin: 0 0 0.4rem;
+    font-size: 2.3rem;
+    letter-spacing: -0.02em;
+    color: #f9fafb;
+}
 
-        figure:first-of-type {
-            margin-top: 0.5rem;
-        }
+h2 {
+    margin: 0 0 1.6rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--muted);
+}
 
-        figcaption h3 {
-            margin: 0.2rem 0;
-            font-size: 1.2rem;
-        }
+h3 {
+    margin: 2.2rem 0 0.6rem;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+}
 
-        figcaption h3 a {
-            color: #000;
-            text-decoration: none;
-        }
+/* Links */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
 
-        figcaption h3 .small {
-            font-size: 0.9rem;
-            color: #666;
-        }
+a:hover {
+    text-decoration: underline;
+}
 
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
+/* Back link */
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
+/* Intro layout */
+.intro-flex {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
 
-        .toc ul {
-            list-style-type: disc;
-            margin-left: 2rem;
-        }
-    </style>
+.intro-text {
+    flex: 1;
+}
+
+/* TOC */
+.toc {
+    margin: 2rem 0 3rem;
+    padding: 1.5rem 1.8rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+}
+
+.toc h3 {
+    margin-top: 0;
+}
+
+.toc ul {
+    padding-left: 1.2rem;
+}
+
+.toc li {
+    margin-bottom: 0.5rem;
+}
+
+/* Text */
+p {
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+}
+
+i {
+    color: var(--muted);
+}
+
+/* Lists */
+ul {
+    padding-left: 1.2rem;
+}
+
+li {
+    margin-bottom: 0.6rem;
+}
+
+/* Dividers */
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255,255,255,0.18),
+        transparent
+    );
+    margin: 2.6rem 0;
+}
+
+/* Sections */
+section {
+    margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .intro-flex {
+        flex-direction: column;
+    }
+}
+</style>
 </head>
+
 <body>
+
+<div class="main">
+
     <h1>Deep Improv</h1>
     <h2>Real-Time MIDI and Spectrogram Pattern Analysis for Augmented Improvisation</h2>
+
     <a class="back-link" href="./index.html">← Back</a>
 
-    <!-- Table of Contents -->
     <div class="toc">
         <h3>Contents</h3>
         <ul>
             <li><a href="#description">Overview</a></li>
-            <li><a href="#background">Some background reading</a></li>
-            <li><a href="#data-collection">Example architecture and related code</a></li>
-            <li><a href="#get-involved">Getting involved in this project</a></li>
+            <li><a href="#background">Background reading</a></li>
+            <li><a href="#data-collection">Related code</a></li>
+            <li><a href="#get-involved">Getting involved</a></li>
         </ul>
     </div>
 
-    <div class="intro-flex" id="description">
-        <div class="intro-text">
-            <h3>Overview</h3>
+    <section id="description">
+        <h3>Overview</h3>
 
-            <p>
-                The purpose of this project is to capture and analyse MIDI data in real time and use it to enhance live improvised performance. The data includes both note-on/note-off events as well as any changes that might be taking place in MIDI-enabled effects units (for example, values coming from an LFO filter knob on a synth, or a level change on a guitar pedal). 
-                All data is recorded, timestamped, and analysed using real-time deep learning models. These models are used to create new MIDI data which can be fed back to performers as musical stimulus during improvisation.
-            </p>
+        <p>
+            The purpose of this project is to capture and analyse MIDI data in real time
+            and use it to enhance live improvised performance. The data includes both
+            note-on/note-off events as well as continuous control changes generated by
+            MIDI-enabled effects and instruments.
+        </p>
 
-            <p>
-                The goal is not to automate performance or simulate human improvisers. Instead, it is to enhance the improvisational environment by allowing performers to interact with latent musical structures as they emerge — a real-time feedback loop between musician, data, and sound.
-            </p>
+        <p>
+            All data is recorded, timestamped, and analysed using real-time deep learning
+            models. These models generate new MIDI data which can be fed back to
+            performers as musical stimulus during improvisation.
+        </p>
 
-            <p>
-                This is a multidisciplinary project combining improvisation practice, live sound design, computational modelling, and symbolic music representation. It explores how performers can engage with high-resolution, continuously evolving musical data, creating a form of collaboration in which the system becomes a responsive participant in the musical dialogue.
-            </p>
+        <p>
+            The goal is not to automate performance or simulate human improvisers.
+            Instead, the system enhances the improvisational environment by allowing
+            performers to interact with latent musical structures as they emerge — a
+            real-time feedback loop between musician, data, and sound.
+        </p>
 
+        <p>
+            This is a multidisciplinary project combining improvisation practice,
+            live sound design, computational modelling, and symbolic music
+            representation. The system becomes a responsive participant in the
+            musical dialogue.
+        </p>
 
-            
+        <p>
+            Finally, the name <strong>Deep Improv</strong> is a nod to <i>Deep Listening</i>,
+            the lifelong project of Pauline Oliveros, extending that lineage into
+            real-time MIDI and spectrogram-based improvisation.
+        </p>
+    </section>
 
-            <p>
-                Finally, the name <strong>Deep Improv</strong> is a nod to <i>Deep Listening</i>, a life long project undertaken by Pauline Oliveros that explored expanded listening practices and the creative, collaborative relational potential of sound. This project aims extends that lineage into live improvisation using MIDI and spectrogram data created in real time.
-            </p>
-        </div>
-    </div>
+    <hr>
 
-
-    <div class="background-reading" id="background">
+    <section id="background">
         <h3>Background Reading</h3>
         <p>
-            You can find some background reading, kind of an ongoing lit review, as interesting related work comes out <a href="./background-reading.html">here</a>
+            Ongoing background reading and related literature can be found
+            <a href="./background-reading.html">here</a>.
         </p>
+    </section>
 
+    <hr>
 
+    <section id="data-collection">
+        <h3>Related Code</h3>
 
-
-    </div>
-
-
-
-    <div class="data-collection" id="data-collection">
-        <h3>Related code</h3>
-
- <!--        <p>
-            The diagram below captures one possible setup of MIDI & audio routing currently used in this project. There are many possible variations; this is just the working environment used for data collection and live experimentation.
-        </p> -->
-<!-- 
-<pre style="font-family: monospace; background-color: #f7f7f7; padding: 1rem; overflow-x: auto;">
-                   ┌─────────────────────┐
-                   │  Morningstar        │
-                   │     MC8 Pro         │
-                   │ 4 Omniports + 5-pin │
-                   └───────┬─────────────┘
-                           │
-       ┌───────────────────┼──────────────────────────────────────────────┐
-       │                   │                           │                  │
-       ▼                   ▼                           ▼                  ▼
-Blooper [Ring-Active MIDI IN]  Cloudburst [Standard Type A MIDI IN]  Mood MK II [Ring-Active MIDI IN]  Lost & Found [Ring-Active MIDI IN]
-
-                           │
-                           ▼
-Timeline [5-pin MIDI IN] ──▶ MIDI THRU (5-pin) ──▶ GT-1000 Core [3.5mm MIDI IN] ──▶ MIDI THRU (3.5mm) ──▶ Arturia MicroFreak [3.5mm MIDI IN]
-
-──────────────────────────────────────────────────────────────
-Audio Path
-──────────────────────────────────────────────────────────────
-[Guitar] ──▶ LS-2 Input
-             ├─A Output──▶ FX Loop 1 ──▶ GT-1000 Core ──▶ Return A (LS-2)
-             │
-             └─B Output──▶ Sonic Cake ABY Box ──▶ FX Loop 2 ─▶ Timeline ─▶ Cloudburst ─▶ Mood MK II ─▶ Source Audio EQ2 ─▶ Return B (LS-2)
-
-Arturia MicroFreak/Octotrack/Korg Modwave ───────────┘ (joined via Sonic Cake ABY Box for FX Loop 2)
-
-LS-2 Output ──▶ Blooper ─▶ AER Alpha Amp
-</pre>
- -->
         <p>
-            This project is supported by several interconnected codebases that work together to collect data, process it in real time, generate responsive musical output, and visualise emerging patterns.
+            This project is supported by several interconnected codebases that collect,
+            process, and analyse data in real time, generating responsive musical output
+            and visualising emerging patterns.
         </p>
 
         <p>
-            <strong>1. Setup and data management </strong><br/>
-            <a href="#">Link to related code</a><br/>
-            A collection of starting scripts, mostly in Python. Setting up things like receiving and sending MIDI and Spectrogram data from different sound sources, writing this data to databases etc. Also some handy scripts and config to set up remote performance environments (such as Jamulus)
+            <strong>1. Setup and data management</strong><br>
+            <a href="#">Link to related code</a><br>
+            Python scripts for MIDI and spectrogram capture, database storage, and
+            configuration of remote performance environments (e.g. Jamulus).
         </p>
 
         <p>
-            <strong>2. Real-time performance templates and ML</strong><br/>
-            <a href="#">Link to related code</a><br/>
-            Code to manage and create feedback in real-time performance environments (using SuperCollider, MAX) also integrated with Python ML models
+            <strong>2. Real-time performance templates and ML</strong><br>
+            <a href="#">Link to related code</a><br>
+            Code for managing real-time feedback systems using SuperCollider and Max,
+            integrated with Python-based machine learning models.
         </p>
 
         <p>
-            <strong>3. Visualisation (Node.js)</strong><br/>
-            <a href="#">Link to related code</a><br/>
-            Mostly javascript code, to manage realtime visualisation (using D3.js, Three.js) of music data. 
+            <strong>3. Visualisation</strong><br>
+            <a href="#">Link to related code</a><br>
+            Node.js-based visualisation tools for real-time musical data
+            (D3.js, Three.js).
         </p>
+    </section>
 
-   
-    </div>
+    <hr>
 
-    <div class="get-involved" id="get-involved"></div>
-    <h3>Getting involved in this project</h3>
+    <section id="get-involved">
+        <h3>Getting Involved</h3>
+        <p>
+            To get involved in this project, contact me at
+            <a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a>.
+        </p>
+    </section>
 
-    <p>To get involved in this project, reach out to me at <a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a></p>
+</div>
 
-    <figure>
-        <figcaption></figcaption>
-    </figure>
 </body>
 </html>

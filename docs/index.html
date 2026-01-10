@@ -1,142 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jamie Gabriel</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            line-height: 1.6;
-            color: #222;
-            background-color: #fff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jamie Gabriel</title>
 
-        h1 {
-            text-align: left;
-        }
+<style>
+:root {
+    --bg: #0f1115;
+    --panel: rgba(20,24,32,0.85);
+    --ink: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #7aa2ff;
+    --border: rgba(255,255,255,0.08);
+}
 
-        /* Flex layout for image on right */
-        .intro-flex {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
+/* Page background */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 3rem 1.5rem;
+    line-height: 1.65;
+    color: var(--ink);
 
-        .intro-text {
-            flex: 1;
-        }
+    background:
+        radial-gradient(700px 350px at 15% 15%, rgba(122,162,255,0.12), transparent 60%),
+        radial-gradient(500px 300px at 85% 25%, rgba(99,102,241,0.08), transparent 55%),
+        linear-gradient(180deg, #0c0f14, #111827);
+}
 
-        .intro-image img {
-            width: 150px;
-            height: auto;
-            display: block;
-        }
+/* Main container */
+.main {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem 3rem;
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.45);
+}
 
-        figure {
-            margin: 1rem 0; /* reduced spacing globally */
-        }
+/* Headings */
+h1 {
+    margin: 0 0 1.6rem;
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
+    color: #f9fafb;
+}
 
-        /* Even tighter spacing for first figure */
-        figure:first-of-type {
-            margin-top: 0.5rem;
-        }
+h3 {
+    margin: 1.8rem 0 0.4rem;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+}
 
-        figcaption h3 {
-            margin: 0.2rem 0;
-            font-size: 1.2rem;
-        }
+/* Links */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
 
-        figcaption h3 a {
-            color: #000;
-            text-decoration: none;
-        }
+a:hover {
+    text-decoration: underline;
+}
 
-        figcaption h3 .small {
-            font-size: 0.9rem;
-            color: #666;
-        }
+/* Intro layout */
+.intro-flex {
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+}
 
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
+.intro-text {
+    flex: 1;
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
+/* Image placement */
+.intro-image {
+    margin-top: -0.8rem;
+}
 
-    </style>
+.intro-image img {
+    width: 170px;
+    border-radius: 12px;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.55);
+}
+
+/* Text tones */
+p {
+    color: var(--ink);
+}
+
+i {
+    color: var(--muted);
+    display: block;
+    margin-top: 0.25rem;
+}
+
+/* Lists */
+ul {
+    padding-left: 1.2rem;
+}
+
+li {
+    margin-bottom: 0.6rem;
+}
+
+/* Dividers */
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255,255,255,0.18),
+        transparent
+    );
+    margin: 2.2rem 0;
+}
+
+/* Contact block */
+.contact {
+    margin-top: 1.8rem;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .intro-flex {
+        flex-direction: column;
+    }
+
+    .intro-image {
+        margin-top: 0;
+    }
+
+    .intro-image img {
+        width: 140px;
+    }
+}
+</style>
 </head>
-<body>
-    <h1>Jamie Gabriel</h1>
 
-  <div class="intro-image">
-            <img src="assets/img/JamieFaceEdited_5357.jpeg" alt="Jamie Gabriel">
-        </div>
+<body>
+
+<div class="main">
+
+    <h1>Jamie Gabriel</h1>
 
     <div class="intro-flex">
         <div class="intro-text">
-            <p>I am a musician and computer scientist living in Newcastle, Australia. I have a PhD in computational musicology and am interested in music, as well as math and computer science. I am in the band  <a href = "https://sajaproject.com/">SAJA Project</a> with <a href="https://sallyjamila.com/">Sally Jamila</a><br/><br/> More about me<a href="./about.html"> here</a>.</p>
+            <p>
+                I am a musician and computer scientist living in Newcastle, Australia.
+                I have a PhD in computational musicology and work at the intersection of
+                music, mathematics, and computer science.
+                I perform with <a href="https://sajaproject.com/">SAJA Project</a>
+                alongside <a href="https://sallyjamila.com/">Sally Jamila</a>.
+                <br><br>
+                More about me <a href="./about.html">here</a>.
+            </p>
 
-              <hr/>
-              <h3><a href="./articles.html">Articles & Transcriptions &#10140;</a></h3>
-            <i>Some music transcriptions, academic articles, some math and coding stuff.</i>
+            <hr>
 
+            <h3><a href="./articles.html">Articles & Transcriptions &#10140;</a></h3>
+            <i>Music transcriptions, academic writing, mathematics, and code.</i>
 
+            <h3><a href="./live-music.html">Recordings & Live Music &#10140;</a></h3>
+            <i>Performances, recordings, and live system configurations.</i>
 
-             <h3><a href="./live-music.html">Recordings and Live Music &#10140;</a></h3>
-            <i>Upcoming performances, recordings, live stuff and gear rundown and set up specs.</i>
+            <h3>Current Projects</h3>
+            <ul>
+                <li>
+                    <strong>Research</strong><br>
+                    <a href="./deep-improv.html">
+                        Deep Improv: Real-Time MIDI and Spectrogram Pattern Analysis for Augmented Improvisation
+                    </a>
+                </li>
+                <li>
+                    <strong>Software</strong><br>
+                    <a href="./mitempo-app.html">
+                        MiTempo: iOS app for practising complex and changing time signatures
+                    </a>
+                </li>
+            </ul>
 
-               <h3><a href="#">My Current Projects &#10140;</a></h3>
+            <hr>
 
-
-           <ul>
-            <li>Research Project<br/>
-            <a href="./deep-improv.html">Deep Improv: Real-Time MIDI and Spectrogram Pattern Analysis for Augmented Improvisation</a> </li>
-                  <li>Software<br/>
-            <a href="./mitempo-app.html">MiTempo: an iOS App for use in practice with complex and changing time signatures.</a> </li>
-
-           </ul>
-           
-
-
-<hr/>
-             <h3><a href="#"></a></h3>
-
-                                    <a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a><br/>
-                                    +61(0)490 896 610<br/>
-                                    <a href="https://www.facebook.com/jamie.gabriel.775451">Facebook</a><br/>
-                                    <a href="https://www.instagram.com/jgab2275/">Instagram</a>
-
-            
+            <div class="contact">
+                <a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a><br>
+                +61 (0)490 896 610<br>
+                <a href="https://www.facebook.com/jamie.gabriel.775451">Facebook</a><br>
+                <a href="https://www.instagram.com/jgab2275/">Instagram</a>
+            </div>
         </div>
 
-      
+        <div class="intro-image">
+            <img src="assets/img/alt_bio.jpg" alt="Jamie Gabriel">
+        </div>
     </div>
 
-    <!-- Menu items -->
-    <figure>
-        <figcaption>
-           
-        </figcaption>
-    </figure>
-
-    <figure>
-        <figcaption>
-           
-        </figcaption>
-    </figure>
-
-    <figure>
-        <figcaption>
-           
-        </figcaption>
-    </figure>
+</div>
 
 </body>
 </html>
