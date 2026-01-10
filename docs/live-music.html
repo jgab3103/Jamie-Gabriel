@@ -1,89 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jamie Gabriel - Live Music</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            line-height: 1.6;
-            color: #222;
-            background-color: #fff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jamie Gabriel – Live Music</title>
 
-        h1, h3 {
-            margin-bottom: 0.5rem;
-        }
+<style>
+:root {
+    --bg: #0f1115;
+    --panel: rgba(20,24,32,0.85);
+    --ink: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #7aa2ff;
+    --border: rgba(255,255,255,0.08);
+}
 
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 3rem 1.5rem;
+    line-height: 1.65;
+    color: var(--ink);
 
-        a:hover {
-            text-decoration: underline;
-        }
+    background:
+        radial-gradient(700px 350px at 15% 15%, rgba(122,162,255,0.12), transparent 60%),
+        linear-gradient(180deg, #0c0f14, #111827);
+}
 
-        .back-link {
-            margin-bottom: 2rem;
-            display: inline-block;
-        }
+.main {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem 3rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}
 
-        .video-full {
-            width: 100%;
-            margin-bottom: 2rem;
-        }
+h1 {
+    margin: 0 0 1.6rem;
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
+    color: #f9fafb;
+}
 
-        .video-full iframe {
-            width: 100%;
-            height: 360px;
-        }
+h3 {
+    margin: 2rem 0 1rem;
+    font-size: 1.15rem;
+}
 
-        footer {
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            text-align: center;
-            color: #666;
-        }
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
 
-        footer div {
-            margin-top: 0.5rem;
-        }
-    </style>
+a:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--muted);
+}
+
+.video {
+    width: 100%;
+    margin-bottom: 2rem;
+    aspect-ratio: 16 / 9;
+}
+
+.video iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+p {
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+}
+</style>
 </head>
+
 <body>
-    <h1>Jamie Gabriel</h1>
+<div class="main">
 
-    <a class="back-link" href="./index.html">← Back</a>
+<h1>Jamie Gabriel</h1>
+<a class="back-link" href="./index.html">← Back</a>
 
-    <h3>Live Music</h3>
+<h3>Live Music</h3>
 
-    <div class="video-full">
-        <iframe src="https://www.youtube.com/embed/TGxcx4Bz2Mc?si=rGun-levzh-rN0Se" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-<div>
-    <p>
-        At the moment I mainly play as a solo guitarist and in small ensembles, working across a wide mix of styles. I enjoy playing standards, but also get into free improv stuff.
-    </p>
-
-    <p>
-        I am really into using effects to explores sound, texture and noise, things like abstract soundscapes. You can see more of what I’m up to on <a href="https://www.facebook.com/jamie.gabriel.775451">Facebook</a> or <a href="https://www.instagram.com/jgab2275/">Instagram</a>.
-    </p>
-
-    <p>
-        I am also in the band <a href="https://saja-project.com/">SAJA Project</a>, a collaboration with my partner Sally Jamila and our first album is due out in early 2026. 
-    </p>
-
-    <p>
-        I love integrating geeky and techy stuff into live performance and get into things like applying real time machine models to live settings. 
-    </p>
+<div class="video">
+    <iframe src="https://www.youtube.com/embed/TGxcx4Bz2Mc"
+            title="Live performance"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
 </div>
 
+<p>
+    I currently perform primarily as a solo guitarist and in small ensembles, working across a wide range of styles.
+    While standards remain central to my playing, I am equally drawn to free improvisation.
+</p>
 
+<p>
+    Much of my work focuses on sound, texture, and abstraction, using effects to create extended soundscapes.
+    Updates and performance clips can be found on
+    <a href="https://www.facebook.com/jamie.gabriel.775451">Facebook</a> and
+    <a href="https://www.instagram.com/jgab2275/">Instagram</a>.
+</p>
 
+<p>
+    I also perform as part of <a href="https://sajaproject.com/">SAJA Project</a>,
+    a collaboration with vocalist Sally Jamila. Our debut album is scheduled for release in early 2026.
+</p>
+
+<p>
+    Alongside traditional performance, I explore the use of real-time computational systems and machine learning
+    models as active participants in live improvisation.
+</p>
+
+</div>
 </body>
 </html>

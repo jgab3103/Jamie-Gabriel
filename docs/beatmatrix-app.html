@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiTempo – Jamie Gabriel</title>
+
+<style>
+:root {
+    --bg: #0f1115;
+    --panel: rgba(20,24,32,0.85);
+    --ink: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #7aa2ff;
+    --border: rgba(255,255,255,0.08);
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 3rem 1.5rem;
+    line-height: 1.65;
+    color: var(--ink);
+
+    background:
+        radial-gradient(700px 350px at 15% 15%, rgba(122,162,255,0.12), transparent 60%),
+        linear-gradient(180deg, #0c0f14, #111827);
+}
+
+.main {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem 3rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}
+
+h1 {
+    margin: 0 0 1.6rem;
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
+    color: #f9fafb;
+}
+
+h3 {
+    margin: 2.2rem 0 0.6rem;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--muted);
+}
+
+/* Table of contents */
+.toc {
+    margin: 2rem 0;
+    padding: 1.2rem 1.4rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(0,0,0,0.2);
+}
+
+.toc p {
+    margin: 0 0 0.6rem;
+    font-weight: 500;
+}
+
+.toc ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.toc li {
+    margin-bottom: 0.4rem;
+}
+
+/* Text */
+p {
+    color: var(--ink);
+}
+
+ul {
+    padding-left: 1.2rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+.section {
+    margin-top: 2.5rem;
+}
+
+.muted {
+    color: var(--muted);
+}
+</style>
+</head>
+
+<body>
+<div class="main">
+
+<h1>iOS App: BeatMatrix</h1>
+<a class="back-link" href="./index.html">← Back</a>
+
+<div class="toc">
+    <p>Contents</p>
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#learning-resources">Related Resources</a></li>
+        <li><a href="#change-log">Change Log</a></li>
+        <li><a href="#links">Links & References</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</div>
+
+<div id="overview" class="section">
+    <h3>Overview</h3>
+
+    <p>
+        <strong>MiTempo</strong> is an iOS application designed as an interactive accompaniment and study
+        environment for Konoko rhythm practice. It provides a responsive rhythmic framework in which users
+        can explore timing, phrasing, and articulation through adaptive tempo control, looping, and
+        layered rhythmic structures.
+    </p>
+
+    <p>
+        The app is intended for musicians, composers, and learners seeking to develop a deeper understanding
+        of rhythmic interaction and improvisation within a structured yet flexible digital environment.
+    </p>
+
+    <p>MiTempo enables users to:</p>
+
+    <ul>
+        <li>Generate and manipulate layered rhythmic cycles in real time.</li>
+        <li>Practice Konoko sequences with adaptive tempo and subdivision control.</li>
+        <li>Visualize rhythmic relationships through dynamic pattern displays and playback modes.</li>
+    </ul>
+
+    <p>
+        Conceptually, the project draws on the rhythmic pedagogy of <strong>Rafael Reina</strong>,
+        particularly his work on translating South Indian rhythmic concepts into contemporary
+        compositional and improvisational frameworks. His writings on rhythmic modulation and
+        structural design inform MiTempo’s educational and analytical orientation.
+    </p>
+
+    <p class="muted">
+        Planned updates include expanded rhythmic modules, guided practice materials, and
+        integration with MIDI-based environments for live performance and composition.
+        Documentation, examples, and reference media will be added progressively.
+    </p>
+</div>
+
+<div id="learning-resources" class="section">
+    <h3>Related Resources</h3>
+    <p class="muted">Coming soon.</p>
+</div>
+
+<div id="change-log" class="section">
+    <h3>Change Log</h3>
+    <ul>
+        <li><strong>v0.1.0 (September 2025):</strong> Initial beta release</li>
+    </ul>
+
+    <p class="muted">
+        Development notes, testing feedback, and future milestones will be documented here as
+        MiTempo evolves.
+    </p>
+</div>
+
+<div id="links" class="section">
+    <h3>Links & References</h3>
+    <p>
+        <a href="#">MiTempo – GitHub / Development Notes</a><br>
+        <a href="#">Rafael Reina – Rhythmic Principles</a>
+    </p>
+</div>
+
+<div id="contact" class="section">
+    <h3>Contact</h3>
+    <p>
+        <a href="mailto:jgab3103@gmail.com">jgab3103@gmail.com</a><br>
+        +61 (0)490 896 610<br>
+        <a href="https://www.facebook.com/jamie.gabriel.775451">Facebook</a><br>
+        <a href="https://www.instagram.com/jgab2275/">Instagram</a>
+    </p>
+</div>
+
+</div>
+</body>
+</html>
