@@ -21,7 +21,6 @@ body {
     padding: 3rem 1.5rem;
     line-height: 1.65;
     color: var(--ink);
-
     background:
         radial-gradient(700px 350px at 15% 15%, rgba(122,162,255,0.12), transparent 60%),
         linear-gradient(180deg, #0c0f14, #111827);
@@ -41,6 +40,13 @@ h1 {
     margin: 0 0 1.6rem;
     font-size: 2.2rem;
     letter-spacing: -0.02em;
+    color: #f9fafb;
+}
+
+h2 {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
     color: #f9fafb;
 }
 
@@ -67,6 +73,35 @@ p {
 .muted {
     color: var(--muted);
 }
+
+/* two-column layout */
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+@media (max-width: 800px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.conferences ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.conferences li {
+    margin-bottom: 0.9rem;
+    color: var(--ink);
+}
+
+.conferences span {
+    color: var(--muted);
+}
 </style>
 </head>
 
@@ -74,8 +109,12 @@ p {
 <div class="main">
 
 <h1>About</h1>
-
 <a class="back-link" href="./index.html">← Back</a>
+
+<div class="content-grid">
+
+<!-- BIO COLUMN -->
+<div>
 
 <p>
     I am a musician and computer scientist living in Newcastle, Australia. I have extensive
@@ -133,6 +172,31 @@ p {
     and continue to think — optimistically — that I should do more yoga.
 </p>
 
+</div>
+
+<!-- CONFERENCES COLUMN -->
+<aside class="conferences">
+<h2>Conferences & Events</h2>
+
+<ul>
+    <li><span>2025</span> — AJIRN Conference, Auckland</li>
+    <li><span>2020</span> — Data and Analytics in Health Conference, Melbourne</li>
+    <li><span>2019</span> — PyCon AU, Sydney</li>
+    <li><span>2017</span> — PyCon AU, Melbourne</li>
+    <li><span>2015</span> — ISMIR Conference, Málaga, Spain</li>
+    <li><span>2015</span> — UTS Data Science Symposium</li>
+    <li><span>2013</span> — Stockholm Music Acoustics Conference</li>
+    <li><span>2013</span> — PyCon AU, Hobart</li>
+    <li><span>2012</span> — ACM Recommender Systems Conference, Dublin</li>
+    <li><span>2011</span> — Middle East Engineering Summit (Abu Dhabi, Dubai, Kuwait, Oman)</li>
+    <li><span>2011</span> — Apple WWDC, San Francisco</li>
+    <li><span>2011</span> — Create World Conference, Brisbane</li>
+    <li><span>2011</span> — ATEM Conference, Cairns</li>
+    <li><span>2011</span> — AUC Dev World Conference, Melbourne</li>
+</ul>
+</aside>
+
+</div>
 </div>
 </body>
 </html>
