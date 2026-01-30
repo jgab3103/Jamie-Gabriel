@@ -5,28 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jamie Gabriel</title>
 
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
-    --bg: #0f1115;
-    --panel: rgba(20,24,32,0.85);
-    --ink: #e5e7eb;
-    --muted: #9ca3af;
-    --accent: #7aa2ff;
-    --border: rgba(255,255,255,0.08);
+    --bg: #f8f4eb;
+    --panel: rgba(255,255,255,0.85);
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --accent: #3b5bdb;
+    --border: rgba(0,0,0,0.08);
 }
 
 /* Page background */
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Source Serif 4", Georgia, serif;
     margin: 0;
     padding: 3rem 1.5rem;
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--ink);
 
     background:
-        radial-gradient(700px 350px at 15% 15%, rgba(122,162,255,0.12), transparent 60%),
-        radial-gradient(500px 300px at 85% 25%, rgba(99,102,241,0.08), transparent 55%),
-        linear-gradient(180deg, #0c0f14, #111827);
+        radial-gradient(600px 300px at 20% 10%, rgba(59,91,219,0.06), transparent 60%),
+        linear-gradient(180deg, #f8f4eb, #f3efe5);
 }
 
 /* Main container */
@@ -35,34 +39,40 @@ body {
     margin: 0 auto;
     background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2.5rem 2.5rem 3rem;
+    border-radius: 18px;
+    padding: 2.8rem 2.8rem 3.2rem;
     box-shadow:
-        0 20px 50px rgba(0,0,0,0.45);
+        0 18px 40px rgba(0,0,0,0.08);
 }
 
 /* Headings */
+h1, h3 {
+    font-family: "Inter", system-ui, sans-serif;
+}
+
 h1 {
-    margin: 0 0 1.6rem;
-    font-size: 2.2rem;
-    letter-spacing: -0.02em;
-    color: #f9fafb;
+    margin: 0 0 1.8rem;
+    font-size: 2.35rem;
+    letter-spacing: -0.03em;
 }
 
 h3 {
-    margin: 1.8rem 0 0.4rem;
-    font-size: 1.15rem;
-    letter-spacing: -0.01em;
+    margin: 2rem 0 0.5rem;
+    font-size: 1.05rem;
+    letter-spacing: -0.015em;
+    font-weight: 600;
 }
 
 /* Links */
 a {
     color: var(--accent);
     text-decoration: none;
+    text-underline-offset: 3px;
 }
 
 a:hover {
     text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 /* Intro layout */
@@ -78,19 +88,20 @@ a:hover {
 
 /* Image placement */
 .intro-image {
-    margin-top: -0.8rem;
+    margin-top: -0.4rem;
 }
 
 .intro-image img {
     width: 170px;
-    border-radius: 12px;
+    border-radius: 14px;
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.55);
+        0 10px 30px rgba(0,0,0,0.25);
+    filter: saturate(0.95) contrast(1.02);
 }
 
 /* Text tones */
 p {
-    color: var(--ink);
+    max-width: 62ch;
 }
 
 i {
@@ -105,7 +116,7 @@ ul {
 }
 
 li {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.7rem;
 }
 
 /* Dividers */
@@ -115,10 +126,10 @@ hr {
     background: linear-gradient(
         to right,
         transparent,
-        rgba(255,255,255,0.18),
+        rgba(0,0,0,0.15),
         transparent
     );
-    margin: 2.2rem 0;
+    margin: 2.6rem 0;
 }
 
 /* Contact block */
@@ -157,7 +168,7 @@ hr {
                 I am a musician and computer scientist living in Newcastle, Australia.
                 I have a PhD in computational musicology and tend to research things involving
                 music, mathematics, and computer science.
-                I am also in the band  <a href="https://sajaproject.com/">SAJA Project</a>
+                I am also in the band <a href="https://sajaproject.com/">SAJA Project</a>
                 with <a href="https://sallyjamila.com/">Sally Jamila</a>.
                 <br><br>
                 More details here <a href="./about.html">here</a>.
@@ -190,16 +201,15 @@ hr {
             <hr>
 
             <div class="contact">
-                <a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a>
-           
+                <a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a><br>
                 <a href="https://www.facebook.com/jamie.gabriel.775451">Facebook</a><br>
                 <a href="https://www.instagram.com/jgab2275/">Instagram</a>
             </div>
         </div>
 
-        <div class="intro-image">
+     <!--    <div class="intro-image">
             <img src="assets/img/alt_bio.jpg" alt="Jamie Gabriel">
-        </div>
+        </div> -->
     </div>
 
 </div>

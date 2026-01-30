@@ -5,80 +5,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About – Jamie Gabriel</title>
 
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
-    --bg: #0f1115;
-    --panel: rgba(20,24,32,0.85);
-    --ink: #e5e7eb;
-    --muted: #9ca3af;
-    --accent: #7aa2ff;
-    --border: rgba(255,255,255,0.08);
+    --bg: #f8f4eb;
+    --panel: rgba(255,255,255,0.85);
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --accent: #3b5bdb;
+    --border: rgba(0,0,0,0.08);
 }
 
+/* Page background */
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Source Serif 4", Georgia, serif;
     margin: 0;
     padding: 3rem 1.5rem;
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--ink);
+
     background:
-        radial-gradient(700px 350px at 15% 15%, rgba(122,162,255,0.12), transparent 60%),
-        linear-gradient(180deg, #0c0f14, #111827);
+        radial-gradient(600px 300px at 20% 10%, rgba(59,91,219,0.06), transparent 60%),
+        linear-gradient(180deg, #f8f4eb, #f3efe5);
 }
 
+/* Main container */
 .main {
-    max-width: 880px;
+    max-width: 900px;
     margin: 0 auto;
     background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2.5rem 2.5rem 3rem;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+    border-radius: 18px;
+    padding: 2.8rem 2.8rem 3.2rem;
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.08);
+}
+
+/* Headings */
+h1, h2 {
+    font-family: "Inter", system-ui, sans-serif;
 }
 
 h1 {
-    margin: 0 0 1.6rem;
-    font-size: 2.2rem;
-    letter-spacing: -0.02em;
-    color: #f9fafb;
+    margin: 0 0 1.2rem;
+    font-size: 2.35rem;
+    letter-spacing: -0.03em;
 }
 
 h2 {
     margin: 0 0 1rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #f9fafb;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: -0.01em;
 }
 
+/* Links */
 a {
     color: var(--accent);
     text-decoration: none;
+    text-underline-offset: 3px;
 }
 
 a:hover {
     text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
+/* Back link */
 .back-link {
     display: inline-block;
-    margin-bottom: 2rem;
+    margin-bottom: 2.2rem;
+    font-size: 0.95rem;
     color: var(--muted);
 }
 
+/* Text */
 p {
-    margin-bottom: 1.2rem;
-    color: var(--ink);
-}
-
-.muted {
-    color: var(--muted);
+    margin-bottom: 1.3rem;
+    max-width: 70ch;
 }
 
 /* two-column layout */
 .content-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 2.5rem;
+    gap: 3rem;
     align-items: start;
 }
 
@@ -88,6 +104,7 @@ p {
     }
 }
 
+/* Conferences */
 .conferences ul {
     list-style: none;
     padding: 0;
@@ -96,7 +113,7 @@ p {
 
 .conferences li {
     margin-bottom: 0.9rem;
-    color: var(--ink);
+    font-size: 0.95rem;
 }
 
 .conferences span {
@@ -106,6 +123,7 @@ p {
 </head>
 
 <body>
+
 <div class="main">
 
 <h1>About</h1>
@@ -117,7 +135,7 @@ p {
 <div>
 
 <p>
-    I am a musician and computer scientist living in Newcastle, Australia. I have extensive
+    I am a musician and computer scientist based in Newcastle, Australia. I have extensive
     experience across music, teaching, and data science. I studied music at both the
     Australian Institute of Music and the Sydney Conservatorium of Music, before completing
     postgraduate studies at Macquarie University and the University of Technology Sydney.
@@ -127,8 +145,8 @@ p {
 
 <p>
     As part of that research, I developed a symbolic music search engine that enables nuanced
-    querying across large-scale orchestral scores. Over the past two decades I have written
-    a wide range of music software — and other software — using languages including C, C++,
+    querying across large-scale orchestral scores. Over the past two decades, I have written
+    a wide range of music software — and other software — in languages including C, C++,
     Java, R, Haskell, and Python.
 </p>
 
@@ -141,7 +159,7 @@ p {
 
 <p>
     Around 2012, I stepped away from the music sector to work more fully in data science.
-    For roughly a decade I worked in health data, delivering analytics and AI projects,
+    For roughly a decade, I worked in health data, delivering analytics and AI projects,
     architecting enterprise-scale data platforms, and leading large technical teams.
     My most recent role was as Chief Data Officer at the Cancer Institute NSW.
     It was a deeply rewarding and challenging period of work.
@@ -164,12 +182,12 @@ p {
     In 2024, I began work on a first album with <a href="https://sallyjamila.com/">Sally Jamila</a>,
     an Aotearoa/New Zealand–based artist. We studied music together as teenagers and had long
     hoped to collaborate creatively again. The project is due for release in 2026, and the
-    opportunity to with my partner in music and in life has been a genuine joy.
+    opportunity to work with my partner in music and in life has been a genuine joy.
 </p>
 
 <p>
     Outside of work and music, I swim at the beach most mornings, have two wonderful children,
-    and continue to think — optimistically — that I should do more yoga.
+    and continue — optimistically — to think I should do more yoga.
 </p>
 
 </div>
@@ -198,5 +216,6 @@ p {
 
 </div>
 </div>
+
 </body>
 </html>

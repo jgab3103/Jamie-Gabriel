@@ -5,28 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Deep Improv – Jamie Gabriel</title>
 
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
-    --bg: #0f1115;
-    --panel: rgba(20,24,32,0.85);
-    --ink: #e5e7eb;
-    --muted: #9ca3af;
-    --accent: #7aa2ff;
-    --border: rgba(255,255,255,0.08);
+    --bg: #f8f4eb;
+    --panel: rgba(255,255,255,0.85);
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --accent: #3b5bdb;
+    --border: rgba(0,0,0,0.08);
 }
 
 /* Page background */
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Source Serif 4", Georgia, serif;
     margin: 0;
     padding: 3rem 1.5rem;
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--ink);
 
     background:
-        radial-gradient(700px 350px at 15% 15%, rgba(122,162,255,0.12), transparent 60%),
-        radial-gradient(500px 300px at 85% 25%, rgba(99,102,241,0.08), transparent 55%),
-        linear-gradient(180deg, #0c0f14, #111827);
+        radial-gradient(600px 300px at 20% 10%, rgba(59,91,219,0.06), transparent 60%),
+        radial-gradient(500px 300px at 80% 25%, rgba(59,91,219,0.04), transparent 55%),
+        linear-gradient(180deg, #f8f4eb, #f3efe5);
 }
 
 /* Main container */
@@ -35,46 +40,53 @@ body {
     margin: 0 auto;
     background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2.5rem 2.5rem 3rem;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+    border-radius: 18px;
+    padding: 2.8rem 2.8rem 3.2rem;
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.08);
 }
 
 /* Headings */
+h1, h2, h3 {
+    font-family: "Inter", system-ui, sans-serif;
+}
+
 h1 {
-    margin: 0 0 0.4rem;
-    font-size: 2.3rem;
-    letter-spacing: -0.02em;
-    color: #f9fafb;
+    margin: 0 0 0.8rem;
+    font-size: 2.35rem;
+    letter-spacing: -0.03em;
 }
 
 h2 {
-    margin: 0 0 1.6rem;
-    font-size: 1.3rem;
+    margin: 0 0 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
     color: var(--muted);
 }
 
 h3 {
     margin: 2.2rem 0 0.6rem;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     letter-spacing: -0.01em;
+    color: var(--ink);
 }
 
 /* Links */
 a {
     color: var(--accent);
     text-decoration: none;
+    text-underline-offset: 3px;
 }
 
 a:hover {
     text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 /* Back link */
 .back-link {
     display: inline-block;
-    margin-bottom: 2rem;
+    margin-bottom: 2.2rem;
     font-size: 0.95rem;
     color: var(--muted);
 }
@@ -96,7 +108,7 @@ a:hover {
     padding: 1.5rem 1.8rem;
     border: 1px solid var(--border);
     border-radius: 12px;
-    background: rgba(255,255,255,0.02);
+    background: rgba(0,0,0,0.02);
 }
 
 .toc h3 {
@@ -113,8 +125,8 @@ a:hover {
 
 /* Text */
 p {
+    margin-bottom: 1.3rem;
     color: var(--ink);
-    margin-bottom: 1.2rem;
 }
 
 i {
@@ -137,7 +149,7 @@ hr {
     background: linear-gradient(
         to right,
         transparent,
-        rgba(255,255,255,0.18),
+        rgba(0,0,0,0.08),
         transparent
     );
     margin: 2.6rem 0;
@@ -180,7 +192,8 @@ section {
         <h3>Overview</h3>
 
         <p>
-            This the main project I have been working on for while. The aim of it is to capture and analyse Audio and MIDI data in real time. The data includes anything that can be found in the MIDI data exchange protocol as well as well as the usual audio features (things like spectral centroid, spectral bandwidth, spectral roll-off, spectral flux, zero-crossing rate, RMS energy, MFCCs, chroma features, pitch etc.)        </p>
+            This the main project I have been working on for a while. The aim of it is to capture and analyse Audio and MIDI data in real time. The data includes anything that can be found in the MIDI data exchange protocol as well as well as the usual audio features (things like spectral centroid, spectral bandwidth, spectral roll-off, spectral flux, zero-crossing rate, RMS energy, MFCCs, chroma features, pitch etc.)
+        </p>
 
         <p>
             All data gets recorded, timestamped, and analysed using real-time deep learning
@@ -189,15 +202,15 @@ section {
         </p>
 
         <p>
-            The idea here is not to automate performance or simulate some kind of computer facinicated improvisation. Instead, what we are trying to do is to enhance the improvisational environment by allowing
-            performers to interact with latent musical structures as they emerge. The ends up being a 
+            The idea here is not to automate performance or simulate some kind of computer-facilitated improvisation. Instead, what we are trying to do is to enhance the improvisational environment by allowing
+            performers to interact with latent musical structures as they emerge. This ends up being a 
             real-time feedback loop between musician, data, and sound.
         </p>
 
         <p>
             This is a big multidisciplinary project, that has come about after playing music with people for many years and reflecting on the experience of improvisation, and what it is like when it is going really well. It combines improvisation practice,
             live sound design, computational modelling, and symbolic music
-            representation. Along he way the system becomes a responsive participant in the
+            representation. Along the way the system becomes a responsive participant in the
             musical dialogue.
         </p>
 
@@ -222,15 +235,11 @@ section {
     <section id="data-collection">
         <h3>Related Code</h3>
 
-
         <p>
-            
             At the moment, just keeping it all in a single repo. You will find Python scripts for MIDI and spectrogram capture, database storage, and
-            configuration of remote performance environments (e.g. Jamulus) etc.  <a href="https://github.com/jgab3103/Deep-Improv">Link to related code</a><br>
-          
+            configuration of remote performance environments (e.g. Jamulus) etc.  
+            <a href="https://github.com/jgab3103/Deep-Improv">Link to related code</a>
         </p>
-
-    
     </section>
 
     <hr>
