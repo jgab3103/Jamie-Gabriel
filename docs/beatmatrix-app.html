@@ -5,63 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BeatMatrix – Jamie Gabriel</title>
 
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
-    --bg: #0f1115;
-    --panel: rgba(20,24,32,0.85);
-    --ink: #e5e7eb;
-    --muted: #9ca3af;
-    --accent: #7aa2ff;
-    --border: rgba(255,255,255,0.08);
+    --bg: #f8f4eb;
+    --panel: rgba(255,255,255,0.85);
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --accent: #3b5bdb;
+    --border: rgba(0,0,0,0.08);
 }
 
+/* Page background */
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Source Serif 4", Georgia, serif;
     margin: 0;
     padding: 3rem 1.5rem;
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--ink);
-
     background:
-        radial-gradient(700px 350px at 15% 15%, rgba(122,162,255,0.12), transparent 60%),
-        linear-gradient(180deg, #0c0f14, #111827);
+        radial-gradient(600px 300px at 20% 10%, rgba(59,91,219,0.06), transparent 60%),
+        radial-gradient(500px 300px at 80% 25%, rgba(59,91,219,0.04), transparent 55%),
+        linear-gradient(180deg, #f8f4eb, #f3efe5);
 }
 
+/* Main container */
 .main {
-    max-width: 880px;
+    max-width: 900px;
     margin: 0 auto;
     background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2.5rem 2.5rem 3rem;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+    border-radius: 18px;
+    padding: 2.8rem 2.8rem 3.2rem;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
+
+/* Headings */
+h1, h3 {
+    font-family: "Inter", system-ui, sans-serif;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
 }
 
 h1 {
-    margin: 0 0 1.6rem;
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     letter-spacing: -0.02em;
-    color: #f9fafb;
 }
 
 h3 {
-    margin: 2.2rem 0 0.6rem;
-    font-size: 1.15rem;
-    letter-spacing: -0.01em;
+    font-size: 1.3rem;
+    margin-top: 2rem;
 }
 
+/* Links */
 a {
     color: var(--accent);
     text-decoration: none;
+    text-underline-offset: 3px;
 }
 
 a:hover {
     text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
+/* Back link */
 .back-link {
     display: inline-block;
-    margin-bottom: 2rem;
+    margin-bottom: 2.2rem;
+    font-size: 0.95rem;
     color: var(--muted);
 }
 
@@ -71,7 +87,7 @@ a:hover {
     padding: 1.2rem 1.4rem;
     border: 1px solid var(--border);
     border-radius: 12px;
-    background: rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.6);
 }
 
 .toc p {
@@ -90,15 +106,16 @@ a:hover {
 
 /* Text */
 p {
+    margin-bottom: 1.3rem;
     color: var(--ink);
 }
 
 ul {
-    padding-left: 1.2rem;
+    padding-left: 1.5rem;
 }
 
 li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
 }
 
 .section {
@@ -108,85 +125,150 @@ li {
 .muted {
     color: var(--muted);
 }
+
+/* Responsive */
+@media (max-width: 700px) {
+    body {
+        padding: 2rem 1rem;
+    }
+    .main {
+        padding: 2rem 1.5rem 2.5rem;
+    }
+}
 </style>
 </head>
 
 <body>
 <div class="main">
 
-<h1>iOS App: BeatMatrix</h1>
-<a class="back-link" href="./index.html">← Back</a>
-
-<div class="toc">
-    <p>Contents</p>
-    <ul>
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#learning-resources">Related Resources</a></li>
-        <li><a href="#change-log">Change Log</a></li>
-        <li><a href="#links">Links & References</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div style="text-align: center; margin-bottom: 1.5rem;">
+    <img src="assets/img/AppIcon.png" alt="BeatMatrix App Icon" style="width: 120px; height: 120px; border-radius: 24px; box-shadow: 0 6px 18px rgba(0,0,0,0.15);">
 </div>
+
+<h1>iOS App: BeatMatrix</h1>
+
+
+<a class="back-link" href="./index.html">← Back</a>
 
 <div id="overview" class="section">
     <h3>Overview</h3>
 
     <p>
-        I hadn't written a mobile app in ages, but needed this one. <strong>BeatMatrix</strong> is an iOS application designed as an interactive accompaniment and study
-        environment for Konoko rhythm practice and modern orhextral music with lots of tempo changes. 
+        Conventional metronomes and practice tools are often too simplistic. <strong>BeatMatrix</strong> allows you to create and customise any rhythm and time signature. You can create a grid (or bar) of up to twenty beats. Each of these can be subdivided and accents can be applied. They can also be linked together to create any complex rhythm structure. Additionally, BeatMatrix allows speed to be set over the course of the grid to model accelerando and ritardando. Beat patterns can be saved within the app.
+    </p>
+    <!-- Screenshots Grid -->
+    <div class="screenshots-grid">
+        <div class="screenshot-item">
+            <img src="assets/img/BeatMatrix_App store slides_1320x2868px-04.png" alt="BeatMatrix Screenshot 1">
+            <!-- <p class="screenshot-caption">Caption for Screenshot 1</p> -->
+        </div>
+        <div class="screenshot-item">
+            <img src="assets/img/BeatMatrix_App store slides_1320x2868px-05.png" alt="BeatMatrix Screenshot 2">
+            <!-- <p class="screenshot-caption">Caption for Screenshot 2</p> -->
+        </div>
+        <div class="screenshot-item">
+            <img src="assets/img/BeatMatrix_App store slides_1320x2868px-06.png" alt="BeatMatrix Screenshot 3">
+            <!-- <p class="screenshot-caption">Caption for Screenshot 3</p> -->
+        </div>
+        <div class="screenshot-item">
+            <img src="assets/img/BeatMatrix_App store slides_1320x2868px-07.png" alt="BeatMatrix Screenshot 4">
+            <!-- <p class="screenshot-caption">Caption for Screenshot 4</p> -->
+        </div>
+    </div>
+
+
+
+    <p>
+        BeatMatrix is highly recommended for musicians working with contemporary scores, Indian music (tāla), Balkan and Celtic additive metres, modern jazz polyrhythms, or situations where there are odd and complex time signatures.
+    </p>
+
+    <p>
+        BeatMatrix was created to let musicians construct, chain, and repeat tempo-defined rhythmic units, mirroring the way time is structured in the music itself. Musicians will find this tool useful in helping to visualise, hear and feel intricate temporal structures. An extremely useful feature is the linking of grids to create the effect of multiple metronomes and the ability to set speed changes with a customisable transition curve.
     </p>
 
 
-
-    <p>BeatMatrix enables users to:</p>
-
+    <h4>Features Summary</h4>
     <ul>
-        <li>Generate and manipulate layered rhythmic cycles in real time.</li>
-        <li>Practice complex tempo sequences with adaptive tempo and subdivision control.</li>
-        <li>Visualise rhythmic relationships through dynamic pattern displays and playback modes.</li>
+        <li>Customisable beat patterns</li>
+        <li>Add accents, subdivisions and repeats</li>
+        <li>Link patterns together</li>
+        <li>Reorder patterns at any time</li>
+        <li>Set speed changes</li>
+        <li>Set tempo transition curve</li>
+        <li>Save patterns</li>
     </ul>
 
-    <p>
-        Conceptually, the project draws on the rhythmic pedagogy of <strong>Rafael Reina</strong>,
-        particularly his work on translating South Indian rhythmic concepts into contemporary
-        compositional and improvisational frameworks. It also is a bit of a reponse to how to learn modern concert music and jazz (think Boulez, Allan Holdsworth type of stuff)
-    </p>
 
-    <p>
-        And of course it supports MIDI import and export, and relates to a bunch of other research I am doing.
-    </p>
+
+    <style>
+    /* Screenshots Grid Styling */
+    .screenshots-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .screenshot-item {
+        flex: 1 1 calc(25% - 1.5rem); /* 4 per row on large screens */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .screenshot-item img {
+        max-width: 100%;
+        max-height: 350px; /* resize tall screenshots */
+        width: auto;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        margin-bottom: 0.5rem;
+        object-fit: cover;
+    }
+
+    .screenshot-caption {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-top: 0.2rem;
+    }
+
+    /* Medium screens: 2 per row */
+    @media (max-width: 1024px) {
+        .screenshot-item {
+            flex: 1 1 calc(50% - 1.5rem);
+        }
+    }
+
+    /* Small screens: 1 per row */
+    @media (max-width: 700px) {
+        .screenshot-item {
+            flex: 1 1 100%;
+        }
+    }
+    </style>
 </div>
 
-<div id="learning-resources" class="section">
-    <h3>Related Resources</h3>
-    <p class="muted">Coming soon.</p>
-</div>
+
+
 
 <div id="change-log" class="section">
     <h3>Change Log</h3>
     <ul>
         <li><strong>v0.1.0 (September 2025):</strong> Initial beta release</li>
+        <li><strong>v0.2.0 (Decemeber 2025):</strong> Updated beta release</li>
     </ul>
 
-    <p class="muted">
-        Development notes, testing feedback, and future milestones will be documented here as
-        BeatMatrix evolves.
-    </p>
+  
 </div>
 
-<div id="links" class="section">
-    <h3>Links & References</h3>
-    <p>
-        <a href="#">BeatMatrix – GitHub / Development Notes</a><br>
-        <a href="#">Rafael Reina – Rhythmic Principles</a>
-    </p>
-</div>
+
 
 <div id="contact" class="section">
     <h3>Contact</h3>
     <p>
-        <a href="mailto:jgab3103@gmail.com">jgab3103@gmail.com</a><br>
-        +61 (0)490 896 610<br>
+        <a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a><br/>
         <a href="https://www.facebook.com/jamie.gabriel.775451">Facebook</a><br>
         <a href="https://www.instagram.com/jgab2275/">Instagram</a>
     </p>
