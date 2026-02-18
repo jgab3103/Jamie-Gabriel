@@ -261,21 +261,111 @@ li {
     </style>
 </div>
 
-<div id="demo" class="section">
-    <h3>Demo</h3>
-    <p>Watch a quick demo of BeatMatrix in action:</p>
 
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 16px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); margin-top: 1rem;">
-        <iframe 
-            src="https://www.youtube.com/embed/shYKwDYqdiE?si=wD6zMo3_vvbqp4dT" 
-            title="YouTube video player"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-        </iframe>
+<div id="demo" class="section">
+    <h3>Demo Videos</h3>
+    <p>Watch some demos of BeatMatrix in action:</p>
+
+    <div class="demo-grid">
+
+        <!-- Demo 1 -->
+        <div class="demo-item">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/shYKwDYqdiE?si=wD6zMo3_vvbqp4dT" 
+                    title="BeatMatrix Basic Demo"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="demo-caption">Basic Demo</p>
+        </div>
+
+        <!-- Demo 2 -->
+        <div class="demo-item">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/_HalszIQHLs?si=XoE93RkIuA9bxcjt" 
+                    title="BeatMatrix Complex Time Signatures"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="demo-caption">Complex Time Signatures</p>
+        </div>
+
+        <!-- Demo 3 -->
+        <div class="demo-item">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/L8etksKKVRw?si=kvCMm_46g-Ru0ZPU" 
+                    title="BeatMatrix Ritardando and Accelerando"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="demo-caption">Tempo Shaping: Ritardando & Accelerando</p>
+        </div>
+
     </div>
+
+    <style>
+        .demo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .demo-item {
+            flex: 1 1 calc(33.333% - 1.5rem);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .demo-caption {
+            text-align: center;
+            font-size: 0.95rem;
+            margin-top: 0.6rem;
+            color: var(--muted);
+        }
+
+        /* Medium screens: 2 per row */
+        @media (max-width: 1024px) {
+            .demo-item {
+                flex: 1 1 calc(50% - 1.5rem);
+            }
+        }
+
+        /* Small screens: 1 per row */
+        @media (max-width: 700px) {
+            .demo-item {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
 </div>
+
+
+
 
 
 
