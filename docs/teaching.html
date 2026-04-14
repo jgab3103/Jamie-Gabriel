@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teaching Resources – Jamie Gabriel</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #f8f4eb;
+    --panel: rgba(255,255,255,0.85);
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --accent: #3b5bdb;
+    --border: rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: "Source Serif 4", Georgia, serif;
+    margin: 0;
+    padding: 3rem 1.5rem;
+    line-height: 1.7;
+    color: var(--ink);
+    background:
+        radial-gradient(600px 300px at 20% 10%, rgba(59,91,219,0.06), transparent 60%),
+        linear-gradient(180deg, #f8f4eb, #f3efe5);
+}
+
+.main {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 2.8rem;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
+
+h1, h3 {
+    font-family: "Inter", system-ui, sans-serif;
+}
+
+h1 {
+    font-size: 2.3rem;
+    margin-bottom: 0.4rem;
+}
+
+h3 {
+    margin-top: 2.2rem;
+    font-size: 1.2rem;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1.8rem;
+    color: var(--muted);
+}
+
+.section {
+    margin-top: 2.5rem;
+}
+
+p {
+    color: var(--ink);
+}
+
+/* =========================
+   UNIFORM GRID (VIDEOS + AUDIO)
+   ========================= */
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* identical tile sizing */
+.video-item {
+    display: flex;
+    flex-direction: column;
+}
+
+/* shared media wrapper */
+.media-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* YouTube */
+.media-wrapper iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* SoundCloud embed (fills same frame) */
+.media-wrapper.sc iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* captions */
+.video-caption {
+    text-align: center;
+    margin-top: 0.6rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* responsive */
+@media (max-width: 1024px) {
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+
+<a class="back-link" href="./index.html">← Back</a>
+
+<h1>Teaching Resources</h1>
+
+<p>
+A collection of teaching videos covering things like rhythm, improvisation, music technology, composition, and music analysis. Also some example solos over well known standards. 
+</p>
+
+<div class="section">
+<h3>Music Lessons</h3>
+
+<div class="video-grid">
+
+    <div class="video-item">
+        <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/REPLACE_VIDEO_4" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">Preliminary Voice Leading Exercise</div>
+    </div>
+
+    <div class="video-item">
+        <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/REPLACE_VIDEO_5" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">Chord Shapes for Jazz</div>
+    </div>
+
+    <div class="video-item">
+        <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/REPLACE_VIDEO_6" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">Transcribing effectively</div>
+    </div>
+
+    <div class="video-item">
+        <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/REPLACE_VIDEO_6" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">Working on Giant Steps</div>
+    </div>
+
+    <div class="video-item">
+        <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/REPLACE_VIDEO_6" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">Score Reduction to Jazz Lead Sheets</div>
+    </div>
+
+</div>
+</div>
+
+<div class="section">
+<h3>Solos</h3>
+
+<div class="video-grid">
+
+    <div class="video-item">
+        <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/REPLACE_VIDEO_7" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">In Your Own Sweet Way</div>
+    </div>
+
+<div class="video-item">
+    <div class="media-wrapper">
+        <iframe 
+            src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/share/v/17TwVmogCT/&show_text=false&width=560"
+            width="560"
+            height="315"
+            style="border:none;overflow:hidden"
+            scrolling="no"
+            frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+    </div>
+    <div class="video-caption">Facebook Solo – Example</div>
+</div>
+
+    <div class="video-item">
+        <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/REPLACE_VIDEO_9" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">Infant Eyes</div>
+    </div>
+
+    <!-- SOUNDLOUD EXAMPLE 1 -->
+    <div class="video-item">
+        <div class="media-wrapper sc">
+            <iframe 
+                scrolling="no" 
+                frameborder="no" 
+                allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=REPLACE_SOUNDCLOUD_URL_1&color=%233b5bdb&auto_play=false">
+            </iframe>
+        </div>
+        <div class="video-caption">My Funny Valentine</div>
+    </div>
+
+    <!-- SOUNDLOUD EXAMPLE 2 -->
+    <div class="video-item">
+        <div class="media-wrapper sc">
+            <iframe 
+                scrolling="no" 
+                frameborder="no" 
+                allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=REPLACE_SOUNDCLOUD_URL_2&color=%233b5bdb&auto_play=false">
+            </iframe>
+        </div>
+        <div class="video-caption">Summertime</div>
+    </div>
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
