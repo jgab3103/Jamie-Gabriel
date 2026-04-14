@@ -78,7 +78,7 @@ p {
 }
 
 /* =========================
-   UNIFORM GRID (VIDEOS + AUDIO)
+   UNIFIED GRID SYSTEM
    ========================= */
 
 .video-grid {
@@ -88,23 +88,24 @@ p {
     margin-top: 1.5rem;
 }
 
-/* identical tile sizing */
 .video-item {
     display: flex;
     flex-direction: column;
 }
 
-/* shared media wrapper */
-.media-wrapper {
+/* shared tile system for ALL media */
+.media-wrapper,
+.media-tile {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    overflow: hidden;
     border-radius: 16px;
+    overflow: hidden;
     box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    display: block;
 }
 
-/* YouTube */
+/* YouTube + Facebook embeds */
 .media-wrapper iframe {
     position: absolute;
     width: 100%;
@@ -112,15 +113,31 @@ p {
     border: 0;
 }
 
-/* SoundCloud embed (fills same frame) */
-.media-wrapper.sc iframe {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 0;
+/* SoundCloud / external link tiles */
+.media-tile {
+    background: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* captions */
+.media-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+.media-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--accent);
+    background: radial-gradient(circle at center, rgba(59,91,219,0.08), transparent 60%);
+}
+
 .video-caption {
     text-align: center;
     margin-top: 0.6rem;
@@ -152,9 +169,10 @@ p {
 <h1>Teaching Resources</h1>
 
 <p>
-A collection of teaching videos covering things like rhythm, improvisation, music technology, composition, and music analysis. Also some example solos over well known standards. 
+A collection of teaching videos covering things like rhythm, improvisation, music technology, composition, and music analysis. Also some example solos over well known standards.
 </p>
 
+<!-- ================= MUSIC LESSONS ================= -->
 <div class="section">
 <h3>Music Lessons</h3>
 
@@ -162,7 +180,10 @@ A collection of teaching videos covering things like rhythm, improvisation, musi
 
     <div class="video-item">
         <div class="media-wrapper">
-            <iframe src="https://www.youtube.com/embed/REPLACE_VIDEO_4" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/TGxcx4Bz2Mc"
+                title="Live performance"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </div>
         <div class="video-caption">Preliminary Voice Leading Exercise</div>
     </div>
@@ -198,6 +219,7 @@ A collection of teaching videos covering things like rhythm, improvisation, musi
 </div>
 </div>
 
+<!-- ================= SOLOS ================= -->
 <div class="section">
 <h3>Solos</h3>
 
@@ -210,21 +232,14 @@ A collection of teaching videos covering things like rhythm, improvisation, musi
         <div class="video-caption">In Your Own Sweet Way</div>
     </div>
 
-<div class="video-item">
-    <div class="media-wrapper">
-        <iframe 
-            src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/share/v/17TwVmogCT/&show_text=false&width=560"
-            width="560"
-            height="315"
-            style="border:none;overflow:hidden"
-            scrolling="no"
-            frameborder="0"
-            allowfullscreen="true"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
+    <div class="video-item">
+        <div class="media-wrapper">
+            <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/share/v/17TwVmogCT/&show_text=false&width=560"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="video-caption">Facebook Solo – Example</div>
     </div>
-    <div class="video-caption">Facebook Solo – Example</div>
-</div>
 
     <div class="video-item">
         <div class="media-wrapper">
@@ -233,30 +248,20 @@ A collection of teaching videos covering things like rhythm, improvisation, musi
         <div class="video-caption">Infant Eyes</div>
     </div>
 
-    <!-- SOUNDLOUD EXAMPLE 1 -->
+    <!-- SOUNDCLOUD TILE 1 -->
     <div class="video-item">
-        <div class="media-wrapper sc">
-            <iframe 
-                scrolling="no" 
-                frameborder="no" 
-                allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=REPLACE_SOUNDCLOUD_URL_1&color=%233b5bdb&auto_play=false">
-            </iframe>
-        </div>
-        <div class="video-caption">My Funny Valentine</div>
+        <a class="media-tile" href="https://soundcloud.com/jamie3103/my-funny-valentine" target="_blank" rel="noopener noreferrer">
+            <div class="media-placeholder">▶ SoundCloud</div>
+        </a>
+        <div class="video-caption">My Funny Valentine (2013 recording)</div>
     </div>
 
-    <!-- SOUNDLOUD EXAMPLE 2 -->
+    <!-- SOUNDCLOUD TILE 2 -->
     <div class="video-item">
-        <div class="media-wrapper sc">
-            <iframe 
-                scrolling="no" 
-                frameborder="no" 
-                allow="autoplay"
-                src="https://soundcloud.com/jamie3103/summertime">
-            </iframe>
-        </div>
-        <div class="video-caption">Summertime</div>
+        <a class="media-tile" href="https://soundcloud.com/jamie3103/summertime" target="_blank" rel="noopener noreferrer">
+            <div class="media-placeholder">▶ SoundCloud</div>
+        </a>
+        <div class="video-caption">Summertime (2013 recording</div>
     </div>
 
 </div>
