@@ -1,96 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Articles & Transcriptions – Jamie Gabriel</title>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;500&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Writing– Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet" />
+
+<link href="css/styles.css" rel="stylesheet" />
 
 <style>
+
+/* =========================
+   BASE (MATCH INDEX)
+   ========================= */
+
 :root {
-    --bg: #f8f4eb;
-    --panel: rgba(255,255,255,0.85);
-    --ink: #1f2937;
-    --muted: #6b7280;
-    --accent: #3b5bdb;
-    --border: rgba(0,0,0,0.08);
+    --accent: #8B2E3C;
 }
 
-/* Page background */
+html {
+    scroll-behavior: smooth;
+    background: #FAFAFA;
+}
+
 body {
-    font-family: "Source Serif 4", Georgia, serif;
     margin: 0;
-    padding: 3rem 1.5rem;
-    line-height: 1.7;
-    color: var(--ink);
-
-    background:
-        radial-gradient(600px 300px at 20% 10%, rgba(59,91,219,0.06), transparent 60%),
-        linear-gradient(180deg, #f8f4eb, #f3efe5);
+    font-family: 'Nunito', sans-serif;
+    background: #FAFAFA;
+    color: #111;
+    line-height: 1.75;
+    font-size: 16.5px;
+    padding-top: 80px;
 }
 
-/* Main container */
-.main {
-    max-width: 900px;
-    margin: 0 auto;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 2.8rem 2.8rem 3.2rem;
-    box-shadow:
-        0 18px 40px rgba(0,0,0,0.08);
-}
-
-/* Headings */
-h1, h2 {
-    font-family: "Inter", system-ui, sans-serif;
-}
-
-h1 {
-    margin: 0 0 0.8rem;
-    font-size: 2.35rem;
-    letter-spacing: -0.03em;
-}
-
-h2 {
-    margin: 0 0 2.4rem;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--muted);
-    letter-spacing: -0.01em;
-}
-
-/* Links */
+/* LINKS */
 a {
     color: var(--accent);
     text-decoration: none;
-    text-underline-offset: 3px;
+    border-bottom: 1px solid rgba(139, 46, 60, 0.35);
+    transition: all 0.2s ease;
 }
 
 a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
+    color: #111;
+    border-bottom-color: rgba(139, 46, 60, 0.75);
 }
 
-/* Back link */
+/* NAV (UNCHANGED) */
+#mainNav,
+#mainNav.navbar-shrink {
+    background: #FAFAFA !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    min-height: 80px;
+}
+
+#mainNav a {
+    color: #111 !important;
+    text-decoration: none !important;
+}
+
+/* =========================
+   PAGE LAYOUT
+   ========================= */
+
+.page {
+    max-width: 1000px;
+    margin: auto;
+    padding: 80px 24px 140px;
+}
+
+h1 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
 .back-link {
     display: inline-block;
-    margin: 1.2rem 0 2.2rem;
+    margin-bottom: 40px;
+    color: rgba(0,0,0,0.6);
     font-size: 0.95rem;
-    color: var(--muted);
 }
 
-/* Article list */
+/* =========================
+   ARTICLE LIST (clean grid)
+   ========================= */
+
 .article-row {
     display: grid;
-    grid-template-columns: 130px 1fr;
-    gap: 1.6rem;
-    padding: 1.4rem 0;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
+    grid-template-columns: 140px 1fr;
+    gap: 30px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
 .article-row:last-child {
@@ -99,205 +109,159 @@ a:hover {
 
 .article-date {
     font-size: 0.9rem;
-    color: var(--muted);
+    color: rgba(0,0,0,0.55);
     line-height: 1.4;
 }
 
-.article-link {
-    max-width: 62ch;
-}
-
-.article-link a {
-    font-family: "Inter", system-ui, sans-serif;
+.article-title a {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.05rem;
     font-weight: 500;
-    letter-spacing: -0.01em;
 }
 
-/* Footer spacing (future-proof) */
-footer {
-    margin-top: 3rem;
-    font-size: 0.9rem;
-    color: var(--muted);
+.article-desc {
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: rgba(0,0,0,0.7);
+    max-width: 70ch;
 }
 
-/* Responsive */
-@media (max-width: 700px) {
+/* responsive */
+@media (max-width: 800px) {
     .article-row {
         grid-template-columns: 1fr;
-    }
-
-    .article-date {
-        margin-bottom: 0.4rem;
+        gap: 8px;
     }
 }
+
 </style>
+
 </head>
 
-<body>
+<body id="page-top">
 
-<div class="main">
+<!-- NAV (EXACT SAME SYSTEM) -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+    </div>
+</nav>
 
-    <h1>Articles & Transcriptions</h1>
+<div class="page">
 
+    <h1>Writing</h1>
     <a class="back-link" href="./index.html">← Back</a>
 
-    <!-- <h2>Articles & Transcriptions</h2> -->
-
-
-        <div class="article-row">
-        <div class="article-date">12 March <br>2026</div>
-        <div class="article-link">
-            <a href="./assets/pdf-files/Ten_Keith_Jarrett_Solos.pdf">
-                Music Transcription: 10 Keith Jarret Solos
-            </a><br>
-           I have made so many transcriptions over the years. Finally starting to organise them!  </div>
-    </div>
-
-
-
-
-
+    <!-- ITEM -->
     <div class="article-row">
-        <div class="article-date">24 November<br>2025</div>
-        <div class="article-link">
-            <a href="./code_notebooks/SPE7.html">
-                Math: Solving Higher Polynomial Equations using Catalan Structures – Part 7
-            </a><br>
-            Notes and Python code exploring low-computational-cost approaches to higher-order polynomial equations.
-        </div>
-    </div>
-
-
-
-    <div class="article-row">
-        <div class="article-date">22 November<br>2025</div>
-        <div class="article-link">
-            <a href="https://github.com/jgab3103/Jamie-Gabriel/blob/main/docs/assets/pdf-files/Follow%20Me.pdf">
-                Music Transcription: Follow Me (Pat Metheny)
-            </a><br>
-            From the Pat Metheny Group album <i>Imaginary Day</i> (1997).
+        <div class="article-date">12 Mar<br>2026</div>
+        <div>
+            <div class="article-title">
+                <a href="./assets/pdf-files/Ten_Keith_Jarrett_Solos.pdf">
+                    Music Transcription: 10 Keith Jarrett Solos
+                </a>
+            </div>
+            <div class="article-desc">
+                A growing archive of transcriptions collected over many years, now being organised into a structured set.
+            </div>
         </div>
     </div>
 
     <div class="article-row">
-        <div class="article-date">27 August<br>2025</div>
-        <div class="article-link">
-            <a href="./code_notebooks/SPE6.html">
-                Math: Solving Higher Polynomial Equations using Catalan Structures – Part 6
-            </a><br>
-            Notes and Python code exploring low-computational-cost approaches to higher-order polynomial equations.
+        <div class="article-date">24 Nov<br>2025</div>
+        <div>
+            <div class="article-title">
+                <a href="./code_notebooks/SPE7.html">
+                    Math: Solving Higher Polynomial Equations using Catalan Structures – Part 7
+                </a>
+            </div>
+            <div class="article-desc">
+                Notes and Python code exploring low-computational-cost approaches to higher-order polynomial equations.
+            </div>
         </div>
     </div>
 
     <div class="article-row">
-        <div class="article-date">10 July<br>2025</div>
-        <div class="article-link">
-            <a href="https://github.com/jgab3103/Jamie-Gabriel/blob/main/docs/assets/pdf-files/Waltz%20for%20Agnes.pdf">
-                Music Transcription: Waltz for Agnes (Marek Dykta)
-            </a><br>
-            From <i>Cradle of Light</i> (John Abercrombie & Marek Dykta, 2007).
+        <div class="article-date">22 Nov<br>2025</div>
+        <div>
+            <div class="article-title">
+                <a href="https://github.com/jgab3103/Jamie-Gabriel/blob/main/docs/assets/pdf-files/Follow%20Me.pdf">
+                    Music Transcription: Follow Me (Pat Metheny)
+                </a>
+            </div>
+            <div class="article-desc">
+                From the Pat Metheny Group album <i>Imaginary Day</i> (1997).
+            </div>
         </div>
     </div>
-
 
     <div class="article-row">
-        <div class="article-date">1 July<br>2025</div>
-        <div class="article-link">
-            <a href="https://www.youtube.com/watch?v=P9xebSuW9ys">
-                Music Software: Searching large scale music scores
-            </a><br>
-            A demo of the software I created as part of my PhD dissertation. 
+        <div class="article-date">27 Aug<br>2025</div>
+        <div>
+            <div class="article-title">
+                <a href="./code_notebooks/SPE6.html">
+                    Math: Solving Higher Polynomial Equations using Catalan Structures – Part 6
+                </a>
+            </div>
+            <div class="article-desc">
+                Computational approaches to higher-order polynomial systems using structured combinatorics.
+            </div>
         </div>
     </div>
 
+    <div class="article-row">
+        <div class="article-date">10 Jul<br>2025</div>
+        <div>
+            <div class="article-title">
+                <a href="https://github.com/jgab3103/Jamie-Gabriel/blob/main/docs/assets/pdf-files/Waltz%20for%20Agnes.pdf">
+                    Music Transcription: Waltz for Agnes (Marek Dykta)
+                </a>
+            </div>
+            <div class="article-desc">
+                From <i>Cradle of Light</i> (John Abercrombie & Marek Dykta, 2007).
+            </div>
+        </div>
+    </div>
+
+    <div class="article-row">
+        <div class="article-date">1 Jul<br>2025</div>
+        <div>
+            <div class="article-title">
+                <a href="https://www.youtube.com/watch?v=P9xebSuW9ys">
+                    Music Software: Searching large scale music scores
+                </a>
+            </div>
+            <div class="article-desc">
+                A demonstration of symbolic music search systems developed during my PhD research.
+            </div>
+        </div>
+    </div>
 
     <div class="article-row">
         <div class="article-date">27 May<br>2025</div>
-        <div class="article-link">
-            <a href="./john-mclaughlin-analysis.html">
-                Music/Research: Fifteen Years On – The Evolution of John McLaughlin’s Compositional Style
-            </a><br>
-            Supporting article and transcriptions for AJIRN 2025 (University of Auckland).
+        <div>
+            <div class="article-title">
+                <a href="./john-mclaughlin-analysis.html">
+                    Music/Research: John McLaughlin – Compositional Evolution
+                </a>
+            </div>
+            <div class="article-desc">
+                Analytical study prepared for AJIRN 2025 (University of Auckland).
+            </div>
         </div>
     </div>
 
     <div class="article-row">
-        <div class="article-date">15 February<br>2025</div>
-        <div class="article-link">
-            <a href="./code_notebooks/SPE5.html">
-                Math:Solving Higher Polynomial Equations using Catalan Structures – Part 5
-            </a><br>
-            Notes and Python code exploring low-computational-cost approaches to higher-order polynomial equations.
-        </div>
-    </div>
-
-    <div class="article-row">
-        <div class="article-date">18 January<br>2025</div>
-        <div class="article-link">
-            <a href="./code_notebooks/SPE4.html">
-                Math: Solving Higher Polynomial Equations using Catalan Structures – Part 4
-            </a><br>
-            Notes and Python code exploring low-computational-cost approaches to higher-order polynomial equations.
-        </div>
-    </div>
-
-    <div class="article-row">
-        <div class="article-date">16 January<br>2025</div>
-        <div class="article-link">
-            <a href="https://github.com/jgab3103/Jamie-Gabriel/blob/main/docs/assets/pdf-files/stellaByStarlightKeithJarrettSolo.pdf">
-                Music Transcription: Stella By Starlight (Keith Jarrett)
-            </a><br>
-            From the 1985 <i>Standards Live</i> album.
-        </div>
-    </div>
-
-    <div class="article-row">
-        <div class="article-date">17 December<br>2024</div>
-        <div class="article-link">
-            <a href="./code_notebooks/SPE3.html">
-                Math: Solving Higher Polynomial Equations using Catalan Structures – Part 3
-            </a><br>
-            Notes and Python code exploring low-computational-cost approaches to higher-order polynomial equations.
-        </div>
-    </div>
-
-    <div class="article-row">
-        <div class="article-date">14 October<br>2024</div>
-        <div class="article-link">
-            <a href="./effectivepractice1.html">
-                Music: The Art of Effective Practice
-            </a><br>
-            On practising deliberately, efficiently, and musically.
-        </div>
-    </div>
-
-    <div class="article-row">
-        <div class="article-date">27 August<br>2024</div>
-        <div class="article-link">
-            <a href="./code_notebooks/SPE2.html">
-                Math: Solving Higher Polynomial Equations using Catalan Structures – Part 2
-            </a><br>
-            Notes and Python code exploring low-computational-cost approaches to higher-order polynomial equations.
-        </div>
-    </div>
-
-    <div class="article-row">
-        <div class="article-date">3 July<br>2024</div>
-        <div class="article-link">
-            <a href="./heidegger.html">
-                Philosophy: Heidegger on Technology
-            </a><br>
-            An somewhat random essay on Heidegger's take on philosophy and technology.
-        </div>
-    </div>
-
-    <div class="article-row">
-        <div class="article-date">27 June<br>2024</div>
-        <div class="article-link">
-            <a href="./code_notebooks/SPE1.html">
-                Math: Solving Higher Polynomial Equations using Catalan Structures – Part 1
-            </a><br>
-            Notes and Python code exploring low-computational-cost approaches to higher-order polynomial equations.
+        <div class="article-date">15 Feb<br>2025</div>
+        <div>
+            <div class="article-title">
+                <a href="./code_notebooks/SPE5.html">
+                    Math: Solving Higher Polynomial Equations – Part 5
+                </a>
+            </div>
+            <div class="article-desc">
+                Numerical exploration of higher-order polynomial structures.
+            </div>
         </div>
     </div>
 

@@ -1,303 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
 <title>Jamie Gabriel</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet" />
+
+<link href="css/styles.css" rel="stylesheet" />
 
 <style>
 
-:root{
-    --bg:#f6f5f2;
-    --panel:#ffffff;
-    --ink:#1f2937;
-    --muted:#6b7280;
-    --accent:#2f5fd7;
-    --border:rgba(0,0,0,0.08);
+/* =========================
+   BASE
+   ========================= */
+
+:root {
+    --accent: #8B2E3C; /* oxide editorial red */
 }
 
-body{
-    margin:0;
-    padding:3.5rem 1.5rem;
-
-    font-family:"Source Serif 4", Georgia, serif;
-    line-height:1.75;
-
-    color:var(--ink);
-
-    background:
-        radial-gradient(900px 500px at 10% 0%, rgba(47,95,215,0.06), transparent 60%),
-        radial-gradient(900px 500px at 90% 100%, rgba(0,0,0,0.03), transparent 60%),
-        var(--bg);
+html {
+    scroll-behavior: smooth;
+    background: #FAFAFA;
 }
 
-.main{
-    max-width:980px;
-    margin:0 auto;
-
-    background:var(--panel);
-
-    border:1px solid var(--border);
-
-    border-radius:22px;
-
-    padding:3.5rem;
-
-    box-shadow:
-        0 18px 50px rgba(0,0,0,0.06);
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: #FAFAFA;
+    color: #111;
+    line-height: 1.75;
+    font-size: 16.5px;
+    padding-top: 80px;
 }
 
-/* HERO */
+/* =========================
+   LINKS (now accented)
+   ========================= */
 
-.hero{
-    display:flex;
-    gap:3.5rem;
-    align-items:flex-start;
+a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(139, 46, 60, 0.35);
+    transition: all 0.2s ease;
 }
 
-.hero-text{
-    flex:1;
+a:hover {
+    color: #111;
+    border-bottom-color: rgba(139, 46, 60, 0.75);
 }
 
-.hero-image{
-    flex-shrink:0;
+/* =========================
+   NAV
+   ========================= */
+
+#mainNav,
+#mainNav.navbar-shrink {
+    background: #FAFAFA !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    min-height: 80px;
 }
 
-.hero-image img{
-    width:240px;
-
-    border-radius:16px;
-
-    border:1px solid rgba(0,0,0,0.08);
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,0.12);
-
-    filter:contrast(1.02) grayscale(0.05);
+#mainNav a {
+    color: #111 !important;
+    text-decoration: none !important;
 }
 
-/* TYPOGRAPHY */
+/* =========================
+   ABOUT
+   ========================= */
 
-h1{
-    font-family:"Inter", system-ui, sans-serif;
-
-    font-size:3.4rem;
-
-    margin:0;
-
-    letter-spacing:-0.04em;
+.about-section {
+    background: #FAFAFA;
+    padding: 60px 0 90px;
 }
 
-.tagline{
-    margin-top:.7rem;
-    margin-bottom:2rem;
-
-    font-family:"Inter", sans-serif;
-
-    font-size:.78rem;
-
-    text-transform:uppercase;
-    letter-spacing:.16em;
-
-    color:var(--muted);
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 90px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 24px;
+    align-items: start;
 }
 
-p{
-    max-width:65ch;
-    font-size:1.08rem;
+.about-image img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+
+    filter: grayscale(100%);
+    opacity: 0.92;
 }
 
-/* LINKS */
-
-a{
-    color:var(--accent);
-    text-decoration:none;
+.about-text h2 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.7rem;
+    margin-bottom: 22px;
 }
 
-a:hover{
-    text-decoration:underline;
+.about-text p {
+    margin-bottom: 18px;
+    max-width: 65ch;
 }
 
-/* SECTIONS */
+/* =========================
+   PROJECTS
+   ========================= */
 
-hr{
-    border:none;
-    height:1px;
+.projects {
+    max-width: 1000px;
+    margin: auto;
+    padding: 80px 24px 140px;
 
-    margin:3rem 0;
-
-    background:linear-gradient(
-        to right,
-        transparent,
-        rgba(0,0,0,0.12),
-        transparent
-    );
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
 }
 
-h3{
-    font-family:"Inter", sans-serif;
-
-    font-size:.95rem;
-
-    letter-spacing:.12em;
-
-    text-transform:uppercase;
-
-    margin:2rem 0 .4rem;
-
-    color:#111827;
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
-i{
-    color:var(--muted);
-    display:block;
-    margin-top:.25rem;
+/* IMAGE */
+.project-image img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+
+    filter: grayscale(100%);
+    transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
-ul{
-    padding-left:1.2rem;
+/* subtle accent interaction */
+.project:hover img {
+    opacity: 0.88;
+    filter: grayscale(100%) contrast(1.05);
 }
 
-li{
-    margin-bottom:1rem;
+/* TEXT */
+.project-text h3 {
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.25s ease;
 }
 
-strong{
-    font-family:"Inter", sans-serif;
-    font-weight:600;
+.project:hover .project-text h3 {
+    color: var(--accent);
 }
 
-/* CONTACT */
-
-.contact{
-    margin-top:2rem;
-
-    font-size:.95rem;
-
-    color:var(--muted);
+.project-text p {
+    margin: 6px 0 0;
+    font-size: 0.95rem;
+    color: rgba(0,0,0,0.7);
 }
 
-.contact svg{
-    opacity:.7;
-    transition:.2s ease;
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+    background: #FAFAFA;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding: 80px 30px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: rgba(0,0,0,0.7);
 }
 
-.contact a:hover svg{
-    opacity:1;
-    transform:translateY(-2px);
-}
+/* =========================
+   RESPONSIVE
+   ========================= */
 
-/* RESPONSIVE */
+@media (max-width: 900px) {
 
-@media (max-width:800px){
-
-    .main{
-        padding:2rem;
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 
-    .hero{
-        flex-direction:column;
+    .projects {
+        grid-template-columns: 1fr;
+        gap: 50px;
     }
 
-    .hero-image img{
-        width:200px;
-    }
-
-    h1{
-        font-size:2.6rem;
+    .project-image img {
+        height: 260px;
     }
 }
 
 </style>
+
 </head>
 
-<body>
+<body id="page-top">
 
-<div class="main">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">Jamie Gabriel</a>
+    </div>
+</nav>
 
-<div class="hero">
+<section class="about-section" id="about">
 
-<div class="hero-text">
+    <div class="about-grid">
 
-<h1>Jamie Gabriel</h1>
+        <div class="about-image">
+            <img src="assets/img/IMG_6776.PNG" alt="portrait">
+        </div>
 
-<div class="tagline">
-Improviser · Composer · Researcher · Music Technologist
-</div>
+        <div class="about-text">
+            <h2>Jamie Gabriel</h2>
 
-<p>
-I am a musician, researcher, and music tech developer living between Newcastle, Australia and Auckland New Zealand.
-I have a PhD in computational musicology and am interested in things that range between
-music, mathematics and computer science.<br><br>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
 
-I am also in the band <a href="https://sajaproject.com/">SAJA Project</a>
-with <a href="https://sallyjamila.com/">Sally Jamila</a>
-and we have an album due out in mid 2026
-<br><br>
+            <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
 
-<a href="./about.html">More about me</a>
-</p>
+            <p>
+                I am a musician, researcher, and music technology developer working across composition, systems, and performance.
+            </p>
 
-</div>
+            <p>
+                <a href="./about.html">More about me</a>
+            </p>
 
-<div class="hero-image">
-<img src="assets/img/PageLogo.png" alt="Jamie Gabriel">
-</div>
+        </div>
 
-</div>
+    </div>
 
-<hr>
+</section>
 
-<h3><a href="./articles.html">Articles & Transcriptions →</a></h3>
-<i>Some music transcriptions, some academic writing, mathematics and code.</i>
+<section class="projects" id="projects">
 
-<h3><a href="./teaching.html">Teaching Resources →</a></h3>
-<i>Resources for students and example solos.</i>
+    <div class="project">
+        <div class="project-image">
+            <img src="assets/img/JGAction5.PNG" alt="">
+        </div>
+        <div class="project-text">
+            <h3><a href="./live-music.html">Live Perfomances</a></h3>
+            <p>Past. Upcoming.</p>
+        </div>
+    </div>
 
-<h3><a href="./live-music.html">Recordings & Live Music →</a></h3>
-<i>Details on performances, recordings and set up</i>
+    <div class="project">
+        <div class="project-image">
+            <img src="assets/img/JGAction2.PNG" alt="">
+        </div>
+        <div class="project-text">
+            <h3><a href="./recordings.html">Recordings</a></h3>
+            <p>Composition. Collaboration.</p>
+        </div>
+    </div>
 
-<h3>Current Projects</h3>
+    <div class="project">
+        <div class="project-image">
+            <img src="assets/img/JGAction4.PNG" alt="">
+        </div>
+        <div class="project-text">
+            <h3><a href="./articles.html">Writings</a></h3>
+            <p>Articles. Transciptions. Code. Apps.</p>
+        </div>
+    </div>
 
-<ul>
-<li>
-<strong>Research</strong><br>
-<a href="./deep-improv.html">
-Deep Improv: A project that explores ensemble, recording, and AI-Augmented collaboration
-</a>
-</li>
+</section>
 
-<li>
-<strong>Software</strong><br>
-<a href="./beatmatrix-app.html">
-BeatMatrix: iOS app for practising complex and changing time signatures
-</a>
-</li>
-</ul>
-
-<hr>
-
-<div class="contact">
-
-Email:
-<a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a>
-<br>
-
-ORCID:
-<a href="https://orcid.org/0000-0003-0475-892X">0000-0003-0475-892X</a>
-
-<br><br>
-
-<!-- your social icons unchanged -->
-
-</div>
-
-</div>
+<footer class="footer" id="contact">
+    <div>jamie@jamiegabriel.org</div>
+</footer>
 
 </body>
 </html>

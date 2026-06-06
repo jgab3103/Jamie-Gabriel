@@ -1,135 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
 <title>Jamie Gabriel – Live Music</title>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet" />
+
+<link href="css/styles.css" rel="stylesheet" />
 
 <style>
+
+/* =========================
+   BASE (same system as index)
+   ========================= */
+
 :root {
-    --bg: #f8f4eb;
-    --panel: rgba(255,255,255,0.85);
-    --ink: #1f2937;
-    --muted: #6b7280;
-    --accent: #3b5bdb;
-    --border: rgba(0,0,0,0.08);
+    --accent: #8B2E3C;
 }
 
-/* Page background */
+html {
+    scroll-behavior: smooth;
+    background: #FAFAFA;
+}
+
 body {
-    font-family: "Source Serif 4", Georgia, serif;
     margin: 0;
-    padding: 3rem 1.5rem;
-    line-height: 1.7;
-    color: var(--ink);
-
-    background:
-        radial-gradient(600px 300px at 20% 10%, rgba(59,91,219,0.06), transparent 60%),
-        linear-gradient(180deg, #f8f4eb, #f3efe5);
+    font-family: 'Nunito', sans-serif;
+    background: #FAFAFA;
+    color: #111;
+    line-height: 1.75;
+    font-size: 16.5px;
+    padding-top: 80px;
 }
 
-/* Main container */
-.main {
-    max-width: 880px;
-    margin: 0 auto;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 2.8rem 2.8rem 3.2rem;
-    box-shadow:
-        0 18px 40px rgba(0,0,0,0.08);
-}
-
-/* Headings */
-h1, h3 {
-    font-family: "Inter", system-ui, sans-serif;
-}
-
-h1 {
-    margin: 0 0 1.2rem;
-    font-size: 2.35rem;
-    letter-spacing: -0.03em;
-}
-
-h3 {
-    margin: 2rem 0 1.2rem;
-    font-size: 1.05rem;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-}
-
-/* Links */
+/* LINKS */
 a {
     color: var(--accent);
     text-decoration: none;
-    text-underline-offset: 3px;
+    border-bottom: 1px solid rgba(139, 46, 60, 0.35);
+    transition: all 0.2s ease;
 }
 
 a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
+    color: #111;
+    border-bottom-color: rgba(139, 46, 60, 0.75);
 }
 
-/* Back link */
+/* NAV (UNCHANGED) */
+#mainNav,
+#mainNav.navbar-shrink {
+    background: #FAFAFA !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    min-height: 80px;
+}
+
+#mainNav a {
+    color: #111 !important;
+    text-decoration: none !important;
+}
+
+/* =========================
+   PAGE LAYOUT
+   ========================= */
+
+.page {
+    max-width: 1000px;
+    margin: auto;
+    padding: 80px 24px 140px;
+}
+
+h1 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
 .back-link {
     display: inline-block;
-    margin-bottom: 2.2rem;
+    margin-bottom: 40px;
+    color: rgba(0,0,0,0.6);
     font-size: 0.95rem;
-    color: var(--muted);
 }
 
-/* Video (slightly smaller + centered) */
-.video {
-    width: 85%;
-    margin: 2rem auto 2.6rem;
-    aspect-ratio: 16 / 9;
-}
-
-.video iframe {
-    width: 100%;
-    height: 100%;
-    border-radius: 14px;
-    border: none;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-}
-
-/* Text */
-p {
-    max-width: 62ch;
-    margin-bottom: 1.3rem;
-}
-
+/* =========================
+   VIDEO GRID
+   ========================= */
 
 .video-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: 40px;
 }
 
+/* TILE */
 .video-item {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
-/* shared tile system for ALL media */
-.media-wrapper,
-.media-tile {
+/* VIDEO WRAPPER */
+.media-wrapper {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    border-radius: 16px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    display: block;
+
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
-/* YouTube + Facebook embeds */
+.video-item:hover .media-wrapper {
+    filter: grayscale(100%) contrast(1.05);
+    opacity: 0.9;
+}
+
 .media-wrapper iframe {
     position: absolute;
     width: 100%;
@@ -137,104 +132,111 @@ p {
     border: 0;
 }
 
-/* SoundCloud / external link tiles */
-.media-tile {
-    background: rgba(255,255,255,0.75);
-    text-decoration: none;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.media-tile:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-}
-
-.media-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Inter", system-ui, sans-serif;
-    font-weight: 500;
-    font-size: 1.1rem;
-    color: var(--accent);
-    background: radial-gradient(circle at center, rgba(59,91,219,0.08), transparent 60%);
-}
-
+/* CAPTIONS */
 .video-caption {
-    text-align: center;
-    margin-top: 0.6rem;
-    color: var(--muted);
     font-size: 0.95rem;
+    color: rgba(0,0,0,0.75);
+    line-height: 1.4;
+}
+
+.video-caption strong {
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 500;
+    color: #111;
 }
 
 /* responsive */
-@media (max-width: 1024px) {
-    .video-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .video-grid {
         grid-template-columns: 1fr;
     }
 }
+
 </style>
+
 </head>
 
-<body>
+<body id="page-top">
 
-<div class="main">
+<!-- NAV (UNCHANGED STRUCTURE) -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+    </div>
+</nav>
 
-    <h1>Live Music</h1>
+<div class="page">
+
+    <h1>Live Performances</h1>
     <a class="back-link" href="./index.html">← Back</a>
 
-    <div class="video">
-        <iframe src="https://www.youtube.com/embed/TGxcx4Bz2Mc"
-                title="Live performance"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-    </div>
-
     <p>
-        Right now I doing some gigs as a solo guitarist or in small groups, mostly jazz and fusion kind of stuff.
+        Selected live performances, improvisations, and ensemble work across jazz, electronic, and experimental settings.
     </p>
 
-    <p>
-        Getting into playing with lots of soundscape/texture type elements, and using sample manipulation using some amazing Elektron gear and some analog and FM synths - its is a trip. When I find time I try and post stuff on 
-        <a href="https://www.facebook.com/jamie.gabriel.775451">Facebook</a> and
-        <a href="https://www.instagram.com/jgab2275/">Instagram</a>.
-    </p>
+    <div class="video-grid">
 
-    <p>
-        I also in a couple of bands. One of them is <a href="https://sajaproject.com/">SAJA Project</a>,
-        a collaboration with vocalist Sally Jamila. We just finished an album coming out early 2026.
-    </p>
-
- <p>
-    Although I am more focused as a jazz guitarist these days, I spent quite a few years working on classical piano repertoire, and occasionally can be coaxed into doing solo piano performances.
-</p>
-
-
-
-<div class="section">
-<h3>Live Clips</h3>
-  <div class="video-grid">
-
-    <div class="video-item">
-        <div class="media-wrapper">
-           <iframe width="560" height="315" src="https://www.youtube.com/embed/z67htqfjnpc?si=f6wy02_fVH6H4mx4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <!-- ITEM -->
+        <div class="video-item">
+            <div class="media-wrapper">
+                <iframe src="https://www.youtube.com/embed/TGxcx4Bz2Mc"
+                        allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">
+                <strong>Lorem</strong><br>
+                20th September
+            </div>
         </div>
-        <div class="video-caption">Piano Improv</div>
+
+        <!-- ITEM -->
+        <div class="video-item">
+            <div class="media-wrapper">
+                <iframe src="https://www.youtube.com/embed/z67htqfjnpc"
+                        allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">
+                <strong>Piano Improvisation</strong><br>
+                Sydney Session — 2024
+            </div>
+        </div>
+
+        <!-- ITEM -->
+        <div class="video-item">
+            <div class="media-wrapper">
+                <iframe src="https://www.youtube.com/embed/2RwkftNDTNU"
+                        allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">
+                <strong>Small Ensemble Set</strong><br>
+                Newcastle — Live Recording
+            </div>
+        </div>
+
+        <!-- ITEM -->
+        <div class="video-item">
+            <div class="media-wrapper">
+                <iframe src="https://www.youtube.com/embed/5wNH7qJSFhA"
+                        allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">
+                <strong>Lorem</strong><br>
+                Improvised Set — 2023
+            </div>
+        </div>
+
+        <!-- ITEM -->
+        <div class="video-item">
+            <div class="media-wrapper">
+                <iframe src="https://www.youtube.com/embed/a7XrhvSdGsc"
+                        allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">
+                <strong>Ipsum</strong><br>
+                Studio Performance
+            </div>
+        </div>
+
     </div>
-
-</div>
-
-
-
-</div>
 
 </div>
 

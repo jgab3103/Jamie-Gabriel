@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Recordings – Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet" />
+
+<link href="css/styles.css" rel="stylesheet" />
+
+<style>
+
+/* =========================
+   BASE (MATCH SITE)
+   ========================= */
+
+:root {
+    --accent: #8B2E3C;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: #FAFAFA;
+}
+
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: #FAFAFA;
+    color: #111;
+    line-height: 1.75;
+    font-size: 16.5px;
+    padding-top: 80px;
+}
+
+/* LINKS */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(139, 46, 60, 0.35);
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: #111;
+    border-bottom-color: rgba(139, 46, 60, 0.75);
+}
+
+/* NAV (UNCHANGED) */
+#mainNav,
+#mainNav.navbar-shrink {
+    background: #FAFAFA !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    min-height: 80px;
+}
+
+#mainNav a {
+    color: #111 !important;
+    text-decoration: none !important;
+}
+
+/* =========================
+   PAGE LAYOUT
+   ========================= */
+
+.page {
+    max-width: 1000px;
+    margin: auto;
+    padding: 80px 24px 140px;
+}
+
+h1 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 40px;
+    color: rgba(0,0,0,0.6);
+    font-size: 0.95rem;
+}
+
+/* =========================
+   RECORDING ROWS (NEW)
+   ========================= */
+
+.recording {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    align-items: start;
+}
+
+.recording:last-child {
+    border-bottom: none;
+}
+
+/* MEDIA TILE */
+.media-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.recording:hover .media-wrapper {
+    opacity: 0.9;
+    filter: grayscale(100%) contrast(1.05);
+}
+
+.media-wrapper iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* TEXT BLOCK */
+.recording-text h2 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.2rem;
+    margin: 0 0 10px;
+    font-weight: 500;
+}
+
+.recording-meta {
+    font-size: 0.95rem;
+    color: rgba(0,0,0,0.6);
+    margin-bottom: 12px;
+}
+
+.recording-text p {
+    max-width: 65ch;
+    margin: 0;
+    font-size: 0.98rem;
+    color: rgba(0,0,0,0.75);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .recording {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+</style>
+
+</head>
+
+<body id="page-top">
+
+<!-- NAV (UNCHANGED) -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+    </div>
+</nav>
+
+<div class="page">
+
+    <h1>Recordings</h1>
+    <a class="back-link" href="./index.html">← Back</a>
+
+
+    <!-- RECORDING 5 -->
+    <div class="recording">
+
+        <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/a7XrhvSdGsc" allowfullscreen></iframe>
+        </div>
+
+        <div class="recording-text">
+            <h2>SAJA Project</h2>
+            <div class="recording-meta">Studio performance — 2023</div>
+            <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
+            </p>
+        </div>
+
+    </div>
+
+    <!-- RECORDING 1 -->
+    <div class="recording">
+
+        <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/TGxcx4Bz2Mc" allowfullscreen></iframe>
+        </div>
+
+        <div class="recording-text">
+            <h2>Lofi Sessions</h2>
+            <div class="recording-meta">Live recording — 20 Sept 2025</div>
+            <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
+            </p>
+        </div>
+
+    </div>
+
+    <!-- RECORDING 2 -->
+    <div class="recording">
+
+        <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/z67htqfjnpc" allowfullscreen></iframe>
+        </div>
+
+        <div class="recording-text">
+            <h2>Piano Sketches Vol. 1</h2>
+            <div class="recording-meta">Studio improvisation — Sydney, 2024</div>
+            <p>
+                 Duis aute irure dolor in reprehenderit in voluptate velit esse. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
+            </p>
+        </div>
+
+    </div>
+
+    <!-- RECORDING 3 -->
+    <div class="recording">
+
+        <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/2RwkftNDTNU" allowfullscreen></iframe>
+        </div>
+
+        <div class="recording-text">
+            <h2>Music for piano and electonics</h2>
+            <div class="recording-meta">Studio improvisation — Newcastle, 2024</div>
+            <p>
+                 Duis aute irure dolor in reprehenderit in voluptate velit esse. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
+            </p>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+</body>
+</html>
