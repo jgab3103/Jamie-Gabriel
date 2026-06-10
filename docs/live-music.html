@@ -94,35 +94,31 @@ h1 {
 /* =========================
    VIDEO GRID
    ========================= */
+/* =========================
+   VIDEO / TEXT LAYOUT
+   ========================= */
 
 .video-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
-/* TILE */
-.video-item {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 80px;
 }
 
-/* VIDEO WRAPPER */
+.video-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* VIDEO */
+
 .media-wrapper {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
     border-radius: 10px;
     overflow: hidden;
-
- /*   filter: grayscale(100%);
-    transition: filter 0.3s ease, opacity 0.3s ease;*/
-}
-
-.video-item:hover .media-wrapper {
-    filter: grayscale(100%) contrast(1.05);
-    opacity: 0.9;
 }
 
 .media-wrapper iframe {
@@ -132,24 +128,32 @@ h1 {
     border: 0;
 }
 
-/* CAPTIONS */
+/* TEXT */
+
 .video-caption {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.8;
     color: rgba(0,0,0,0.75);
-    line-height: 1.4;
 }
 
 .video-caption strong {
+    display: block;
+    margin-bottom: 12px;
     font-family: 'Varela Round', sans-serif;
+    font-size: 1.1rem;
     font-weight: 500;
     color: #111;
 }
 
-/* responsive */
+/* MOBILE */
+
 @media (max-width: 900px) {
-    .video-grid {
+
+    .video-item {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
+
 }
 
 </style>
@@ -179,10 +183,16 @@ h1 {
             <div class="media-wrapper">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/5QB3bhQGYSw?si=ZTsy3qoYW6u8UrXp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-            <div class="video-caption">
-                <strong>Improv - 25.05.26</strong><br>
-              
-            </div>
+    <div class="video-caption">
+        <strong>Improv – 25.05.26</strong>
+
+        Improvisation using,
+        ambient textures and looping (Nord with Elecktron Octotrack and Digitone II) 
+
+        <br><br>
+
+    </div>
+
         </div>
 
         <!-- ITEM -->
@@ -192,6 +202,8 @@ h1 {
             </div>
             <div class="video-caption">
                 <strong>Improv - 31.03.26</strong><br>
+
+                   Improvisation using reverse loops and tape delay (recorded on Nord, Elecktron Octotrack and Syntakt) 
                 
             </div>
         </div>
@@ -203,7 +215,7 @@ h1 {
             </div>
             <div class="video-caption">
                 <strong>Piano House Recital</strong><br>
-               
+                 Excerpt from improvised solo piano recital in Blackheath, NSW
             </div>
         </div>
 
@@ -214,7 +226,7 @@ h1 {
             </div>
             <div class="video-caption">
                 <strong>Day in the city</strong><br>
-               
+               We wandered around the city taking footage of this and that to capture our day in the city. The brief was, 'just improvise somthing likle Gershwin' as a soundtrack. 
             </div>
         </div>
 
@@ -230,6 +242,8 @@ h1 {
             <div class="video-caption">
                 <strong>Guitar - 500 Miles High</strong><br>
                
+               Guitar version of 500 Miles High by Chick Corea using reverse reverb and delay effects.
+
             </div>
         </div>
 
