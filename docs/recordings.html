@@ -97,7 +97,7 @@ h1 {
 
 .recording {
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 320px 1fr;
     gap: 40px;
     padding: 28px 0;
     border-bottom: 1px solid rgba(0,0,0,0.06);
@@ -124,17 +124,11 @@ h1 {
     transform: scale(1.01);
 }
 
-.media-wrapper {
-    position: relative;
+.media-wrapper img {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 10px;
-    overflow: hidden;
-
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    background: #eee;
-
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 /* TEXT BLOCK */
@@ -189,10 +183,9 @@ h1 {
             <img src="assets/img/AlbumCover.jpg" alt="SAJA Project">
         </div>
         <div class="recording-text">
-            <h2>SAJA Project</h2>
-            <div class="recording-meta">Studio performance — 2023</div>
-            <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <h2><a href="https://sajaproject.com/">SAJA Project</a></h2>
+            <div class="recording-meta">Studio Recording - 2025<br/>
+                Album recorded with <a href="https://sallyjamila.com/">Sally Jamila</a> 
             </p>
         </div>
     </div>
