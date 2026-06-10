@@ -1,185 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wonderland – Jamie Gabriel</title>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;500&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet" />
+
+<link href="css/styles.css" rel="stylesheet" />
 
 <style>
+
+/* =========================
+   BASE
+   ========================= */
+
 :root {
-    --bg: #f8f4eb;
-    --panel: rgba(255,255,255,0.85);
-    --ink: #1f2937;
-    --muted: #6b7280;
-    --accent: #3b5bdb;
-    --border: rgba(0,0,0,0.08);
+    --accent: #8B2E3C; /* oxide editorial red */
 }
 
-/* Page background */
+html {
+    scroll-behavior: smooth;
+    background: #FAFAFA;
+}
+
 body {
-    font-family: "Source Serif 4", Georgia, serif;
     margin: 0;
-    padding: 3rem 1.5rem;
-    line-height: 1.7;
-    color: var(--ink);
-
-    background:
-        radial-gradient(600px 300px at 20% 10%, rgba(59,91,219,0.06), transparent 60%),
-        radial-gradient(500px 300px at 80% 25%, rgba(59,91,219,0.04), transparent 55%),
-        linear-gradient(180deg, #f8f4eb, #f3efe5);
+    font-family: 'Nunito', sans-serif;
+    background: #FAFAFA;
+    color: #111;
+    line-height: 1.75;
+    font-size: 16.5px;
+    padding-top: 80px;
 }
 
-/* Main container */
-.main {
-    max-width: 900px;
-    margin: 0 auto;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 2.8rem 2.8rem 3.2rem;
-    box-shadow:
-        0 18px 40px rgba(0,0,0,0.08);
-}
+/* =========================
+   LINKS (now accented)
+   ========================= */
 
-/* Headings */
-h1, h2, h3 {
-    font-family: "Inter", system-ui, sans-serif;
-}
-
-h1 {
-    margin: 0 0 0.8rem;
-    font-size: 2.35rem;
-    letter-spacing: -0.03em;
-}
-
-h2 {
-    margin: 0 0 1.2rem;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--muted);
-}
-
-h3 {
-    margin: 2.2rem 0 0.6rem;
-    font-size: 1.05rem;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-}
-
-/* Links */
 a {
     color: var(--accent);
     text-decoration: none;
-    text-underline-offset: 3px;
+    border-bottom: 1px solid rgba(139, 46, 60, 0.35);
+    transition: all 0.2s ease;
 }
 
 a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
+    color: #111;
+    border-bottom-color: rgba(139, 46, 60, 0.75);
 }
 
-/* Back link */
-.back-link {
-    display: inline-block;
-    margin-bottom: 2.2rem;
-    font-size: 0.95rem;
-    color: var(--muted);
+/* =========================
+   NAV
+   ========================= */
+
+#mainNav,
+#mainNav.navbar-shrink {
+    background: #FAFAFA !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    min-height: 80px;
 }
 
-/* Intro layout */
-.intro-flex {
+#mainNav a {
+    color: #111 !important;
+    text-decoration: none !important;
+}
+
+/* =========================
+   ABOUT
+   ========================= */
+
+.about-section {
+    background: #FAFAFA;
+    padding: 60px 0 90px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 90px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 24px;
+    align-items: start;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+
+    filter: grayscale(100%);
+    opacity: 0.92;
+}
+
+.about-text h2 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.7rem;
+    margin-bottom: 22px;
+}
+
+.about-text p {
+    margin-bottom: 18px;
+    max-width: 65ch;
+}
+
+/* =========================
+   PROJECTS
+   ========================= */
+
+.projects {
+    max-width: 1000px;
+    margin: auto;
+    padding: 80px 24px 140px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.project {
     display: flex;
-    gap: 2.5rem;
-    margin-bottom: 2.5rem;
+    flex-direction: column;
+    gap: 14px;
 }
 
-.intro-text {
-    flex: 1;
+/* IMAGE */
+.project-image img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+
+    filter: grayscale(100%);
+    transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
-/* TOC */
-.toc {
-    margin: 2rem 0 3rem;
-    padding: 1.5rem 1.8rem;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: rgba(0,0,0,0.02);
+/* subtle accent interaction */
+.project:hover img {
+    opacity: 0.88;
+    filter: grayscale(100%) contrast(1.05);
 }
 
-.toc h3 {
-    margin-top: 0;
+/* TEXT */
+.project-text h3 {
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.25s ease;
 }
 
-.toc ul {
-    padding-left: 1.2rem;
+.project:hover .project-text h3 {
+    color: var(--accent);
 }
 
-.toc li {
-    margin-bottom: 0.5rem;
+.project-text p {
+    margin: 6px 0 0;
+    font-size: 0.95rem;
+    color: rgba(0,0,0,0.7);
 }
 
-/* Text */
-p {
-    margin-bottom: 1.3rem;
-    color: var(--ink);
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+    background: #FAFAFA;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding: 80px 30px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: rgba(0,0,0,0.7);
 }
 
-i {
-    color: var(--muted);
-}
+/* =========================
+   RESPONSIVE
+   ========================= */
 
-/* Lists */
-ul {
-    padding-left: 1.2rem;
-}
+@media (max-width: 900px) {
 
-li {
-    margin-bottom: 0.6rem;
-}
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 
-/* Dividers */
-hr {
-    border: none;
-    height: 1px;
-    background: linear-gradient(
-        to right,
-        transparent,
-        rgba(0,0,0,0.08),
-        transparent
-    );
-    margin: 2.6rem 0;
-}
+    .projects {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
 
-/* Sections */
-section {
-    margin-top: 3rem;
-}
-
-/* Responsive */
-@media (max-width: 700px) {
-    .intro-flex {
-        flex-direction: column;
+    .project-image img {
+        height: 260px;
     }
 }
+
+.reading-container {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
 </style>
+
 </head>
 
-<body>
+<body id="page-top">
 
-<div class="main">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+    </div>
+</nav>
 
-    <h1>Wonderland - A Deep Improv Project</h1>
-    <h2>A Deep Improv Project for Ensemble, Recording, and AI-Augmented Collaboration</h2>
 
-    <a class="back-link" href="./index.html">← Back</a>
+<section id="projects">
 
-    <div class="toc">
-        <h3>Contents</h3>
+    <div class="reading-container">
+
+            <div class="toc">
+       <br/><br/>
         <ul>
             <li><a href="#description">Overview</a></li>
             <li><a href="#background">Background reading</a></li>
@@ -188,15 +236,12 @@ section {
         </ul>
     </div>
 
-    <section id="description">
-        <h3>Overview</h3>
-
         <p>
-            <strong>Wonderland</strong> is an ongoing ensemble-based improvisation project centred on deep listening, collective performance, and continuous recording. Every rehearsal and performance is captured in full, forming a growing archive of musical interaction that is used as primary material for analysis and creative development.
+            <strong>Deep Improv</strong> is an ongoing ensemble-based improvisation project centred on deep listening, collective performance, and continuous recording. Every rehearsal and performance is captured in full, forming a growing archive of musical interaction that is used as primary material for analysis and creative development.
         </p>
 
         <p>
-            We have explored different approaches, but rather than focusing on collecting MIDI or symbolic representations, the project works directly with audio. This includes live instrumental performance, electronically generated sound, and an  library of samples, many drawn from public domain orchestral recordings. These materials are treated as fluid sources for transformation, recombination, and reinterpretation during playing.
+            We have explored different approaches, but rather than focusing on collecting MIDI or symbolic representations, the project works directly with audio. This includes live instrumental performance, electronically generated sound, and a library of samples, many drawn from public domain orchestral recordings. These materials are treated as fluid sources for transformation, recombination, and reinterpretation during playing.
         </p>
 
         <p>
@@ -207,44 +252,48 @@ section {
             These extracted structures are then fed into a real-time synthesis environment built in SuperCollider which acts as another member of the ensemble, responding to learned patterns, tendencies, and emergent behaviours within the group. The result is what we loosely termed “smart improv” where human performers and machine processes co-exist within the same musical space.
         </p>
 
-
         <p>
-            Ultimately, the idea here is to explore what happens when listening is extended beyond the moment of performance — when the traces of improvisation are recursively analysed, transformed, and reintroduced into the creative process. 
+            Ultimately, the idea here is to explore what happens when listening is extended beyond the moment of performance — when the traces of improvisation are recursively analysed, transformed, and reintroduced into the creative process.
         </p>
 
-    </section>
-
-
-
-    <section id="background">
-        <h3>Background Reading</h3>
         <p>
             We try and maintain some background reading and related literature can be found
             <a href="./background-reading.html">here</a>. This includes work in machine learning, computational creativity, and experimental music practices that inform the development of the project.
         </p>
-    </section>
-
-
-
-    <section id="data-collection">
-        <h3>Related Code</h3>
 
         <p>
-            The codebase currently includes tools for large-scale audio recording, dataset organisation, feature extraction, and integration with SuperCollider. There is also ongoing work on deep learning pipelines for analysing rehearsal archives and generating responsive sonic material.  
+            The codebase currently includes tools for large-scale audio recording, dataset organisation, feature extraction, and integration with SuperCollider. There is also ongoing work on deep learning pipelines for analysing rehearsal archives and generating responsive sonic material.
             <a href="https://github.com/jgab3103/Deep-Improv">Link to related code</a>
         </p>
-    </section>
 
-
-    <section id="get-involved">
-        <h3>Getting Involved</h3>
         <p>
-            We sometimes do group jams on a Jamulus server and will post details of that to this page.  If you are interested in this kind of thing, contact me at
-            <a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a>. 
+            We sometimes do group jams on a Jamulus server and will post details of that to this page. If you are interested in this kind of thing, contact me at
+            <a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a>.
         </p>
-    </section>
 
-</div>
+        <!-- ADDED WITHOUT CHANGING STRUCTURE -->
+        <p>
+            Additional background reading and contextual material for this project is maintained in the
+            <a href="./background-reading.html">background reading archive</a>, covering machine learning approaches to musical structure, computational creativity, and ensemble improvisation systems.
+        </p>
+
+        <p>
+            The full technical codebase for Wonderland, including audio capture tools, dataset organisation workflows, and deep learning pipelines for analysis and generation, is available here:
+            <a href="https://github.com/jgab3103/Deep-Improv">GitHub repository</a>.
+        </p>
+
+        <p>
+            If you are interested in participating in future sessions, experimental jams, or the development of this system, you are welcome to get in touch via
+            <a href="mailto:jamie@jamiegabriel.org">email</a>. Details of Jamulus-based group sessions will also be posted here when active.
+        </p>
+
+    </div>
+
+</section>
+
+<footer class="footer" id="contact">
+    <div>jamie@jamiegabriel.org</div>
+</footer>
 
 </body>
 </html>
