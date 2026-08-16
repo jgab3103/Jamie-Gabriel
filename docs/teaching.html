@@ -1,269 +1,541 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Teaching Resources – Jamie Gabriel</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;500&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+
+<link href="css/styles.css" rel="stylesheet" />
 
 <style>
+
+/* =========================
+   BASE
+   ========================= */
+
 :root {
-    --bg: #f8f4eb;
-    --panel: rgba(255,255,255,0.85);
-    --ink: #1f2937;
-    --muted: #6b7280;
-    --accent: #3b5bdb;
-    --border: rgba(0,0,0,0.08);
+    --accent: #8B2E3C; /* oxide editorial red */
+}
+
+html {
+    scroll-behavior: smooth;
+    background: #FAFAFA;
 }
 
 body {
-    font-family: "Source Serif 4", Georgia, serif;
     margin: 0;
-    padding: 3rem 1.5rem;
-    line-height: 1.7;
-    color: var(--ink);
-    background:
-        radial-gradient(600px 300px at 20% 10%, rgba(59,91,219,0.06), transparent 60%),
-        linear-gradient(180deg, #f8f4eb, #f3efe5);
+    font-family: 'Nunito', sans-serif;
+    background: #FAFAFA;
+    color: #111;
+    line-height: 1.75;
+    font-size: 16.5px;
+    padding-top: 80px;
 }
 
-.main {
-    max-width: 900px;
-    margin: 0 auto;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 2.8rem;
-    box-shadow: 0 18px 40px rgba(0,0,0,0.08);
-}
-
-h1, h3 {
-    font-family: "Inter", system-ui, sans-serif;
-}
-
-h1 {
-    font-size: 2.3rem;
-    margin-bottom: 0.4rem;
-}
-
-h3 {
-    margin-top: 2.2rem;
-    font-size: 1.2rem;
-}
+/* =========================
+   LINKS
+   ========================= */
 
 a {
     color: var(--accent);
     text-decoration: none;
+    border-bottom: 1px solid rgba(139, 46, 60, 0.35);
+    transition: all 0.2s ease;
 }
 
 a:hover {
-    text-decoration: underline;
-}
-
-.back-link {
-    display: inline-block;
-    margin-bottom: 1.8rem;
-    color: var(--muted);
-}
-
-.section {
-    margin-top: 2.5rem;
-}
-
-p {
-    color: var(--ink);
+    color: #111;
+    border-bottom-color: rgba(139, 46, 60, 0.75);
 }
 
 /* =========================
-   UNIFIED GRID SYSTEM
+   NAV
+   ========================= */
+
+#mainNav,
+#mainNav.navbar-shrink {
+    background: #FAFAFA !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    min-height: 80px;
+}
+
+#mainNav a {
+    color: #111 !important;
+    text-decoration: none !important;
+}
+
+/* =========================
+   ABOUT
+   ========================= */
+
+.about-section {
+    background: #FAFAFA;
+    padding: 60px 0 90px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 90px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 24px;
+    align-items: start;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+
+    filter: grayscale(100%);
+    opacity: 0.92;
+}
+
+.about-text h2 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.7rem;
+    margin-bottom: 22px;
+}
+
+.about-text p {
+    margin-bottom: 18px;
+    max-width: 65ch;
+}
+
+/* =========================
+   PROJECTS
+   ========================= */
+
+.projects {
+    max-width: 1000px;
+    margin: auto;
+    padding: 80px 24px 140px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* =========================
+   TEACHING SECTIONS
+   ========================= */
+
+.section {
+    grid-column: 1 / -1;
+    margin-bottom: 70px;
+}
+
+.section h3 {
+    margin: 0 0 24px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* =========================
+   VIDEO LIST
    ========================= */
 
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 70px;
+    row-gap: 0;
 }
 
 .video-item {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 38px 1fr auto;
+    align-items: center;
+
+    min-height: 64px;
+
+    border-top: 1px solid rgba(0,0,0,0.08);
+
+    gap: 14px;
 }
 
-/* shared tile system for ALL media */
-.media-wrapper,
-.media-tile {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    display: block;
+.video-item:nth-last-child(-n+2) {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
-/* YouTube + Facebook embeds */
-.media-wrapper iframe {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
+.video-icon {
+    width: 30px;
+    height: 30px;
 
-/* SoundCloud / external link tiles */
-.media-tile {
-    background: rgba(255,255,255,0.75);
-    text-decoration: none;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.media-tile:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-}
-
-.media-placeholder {
-    position: absolute;
-    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Inter", system-ui, sans-serif;
-    font-weight: 500;
-    font-size: 1.1rem;
+
+    font-size: 1.05rem;
+}
+
+.video-icon a {
+    border-bottom: none;
     color: var(--accent);
-    background: radial-gradient(circle at center, rgba(59,91,219,0.08), transparent 60%);
+}
+
+.video-icon a:hover {
+    color: #111;
+}
+
+.video-title {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.video-title a {
+    color: #111;
+    border-bottom: none;
+}
+
+.video-title a:hover {
+    color: var(--accent);
 }
 
 .video-caption {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.video-caption a {
+    color: var(--accent);
+}
+
+.media-wrapper {
+    display: none;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+    background: #FAFAFA;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding: 80px 30px;
     text-align: center;
-    margin-top: 0.6rem;
-    color: var(--muted);
     font-size: 0.95rem;
+    color: rgba(0,0,0,0.7);
 }
 
-/* responsive */
-@media (max-width: 1024px) {
-    .video-grid {
-        grid-template-columns: repeat(2, 1fr);
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 900px) {
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
-}
 
-@media (max-width: 700px) {
+    .projects {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
     .video-grid {
         grid-template-columns: 1fr;
     }
+
+    .video-item {
+        grid-template-columns: 38px 1fr auto;
+    }
+
+    .video-item:last-child {
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .project-image img {
+        height: 260px;
+    }
 }
+
+@media (max-width: 500px) {
+
+    .video-item {
+        grid-template-columns: 34px 1fr auto;
+        gap: 10px;
+    }
+
+    .video-title {
+        font-size: 0.9rem;
+    }
+
+    .video-caption {
+        font-size: 0.8rem;
+    }
+
+}
+
 </style>
+
 </head>
 
-<body>
+<body id="page-top">
 
-<div class="main">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+    </div>
+</nav>
 
-<a class="back-link" href="./index.html">← Back</a>
+<section class="about-section" id="about">
 
-<h1>Teaching Resources</h1>
+    <div class="about-grid">
 
-<p>
-A collection of teaching videos covering things like rhythm, improvisation, music technology, composition, and music analysis. Also some example solos over well known standards.
-</p>
+    </div>
+
+</section>
+
+<section class="projects" id="projects">
 
 <!-- ================= MUSIC LESSONS ================= -->
+
 <div class="section">
-<h3>Music Lessons</h3>
+<h3>Jazz Guitar Lessons</h3>
 
 <div class="video-grid">
 
     <div class="video-item">
-        <div class="media-wrapper">
-           <iframe width="560" height="315" src="https://www.youtube.com/embed/2RwkftNDTNU?si=LKGf8nku_LBrFEmN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        <div class="video-icon">
+            <a href="https://www.youtube.com/embed/2RwkftNDTNU" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
         </div>
-        <div class="video-caption">Lesson 1: Preliminary Voice Leading Exercise</div>
-        <div class="video-caption"><a href="./assets/pdf-files/Lesson_1_notes.pdf">PDF Notes</a></div>
+
+        <div class="video-title">
+            <a href="https://www.youtube.com/embed/2RwkftNDTNU" target="_blank">
+                Lesson 1: Preliminary Voice Leading Exercise
+            </a>
+        </div>
+
+        <div class="video-caption">
+            <a href="./assets/pdf-files/Lesson_1_notes.pdf">PDF</a>
+        </div>
+
     </div>
 
-    <div class="video-item">
-        <div class="media-wrapper">
-           <iframe width="560" height="315" src="https://www.youtube.com/embed/5wNH7qJSFhA?si=KUvPrygj6TY_XUJ9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div class="video-caption">Lesson 2: Chord Shapes for Jazz</div>
-       <div class="video-caption"><a href="./assets/pdf-files/Lesson_2_notes.pdf">PDF Notes</a></div>
-    </div>
 
     <div class="video-item">
-        <div class="media-wrapper">
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/a7XrhvSdGsc?si=__SVdOtmCFLj3won" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        <div class="video-icon">
+            <a href="https://www.youtube.com/embed/5wNH7qJSFhA" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
         </div>
-        <div class="video-caption">Lesson 3: More Chord Shapes for Jazz</div>
-       <div class="video-caption"><a href="./assets/pdf-files/Lesson_3_notes.pdf">PDF Notes</a></div>
-    </div>
-    <div class="video-item">
-        <div class="media-wrapper">
-            <iframe src="https://www.youtube.com/embed/REPLACE_VIDEO_6" allowfullscreen></iframe>
+
+        <div class="video-title">
+            <a href="https://www.youtube.com/embed/5wNH7qJSFhA" target="_blank">
+                Lesson 2: Chord Shapes for Jazz
+            </a>
         </div>
-        <div class="video-caption">Transcribing Effectively</div>
+
+        <div class="video-caption">
+            <a href="./assets/pdf-files/Lesson_2_notes.pdf">PDF</a>
+        </div>
+
     </div>
 
+
     <div class="video-item">
-        <div class="media-wrapper">
-            <iframe src="https://www.youtube.com/embed/REPLACE_VIDEO_6" allowfullscreen></iframe>
+
+        <div class="video-icon">
+            <a href="https://www.youtube.com/embed/a7XrhvSdGsc" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
         </div>
-        <div class="video-caption">Why reading music is important</div>
+
+        <div class="video-title">
+            <a href="https://www.youtube.com/embed/a7XrhvSdGsc" target="_blank">
+                Lesson 3: More Chord Shapes for Jazz
+            </a>
+        </div>
+
+        <div class="video-caption">
+            <a href="./assets/pdf-files/Lesson_3_notes.pdf">PDF</a>
+        </div>
+
+    </div>
+
+
+    <div class="video-item">
+
+        <div class="video-icon">
+            <a href="https://www.youtube.com/embed/REPLACE_VIDEO_6" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+
+        <div class="video-title">
+            <a href="https://www.youtube.com/embed/REPLACE_VIDEO_6" target="_blank">
+                Transcribing Effectively
+            </a>
+        </div>
+
+        <div class="video-caption"></div>
+
+    </div>
+
+
+    <div class="video-item">
+
+        <div class="video-icon">
+            <a href="https://www.youtube.com/embed/REPLACE_VIDEO_6" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+
+        <div class="video-title">
+            <a href="https://www.youtube.com/embed/REPLACE_VIDEO_6" target="_blank">
+                Why reading music is important
+            </a>
+        </div>
+
+        <div class="video-caption"></div>
+
     </div>
 
 </div>
 </div>
+
 
 <!-- ================= SOLOS ================= -->
+
 <div class="section">
-<h3>Solos</h3>
+<h3>Study Solos</h3>
 
 <div class="video-grid">
 
     <div class="video-item">
-        <div class="media-wrapper">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/Sa1AQwjMm90?si=vwnKQX2OKYtxjThs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        <div class="video-icon">
+            <a href="https://www.youtube.com/embed/Sa1AQwjMm90" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
         </div>
-        <div class="video-caption">In Your Own Sweet Way</div>
+
+        <div class="video-title">
+            <a href="https://www.youtube.com/embed/Sa1AQwjMm90" target="_blank">
+                In Your Own Sweet Way
+            </a>
+        </div>
+
+        <div class="video-caption"></div>
+
     </div>
 
-    <div class="video-item">
-        <div class="media-wrapper">
-           <iframe width="560" height="315" src="https://www.youtube.com/embed/vhp7fo9A1TY?si=pjuijmNmVezLNgSX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div class="video-caption">In A Sentimental Mood</div>
-    </div>
 
     <div class="video-item">
-        <div class="media-wrapper">
-            <iframe src="https://www.youtube.com/embed/REPLACE_VIDEO_9" allowfullscreen></iframe>
+
+        <div class="video-icon">
+            <a href="https://www.youtube.com/embed/vhp7fo9A1TY" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
         </div>
-        <div class="video-caption">Infant Eyes</div>
+
+        <div class="video-title">
+            <a href="https://www.youtube.com/embed/vhp7fo9A1TY" target="_blank">
+                In A Sentimental Mood
+            </a>
+        </div>
+
+        <div class="video-caption"></div>
+
     </div>
+
+
+    <div class="video-item">
+
+        <div class="video-icon">
+            <a href="https://www.youtube.com/embed/REPLACE_VIDEO_9" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+
+        <div class="video-title">
+            <a href="https://www.youtube.com/embed/REPLACE_VIDEO_9" target="_blank">
+                Infant Eyes
+            </a>
+        </div>
+
+        <div class="video-caption"></div>
+
+    </div>
+
 
     <!-- SOUNDCLOUD TILE 1 -->
-    <div class="video-item">
-        <div class="media-wrapper">
-            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A120537027&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/jamie3103" title="Jamie3103" target="_blank" style="color: #cccccc; text-decoration: none;">Jamie3103</a> · <a href="https://soundcloud.com/jamie3103/my-funny-valentine" title="My Funny Valentine" target="_blank" style="color: #cccccc; text-decoration: none;">My Funny Valentine</a></div>
-        </div>
-        <div class="video-caption">My Funny Valentine (2013 Recording)</div>
-    </div>
 
     <div class="video-item">
-        <div class="media-wrapper">
-            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A120536598&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/jamie3103" title="Jamie3103" target="_blank" style="color: #cccccc; text-decoration: none;">Jamie3103</a> · <a href="https://soundcloud.com/jamie3103/summertime" title="Summertime" target="_blank" style="color: #cccccc; text-decoration: none;">Summertime</a></div>
+
+        <div class="video-icon">
+            <a href="https://soundcloud.com/jamie3103/my-funny-valentine" target="_blank">
+                <i class="fab fa-soundcloud"></i>
+            </a>
         </div>
-        <div class="video-caption">Summertime (2013 Recording)</div>
+
+        <div class="video-title">
+            <a href="https://soundcloud.com/jamie3103/my-funny-valentine" target="_blank">
+                My Funny Valentine (2013 Recording)
+            </a>
+        </div>
+
+        <div class="video-caption"></div>
+
+    </div>
+
+
+    <div class="video-item">
+
+        <div class="video-icon">
+            <a href="https://soundcloud.com/jamie3103/summertime" target="_blank">
+                <i class="fab fa-soundcloud"></i>
+            </a>
+        </div>
+
+        <div class="video-title">
+            <a href="https://soundcloud.com/jamie3103/summertime" target="_blank">
+                Summertime (2013 Recording)
+            </a>
+        </div>
+
+        <div class="video-caption"></div>
+
     </div>
 
 </div>
 </div>
 
-</div>
+</section>
+
+<footer class="footer" id="contact">
+    <div>jamie@jamiegabriel.org</div>
+</footer>
 
 </body>
 </html>
+```
