@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>About – Jamie Gabriel</title>
+<title>Jamie Gabriel</title>
 
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
@@ -20,7 +21,7 @@
 <style>
 
 /* =========================
-   BASE (IDENTICAL TO INDEX)
+   BASE
    ========================= */
 
 :root {
@@ -42,7 +43,10 @@ body {
     padding-top: 80px;
 }
 
-/* LINKS */
+/* =========================
+   LINKS
+   ========================= */
+
 a {
     color: var(--accent);
     text-decoration: none;
@@ -55,7 +59,10 @@ a:hover {
     border-bottom-color: rgba(139, 46, 60, 0.75);
 }
 
-/* NAV (UNCHANGED) */
+/* =========================
+   NAV
+   ========================= */
+
 #mainNav,
 #mainNav.navbar-shrink {
     background: #FAFAFA !important;
@@ -68,25 +75,35 @@ a:hover {
     text-decoration: none !important;
 }
 
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    border-bottom: none;
+}
+
 /* =========================
-   ABOUT LAYOUT (MATCH INDEX GRID LANGUAGE)
+   ABOUT
    ========================= */
 
 .about-section {
     background: #FAFAFA;
-    padding: 80px 24px 120px;
+    padding: 60px 0 120px;
 }
 
 .about-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 60px;
+    gap: 90px;
     max-width: 1000px;
     margin: auto;
+    padding: 0 24px;
     align-items: start;
 }
 
-/* TYPOGRAPHY (MATCH INDEX EXACTLY) */
 .about-text h2 {
     font-family: 'Varela Round', sans-serif;
     font-size: 1.7rem;
@@ -98,47 +115,115 @@ a:hover {
     max-width: 65ch;
 }
 
-/* IMAGE STYLE (SAME AS INDEX ABOUT IMAGE) */
+/* =========================
+   SIDEBAR
+   ========================= */
+
+.about-sidebar {
+    border: 1px solid rgba(0,0,0,0.10);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.about-image {
+    margin-bottom: 35px;
+}
+
 .about-image img {
     width: 100%;
-    max-width: 360px;
+    max-width: 220px;
     height: auto;
-    display: block;
     object-fit: cover;
+    display: block;
 
-    filter: grayscale(100%);
+ 
     opacity: 0.92;
 }
 
-/* CONFERENCES (same tone as project captions) */
-.conferences h3 {
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 16px;
+.cv-links {
+    font-size: 0.95rem;
 }
 
-.conferences ul {
+.cv-links ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.conferences li {
+.cv-links li {
     margin-bottom: 10px;
+}
+
+/* =========================
+   CREDENTIALS
+   ========================= */
+
+.credentials {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.credentials div {
+    margin-bottom: 8px;
+}
+
+/* =========================
+   SOCIAL LINKS
+   ========================= */
+
+.social-links {
+    display: flex;
+    gap: 18px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.social-links a {
+    color: #111;
+    border: none;
+    font-size: 1.15rem;
+}
+
+.social-links a:hover {
+    color: var(--accent);
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+    background: #FAFAFA;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding: 80px 30px;
+    text-align: center;
     font-size: 0.95rem;
-    color: rgba(0,0,0,0.75);
+    color: rgba(0,0,0,0.7);
 }
 
-.conferences span {
-    color: rgba(0,0,0,0.45);
-}
+/* =========================
+   RESPONSIVE
+   ========================= */
 
-/* RESPONSIVE */
 @media (max-width: 900px) {
+
     .about-grid {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    .about-sidebar {
+        order: -1;
+    }
+
+    .about-image img {
+        max-width: 200px;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
     }
 }
 
@@ -148,84 +233,137 @@ a:hover {
 
 <body id="page-top">
 
-<!-- NAV (UNCHANGED) -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+
+        <div class="nav-links">
+            <a href="./music.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./research.html">Research</a>
+        </div>
+
     </div>
 </nav>
 
-<section class="about-section">
+<section class="about-section" id="about">
 
     <div class="about-grid">
 
-        <!-- TEXT -->
         <div class="about-text">
 
             <h2>About</h2>
 
+            <p>
+                I studied music at the Australian Institute of Music and the Sydney Conservatorium of Music, before completing
+                postgraduate studies at Macquarie University and the University of Technology Sydney. I hold a PhD in computational
+                musicology focused on machine learning approaches to music analysis.
+            </p>
 
+            <p>
+                Over the past two decades I have developed music software and research systems in C, C++, Java, R, Haskell, and Python,
+                including a symbolic music search engine for large orchestral datasets.
+            </p>
 
-<p>
-    I studied music at the Australian Institute of Music and the Sydney Conservatorium of Music, before completing
-    postgraduate studies at Macquarie University and the University of Technology Sydney. I hold a PhD in computational
-    musicology focused on machine learning approaches to music analysis.
-</p>
+            <p>
+                I have also taught extensively across musicology, harmony, improvisation, music history, ensemble practice, and
+                computational topics, primarily in tertiary music and university settings. Teaching has remained an important part
+                of my work throughout my career, and I am particularly interested in helping students develop both practical musical
+                skills and a deeper understanding of how music works.
+            </p>
 
-<p>
-    Over the past two decades I have developed music software and research systems in C, C++, Java, R, Haskell, and Python,
-    including a symbolic music search engine for large orchestral datasets.
-</p>
+            <p>
+                In 2012 I moved out of academia into data science and machine learning, working primarily in health analytics and
+                developing AI systems and data security solutions across a range of corporate and government roles. This culminated
+                in my appointment as Chief Data Officer at the Cancer Institute NSW, a role I held from 2018 until 2025. It was
+                certainly a rewarding time, giving me the opportunity to lead data and analytics strategy, manage large data science
+                and technology teams, contribute to data and analytics architecture in the health space, and participate in AI
+                strategy at the state and federal level.
+            </p>
 
-<p>
-    I have also taught extensively across musicology, harmony, improvisation, music history, ensemble practice, and
-    computational topics, primarily in tertiary music and university settings. Teaching has remained an important part
-    of my work throughout my career, and I am particularly interested in helping students develop both practical musical
-    skills and a deeper understanding of how music works.
-</p>
+            <p>
+                In 2025, I decided to step back from data and technology to find time for music again. I started working with a
+                number of different ensembles, and started carving out time for composition once again. It has been absolutely
+                amazing and as well as my ongoing work as a musician and composer, I returned to teaching in schools, this time
+                deciding to focus on both primary and secondary education.
+            </p>
 
-<p> In 2012 I moved out of academia into data science and machine learning, working primarily in health analytics and developing AI systems and data security solutions across a range of corporate and government roles. This culminated in my appointment as Chief Data Officer at the Cancer Institute NSW, a role I held from 2018 until 2025. It was certainly a rewarding time, giving me the opportunity to lead data and analytics strategy, manage large data science and technology teams, contribute to data and analytics architecture in the health space, and participate in AI strategy at the state and federal level. </p>
-<p>
-    In 2025, I decided to step back from data and technology to find time for music again. I started working with a number of different ensembles, and started carving out time for composition once again. It has been absolutely amazing and as well as my ongoing
-    work as a musician and composer, I returned to teaching in schools, this time deciding to focus on both primary and secondary
-    education.
-</p>
+            <p>
+                As a performer, I am currently working across solo and ensemble contexts that span jazz fusion, experimental
+                improvisation, and electronic ambient music. When playing live, I often mix acoustic and electric piano, synthesis,
+                and looping, shifting between structured performance and open-ended improvisation depending on the setting.
+            </p>
 
-
-
-<p>
-    As a performer, I am currently working across solo and ensemble contexts that span jazz fusion, experimental improvisation, and
-    electronic ambient music. When playing live, I often mix acoustic and electric piano, synthesis, and looping,
-    shifting between structured performance and open-ended improvisation depending on the setting.
-</p>
-<p>
-    I have also recently released a first album, <a href="https://sajaproject.com/">SAJA Project 01</a> with Aotearoa based artist  
-    <a href="https://sallyjamila.com/">Sally Jamila</a> and we are recording a follow up album in 2026.
-
+            <p>
+                I have also recently released a first album,
+                <a href="https://sajaproject.com/">SAJA Project 01</a>
+                with Aotearoa based artist
+                <a href="https://sallyjamila.com/">Sally Jamila</a>
+                and we are recording a follow up album in 2026.
+            </p>
 
         </div>
 
-        <!-- CONFERENCES -->
-        <aside class="conferences">
+        <aside class="about-sidebar">
 
-            <h3>Conferences & Events</h3>
+            <div class="about-image">
+                <img src="assets/img/JamieFaceEdited_5357.jpeg" alt="Jamie Gabriel">
+            </div>
 
-            <ul>
-                <li><span>2025</span> — AJIRN Conference, Auckland</li>
-                <li><span>2020</span> — Data and Analytics in Health Conference, Melbourne</li>
-                <li><span>2019</span> — PyCon AU, Sydney</li>
-                <li><span>2017</span> — PyCon AU, Melbourne</li>
-                <li><span>2015</span> — ISMIR Conference, Málaga</li>
-                <li><span>2013</span> — Stockholm Music Acoustics Conference</li>
-                <li><span>2012</span> — ACM Recommender Systems Conference</li>
-                <li><span>2011</span> — Apple WWDC, San Francisco</li>
-            </ul>
+            <div class="cv-links">
+
+                <div>
+                    Having moved between two careers, I have found it is simpler to have two different CV's.
+                    One outlines my experience in software development, enterprise technologies, data science and executive roles.
+                    <br><br>
+                    The other is focused on my music, teaching and research. 
+                </div>
+
+                <br/>
+
+                <ul>
+                    <li>
+                        <a href="./assets/pdf-files/Jamie_Gabriel_Academic_CV.pdf">
+                            Music, Teaching and Research CV
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="./assets/pdf-files/Jamie_Gabriel_Data_CV.pdf">
+                            Data &amp; Technology CV
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+
+            <div class="social-links">
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="#" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+            </div>
 
         </aside>
 
     </div>
 
 </section>
+
+<footer class="footer" id="contact">
+    <div>jamie@jamiegabriel.org</div>
+</footer>
 
 </body>
 </html>

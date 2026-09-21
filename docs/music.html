@@ -254,15 +254,27 @@ h2{
     margin-top:80px;
 }
 
+/*
+ * Masonry-style layout:
+ * clips flow vertically through three columns,
+ * rather than forming rigid rows.
+ */
+
 .live{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:40px 24px;
+    columns:3 280px;
+    column-gap:24px;
 }
 
 .live-item{
     min-width:0;
+    break-inside:avoid;
+    margin-bottom:40px;
 }
+
+
+/* =========================================
+   VIDEO
+   ========================================= */
 
 .media-video{
     position:relative;
@@ -278,6 +290,29 @@ h2{
     height:100%;
     border:0;
 }
+
+
+/* =========================================
+   INSTAGRAM
+   ========================================= */
+
+.media-instagram{
+    width:100%;
+    margin-bottom:16px;
+    overflow:hidden;
+}
+
+.media-instagram .instagram-media{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+}
+
+
+/* =========================================
+   LIVE CAPTIONS
+   ========================================= */
 
 .live-caption{
     color:rgba(0,0,0,.75);
@@ -325,8 +360,9 @@ h2{
     }
 
     .live{
-        grid-template-columns:repeat(2, 1fr);
+        columns:2 280px;
     }
+
 }
 
 @media(max-width:600px){
@@ -336,8 +372,7 @@ h2{
     }
 
     .live{
-        grid-template-columns:1fr;
-        gap:35px;
+        columns:1;
     }
 
 }
@@ -354,31 +389,31 @@ h2{
 
 <nav class="navbar" id="mainNav">
 
-
 <div class="container">
 
-    <a class="navbar-brand" href="./index.html">
-        Jamie Gabriel
-    </a>
+<a class="navbar-brand" href="./index.html">
+    Jamie Gabriel
+</a>
 
-    <div class="nav-links">
+<div class="nav-links">
 
-        <a href="./music.html">
-            Music
-        </a>
 
-        <a href="./teaching.html">
-            Teaching
-        </a>
+<a href="./music.html">
+    Music
+</a>
 
-        <a href="./research.html">
-            Research
-        </a>
+<a href="./teaching.html">
+    Teaching
+</a>
 
-    </div>
+<a href="./research.html">
+    Research
+</a>
+
 
 </div>
 
+</div>
 
 </nav>
 
@@ -396,81 +431,78 @@ h2{
 
 <article class="recording">
 
-
 <div class="player-switcher">
 
-    <div class="player-tabs">
-
-        <button
-            class="player-tab active"
-            type="button"
-            data-player="spotify"
-            onclick="showPlayer(this)">
-            Spotify
-        </button>
-
-        <button
-            class="player-tab"
-            type="button"
-            data-player="bandcamp"
-            onclick="showPlayer(this)">
-            Bandcamp
-        </button>
-
-    </div>
+<div class="player-tabs">
 
 
-    <div class="player-content">
+<button
+    class="player-tab active"
+    type="button"
+    data-player="spotify"
+    onclick="showPlayer(this)">
+    Spotify
+</button>
 
+<button
+    class="player-tab"
+    type="button"
+    data-player="bandcamp"
+    onclick="showPlayer(this)">
+    Bandcamp
+</button>
 
-        <div
-            class="player-panel active"
-            data-player-panel="spotify">
-
-            <iframe
-                class="spotify-frame single-spotify-frame"
-                data-testid="embed-iframe"
-                src="https://open.spotify.com/embed/album/6eBVoOmpiSzUb2z3DnFlUK?utm_source=generator&si=6ef36b90537c4b09"
-                width="100%"
-                height="152"
-                frameBorder="0"
-                allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-            </iframe>
-
-        </div>
-
-
-        <div
-            class="player-panel"
-            data-player-panel="bandcamp"
-            data-bandcamp-url="https://bandcamp.com/EmbeddedPlayer/track=3039662765/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/"
-            data-bandcamp-height="442">
-
-        </div>
-
-
-    </div>
 
 </div>
 
+<div class="player-content">
+
+
+<div
+    class="player-panel active"
+    data-player-panel="spotify">
+
+    <iframe
+        class="spotify-frame single-spotify-frame"
+        data-testid="embed-iframe"
+        src="https://open.spotify.com/embed/album/6eBVoOmpiSzUb2z3DnFlUK?utm_source=generator&si=6ef36b90537c4b09"
+        width="100%"
+        height="152"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+
+</div>
+
+<div
+    class="player-panel"
+    data-player-panel="bandcamp"
+    data-bandcamp-url="https://bandcamp.com/EmbeddedPlayer/track=3039662765/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/"
+    data-bandcamp-height="442">
+
+</div>
+
+
+</div>
+
+</div>
 
 <div class="recording-details">
 
-    <h3>Sunday Girl</h3>
+<h3>Sunday Girl</h3>
 
-    <div class="recording-meta">
-        Release · 4 September 2026
-    </div>
-
-    <p>
-        <a href="https://sajaproject.com/sunday-girl.html">
-            More details
-        </a>
-    </p>
-
+<div class="recording-meta">
+    Release · 4 September 2026
 </div>
 
+<p>
+    <a href="https://sajaproject.com/sunday-girl.html">
+        More details
+    </a>
+</p>
+
+</div>
 
 </article>
 
@@ -480,81 +512,78 @@ h2{
 
 <article class="recording">
 
-
 <div class="player-switcher">
 
-    <div class="player-tabs">
-
-        <button
-            class="player-tab active"
-            type="button"
-            data-player="spotify"
-            onclick="showPlayer(this)">
-            Spotify
-        </button>
-
-        <button
-            class="player-tab"
-            type="button"
-            data-player="bandcamp"
-            onclick="showPlayer(this)">
-            Bandcamp
-        </button>
-
-    </div>
+<div class="player-tabs">
 
 
-    <div class="player-content">
+<button
+    class="player-tab active"
+    type="button"
+    data-player="spotify"
+    onclick="showPlayer(this)">
+    Spotify
+</button>
 
+<button
+    class="player-tab"
+    type="button"
+    data-player="bandcamp"
+    onclick="showPlayer(this)">
+    Bandcamp
+</button>
 
-        <div
-            class="player-panel active"
-            data-player-panel="spotify">
-
-            <iframe
-                class="spotify-frame"
-                data-testid="embed-iframe"
-                src="https://open.spotify.com/embed/artist/3DhKcRde51hmI0VnY4wLNo?utm_source=generator&si=b94d475fc9d34b63"
-                width="100%"
-                height="450"
-                frameBorder="0"
-                allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-            </iframe>
-
-        </div>
-
-
-        <div
-            class="player-panel"
-            data-player-panel="bandcamp"
-            data-bandcamp-url="https://bandcamp.com/EmbeddedPlayer/album=2354495077/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/"
-            data-bandcamp-height="687">
-
-        </div>
-
-
-    </div>
 
 </div>
 
+<div class="player-content">
+
+
+<div
+    class="player-panel active"
+    data-player-panel="spotify">
+
+    <iframe
+        class="spotify-frame"
+        data-testid="embed-iframe"
+        src="https://open.spotify.com/embed/artist/3DhKcRde51hmI0VnY4wLNo?utm_source=generator&si=b94d475fc9d34b63"
+        width="100%"
+        height="450"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+
+</div>
+
+<div
+    class="player-panel"
+    data-player-panel="bandcamp"
+    data-bandcamp-url="https://bandcamp.com/EmbeddedPlayer/album=2354495077/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/"
+    data-bandcamp-height="687">
+
+</div>
+
+
+</div>
+
+</div>
 
 <div class="recording-details">
 
-    <h3>SAJA Project</h3>
+<h3>SAJA Project</h3>
 
-    <div class="recording-meta">
-        Release · 13 August 2026
-    </div>
-
-    <p>
-        <a href="https://sajaproject.com/album.html">
-            More details
-        </a>
-    </p>
-
+<div class="recording-meta">
+    Release · 13 August 2026
 </div>
 
+<p>
+    <a href="https://sajaproject.com/album.html">
+        More details
+    </a>
+</p>
+
+</div>
 
 </article>
 
@@ -564,189 +593,342 @@ h2{
 
 <section class="live-section">
 
-
 <h2>Live Clips</h2>
 
 <div class="live">
 
+<!-- 1 — INSTAGRAM -->
 
-    <!-- 1 -->
+<div class="live-item">
 
-    <div class="live-item">
 
-        <div class="media-video">
+<div class="media-instagram">
 
-            <iframe
-                src="https://www.youtube.com/embed/IdZDCXAl64I?si=c3U9KJPfh2lGgIV3"
-                title="Maru Hi Fi – 21.06.26"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
+    <blockquote
+        class="instagram-media"
+        data-instgrm-captioned
+        data-instgrm-permalink="https://www.instagram.com/reel/DdZAwdDJaKT/"
+        data-instgrm-version="14">
 
-        </div>
+    </blockquote>
 
-        <div class="live-caption">
+</div>
 
-            <strong>
-                Maru Hi Fi – 21.06.26
-            </strong>
+<div class="live-caption">
 
-            A few moments from the Maru Hi Fi gig.
-            Not an effect in sight — just jazz!
+    <strong>
+        Live Clip
+    </strong>
 
-        </div>
+    Live performance clip.
 
-    </div>
-
-
-    <!-- 2 -->
-
-    <div class="live-item">
-
-        <div class="media-video">
-
-            <iframe
-                src="https://www.youtube.com/embed/5QB3bhQGYSw?si=ZTsy3qoYW6u8UrXp"
-                title="Improv – 25.05.26"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-        <div class="live-caption">
-
-            <strong>
-                Improv – 25.05.26
-            </strong>
-
-            Improvisation using ambient textures and looping
-            with Nord, Elektron Octatrack and Digitone II.
-
-        </div>
-
-    </div>
-
-
-    <!-- 3 -->
-
-    <div class="live-item">
-
-        <div class="media-video">
-
-            <iframe
-                src="https://www.youtube.com/embed/UO-QXpd7O10?si=w8lHl-MgsJHRkp6S"
-                title="Improv – 31.03.26"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-        <div class="live-caption">
-
-            <strong>
-                Improv – 31.03.26
-            </strong>
-
-            Improvisation using reverse loops and tape delay,
-            recorded on Nord, Elektron Octatrack and Syntakt.
-
-        </div>
-
-    </div>
-
-
-    <!-- 4 -->
-
-    <div class="live-item">
-
-        <div class="media-video">
-
-            <iframe
-                src="https://www.youtube.com/embed/z67htqfjnpc?si=Ql2CR76gE2a_6TBl"
-                title="Piano House Recital"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-        <div class="live-caption">
-
-            <strong>
-                Piano House Recital
-            </strong>
-
-            Excerpt from an improvised solo piano recital
-            in Blackheath, NSW.
-
-        </div>
-
-    </div>
-
-
-    <!-- 5 -->
-
-    <div class="live-item">
-
-        <div class="media-video">
-
-            <iframe
-                src="https://www.youtube.com/embed/hOCNPx9Nyn4?si=gEovdoqLk7vz41uh"
-                title="Day in the City"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-        <div class="live-caption">
-
-            <strong>
-                Day in the City
-            </strong>
-
-            Wandering around the city, with the soundtrack
-            improvised on the spot after being told:
-            “just improvise something like Gershwin”.
-
-        </div>
-
-    </div>
-
-
-    <!-- 6 -->
-
-    <div class="live-item">
-
-        <div class="media-video">
-
-            <iframe
-                src="https://www.youtube.com/embed/TGxcx4Bz2Mc?si=rk4zbp0fm1xJlPEr"
-                title="Guitar – 500 Miles High"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-        <div class="live-caption">
-
-            <strong>
-                Guitar – 500 Miles High
-            </strong>
-
-            Guitar version of 500 Miles High by Chick Corea
-            using reverse reverb and delay effects.
-
-        </div>
-
-    </div>
+</div>
 
 
 </div>
 
+<!-- 2 — YOUTUBE -->
+
+<div class="live-item">
+
+
+<div class="media-video">
+
+    <iframe
+        src="https://www.youtube.com/embed/IdZDCXAl64I?si=c3U9KJPfh2lGgIV3"
+        title="Maru Hi Fi – 21.06.26"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+</div>
+
+<div class="live-caption">
+
+    <strong>
+        Maru Hi Fi – 21.06.26
+    </strong>
+
+    A few moments from the Maru Hi Fi gig.
+    Not an effect in sight — just jazz!
+
+</div>
+
+
+</div>
+
+<!-- 3 — INSTAGRAM -->
+
+<div class="live-item">
+
+
+<div class="media-instagram">
+
+    <blockquote
+        class="instagram-media"
+        data-instgrm-captioned
+        data-instgrm-permalink="https://www.instagram.com/reel/DYV4gWXG56L/"
+        data-instgrm-version="14">
+
+    </blockquote>
+
+</div>
+
+<div class="live-caption">
+
+    <strong>
+        Live Clip
+    </strong>
+
+    Live performance clip.
+
+</div>
+
+
+</div>
+
+<!-- 4 — YOUTUBE -->
+
+<div class="live-item">
+
+
+<div class="media-video">
+
+    <iframe
+        src="https://www.youtube.com/embed/5QB3bhQGYSw?si=ZTsy3qoYW6u8UrXp"
+        title="Improv – 25.05.26"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+</div>
+
+<div class="live-caption">
+
+    <strong>
+        Improv – 25.05.26
+    </strong>
+
+    Improvisation using ambient textures and looping
+    with Nord, Elektron Octatrack and Digitone II.
+
+</div>
+
+
+</div>
+
+<!-- 5 — INSTAGRAM -->
+
+<div class="live-item">
+
+
+<div class="media-instagram">
+
+    <blockquote
+        class="instagram-media"
+        data-instgrm-captioned
+        data-instgrm-permalink="https://www.instagram.com/reel/DdWTbBdJSat/"
+        data-instgrm-version="14">
+
+    </blockquote>
+
+</div>
+
+<div class="live-caption">
+
+    <strong>
+        Live Clip
+    </strong>
+
+    Live performance clip.
+
+</div>
+
+
+</div>
+
+<!-- 6 — INSTAGRAM -->
+
+<div class="live-item">
+
+
+<div class="media-instagram">
+
+    <blockquote
+        class="instagram-media"
+        data-instgrm-captioned
+        data-instgrm-permalink="https://www.instagram.com/reel/DLtqVWmym_0/"
+        data-instgrm-version="14">
+
+    </blockquote>
+
+</div>
+
+<div class="live-caption">
+
+    <strong>
+        Live Clip
+    </strong>
+
+    Live performance clip.
+
+</div>
+
+
+</div>
+
+<!-- 7 — YOUTUBE -->
+
+<div class="live-item">
+
+
+<div class="media-video">
+
+    <iframe
+        src="https://www.youtube.com/embed/UO-QXpd7O10?si=w8lHl-MgsJHRkp6S"
+        title="Improv – 31.03.26"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+</div>
+
+<div class="live-caption">
+
+    <strong>
+        Improv – 31.03.26
+    </strong>
+
+    Improvisation using reverse loops and tape delay,
+    recorded on Nord, Elektron Octatrack and Syntakt.
+
+</div>
+
+
+</div>
+
+<!-- 8 — INSTAGRAM -->
+
+<div class="live-item">
+
+
+<div class="media-instagram">
+
+    <blockquote
+        class="instagram-media"
+        data-instgrm-captioned
+        data-instgrm-permalink="https://www.instagram.com/reel/DFcAS9rhqVA/"
+        data-instgrm-version="14">
+
+    </blockquote>
+
+</div>
+
+<div class="live-caption">
+
+    <strong>
+        Live Clip
+    </strong>
+
+    Live performance clip.
+
+</div>
+
+
+</div>
+
+<!-- 9 — YOUTUBE -->
+
+<div class="live-item">
+
+
+<div class="media-video">
+
+    <iframe
+        src="https://www.youtube.com/embed/z67htqfjnpc?si=Ql2CR76gE2a_6TBl"
+        title="Piano House Recital"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+</div>
+
+<div class="live-caption">
+
+    <strong>
+        Piano House Recital
+    </strong>
+
+    Excerpt from an improvised solo piano recital
+    in Blackheath, NSW.
+
+</div>
+
+
+</div>
+
+<!-- 10 — YOUTUBE -->
+
+<div class="live-item">
+
+
+<div class="media-video">
+
+    <iframe
+        src="https://www.youtube.com/embed/hOCNPx9Nyn4?si=gEovdoqLk7vz41uh"
+        title="Day in the City"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+</div>
+
+<div class="live-caption">
+
+    <strong>
+        Day in the City
+    </strong>
+
+    Wandering around the city, with the soundtrack
+    improvised on the spot after being told:
+    “just improvise something like Gershwin”.
+
+</div>
+
+
+</div>
+
+<!-- 11 — YOUTUBE -->
+
+<div class="live-item">
+
+
+<div class="media-video">
+
+    <iframe
+        src="https://www.youtube.com/embed/TGxcx4Bz2Mc?si=rk4zbp0fm1xJlPEr"
+        title="Guitar – 500 Miles High"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+</div>
+
+<div class="live-caption">
+
+    <strong>
+        Guitar – 500 Miles High
+    </strong>
+
+    Guitar version of 500 Miles High by Chick Corea
+    using reverse reverb and delay effects.
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
@@ -758,7 +940,6 @@ h2{
 
 <footer class="footer">
 
-
 <div>
     Research · Music · Computing · Mathematics
 </div>
@@ -766,7 +947,6 @@ h2{
 <div>
     jamie@jamiegabriel.org
 </div>
-
 
 </footer>
 
@@ -787,7 +967,6 @@ function loadBandcamp(panel){
         return;
     }
 
-
     const iframe = document.createElement('iframe');
 
     iframe.className = 'bandcamp-frame';
@@ -803,7 +982,6 @@ function loadBandcamp(panel){
     iframe.frameBorder = '0';
 
     iframe.setAttribute('seamless', '');
-
 
     /*
      * Add the fallback Bandcamp link.
@@ -823,7 +1001,6 @@ function loadBandcamp(panel){
 
     }
 
-
     iframe.appendChild(link);
 
     panel.appendChild(iframe);
@@ -842,7 +1019,6 @@ function showPlayer(button){
 
     const switcher = button.closest('.player-switcher');
 
-
     /*
      * Get tabs and panels from this
      * switcher only.
@@ -853,7 +1029,6 @@ function showPlayer(button){
     const panels = switcher.querySelectorAll('.player-panel');
 
     const player = button.dataset.player;
-
 
     /*
      * If Bandcamp was selected, create
@@ -874,7 +1049,6 @@ function showPlayer(button){
 
     }
 
-
     /*
      * Reset this switcher only.
      */
@@ -891,13 +1065,11 @@ function showPlayer(button){
 
     });
 
-
     /*
      * Activate clicked tab.
      */
 
     button.classList.add('active');
-
 
     /*
      * Activate matching player.
@@ -916,6 +1088,12 @@ function showPlayer(button){
 }
 
 </script>
+
+<!-- =========================================
+     INSTAGRAM EMBED
+     ========================================= -->
+
+<script async src="https://www.instagram.com/embed.js"></script>
 
 </body>
 
