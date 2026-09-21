@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
@@ -25,18 +25,20 @@
    ========================= */
 
 :root {
-    --accent: #8B2E3C; /* oxide editorial red */
+    --accent: #8B2E3C;
+    --paper: #FAFAFA;
+    --panel: #F4F1EB;
 }
 
 html {
     scroll-behavior: smooth;
-    background: #FAFAFA;
+    background: var(--paper);
 }
 
 body {
     margin: 0;
     font-family: 'Nunito', sans-serif;
-    background: #FAFAFA;
+    background: var(--paper);
     color: #111;
     line-height: 1.75;
     font-size: 16.5px;
@@ -44,7 +46,7 @@ body {
 }
 
 /* =========================
-   LINKS (now accented)
+   LINKS
    ========================= */
 
 a {
@@ -65,7 +67,7 @@ a:hover {
 
 #mainNav,
 #mainNav.navbar-shrink {
-    background: #FAFAFA !important;
+    background: var(--paper) !important;
     border-bottom: 1px solid rgba(0,0,0,0.05);
     min-height: 80px;
 }
@@ -73,6 +75,17 @@ a:hover {
 #mainNav a {
     color: #111 !important;
     text-decoration: none !important;
+    border: none !important;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    border-bottom: none;
 }
 
 /* =========================
@@ -80,40 +93,46 @@ a:hover {
    ========================= */
 
 .about-section {
-    background: #FAFAFA;
-    padding: 60px 0 90px;
+    background: var(--paper);
+    padding: 40px 0 80px;
 }
 
 .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 90px;
     max-width: 1000px;
     margin: auto;
-    padding: 0 24px;
-    align-items: start;
+    padding: 48px;
+
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 56px;
+    align-items: center;
+
+    background: var(--panel);
+    border-radius: 8px;
+
+    box-sizing: border-box;
+}
+
+.about-image {
+    width: 100%;
 }
 
 .about-image img {
     width: 100%;
-    max-width: 360px;
-    height: auto;
+    height: 440px;
     object-fit: cover;
     display: block;
 
-    filter: grayscale(100%);
+    filter: grayscale(100%) contrast(1.05);
     opacity: 0.92;
 }
 
-.about-text h2 {
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.7rem;
-    margin-bottom: 22px;
+.about-text {
+    position: relative;
 }
 
 .about-text p {
-    margin-bottom: 18px;
-    max-width: 65ch;
+    max-width: 34rem;
 }
 
 /* =========================
@@ -136,24 +155,20 @@ a:hover {
     gap: 14px;
 }
 
-/* IMAGE */
 .project-image img {
     width: 100%;
     height: 320px;
     object-fit: cover;
 
-   opacity: 0.88;
+    opacity: 0.88;
     filter: grayscale(100%) contrast(1.05);
-
 }
 
-/* subtle accent interaction */
 .project:hover img {
-     filter: grayscale(100%);
+    filter: grayscale(100%);
     transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
-/* TEXT */
 .project-text h3 {
     margin: 0;
     font-family: 'Varela Round', sans-serif;
@@ -177,7 +192,7 @@ a:hover {
    ========================= */
 
 .footer {
-    background: #FAFAFA;
+    background: var(--paper);
     border-top: 1px solid rgba(0,0,0,0.06);
     padding: 80px 30px;
     text-align: center;
@@ -194,6 +209,12 @@ a:hover {
     .about-grid {
         grid-template-columns: 1fr;
         gap: 40px;
+        padding: 40px;
+    }
+
+    .about-image img {
+        height: auto;
+        max-width: 100%;
     }
 
     .projects {
@@ -204,16 +225,43 @@ a:hover {
     .project-image img {
         height: 260px;
     }
+
+    .nav-links {
+        gap: 1.5rem;
+    }
+
 }
 
-.nav-links {
-    display: flex;
-    gap: 2.5rem;      /* increase or decrease as needed */
-    align-items: center;
-}
+@media (max-width: 600px) {
 
-.nav-links a {
-    border-bottom: none;   /* optional: removes underline style in nav */
+    .about-section {
+        padding: 24px 0 60px;
+    }
+
+    .about-grid {
+        width: calc(100% - 32px);
+        padding: 28px;
+        gap: 30px;
+        border-radius: 6px;
+    }
+
+    .about-image img {
+        height: auto;
+        width: 100%;
+    }
+
+    .about-text {
+        font-size: 16px;
+    }
+
+    .nav-links {
+        gap: 1.1rem;
+    }
+
+    .footer {
+        padding: 60px 24px;
+    }
+
 }
 
 </style>
@@ -224,73 +272,46 @@ a:hover {
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#page-top">Jamie Gabriel</a>
 
 
-        <div class="nav-links">
-                    <a href="./music.html">Music</a>
-                    <a href="./teaching.html">Teaching</a>
-                    <a href="./research.html">Research</a>
+    <a class="navbar-brand" href="#page-top">
+        Jamie Gabriel
+    </a>
 
-                </div>
-
+    <div class="nav-links">
+        <a href="./music.html">Music</a>
+        <a href="./teaching.html">Teaching</a>
+        <a href="./research.html">Research</a>
     </div>
+
+</div>
+
+
 </nav>
 
 <section class="about-section" id="about">
 
-    <div class="about-grid">
 
-        <div class="about-image">
-            <img src="assets/img/IMG_6776_3_ORIG.png" alt="portrait">
-        </div>
+<div class="about-grid">
 
-        <div class="about-text">
-           
+    <div class="about-image">
+        <img src="assets/img/piano1.png" alt="portrait">
+    </div>
 
-            
-                I am a multi-instrumentalist, teacher, composer and researcher living on Lake Macquarie, just north of Sydney, Australia.
-                I have a PhD in computational musicology and am interested in things that range between
-                music, technology, music history and philosophy. I am also a passionate educator with extensive experience teaching students of all ages and backgrounds.<br/><br/>
+    <div class="about-text">
 
-                I currently play in a number of different ensembles which range in style from jazz to electronic and experimental music. My group <a href="https://sajaproject.com/">SAJA Project</a>
-                with <a href="https://sallyjamila.com/">Sally Jamila</a> has just released an album which you can check out <a href="#">here</a>. <br/><br/>
+        I am a multi-instrumentalist, teacher, composer and researcher living on Lake Macquarie, just north of Sydney, Australia.
+        I have a PhD in computational musicology and am interested in things that range between
+        music, technology, music history and philosophy. I am also a passionate educator with extensive experience teaching students of all ages and backgrounds.<br/><br/>
 
-          
+        I currently play in a number of different ensembles which range in style from jazz to electronic and experimental music. My group <a href="https://sajaproject.com/">SAJA Project</a>
+        with <a href="https://sallyjamila.com/">Sally Jamila</a> has just released an album which you can check out <a href="#">here</a>. <br/><br/>
 
-
-           
-
-                <a href="./about.html">More about me</a>
-           
-        </div>
+        <a href="./about.html">More about me</a>
 
     </div>
 
-</section>
-
-<section class="projects" id="projects">
-
-    <div class="project">
-        <div class="project-image">
-            <img src="assets/img/JGAction5.PNG" alt="">
-        </div>
-        <div class="project-text">
-            <h3><a href="./live-music.html">Live</a></h3>
-            <p>Past and upcoming.</p>
-        </div>
-    </div>
-
-    <div class="project">
-        <div class="project-image">
-            <img src="assets/img/JGAction2.PNG" alt="">
-        </div>
-        <div class="project-text">
-            <h3><a href="./recordings.html">Recordings</a></h3>
-            <p>Composition and collaboration.</p>
-        </div>
-    </div>
-
+</div>
 
 
 </section>
@@ -301,4 +322,3 @@ a:hover {
 
 </body>
 </html>
-

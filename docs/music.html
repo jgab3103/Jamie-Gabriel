@@ -23,17 +23,19 @@
 
 :root{
     --accent:#8B2E3C;
+    --paper:#FAFAFA;
+    --panel:#F4F1EB;
 }
 
 html{
     scroll-behavior:smooth;
-    background:#FAFAFA;
+    background:var(--paper);
 }
 
 body{
     margin:0;
     font-family:'Nunito',sans-serif;
-    background:#FAFAFA;
+    background:var(--paper);
     color:#111;
     line-height:1.75;
     font-size:16.5px;
@@ -59,7 +61,7 @@ a:hover{
 
 #mainNav,
 #mainNav.navbar-shrink{
-    background:#FAFAFA!important;
+    background:var(--paper)!important;
     border-bottom:1px solid rgba(0,0,0,.05);
     min-height:80px;
     position:fixed;
@@ -70,7 +72,7 @@ a:hover{
 }
 
 #mainNav .container{
-    max-width:960px;
+    max-width:1000px;
     margin:0 auto;
     min-height:80px;
     padding:0 24px;
@@ -103,9 +105,10 @@ a:hover{
    ========================================= */
 
 .page{
-    max-width:960px;
+    max-width:1000px;
     margin:0 auto;
-    padding:75px 24px 100px;
+    padding:60px 24px 120px;
+    box-sizing:border-box;
 }
 
 h2{
@@ -122,11 +125,39 @@ h2{
 
 .recording{
     display:grid;
-    grid-template-columns:42% 1fr;
-    gap:55px;
-    padding:28px 0;
-    border-top:1px solid rgba(0,0,0,.06);
+    grid-template-columns:minmax(0,1fr) 280px;
+    gap:50px;
+
+    padding:30px;
+    margin-bottom:28px;
+
+    background:var(--panel);
+    border-radius:4px;
+
+    box-sizing:border-box;
     align-items:start;
+}
+
+.recording-details{
+    padding-top:8px;
+}
+
+.recording-details h3{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.25rem;
+    font-weight:500;
+    margin:0 0 10px;
+}
+
+.recording-meta{
+    font-size:.92rem;
+    color:rgba(0,0,0,.6);
+    margin-bottom:22px;
+}
+
+.recording-details p{
+    max-width:45ch;
+    color:rgba(0,0,0,.75);
 }
 
 
@@ -136,6 +167,7 @@ h2{
 
 .player-switcher{
     width:100%;
+    min-width:0;
 }
 
 .player-tabs{
@@ -220,38 +252,15 @@ h2{
 
 
 /* =========================================
-   RECORDING DETAILS
-   ========================================= */
-
-.recording-details{
-    padding-top:8px;
-}
-
-.recording-details h3{
-    font-family:'Varela Round',sans-serif;
-    font-size:1.25rem;
-    font-weight:500;
-    margin:0 0 10px;
-}
-
-.recording-meta{
-    font-size:.92rem;
-    color:rgba(0,0,0,.6);
-    margin-bottom:22px;
-}
-
-.recording-details p{
-    max-width:45ch;
-    color:rgba(0,0,0,.75);
-}
-
-
-/* =========================================
    LIVE
    ========================================= */
 
 .live-section{
-    margin-top:80px;
+    margin-top:75px;
+}
+
+.live-section h2{
+    margin-bottom:35px;
 }
 
 /*
@@ -262,13 +271,13 @@ h2{
 
 .live{
     columns:3 280px;
-    column-gap:24px;
+    column-gap:28px;
 }
 
 .live-item{
     min-width:0;
     break-inside:avoid;
-    margin-bottom:40px;
+    margin-bottom:42px;
 }
 
 
@@ -282,6 +291,7 @@ h2{
     aspect-ratio:16 / 9;
     overflow:hidden;
     margin-bottom:16px;
+    background:var(--panel);
 }
 
 .media-video iframe{
@@ -350,6 +360,11 @@ h2{
 
 @media(max-width:900px){
 
+    #mainNav .container{
+        padding-left:24px;
+        padding-right:24px;
+    }
+
     .nav-links{
         gap:1.5rem;
     }
@@ -371,8 +386,22 @@ h2{
         padding-top:55px;
     }
 
+    .recording{
+        padding:24px;
+    }
+
     .live{
         columns:1;
+    }
+
+    .resources .video-item{
+        grid-template-columns:30px 1fr;
+        gap:10px;
+        padding:10px 0;
+    }
+
+    .video-caption{
+        grid-column:2;
     }
 
 }
@@ -397,7 +426,6 @@ h2{
 
 <div class="nav-links">
 
-
 <a href="./music.html">
     Music
 </a>
@@ -409,7 +437,6 @@ h2{
 <a href="./research.html">
     Research
 </a>
-
 
 </div>
 
@@ -435,43 +462,40 @@ h2{
 
 <div class="player-tabs">
 
+<button
+ class="player-tab active"
+ type="button"
+ data-player="spotify"
+ onclick="showPlayer(this)">
+Spotify </button>
 
 <button
-    class="player-tab active"
-    type="button"
-    data-player="spotify"
-    onclick="showPlayer(this)">
-    Spotify
-</button>
-
-<button
-    class="player-tab"
-    type="button"
-    data-player="bandcamp"
-    onclick="showPlayer(this)">
-    Bandcamp
-</button>
-
+ class="player-tab"
+ type="button"
+ data-player="bandcamp"
+ onclick="showPlayer(this)">
+Bandcamp </button>
 
 </div>
 
 <div class="player-content">
 
-
 <div
     class="player-panel active"
     data-player-panel="spotify">
 
-    <iframe
-        class="spotify-frame single-spotify-frame"
-        data-testid="embed-iframe"
-        src="https://open.spotify.com/embed/album/6eBVoOmpiSzUb2z3DnFlUK?utm_source=generator&si=6ef36b90537c4b09"
-        width="100%"
-        height="152"
-        frameBorder="0"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-    </iframe>
+
+<iframe
+    class="spotify-frame single-spotify-frame"
+    data-testid="embed-iframe"
+    src="https://open.spotify.com/embed/album/6eBVoOmpiSzUb2z3DnFlUK?utm_source=generator&si=6ef36b90537c4b09"
+    width="100%"
+    height="152"
+    frameBorder="0"
+    allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
 
 </div>
 
@@ -482,7 +506,6 @@ h2{
     data-bandcamp-height="442">
 
 </div>
-
 
 </div>
 
@@ -516,43 +539,40 @@ h2{
 
 <div class="player-tabs">
 
+<button
+ class="player-tab active"
+ type="button"
+ data-player="spotify"
+ onclick="showPlayer(this)">
+Spotify </button>
 
 <button
-    class="player-tab active"
-    type="button"
-    data-player="spotify"
-    onclick="showPlayer(this)">
-    Spotify
-</button>
-
-<button
-    class="player-tab"
-    type="button"
-    data-player="bandcamp"
-    onclick="showPlayer(this)">
-    Bandcamp
-</button>
-
+ class="player-tab"
+ type="button"
+ data-player="bandcamp"
+ onclick="showPlayer(this)">
+Bandcamp </button>
 
 </div>
 
 <div class="player-content">
 
-
 <div
     class="player-panel active"
     data-player-panel="spotify">
 
-    <iframe
-        class="spotify-frame"
-        data-testid="embed-iframe"
-        src="https://open.spotify.com/embed/artist/3DhKcRde51hmI0VnY4wLNo?utm_source=generator&si=b94d475fc9d34b63"
-        width="100%"
-        height="450"
-        frameBorder="0"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-    </iframe>
+
+<iframe
+    class="spotify-frame"
+    data-testid="embed-iframe"
+    src="https://open.spotify.com/embed/artist/3DhKcRde51hmI0VnY4wLNo?utm_source=generator&si=b94d475fc9d34b63"
+    width="100%"
+    height="450"
+    frameBorder="0"
+    allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
 
 </div>
 
@@ -563,7 +583,6 @@ h2{
     data-bandcamp-height="687">
 
 </div>
-
 
 </div>
 
@@ -601,29 +620,31 @@ h2{
 
 <div class="live-item">
 
-
 <div class="media-instagram">
 
-    <blockquote
-        class="instagram-media"
-        data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/reel/DdZAwdDJaKT/"
-        data-instgrm-version="14">
 
-    </blockquote>
+<blockquote
+    class="instagram-media"
+    data-instgrm-captioned
+    data-instgrm-permalink="https://www.instagram.com/reel/DdZAwdDJaKT/"
+    data-instgrm-version="14">
+
+</blockquote>
+
 
 </div>
 
 <div class="live-caption">
 
-    <strong>
-        Live Clip
-    </strong>
 
-    Live performance clip.
+<strong>
+    Live Clip
+</strong>
+
+Live performance clip.
+
 
 </div>
-
 
 </div>
 
@@ -631,29 +652,31 @@ h2{
 
 <div class="live-item">
 
-
 <div class="media-video">
 
-    <iframe
-        src="https://www.youtube.com/embed/IdZDCXAl64I?si=c3U9KJPfh2lGgIV3"
-        title="Maru Hi Fi – 21.06.26"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe>
+
+<iframe
+    src="https://www.youtube.com/embed/IdZDCXAl64I?si=c3U9KJPfh2lGgIV3"
+    title="Maru Hi Fi – 21.06.26"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+
 
 </div>
 
 <div class="live-caption">
 
-    <strong>
-        Maru Hi Fi – 21.06.26
-    </strong>
 
-    A few moments from the Maru Hi Fi gig.
-    Not an effect in sight — just jazz!
+<strong>
+    Maru Hi Fi – 21.06.26
+</strong>
+
+A few moments from the Maru Hi Fi gig.
+Not an effect in sight — just jazz!
+
 
 </div>
-
 
 </div>
 
@@ -661,29 +684,31 @@ h2{
 
 <div class="live-item">
 
-
 <div class="media-instagram">
 
-    <blockquote
-        class="instagram-media"
-        data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/reel/DYV4gWXG56L/"
-        data-instgrm-version="14">
 
-    </blockquote>
+<blockquote
+    class="instagram-media"
+    data-instgrm-captioned
+    data-instgrm-permalink="https://www.instagram.com/reel/DYV4gWXG56L/"
+    data-instgrm-version="14">
+
+</blockquote>
+
 
 </div>
 
 <div class="live-caption">
 
-    <strong>
-        Live Clip
-    </strong>
 
-    Live performance clip.
+<strong>
+    Live Clip
+</strong>
+
+Live performance clip.
+
 
 </div>
-
 
 </div>
 
@@ -691,29 +716,31 @@ h2{
 
 <div class="live-item">
 
-
 <div class="media-video">
 
-    <iframe
-        src="https://www.youtube.com/embed/5QB3bhQGYSw?si=ZTsy3qoYW6u8UrXp"
-        title="Improv – 25.05.26"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe>
+
+<iframe
+    src="https://www.youtube.com/embed/5QB3bhQGYSw?si=ZTsy3qoYW6u8UrXp"
+    title="Improv – 25.05.26"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+
 
 </div>
 
 <div class="live-caption">
 
-    <strong>
-        Improv – 25.05.26
-    </strong>
 
-    Improvisation using ambient textures and looping
-    with Nord, Elektron Octatrack and Digitone II.
+<strong>
+    Improv – 25.05.26
+</strong>
+
+Improvisation using ambient textures and looping
+with Nord, Elektron Octatrack and Digitone II.
+
 
 </div>
-
 
 </div>
 
@@ -721,29 +748,31 @@ h2{
 
 <div class="live-item">
 
-
 <div class="media-instagram">
 
-    <blockquote
-        class="instagram-media"
-        data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/reel/DdWTbBdJSat/"
-        data-instgrm-version="14">
 
-    </blockquote>
+<blockquote
+    class="instagram-media"
+    data-instgrm-captioned
+    data-instgrm-permalink="https://www.instagram.com/reel/DdWTbBdJSat/"
+    data-instgrm-version="14">
+
+</blockquote>
+
 
 </div>
 
 <div class="live-caption">
 
-    <strong>
-        Live Clip
-    </strong>
 
-    Live performance clip.
+<strong>
+    Live Clip
+</strong>
+
+Live performance clip.
+
 
 </div>
-
 
 </div>
 
@@ -751,29 +780,31 @@ h2{
 
 <div class="live-item">
 
-
 <div class="media-instagram">
 
-    <blockquote
-        class="instagram-media"
-        data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/reel/DLtqVWmym_0/"
-        data-instgrm-version="14">
 
-    </blockquote>
+<blockquote
+    class="instagram-media"
+    data-instgrm-captioned
+    data-instgrm-permalink="https://www.instagram.com/reel/DLtqVWmym_0/"
+    data-instgrm-version="14">
+
+</blockquote>
+
 
 </div>
 
 <div class="live-caption">
 
-    <strong>
-        Live Clip
-    </strong>
 
-    Live performance clip.
+<strong>
+    Live Clip
+</strong>
+
+Live performance clip.
+
 
 </div>
-
 
 </div>
 
@@ -781,29 +812,31 @@ h2{
 
 <div class="live-item">
 
-
 <div class="media-video">
 
-    <iframe
-        src="https://www.youtube.com/embed/UO-QXpd7O10?si=w8lHl-MgsJHRkp6S"
-        title="Improv – 31.03.26"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe>
+
+<iframe
+    src="https://www.youtube.com/embed/UO-QXpd7O10?si=w8lHl-MgsJHRkp6S"
+    title="Improv – 31.03.26"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+
 
 </div>
 
 <div class="live-caption">
 
-    <strong>
-        Improv – 31.03.26
-    </strong>
 
-    Improvisation using reverse loops and tape delay,
-    recorded on Nord, Elektron Octatrack and Syntakt.
+<strong>
+    Improv – 31.03.26
+</strong>
+
+Improvisation using reverse loops and tape delay,
+recorded on Nord, Elektron Octatrack and Syntakt.
+
 
 </div>
-
 
 </div>
 
@@ -811,29 +844,31 @@ h2{
 
 <div class="live-item">
 
-
 <div class="media-instagram">
 
-    <blockquote
-        class="instagram-media"
-        data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/reel/DFcAS9rhqVA/"
-        data-instgrm-version="14">
 
-    </blockquote>
+<blockquote
+    class="instagram-media"
+    data-instgrm-captioned
+    data-instgrm-permalink="https://www.instagram.com/reel/DFcAS9rhqVA/"
+    data-instgrm-version="14">
+
+</blockquote>
+
 
 </div>
 
 <div class="live-caption">
 
-    <strong>
-        Live Clip
-    </strong>
 
-    Live performance clip.
+<strong>
+    Live Clip
+</strong>
+
+Live performance clip.
+
 
 </div>
-
 
 </div>
 
@@ -841,29 +876,31 @@ h2{
 
 <div class="live-item">
 
-
 <div class="media-video">
 
-    <iframe
-        src="https://www.youtube.com/embed/z67htqfjnpc?si=Ql2CR76gE2a_6TBl"
-        title="Piano House Recital"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe>
+
+<iframe
+    src="https://www.youtube.com/embed/z67htqfjnpc?si=Ql2CR76gE2a_6TBl"
+    title="Piano House Recital"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+
 
 </div>
 
 <div class="live-caption">
 
-    <strong>
-        Piano House Recital
-    </strong>
 
-    Excerpt from an improvised solo piano recital
-    in Blackheath, NSW.
+<strong>
+    Piano House Recital
+</strong>
+
+Excerpt from an improvised solo piano recital
+in Blackheath, NSW.
+
 
 </div>
-
 
 </div>
 
@@ -871,30 +908,32 @@ h2{
 
 <div class="live-item">
 
-
 <div class="media-video">
 
-    <iframe
-        src="https://www.youtube.com/embed/hOCNPx9Nyn4?si=gEovdoqLk7vz41uh"
-        title="Day in the City"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe>
+
+<iframe
+    src="https://www.youtube.com/embed/hOCNPx9Nyn4?si=gEovdoqLk7vz41uh"
+    title="Day in the City"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+
 
 </div>
 
 <div class="live-caption">
 
-    <strong>
-        Day in the City
-    </strong>
 
-    Wandering around the city, with the soundtrack
-    improvised on the spot after being told:
-    “just improvise something like Gershwin”.
+<strong>
+    Day in the City
+</strong>
+
+Wandering around the city, with the soundtrack
+improvised on the spot after being told:
+“just improvise something like Gershwin”.
+
 
 </div>
-
 
 </div>
 
@@ -902,29 +941,31 @@ h2{
 
 <div class="live-item">
 
-
 <div class="media-video">
 
-    <iframe
-        src="https://www.youtube.com/embed/TGxcx4Bz2Mc?si=rk4zbp0fm1xJlPEr"
-        title="Guitar – 500 Miles High"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe>
+
+<iframe
+    src="https://www.youtube.com/embed/TGxcx4Bz2Mc?si=rk4zbp0fm1xJlPEr"
+    title="Guitar – 500 Miles High"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+
 
 </div>
 
 <div class="live-caption">
 
-    <strong>
-        Guitar – 500 Miles High
-    </strong>
 
-    Guitar version of 500 Miles High by Chick Corea
-    using reverse reverb and delay effects.
+<strong>
+    Guitar – 500 Miles High
+</strong>
+
+Guitar version of 500 Miles High by Chick Corea
+using reverse reverb and delay effects.
+
 
 </div>
-
 
 </div>
 

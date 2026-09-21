@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -20,26 +21,34 @@
 
 <style>
 
+/* =========================
+   BASE
+   ========================= */
+
 :root{
     --accent:#8B2E3C;
+    --paper:#FAFAFA;
+    --panel:#F4F1EB;
 }
 
 html{
     scroll-behavior:smooth;
-    background:#FAFAFA;
+    background:var(--paper);
 }
 
 body{
     margin:0;
     font-family:'Nunito',sans-serif;
-    background:#FAFAFA;
+    background:var(--paper);
     color:#111;
     line-height:1.75;
     font-size:16.5px;
     padding-top:80px;
 }
 
-/* LINKS */
+/* =========================
+   LINKS
+   ========================= */
 
 a{
     color:var(--accent);
@@ -53,11 +62,13 @@ a:hover{
     border-bottom-color:rgba(139,46,60,.75);
 }
 
-/* NAV */
+/* =========================
+   NAV
+   ========================= */
 
 #mainNav,
 #mainNav.navbar-shrink{
-    background:#FAFAFA!important;
+    background:var(--paper)!important;
     border-bottom:1px solid rgba(0,0,0,.05);
     min-height:80px;
 }
@@ -70,24 +81,37 @@ a:hover{
 
 .nav-links{
     display:flex;
-    gap:2.75rem;
+    gap:2.5rem;
     align-items:center;
 }
 
-/* RESEARCH LAYOUT */
+.nav-links a{
+    border-bottom:none;
+}
+
+/* =========================
+   RESEARCH LAYOUT
+   ========================= */
 
 .research{
-    max-width:960px;
+    max-width:1000px;
     margin:0 auto;
-    padding:70px 24px 120px;
+    padding:60px 24px 120px;
+
     display:grid;
-    grid-template-columns:minmax(0,1fr) 270px;
+    grid-template-columns:minmax(0,1fr) 280px;
     gap:70px;
+
+    align-items:start;
 }
+
+/* =========================
+   MAIN CONTENT
+   ========================= */
 
 .main-content h1{
     font-family:'Varela Round',sans-serif;
-    font-size:2rem;
+    font-size:1.7rem;
     margin:0 0 30px;
     font-weight:500;
 }
@@ -100,11 +124,13 @@ a:hover{
 }
 
 .main-content p{
-    max-width:70ch;
+    max-width:65ch;
     margin-bottom:22px;
 }
 
-/* RESEARCH AREAS */
+/* =========================
+   RESEARCH AREAS
+   ========================= */
 
 .research-areas{
     margin-top:35px;
@@ -127,7 +153,9 @@ a:hover{
     color:rgba(0,0,0,.72);
 }
 
-/* ARTICLES */
+/* =========================
+   ARTICLES
+   ========================= */
 
 .articles{
     margin-top:25px;
@@ -137,7 +165,9 @@ a:hover{
     display:grid;
     grid-template-columns:105px 1fr;
     gap:24px;
+
     padding:18px 0;
+
     border-top:1px solid rgba(0,0,0,.06);
 }
 
@@ -159,23 +189,32 @@ a:hover{
     color:rgba(0,0,0,.7);
 }
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+   ========================= */
 
 .sidebar{
-    border-left:1px solid rgba(0,0,0,.08);
-    padding-left:28px;
+    background:var(--panel);
+    padding:30px;
+    box-sizing:border-box;
+    border:none;
+    border-radius:4px;
 }
 
 .sidebar h2{
     font-family:'Varela Round',sans-serif;
     font-size:1.05rem;
-    margin:5px 0 22px;
+    margin:0 0 28px;
     font-weight:500;
 }
 
 .event{
-    margin-bottom:18px;
+    margin-bottom:22px;
     line-height:1.5;
+}
+
+.event:last-child{
+    margin-bottom:0;
 }
 
 .event-year{
@@ -186,29 +225,32 @@ a:hover{
     color:rgba(0,0,0,.72);
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+   ========================= */
 
 .footer{
+    background:var(--paper);
     border-top:1px solid rgba(0,0,0,.06);
-    padding:70px 24px;
+    padding:80px 30px;
     text-align:center;
+    font-size:.95rem;
     color:rgba(0,0,0,.7);
 }
 
-/* MOBILE */
+/* =========================
+   RESPONSIVE
+   ========================= */
 
 @media(max-width:900px){
 
     .research{
         grid-template-columns:1fr;
-        gap:50px;
+        gap:45px;
     }
 
     .sidebar{
-        border-left:none;
-        border-top:1px solid rgba(0,0,0,.08);
-        padding-left:0;
-        padding-top:30px;
+        padding:28px;
     }
 
     .nav-links{
@@ -233,198 +275,238 @@ a:hover{
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+
     <div class="container px-4 px-lg-5">
 
+        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
 
-    <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+        <div class="nav-links">
 
-    <div class="nav-links">
-        <a href="./music.html">Music</a>
-        <a href="./teaching.html">Teaching</a>
-        <a href="./research.html">Research</a>
+            <a href="./music.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./research.html">Research</a>
+
+        </div>
+
     </div>
-
-</div>
-
 
 </nav>
 
+
 <section class="research">
 
+    <main class="main-content">
 
-<main class="main-content">
+        <h1>Research</h1>
+
+        <p>
+            I rarely find as much time for research as I would like, but I have a long-standing interest in the intersection of
+            <strong>music, mathematics, computer science and artificial intelligence</strong>. My background is in computational
+            musicology, and projects such as <a href="./deep-improv.html">Deep Improv</a> continue to explore these ideas through
+            music, programming and improvisation.
+        </p>
+
+        <p>
+            Here are some of the things I am currently interested in, along with a selection of research, writing and experiments
+            from recent years.
+        </p>
 
 
-<h1>Research</h1>
+        <h2>Selected Research Notes and Papers</h2>
 
-<p>
-    I rarely find as much time for research as I would like, but I have a long-standing interest in the intersection of <strong>music, mathematics, computer science and artificial intelligence</strong>. My background is in computational musicology, and projects such as <a href="./deep-improv.html">Deep Improv</a> continue to explore these ideas through music, programming and improvisation.
-</p>
+        <div class="articles">
 
-<p>
-    Here are some of the things I am currently interested in, along with a selection of research, writing and experiments from recent years.
-</p>
+            <div class="article-row">
 
-
-    
-
-    <h2>Selected Research Notes and Papers</h2>
-
-    <div class="articles">
-
-        <div class="article-row">
-            <div class="article-date">
-                24 Nov<br>2025
-            </div>
-
-            <div>
-                <div class="article-title">
-                    <a href="./code_notebooks/SPE7.html">
-                        Solving Higher Polynomial Equations using Catalan Structures – Part 7
-                    </a>
+                <div class="article-date">
+                    24 Nov<br>2025
                 </div>
 
-                <div class="article-desc">
-                    Mathematical notes and Python code exploring low-computational-cost approaches to higher-order polynomial equations.
+                <div>
+
+                    <div class="article-title">
+                        <a href="./code_notebooks/SPE7.html">
+                            Solving Higher Polynomial Equations using Catalan Structures – Part 7
+                        </a>
+                    </div>
+
+                    <div class="article-desc">
+                        Mathematical notes and Python code exploring low-computational-cost approaches to higher-order polynomial equations.
+                    </div>
+
                 </div>
+
             </div>
+
+
+            <div class="article-row">
+
+                <div class="article-date">
+                    27 Aug<br>2025
+                </div>
+
+                <div>
+
+                    <div class="article-title">
+                        <a href="./code_notebooks/SPE6.html">
+                            Solving Higher Polynomial Equations using Catalan Structures – Part 6
+                        </a>
+                    </div>
+
+                    <div class="article-desc">
+                        Computational approaches to higher-order polynomial systems using structured combinatorics.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="article-row">
+
+                <div class="article-date">
+                    15 Feb<br>2025
+                </div>
+
+                <div>
+
+                    <div class="article-title">
+                        <a href="./code_notebooks/SPE5.html">
+                            Solving Higher Polynomial Equations – Part 5
+                        </a>
+                    </div>
+
+                    <div class="article-desc">
+                        Numerical exploration of higher-order polynomial structures.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="article-row">
+
+                <div class="article-date">
+                    27 May<br>2025
+                </div>
+
+                <div>
+
+                    <div class="article-title">
+                        <a href="./john-mclaughlin-analysis.html">
+                            John McLaughlin – Compositional Evolution
+                        </a>
+                    </div>
+
+                    <div class="article-desc">
+                        Analytical study of John McLaughlin's compositional development, prepared for the AJIRN 2025 conference at the University of Auckland.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="article-row">
+
+                <div class="article-date">
+                    1 Jul<br>2025
+                </div>
+
+                <div>
+
+                    <div class="article-title">
+                        <a href="https://www.youtube.com/watch?v=P9xebSuW9ys" target="_blank">
+                            Searching Large-Scale Music Scores
+                        </a>
+                    </div>
+
+                    <div class="article-desc">
+                        A demonstration of symbolic music search systems developed during my PhD research.
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
+    </main>
 
-        <div class="article-row">
-            <div class="article-date">
-                27 Aug<br>2025
-            </div>
 
-            <div>
-                <div class="article-title">
-                    <a href="./code_notebooks/SPE6.html">
-                        Solving Higher Polynomial Equations using Catalan Structures – Part 6
-                    </a>
-                </div>
+    <aside class="sidebar">
 
-                <div class="article-desc">
-                    Computational approaches to higher-order polynomial systems using structured combinatorics.
-                </div>
-            </div>
+        <h2>Conferences &amp; Events</h2>
+
+        <div class="event">
+
+            <div class="event-year">2025</div>
+            <div class="event-name">AJIRN Conference, Auckland</div>
+
         </div>
 
+        <div class="event">
 
-        <div class="article-row">
-            <div class="article-date">
-                15 Feb<br>2025
-            </div>
+            <div class="event-year">2020</div>
+            <div class="event-name">Data and Analytics in Health Conference, Melbourne</div>
 
-            <div>
-                <div class="article-title">
-                    <a href="./code_notebooks/SPE5.html">
-                        Solving Higher Polynomial Equations – Part 5
-                    </a>
-                </div>
-
-                <div class="article-desc">
-                    Numerical exploration of higher-order polynomial structures.
-                </div>
-            </div>
         </div>
 
+        <div class="event">
 
-        <div class="article-row">
-            <div class="article-date">
-                27 May<br>2025
-            </div>
+            <div class="event-year">2019</div>
+            <div class="event-name">PyCon AU, Sydney</div>
 
-            <div>
-                <div class="article-title">
-                    <a href="./john-mclaughlin-analysis.html">
-                        John McLaughlin – Compositional Evolution
-                    </a>
-                </div>
-
-                <div class="article-desc">
-                    Analytical study of John McLaughlin's compositional development, prepared for the AJIRN 2025 conference at the University of Auckland.
-                </div>
-            </div>
         </div>
 
+        <div class="event">
 
-        <div class="article-row">
-            <div class="article-date">
-                1 Jul<br>2025
-            </div>
+            <div class="event-year">2017</div>
+            <div class="event-name">PyCon AU, Melbourne</div>
 
-            <div>
-                <div class="article-title">
-                    <a href="https://www.youtube.com/watch?v=P9xebSuW9ys" target="_blank">
-                        Searching Large-Scale Music Scores
-                    </a>
-                </div>
-
-                <div class="article-desc">
-                    A demonstration of symbolic music search systems developed during my PhD research.
-                </div>
-            </div>
         </div>
 
-    </div>
+        <div class="event">
 
+            <div class="event-year">2015</div>
+            <div class="event-name">ISMIR Conference, Málaga</div>
 
+        </div>
 
-</main>
+        <div class="event">
 
+            <div class="event-year">2013</div>
+            <div class="event-name">Stockholm Music Acoustics Conference</div>
 
-<aside class="sidebar">
+        </div>
 
-    <h2>Conferences & Events</h2>
+        <div class="event">
 
-    <div class="event">
-        <div class="event-year">2025</div>
-        <div class="event-name">AJIRN Conference, Auckland</div>
-    </div>
+            <div class="event-year">2012</div>
+            <div class="event-name">ACM Recommender Systems Conference</div>
 
-    <div class="event">
-        <div class="event-year">2020</div>
-        <div class="event-name">Data and Analytics in Health Conference, Melbourne</div>
-    </div>
+        </div>
 
-    <div class="event">
-        <div class="event-year">2019</div>
-        <div class="event-name">PyCon AU, Sydney</div>
-    </div>
+        <div class="event">
 
-    <div class="event">
-        <div class="event-year">2017</div>
-        <div class="event-name">PyCon AU, Melbourne</div>
-    </div>
+            <div class="event-year">2011</div>
+            <div class="event-name">Apple WWDC, San Francisco</div>
 
-    <div class="event">
-        <div class="event-year">2015</div>
-        <div class="event-name">ISMIR Conference, Málaga</div>
-    </div>
+        </div>
 
-    <div class="event">
-        <div class="event-year">2013</div>
-        <div class="event-name">Stockholm Music Acoustics Conference</div>
-    </div>
-
-    <div class="event">
-        <div class="event-year">2012</div>
-        <div class="event-name">ACM Recommender Systems Conference</div>
-    </div>
-
-    <div class="event">
-        <div class="event-year">2011</div>
-        <div class="event-name">Apple WWDC, San Francisco</div>
-    </div>
-
-</aside>
+    </aside>
 
 </section>
 
+
 <footer class="footer">
+
     <div>Research · Music · Computing · Mathematics</div>
     <div>jamie@jamiegabriel.org</div>
+
 </footer>
 
 </body>
 </html>
+

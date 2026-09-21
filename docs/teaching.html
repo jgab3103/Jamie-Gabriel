@@ -22,17 +22,19 @@
 
 :root{
     --accent:#8B2E3C;
+    --paper:#FAFAFA;
+    --panel:#F4F1EB;
 }
 
 html{
     scroll-behavior:smooth;
-    background:#FAFAFA;
+    background:var(--paper);
 }
 
 body{
     margin:0;
     font-family:'Nunito',sans-serif;
-    background:#FAFAFA;
+    background:var(--paper);
     color:#111;
     line-height:1.75;
     font-size:16.5px;
@@ -57,7 +59,7 @@ a:hover{
 
 #mainNav,
 #mainNav.navbar-shrink{
-    background:#FAFAFA!important;
+    background:var(--paper)!important;
     border-bottom:1px solid rgba(0,0,0,.05);
     min-height:80px;
 }
@@ -77,37 +79,40 @@ a:hover{
 /* INTRO */
 
 .intro{
-    max-width:960px;
+    max-width:1000px;
     margin:0 auto;
-    padding:70px 24px 40px;
+    padding:60px 24px 40px;
 }
 
 .intro h1{
     font-family:'Varela Round',sans-serif;
-    font-size:2rem;
-    margin-bottom:30px;
+    font-size:1.7rem;
+    margin:0 0 30px;
     font-weight:500;
 }
 
 .intro p{
-    max-width:70ch;
+    max-width:65ch;
     margin-bottom:22px;
 }
 
 /* TEACHING AREAS */
 
 .areas{
-    max-width:960px;
+    max-width:1000px;
     margin:0 auto;
     padding:10px 24px 120px;
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:28px;
+    gap:0 50px;
 }
 
 .area{
-    border-top:1px solid rgba(0,0,0,.08);
-    padding-top:18px;
+    background:var(--panel);
+    padding:24px 28px;
+    box-sizing:border-box;
+    border-radius:4px;
+    margin-bottom:28px;
 }
 
 .area summary{
@@ -149,14 +154,14 @@ a:hover{
 
 .resource-label{
     display:block;
-    margin-top:12px;
+    margin-top:14px;
     font-size:.82rem;
     color:var(--accent);
     letter-spacing:.02em;
 }
 
 .resources{
-    padding:12px 0 4px;
+    padding:16px 0 4px;
 }
 
 .resources .video-item{
@@ -204,10 +209,17 @@ a:hover{
     color:rgba(0,0,0,.7);
 }
 
+/* RESPONSIVE */
+
 @media(max-width:900px){
 
     .areas{
         grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .area{
+        margin-bottom:22px;
     }
 
     .nav-links{
@@ -216,7 +228,19 @@ a:hover{
 
 }
 
+@media(max-width:600px){
 
+    .resources .video-item{
+        grid-template-columns:30px 1fr;
+        gap:10px;
+        padding:10px 0;
+    }
+
+    .video-caption{
+        grid-column:2;
+    }
+
+}
 
 </style>
 
@@ -243,7 +267,6 @@ a:hover{
 
 <section class="intro">
 
-
 <h1>Teaching</h1>
 
 <p>
@@ -262,312 +285,321 @@ a:hover{
 
 <section class="areas">
 
-
 <!-- JAZZ & FUSION GUITAR -->
 
 <div class="area">
 
-    <details>
 
-        <summary>
-            <h3>Jazz & Fusion Guitar</h3>
-            <p>Improvisation, harmony, chord vocabulary, rhythm and contemporary performance.</p>
-            <span class="resource-label">Resources</span>
-        </summary>
+<details>
 
-        <div class="resources">
+    <summary>
+        <h3>Jazz & Fusion Guitar</h3>
+        <p>Improvisation, harmony, chord vocabulary, rhythm and contemporary performance.</p>
+        <span class="resource-label">Resources</span>
+    </summary>
 
-            <div class="video-item">
-                <div class="video-icon">
-                    <a href="https://www.youtube.com/embed/2RwkftNDTNU" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <div class="video-title">
-                    <a href="https://www.youtube.com/embed/2RwkftNDTNU" target="_blank">
-                        Lesson 1 · Preliminary Voice Leading Exercise
-                    </a>
-                </div>
-                <div class="video-caption">
-                    <a href="./assets/pdf-files/Lesson_1_notes.pdf">PDF</a>
-                </div>
+    <div class="resources">
+
+        <div class="video-item">
+            <div class="video-icon">
+                <a href="https://www.youtube.com/embed/2RwkftNDTNU" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
             </div>
-
-            <div class="video-item">
-                <div class="video-icon">
-                    <a href="https://www.youtube.com/embed/5wNH7qJSFhA" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <div class="video-title">
-                    <a href="https://www.youtube.com/embed/5wNH7qJSFhA" target="_blank">
-                        Lesson 2 · Chord Shapes for Jazz
-                    </a>
-                </div>
-                <div class="video-caption">
-                    <a href="./assets/pdf-files/Lesson_2_notes.pdf">PDF</a>
-                </div>
+            <div class="video-title">
+                <a href="https://www.youtube.com/embed/2RwkftNDTNU" target="_blank">
+                    Lesson 1 · Preliminary Voice Leading Exercise
+                </a>
             </div>
-
-            <div class="video-item">
-                <div class="video-icon">
-                    <a href="https://www.youtube.com/embed/a7XrhvSdGsc" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <div class="video-title">
-                    <a href="https://www.youtube.com/embed/a7XrhvSdGsc" target="_blank">
-                        Lesson 3 · More Chord Shapes for Jazz
-                    </a>
-                </div>
-                <div class="video-caption">
-                    <a href="./assets/pdf-files/Lesson_3_notes.pdf">PDF</a>
-                </div>
+            <div class="video-caption">
+                <a href="./assets/pdf-files/Lesson_1_notes.pdf">PDF</a>
             </div>
-
-            <div class="video-item">
-                <div class="video-icon">
-                    <a href="#">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <div class="video-title">
-                    <a href="#">Transcribing Effectively</a>
-                </div>
-                <div class="video-caption"></div>
-            </div>
-
-            <div class="video-item">
-                <div class="video-icon">
-                    <a href="#">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <div class="video-title">
-                    <a href="#">Why Reading Music Is Important</a>
-                </div>
-                <div class="video-caption"></div>
-            </div>
-
         </div>
 
-    </details>
+        <div class="video-item">
+            <div class="video-icon">
+                <a href="https://www.youtube.com/embed/5wNH7qJSFhA" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <div class="video-title">
+                <a href="https://www.youtube.com/embed/5wNH7qJSFhA" target="_blank">
+                    Lesson 2 · Chord Shapes for Jazz
+                </a>
+            </div>
+            <div class="video-caption">
+                <a href="./assets/pdf-files/Lesson_2_notes.pdf">PDF</a>
+            </div>
+        </div>
+
+        <div class="video-item">
+            <div class="video-icon">
+                <a href="https://www.youtube.com/embed/a7XrhvSdGsc" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <div class="video-title">
+                <a href="https://www.youtube.com/embed/a7XrhvSdGsc" target="_blank">
+                    Lesson 3 · More Chord Shapes for Jazz
+                </a>
+            </div>
+            <div class="video-caption">
+                <a href="./assets/pdf-files/Lesson_3_notes.pdf">PDF</a>
+            </div>
+        </div>
+
+        <div class="video-item">
+            <div class="video-icon">
+                <a href="#">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <div class="video-title">
+                <a href="#">Transcribing Effectively</a>
+            </div>
+            <div class="video-caption"></div>
+        </div>
+
+        <div class="video-item">
+            <div class="video-icon">
+                <a href="#">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <div class="video-title">
+                <a href="#">Why Reading Music Is Important</a>
+            </div>
+            <div class="video-caption"></div>
+        </div>
+
+    </div>
+
+</details>
+
 
 </div>
 
-
-<!-- JAZZ & CLASSICAL PIANO -->
+<!-- CLASSICAL PIANO -->
 
 <div class="area">
 
-    <details>
 
-        <summary>
-            <h3>Classical Piano</h3>
-            <p>Technique, accompaniment, interpretation and expressive musicianship.</p>
-            <span class="resource-label">Resources</span>
-        </summary>
+<details>
 
-        <div class="resources">
-            <!-- Resources can be added here -->
-        </div>
+    <summary>
+        <h3>Classical Piano</h3>
+        <p>Technique, accompaniment, interpretation and expressive musicianship.</p>
+        <span class="resource-label">Resources</span>
+    </summary>
 
-    </details>
+    <div class="resources">
+        <!-- Resources can be added here -->
+    </div>
+
+</details>
+
 
 </div>
-
 
 <!-- COMPOSITION, ORCHESTRATION & ANALYSIS -->
 
 <div class="area">
 
-    <details>
 
-        <summary>
-            <h3>Composition, Orchestration and Analysis</h3>
-            <p>Harmony, counterpoint, jazz and classical analysis, musicology</p>
-            <span class="resource-label">Resources</span>
-        </summary>
+<details>
 
-        <div class="resources">
+    <summary>
+        <h3>Composition, Orchestration and Analysis</h3>
+        <p>Harmony, counterpoint, jazz and classical analysis, musicology</p>
+        <span class="resource-label">Resources</span>
+    </summary>
 
-            <div class="video-item">
-                <div class="video-icon">
-                    <a href="https://www.youtube.com/embed/Sa1AQwjMm90" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <div class="video-title">
-                    <a href="https://www.youtube.com/embed/Sa1AQwjMm90" target="_blank">
-                        In Your Own Sweet Way
-                    </a>
-                </div>
-                <div></div>
+    <div class="resources">
+
+        <div class="video-item">
+            <div class="video-icon">
+                <a href="https://www.youtube.com/embed/Sa1AQwjMm90" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
             </div>
-
-            <div class="video-item">
-                <div class="video-icon">
-                    <a href="https://www.youtube.com/embed/vhp7fo9A1TY" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <div class="video-title">
-                    <a href="https://www.youtube.com/embed/vhp7fo9A1TY" target="_blank">
-                        In A Sentimental Mood
-                    </a>
-                </div>
-                <div></div>
+            <div class="video-title">
+                <a href="https://www.youtube.com/embed/Sa1AQwjMm90" target="_blank">
+                    In Your Own Sweet Way
+                </a>
             </div>
-
-            <div class="video-item">
-                <div class="video-icon">
-                    <a href="#">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <div class="video-title">
-                    <a href="#">Infant Eyes</a>
-                </div>
-                <div></div>
-            </div>
-
-            <div class="video-item">
-                <div class="video-icon">
-                    <a href="https://soundcloud.com/jamie3103/my-funny-valentine" target="_blank">
-                        <i class="fab fa-soundcloud"></i>
-                    </a>
-                </div>
-                <div class="video-title">
-                    <a href="https://soundcloud.com/jamie3103/my-funny-valentine" target="_blank">
-                        My Funny Valentine (2013 Recording)
-                    </a>
-                </div>
-                <div></div>
-            </div>
-
-            <div class="video-item">
-                <div class="video-icon">
-                    <a href="https://soundcloud.com/jamie3103/summertime" target="_blank">
-                        <i class="fab fa-soundcloud"></i>
-                    </a>
-                </div>
-                <div class="video-title">
-                    <a href="https://soundcloud.com/jamie3103/summertime" target="_blank">
-                        Summertime (2013 Recording)
-                    </a>
-                </div>
-                <div></div>
-            </div>
-
+            <div></div>
         </div>
 
-    </details>
+        <div class="video-item">
+            <div class="video-icon">
+                <a href="https://www.youtube.com/embed/vhp7fo9A1TY" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <div class="video-title">
+                <a href="https://www.youtube.com/embed/vhp7fo9A1TY" target="_blank">
+                    In A Sentimental Mood
+                </a>
+            </div>
+            <div></div>
+        </div>
+
+        <div class="video-item">
+            <div class="video-icon">
+                <a href="#">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <div class="video-title">
+                <a href="#">Infant Eyes</a>
+            </div>
+            <div></div>
+        </div>
+
+        <div class="video-item">
+            <div class="video-icon">
+                <a href="https://soundcloud.com/jamie3103/my-funny-valentine" target="_blank">
+                    <i class="fab fa-soundcloud"></i>
+                </a>
+            </div>
+            <div class="video-title">
+                <a href="https://soundcloud.com/jamie3103/my-funny-valentine" target="_blank">
+                    My Funny Valentine (2013 Recording)
+                </a>
+            </div>
+            <div></div>
+        </div>
+
+        <div class="video-item">
+            <div class="video-icon">
+                <a href="https://soundcloud.com/jamie3103/summertime" target="_blank">
+                    <i class="fab fa-soundcloud"></i>
+                </a>
+            </div>
+            <div class="video-title">
+                <a href="https://soundcloud.com/jamie3103/summertime" target="_blank">
+                    Summertime (2013 Recording)
+                </a>
+            </div>
+            <div></div>
+        </div>
+
+    </div>
+
+</details>
+
 
 </div>
-
 
 <!-- SOUND SYNTHESIS -->
 
 <div class="area">
 
-    <details>
 
-        <summary>
-            <h3>Sound Synthesis</h3>
-            <p>Subtractive, FM and wavetable synthesis, sound design and electronic music.</p>
-            <span class="resource-label">Resources</span>
-        </summary>
+<details>
 
-        <div class="resources">
-            <!-- Resources can be added here -->
-        </div>
+    <summary>
+        <h3>Sound Synthesis</h3>
+        <p>Subtractive, FM and wavetable synthesis, sound design and electronic music.</p>
+        <span class="resource-label">Resources</span>
+    </summary>
 
-    </details>
+    <div class="resources">
+        <!-- Resources can be added here -->
+    </div>
+
+</details>
+
 
 </div>
 
-
-<!-- MUSIC THEORY & EAR TRAINING -->
+<!-- RHYTHM TRAINING -->
 
 <div class="area">
 
-    <details>
 
-        <summary>
-            <h3>Rhythm Training</h3>
-            <p>Harmony, counterpoint, analysis and preparation for HSC, AMEB and university study.</p>
-            <span class="resource-label">Resources</span>
-        </summary>
+<details>
 
-        <div class="resources">
-            <!-- Resources can be added here -->
-        </div>
+    <summary>
+        <h3>Rhythm Training</h3>
+        <p>Rhythm, metre, subdivision, rhythmic independence and preparation for performance.</p>
+        <span class="resource-label">Resources</span>
+    </summary>
 
-    </details>
+    <div class="resources">
+        <!-- Resources can be added here -->
+    </div>
+
+</details>
+
 
 </div>
-
 
 <!-- CREATIVE MUSIC TECHNOLOGY -->
 
 <div class="area">
 
-    <details>
 
-        <summary>
-            <h3>Creative Music Technology</h3>
-            <p>Notation software, DAWs, live electronic performance and creative music programming.</p>
-            <span class="resource-label">Resources</span>
-        </summary>
+<details>
 
-        <div class="resources">
-            <!-- Resources can be added here -->
-        </div>
+    <summary>
+        <h3>Creative Music Technology</h3>
+        <p>Notation software, DAWs, live electronic performance and creative music programming.</p>
+        <span class="resource-label">Resources</span>
+    </summary>
 
-    </details>
+    <div class="resources">
+        <!-- Resources can be added here -->
+    </div>
+
+</details>
+
 
 </div>
 
-    <!-- WRITING FOR HUMANITIES -->
+<!-- ACADEMIC WRITING -->
 
-    <div class="area">
+<div class="area">
 
-        <details>
 
-            <summary>
-                <h3>Academic writing</h3>
-                <p>Critical analysis, writing effectively for philosophy and history, research methods for humanities subjects.</p>
-                <span class="resource-label">Resources</span>
-            </summary>
+<details>
 
-            <div class="resources">
-                <!-- Resources can be added here -->
-            </div>
+    <summary>
+        <h3>Academic Writing</h3>
+        <p>Critical analysis, writing effectively for philosophy and history, research methods for humanities subjects.</p>
+        <span class="resource-label">Resources</span>
+    </summary>
 
-        </details>
-
+    <div class="resources">
+        <!-- Resources can be added here -->
     </div>
 
+</details>
 
-    <!-- MATHEMATICS & COMPUTER SCIENCE -->
 
-    <div class="area">
+</div>
 
-        <details>
+<!-- MATHEMATICS & COMPUTER SCIENCE -->
 
-            <summary>
-                <h3>Mathematics & Computer Science</h3>
-                <p>Mathematics, programming, algorithms, computational thinking and computer science.</p>
-                <span class="resource-label">Resources</span>
-            </summary>
+<div class="area">
 
-            <div class="resources">
-                <!-- Resources can be added here -->
-            </div>
 
-        </details>
+<details>
 
+    <summary>
+        <h3>Mathematics & Computer Science</h3>
+        <p>Mathematics, programming, algorithms, computational thinking and computer science.</p>
+        <span class="resource-label">Resources</span>
+    </summary>
+
+    <div class="resources">
+        <!-- Resources can be added here -->
     </div>
+
+</details>
+
+
+</div>
 
 </section>
 
