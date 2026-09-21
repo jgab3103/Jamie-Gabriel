@@ -94,7 +94,7 @@ a:hover {
 
 .about-section {
     background: var(--paper);
-    padding: 40px 0 80px;
+    padding: 40px 0 60px;
 }
 
 .about-grid {
@@ -133,6 +133,53 @@ a:hover {
 
 .about-text p {
     max-width: 34rem;
+}
+
+/* =========================
+   LATEST
+   ========================= */
+
+.latest {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 24px 120px;
+}
+
+.latest h2 {
+    margin: 0 0 36px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+.latest-item {
+    max-width: 720px;
+    margin-bottom: 32px;
+}
+
+.latest-item:last-child {
+    margin-bottom: 0;
+}
+
+.latest-date {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.82rem;
+    color: rgba(0,0,0,0.5);
+    letter-spacing: 0.03em;
+}
+
+.latest-item a {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.latest-item p {
+    margin: 5px 0 0;
+    font-size: 0.95rem;
+    color: rgba(0,0,0,0.7);
 }
 
 /* =========================
@@ -235,7 +282,7 @@ a:hover {
 @media (max-width: 600px) {
 
     .about-section {
-        padding: 24px 0 60px;
+        padding: 24px 0 40px;
     }
 
     .about-grid {
@@ -252,6 +299,18 @@ a:hover {
 
     .about-text {
         font-size: 16px;
+    }
+
+    .latest {
+        padding: 20px 24px 80px;
+    }
+
+    .latest h2 {
+        margin-bottom: 30px;
+    }
+
+    .latest-item {
+        margin-bottom: 28px;
     }
 
     .nav-links {
@@ -289,6 +348,10 @@ a:hover {
 
 </nav>
 
+<!-- =========================
+     ABOUT
+     ========================= -->
+
 <section class="about-section" id="about">
 
 
@@ -316,8 +379,79 @@ a:hover {
 
 </section>
 
+<!-- =========================
+     LATEST
+     ========================= -->
+
+<section class="latest" id="latest">
+
+
+<h2>LATEST</h2>
+
+<div class="latest-item">
+
+    <span class="latest-date">21 September 2026</span>
+
+    <a href="#">New Orchestration Template</a>
+
+    <p>
+        A new template for orchestration and arranging is now available.
+    </p>
+
+</div>
+
+
+<div class="latest-item">
+
+    <span class="latest-date">12 September 2026</span>
+
+    <a href="#">New Single</a>
+
+    <p>
+        A new single from SAJA Project with Sally Jamila is out now.
+    </p>
+
+</div>
+
+
+<div class="latest-item">
+
+    <span class="latest-date">28 August 2026</span>
+
+    <a href="./teaching.html">Private Music Lessons</a>
+
+    <p>
+        I am now taking enquiries for private music lessons in Fennell Bay, Lake Macquarie.
+    </p>
+
+</div>
+
+
+<div class="latest-item">
+
+    <span class="latest-date">July 2026</span>
+
+    <a href="./research.html">New Research</a>
+
+    <p>
+        Notes and resources from current work in computational musicology, music cognition and technology.
+    </p>
+
+</div>
+
+
+</section>
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
 <footer class="footer" id="contact">
-    <div>jamie@jamiegabriel.org</div>
+
+
+<div>jamie@jamiegabriel.org</div>
+
+
 </footer>
 
 </body>
