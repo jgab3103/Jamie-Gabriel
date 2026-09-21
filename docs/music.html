@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="Jamie Gabriel — Music">
+<meta name="author" content="Jamie Gabriel">
+
+<title>Jamie Gabriel — Music</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&family=Varela+Round&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --accent:#8B2E3C;
+}
+
+html{
+    scroll-behavior:smooth;
+    background:#FAFAFA;
+}
+
+body{
+    margin:0;
+    font-family:'Nunito',sans-serif;
+    background:#FAFAFA;
+    color:#111;
+    line-height:1.75;
+    font-size:16.5px;
+    padding-top:80px;
+}
+
+a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid rgba(139,46,60,.35);
+    transition:.2s;
+}
+
+a:hover{
+    color:#111;
+    border-bottom-color:rgba(139,46,60,.75);
+}
+
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+#mainNav,
+#mainNav.navbar-shrink{
+    background:#FAFAFA!important;
+    border-bottom:1px solid rgba(0,0,0,.05);
+    min-height:80px;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+}
+
+#mainNav .container{
+    max-width:960px;
+    margin:0 auto;
+    min-height:80px;
+    padding:0 24px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+#mainNav a{
+    color:#111!important;
+    text-decoration:none!important;
+    border:none!important;
+}
+
+.navbar-brand{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.05rem;
+}
+
+.nav-links{
+    display:flex;
+    gap:2.75rem;
+    align-items:center;
+}
+
+
+/* =========================================
+   PAGE
+   ========================================= */
+
+.page{
+    max-width:960px;
+    margin:0 auto;
+    padding:75px 24px 100px;
+}
+
+h2{
+    font-family:'Varela Round',sans-serif;
+    font-weight:500;
+    font-size:1.7rem;
+    margin:0 0 35px;
+}
+
+
+/* =========================================
+   RECORDINGS
+   ========================================= */
+
+.recording{
+    display:grid;
+    grid-template-columns:42% 1fr;
+    gap:55px;
+    padding:28px 0;
+    border-top:1px solid rgba(0,0,0,.06);
+    align-items:start;
+}
+
+
+/* =========================================
+   PLAYER SWITCHER
+   ========================================= */
+
+.player-switcher{
+    width:100%;
+}
+
+.player-tabs{
+    display:flex;
+    gap:18px;
+    margin-bottom:12px;
+    align-items:center;
+}
+
+.player-tab{
+    padding:0 0 3px;
+    border:0!important;
+    border-bottom:1px solid transparent!important;
+    background:none;
+    color:rgba(0,0,0,.5);
+    font-family:'Nunito',sans-serif;
+    font-size:.82rem;
+    cursor:pointer;
+}
+
+.player-tab:hover{
+    color:#111;
+}
+
+.player-tab.active{
+    color:var(--accent);
+    border-bottom-color:rgba(139,46,60,.55)!important;
+}
+
+
+/* =========================================
+   PLAYER PANELS
+   ========================================= */
+
+.player-content{
+    position:relative;
+    width:100%;
+}
+
+.player-panel{
+    width:100%;
+    display:none;
+}
+
+.player-panel.active{
+    display:block;
+}
+
+
+/* =========================================
+   SPOTIFY
+   ========================================= */
+
+.player-content .spotify-frame{
+    display:block;
+    width:100%;
+    height:450px;
+    border:0;
+    border-radius:12px;
+}
+
+.player-content .single-spotify-frame{
+    height:152px;
+}
+
+
+/* =========================================
+   BANDCAMP
+   ========================================= */
+
+.player-content .bandcamp-frame{
+    display:block;
+    width:100%;
+    height:687px;
+    border:0;
+    border-radius:12px;
+}
+
+.player-content .single-bandcamp-frame{
+    height:442px;
+}
+
+
+/* =========================================
+   RECORDING DETAILS
+   ========================================= */
+
+.recording-details{
+    padding-top:8px;
+}
+
+.recording-details h3{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.25rem;
+    font-weight:500;
+    margin:0 0 10px;
+}
+
+.recording-meta{
+    font-size:.92rem;
+    color:rgba(0,0,0,.6);
+    margin-bottom:22px;
+}
+
+.recording-details p{
+    max-width:45ch;
+    color:rgba(0,0,0,.75);
+}
+
+
+/* =========================================
+   LIVE
+   ========================================= */
+
+.live-section{
+    margin-top:80px;
+}
+
+.live{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:40px 24px;
+}
+
+.live-item{
+    min-width:0;
+}
+
+.media-video{
+    position:relative;
+    width:100%;
+    aspect-ratio:16 / 9;
+    overflow:hidden;
+    margin-bottom:16px;
+}
+
+.media-video iframe{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+.live-caption{
+    color:rgba(0,0,0,.75);
+    font-size:.92rem;
+    line-height:1.6;
+}
+
+.live-caption strong{
+    display:block;
+    margin-bottom:7px;
+    font-family:'Varela Round',sans-serif;
+    font-size:1rem;
+    font-weight:500;
+    color:#111;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.footer{
+    border-top:1px solid rgba(0,0,0,.06);
+    padding:70px 24px;
+    text-align:center;
+    color:rgba(0,0,0,.45);
+    font-size:.85rem;
+    line-height:1.8;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        gap:1.5rem;
+    }
+
+    .recording{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .live{
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .page{
+        padding-top:55px;
+    }
+
+    .live{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================================
+     NAVIGATION
+     ========================================= -->
+
+<nav class="navbar" id="mainNav">
+
+
+<div class="container">
+
+    <a class="navbar-brand" href="./index.html">
+        Jamie Gabriel
+    </a>
+
+    <div class="nav-links">
+
+        <a href="./music.html">
+            Music
+        </a>
+
+        <a href="./teaching.html">
+            Teaching
+        </a>
+
+        <a href="./research.html">
+            Research
+        </a>
+
+    </div>
+
+</div>
+
+
+</nav>
+
+<!-- =========================================
+     PAGE
+     ========================================= -->
+
+<main class="page">
+
+<h2>Recordings</h2>
+
+<!-- =========================================
+     SINGLE
+     ========================================= -->
+
+<article class="recording">
+
+
+<div class="player-switcher">
+
+    <div class="player-tabs">
+
+        <button
+            class="player-tab active"
+            type="button"
+            data-player="spotify"
+            onclick="showPlayer(this)">
+            Spotify
+        </button>
+
+        <button
+            class="player-tab"
+            type="button"
+            data-player="bandcamp"
+            onclick="showPlayer(this)">
+            Bandcamp
+        </button>
+
+    </div>
+
+
+    <div class="player-content">
+
+
+        <div
+            class="player-panel active"
+            data-player-panel="spotify">
+
+            <iframe
+                class="spotify-frame single-spotify-frame"
+                data-testid="embed-iframe"
+                src="https://open.spotify.com/embed/album/6eBVoOmpiSzUb2z3DnFlUK?utm_source=generator&si=6ef36b90537c4b09"
+                width="100%"
+                height="152"
+                frameBorder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+            </iframe>
+
+        </div>
+
+
+        <div
+            class="player-panel"
+            data-player-panel="bandcamp"
+            data-bandcamp-url="https://bandcamp.com/EmbeddedPlayer/track=3039662765/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/"
+            data-bandcamp-height="442">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div class="recording-details">
+
+    <h3>Sunday Girl</h3>
+
+    <div class="recording-meta">
+        Release · 4 September 2026
+    </div>
+
+    <p>
+        <a href="https://sajaproject.com/sunday-girl.html">
+            More details
+        </a>
+    </p>
+
+</div>
+
+
+</article>
+
+<!-- =========================================
+     SAJA PROJECT
+     ========================================= -->
+
+<article class="recording">
+
+
+<div class="player-switcher">
+
+    <div class="player-tabs">
+
+        <button
+            class="player-tab active"
+            type="button"
+            data-player="spotify"
+            onclick="showPlayer(this)">
+            Spotify
+        </button>
+
+        <button
+            class="player-tab"
+            type="button"
+            data-player="bandcamp"
+            onclick="showPlayer(this)">
+            Bandcamp
+        </button>
+
+    </div>
+
+
+    <div class="player-content">
+
+
+        <div
+            class="player-panel active"
+            data-player-panel="spotify">
+
+            <iframe
+                class="spotify-frame"
+                data-testid="embed-iframe"
+                src="https://open.spotify.com/embed/artist/3DhKcRde51hmI0VnY4wLNo?utm_source=generator&si=b94d475fc9d34b63"
+                width="100%"
+                height="450"
+                frameBorder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+            </iframe>
+
+        </div>
+
+
+        <div
+            class="player-panel"
+            data-player-panel="bandcamp"
+            data-bandcamp-url="https://bandcamp.com/EmbeddedPlayer/album=2354495077/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/"
+            data-bandcamp-height="687">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div class="recording-details">
+
+    <h3>SAJA Project</h3>
+
+    <div class="recording-meta">
+        Release · 13 August 2026
+    </div>
+
+    <p>
+        <a href="https://sajaproject.com/album.html">
+            More details
+        </a>
+    </p>
+
+</div>
+
+
+</article>
+
+<!-- =========================================
+     LIVE CLIPS
+     ========================================= -->
+
+<section class="live-section">
+
+
+<h2>Live Clips</h2>
+
+<div class="live">
+
+
+    <!-- 1 -->
+
+    <div class="live-item">
+
+        <div class="media-video">
+
+            <iframe
+                src="https://www.youtube.com/embed/IdZDCXAl64I?si=c3U9KJPfh2lGgIV3"
+                title="Maru Hi Fi – 21.06.26"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+        <div class="live-caption">
+
+            <strong>
+                Maru Hi Fi – 21.06.26
+            </strong>
+
+            A few moments from the Maru Hi Fi gig.
+            Not an effect in sight — just jazz!
+
+        </div>
+
+    </div>
+
+
+    <!-- 2 -->
+
+    <div class="live-item">
+
+        <div class="media-video">
+
+            <iframe
+                src="https://www.youtube.com/embed/5QB3bhQGYSw?si=ZTsy3qoYW6u8UrXp"
+                title="Improv – 25.05.26"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+        <div class="live-caption">
+
+            <strong>
+                Improv – 25.05.26
+            </strong>
+
+            Improvisation using ambient textures and looping
+            with Nord, Elektron Octatrack and Digitone II.
+
+        </div>
+
+    </div>
+
+
+    <!-- 3 -->
+
+    <div class="live-item">
+
+        <div class="media-video">
+
+            <iframe
+                src="https://www.youtube.com/embed/UO-QXpd7O10?si=w8lHl-MgsJHRkp6S"
+                title="Improv – 31.03.26"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+        <div class="live-caption">
+
+            <strong>
+                Improv – 31.03.26
+            </strong>
+
+            Improvisation using reverse loops and tape delay,
+            recorded on Nord, Elektron Octatrack and Syntakt.
+
+        </div>
+
+    </div>
+
+
+    <!-- 4 -->
+
+    <div class="live-item">
+
+        <div class="media-video">
+
+            <iframe
+                src="https://www.youtube.com/embed/z67htqfjnpc?si=Ql2CR76gE2a_6TBl"
+                title="Piano House Recital"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+        <div class="live-caption">
+
+            <strong>
+                Piano House Recital
+            </strong>
+
+            Excerpt from an improvised solo piano recital
+            in Blackheath, NSW.
+
+        </div>
+
+    </div>
+
+
+    <!-- 5 -->
+
+    <div class="live-item">
+
+        <div class="media-video">
+
+            <iframe
+                src="https://www.youtube.com/embed/hOCNPx9Nyn4?si=gEovdoqLk7vz41uh"
+                title="Day in the City"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+        <div class="live-caption">
+
+            <strong>
+                Day in the City
+            </strong>
+
+            Wandering around the city, with the soundtrack
+            improvised on the spot after being told:
+            “just improvise something like Gershwin”.
+
+        </div>
+
+    </div>
+
+
+    <!-- 6 -->
+
+    <div class="live-item">
+
+        <div class="media-video">
+
+            <iframe
+                src="https://www.youtube.com/embed/TGxcx4Bz2Mc?si=rk4zbp0fm1xJlPEr"
+                title="Guitar – 500 Miles High"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+        <div class="live-caption">
+
+            <strong>
+                Guitar – 500 Miles High
+            </strong>
+
+            Guitar version of 500 Miles High by Chick Corea
+            using reverse reverb and delay effects.
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</section>
+
+</main>
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
+<footer class="footer">
+
+
+<div>
+    Research · Music · Computing · Mathematics
+</div>
+
+<div>
+    jamie@jamiegabriel.org
+</div>
+
+
+</footer>
+
+<!-- =========================================
+     PLAYER SWITCHING
+     ========================================= -->
+
+<script>
+
+function loadBandcamp(panel){
+
+    /*
+     * Only create the Bandcamp iframe the
+     * first time the user selects Bandcamp.
+     */
+
+    if(panel.dataset.loaded === 'true'){
+        return;
+    }
+
+
+    const iframe = document.createElement('iframe');
+
+    iframe.className = 'bandcamp-frame';
+
+    if(panel.dataset.bandcampHeight === '442'){
+        iframe.classList.add('single-bandcamp-frame');
+    }
+
+    iframe.src = panel.dataset.bandcampUrl;
+
+    iframe.width = '100%';
+
+    iframe.frameBorder = '0';
+
+    iframe.setAttribute('seamless', '');
+
+
+    /*
+     * Add the fallback Bandcamp link.
+     */
+
+    const link = document.createElement('a');
+
+    if(panel.dataset.bandcampHeight === '442'){
+
+        link.href = 'https://sajaproject.bandcamp.com/track/sunday-girl';
+        link.textContent = 'Sunday Girl by SAJA Project';
+
+    }else{
+
+        link.href = 'https://sajaproject.bandcamp.com/album/saja-project-01';
+        link.textContent = 'SAJA Project 01 by SAJA Project';
+
+    }
+
+
+    iframe.appendChild(link);
+
+    panel.appendChild(iframe);
+
+    panel.dataset.loaded = 'true';
+
+}
+
+
+function showPlayer(button){
+
+    /*
+     * Find ONLY the recording containing
+     * the clicked button.
+     */
+
+    const switcher = button.closest('.player-switcher');
+
+
+    /*
+     * Get tabs and panels from this
+     * switcher only.
+     */
+
+    const tabs = switcher.querySelectorAll('.player-tab');
+
+    const panels = switcher.querySelectorAll('.player-panel');
+
+    const player = button.dataset.player;
+
+
+    /*
+     * If Bandcamp was selected, create
+     * its iframe before displaying it.
+     */
+
+    if(player === 'bandcamp'){
+
+        const panel = switcher.querySelector(
+            '[data-player-panel="bandcamp"]'
+        );
+
+        if(panel){
+
+            loadBandcamp(panel);
+
+        }
+
+    }
+
+
+    /*
+     * Reset this switcher only.
+     */
+
+    tabs.forEach(function(tab){
+
+        tab.classList.remove('active');
+
+    });
+
+    panels.forEach(function(panel){
+
+        panel.classList.remove('active');
+
+    });
+
+
+    /*
+     * Activate clicked tab.
+     */
+
+    button.classList.add('active');
+
+
+    /*
+     * Activate matching player.
+     */
+
+    const panel = switcher.querySelector(
+        '[data-player-panel="' + player + '"]'
+    );
+
+    if(panel){
+
+        panel.classList.add('active');
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>

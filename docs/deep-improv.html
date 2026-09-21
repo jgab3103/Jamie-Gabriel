@@ -1,299 +1,250 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>Jamie Gabriel</title>
+<meta name="description" content="Deep Improv – Jamie Gabriel" />
+<meta name="author" content="Jamie Gabriel" />
+<title>Deep Improv | Jamie Gabriel</title>
 
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
 
 <link href="css/styles.css" rel="stylesheet" />
 
 <style>
 
-/* =========================
-   BASE
-   ========================= */
-
-:root {
-    --accent: #8B2E3C; /* oxide editorial red */
+:root{
+    --accent:#8B2E3C;
 }
 
-html {
-    scroll-behavior: smooth;
-    background: #FAFAFA;
+html{
+    scroll-behavior:smooth;
+    background:#FAFAFA;
 }
 
-body {
-    margin: 0;
-    font-family: 'Nunito', sans-serif;
-    background: #FAFAFA;
-    color: #111;
-    line-height: 1.75;
-    font-size: 16.5px;
-    padding-top: 80px;
+body{
+    margin:0;
+    font-family:'Nunito',sans-serif;
+    background:#FAFAFA;
+    color:#111;
+    line-height:1.75;
+    font-size:16.5px;
+    padding-top:80px;
 }
 
-/* =========================
-   LINKS (now accented)
-   ========================= */
+/* LINKS */
 
-a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(139, 46, 60, 0.35);
-    transition: all 0.2s ease;
+a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid rgba(139,46,60,.35);
+    transition:.2s;
 }
 
-a:hover {
-    color: #111;
-    border-bottom-color: rgba(139, 46, 60, 0.75);
+a:hover{
+    color:#111;
+    border-bottom-color:rgba(139,46,60,.75);
 }
 
-/* =========================
-   NAV
-   ========================= */
+/* NAV */
 
 #mainNav,
-#mainNav.navbar-shrink {
-    background: #FAFAFA !important;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    min-height: 80px;
+#mainNav.navbar-shrink{
+    background:#FAFAFA!important;
+    border-bottom:1px solid rgba(0,0,0,.05);
+    min-height:80px;
 }
 
-#mainNav a {
-    color: #111 !important;
-    text-decoration: none !important;
+#mainNav a{
+    color:#111!important;
+    text-decoration:none!important;
+    border:none!important;
 }
 
-/* =========================
-   ABOUT
-   ========================= */
-
-.about-section {
-    background: #FAFAFA;
-    padding: 60px 0 90px;
+.nav-links{
+    display:flex;
+    gap:2.75rem;
+    align-items:center;
 }
 
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 90px;
-    max-width: 1000px;
-    margin: auto;
-    padding: 0 24px;
-    align-items: start;
+/* CONTENT */
+
+.content{
+    max-width:960px;
+    margin:0 auto;
+    padding:70px 24px 120px;
 }
 
-.about-image img {
-    width: 100%;
-    max-width: 360px;
-    height: auto;
-    object-fit: cover;
-    display: block;
-
-    filter: grayscale(100%);
-    opacity: 0.92;
+.content h1{
+    font-family:'Varela Round',sans-serif;
+    font-size:2rem;
+    margin:0 0 35px;
+    font-weight:500;
 }
 
-.about-text h2 {
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.7rem;
-    margin-bottom: 22px;
+.content h2{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.3rem;
+    margin:55px 0 20px;
+    font-weight:500;
 }
 
-.about-text p {
-    margin-bottom: 18px;
-    max-width: 65ch;
+.content p{
+    max-width:70ch;
+    margin-bottom:22px;
 }
 
-/* =========================
-   PROJECTS
-   ========================= */
+/* TABLE OF CONTENTS */
 
-.projects {
-    max-width: 1000px;
-    margin: auto;
-    padding: 80px 24px 140px;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+.toc{
+    border-left:1px solid rgba(0,0,0,.08);
+    padding-left:24px;
+    margin:0 0 45px;
 }
 
-.project {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+.toc ul{
+    list-style:none;
+    margin:0;
+    padding:0;
 }
 
-/* IMAGE */
-.project-image img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-
-    filter: grayscale(100%);
-    transition: opacity 0.4s ease, filter 0.4s ease;
+.toc li{
+    margin-bottom:8px;
 }
 
-/* subtle accent interaction */
-.project:hover img {
-    opacity: 0.88;
-    filter: grayscale(100%) contrast(1.05);
+/* FOOTER */
+
+.footer{
+    border-top:1px solid rgba(0,0,0,.06);
+    padding:70px 24px;
+    text-align:center;
+    color:rgba(0,0,0,.7);
 }
 
-/* TEXT */
-.project-text h3 {
-    margin: 0;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: color 0.25s ease;
-}
+/* MOBILE */
 
-.project:hover .project-text h3 {
-    color: var(--accent);
-}
+@media(max-width:900px){
 
-.project-text p {
-    margin: 6px 0 0;
-    font-size: 0.95rem;
-    color: rgba(0,0,0,0.7);
-}
-
-/* =========================
-   FOOTER
-   ========================= */
-
-.footer {
-    background: #FAFAFA;
-    border-top: 1px solid rgba(0,0,0,0.06);
-    padding: 80px 30px;
-    text-align: center;
-    font-size: 0.95rem;
-    color: rgba(0,0,0,0.7);
-}
-
-/* =========================
-   RESPONSIVE
-   ========================= */
-
-@media (max-width: 900px) {
-
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+    .nav-links{
+        gap:1.5rem;
     }
 
-    .projects {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .project-image img {
-        height: 260px;
-    }
 }
 
-.reading-container {
-    max-width: 750px;
-    margin: 0 auto;
+@media(max-width:600px){
+
+    .content{
+        padding-top:50px;
+    }
+
 }
 
 </style>
 
 </head>
 
-<body id="page-top">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
+
         <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+
+        <div class="nav-links">
+            <a href="./album.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./research.html">Research</a>
+        </div>
+
     </div>
 </nav>
 
 
-<section id="projects">
+<main class="content">
 
-    <div class="reading-container">
+    <h1>Deep Improv</h1>
 
-            <div class="toc">
-       <br/><br/>
+    <div class="toc">
         <ul>
             <li><a href="#description">Overview</a></li>
             <li><a href="#background">Background reading</a></li>
-            <li><a href="#data-collection">Related code</a></li>
+            <li><a href="#code">Related code</a></li>
             <li><a href="#get-involved">Getting involved</a></li>
         </ul>
     </div>
 
-        <p>
-            <strong>Deep Improv</strong> is an ongoing ensemble-based improvisation project centred on deep listening, collective performance, and continuous recording. Every rehearsal and performance is captured in full, forming a growing archive of musical interaction that is used as primary material for analysis and creative development.
-        </p>
 
-        <p>
-            We have explored different approaches, but rather than focusing on collecting MIDI or symbolic representations, the project works directly with audio. This includes live instrumental performance, electronically generated sound, and a library of samples, many drawn from public domain orchestral recordings. These materials are treated as fluid sources for transformation, recombination, and reinterpretation during playing.
-        </p>
+    <h2 id="description">Overview</h2>
 
-        <p>
-            The recorded archive is analysed using deep learning frameworks centred on representation learning and latent structure inference. In place of explicit, hand-crafted feature extraction, the approach relies on autoencoding architectures, nonlinear dimensionality reduction, and sequence models to learn from the audio stream. Particular emphasis is placed on aligned-dimensional embedding (ADE) strategies, in which temporally distributed events are mapped into a shared latent space and examined through graph-based formalisations. We also use Catalan-type combinatorial structures that are proving to provide a useful lens for modelling hierarchical segmentation and dependencies across musical time. The aim is to understand the more subtle relationships between gesture, texture, and ensemble interaction.
-        </p>
+    <p>
+        <strong>Deep Improv</strong> is an ongoing ensemble-based improvisation project centred on deep listening, collective performance, and continuous recording. Every rehearsal and performance is captured in full, forming a growing archive of musical interaction that is used as primary material for analysis and creative development.
+    </p>
 
-        <p>
-            These extracted structures are then fed into a real-time synthesis environment built in SuperCollider which acts as another member of the ensemble, responding to learned patterns, tendencies, and emergent behaviours within the group. The result is what we loosely termed “smart improv” where human performers and machine processes co-exist within the same musical space.
-        </p>
+    <p>
+        Rather than focusing on collecting MIDI or symbolic representations, the project works directly with audio. This includes live instrumental performance, electronically generated sound, and a library of samples, many drawn from public domain orchestral recordings. These materials are treated as fluid sources for transformation, recombination, and reinterpretation during playing.
+    </p>
 
-        <p>
-            Ultimately, the idea here is to explore what happens when listening is extended beyond the moment of performance — when the traces of improvisation are recursively analysed, transformed, and reintroduced into the creative process.
-        </p>
+    <p>
+        The recorded archive is analysed using deep learning frameworks centred on representation learning and latent structure inference. In place of explicit, hand-crafted feature extraction, the approach relies on autoencoding architectures, nonlinear dimensionality reduction, and sequence models to learn from the audio stream.
+    </p>
 
-        <p>
-            We try and maintain some background reading and related literature can be found
-            <a href="./background-reading.html">here</a>. This includes work in machine learning, computational creativity, and experimental music practices that inform the development of the project.
-        </p>
+    <p>
+        Particular emphasis is placed on aligned-dimensional embedding (ADE) strategies, in which temporally distributed events are mapped into a shared latent space and examined through graph-based formalisations. We also use Catalan-type combinatorial structures that are proving to provide a useful lens for modelling hierarchical segmentation and dependencies across musical time. The aim is to understand the more subtle relationships between gesture, texture, and ensemble interaction.
+    </p>
 
-        <p>
-            The codebase currently includes tools for large-scale audio recording, dataset organisation, feature extraction, and integration with SuperCollider. There is also ongoing work on deep learning pipelines for analysing rehearsal archives and generating responsive sonic material.
-            <a href="https://github.com/jgab3103/Deep-Improv">Link to related code</a>
-        </p>
+    <p>
+        These extracted structures are then fed into a real-time synthesis environment built in SuperCollider, which acts as another member of the ensemble, responding to learned patterns, tendencies, and emergent behaviours within the group. The result is what we loosely termed <strong>“smart improv”</strong>, where human performers and machine processes co-exist within the same musical space.
+    </p>
 
-        <p>
-            We sometimes do group jams on a Jamulus server and will post details of that to this page. If you are interested in this kind of thing, contact me at
-            <a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a>.
-        </p>
+    <p>
+        Ultimately, the idea is to explore what happens when listening is extended beyond the moment of performance — when the traces of improvisation are recursively analysed, transformed, and reintroduced into the creative process.
+    </p>
 
-        <!-- ADDED WITHOUT CHANGING STRUCTURE -->
-        <p>
-            Additional background reading and contextual material for this project is maintained in the
-            <a href="./background-reading.html">background reading archive</a>, covering machine learning approaches to musical structure, computational creativity, and ensemble improvisation systems.
-        </p>
 
-        <p>
-            The full technical codebase for Wonderland, including audio capture tools, dataset organisation workflows, and deep learning pipelines for analysis and generation, is available here:
-            <a href="https://github.com/jgab3103/Deep-Improv">GitHub repository</a>.
-        </p>
+    <h2 id="background">Background Reading</h2>
 
-        <p>
-            If you are interested in participating in future sessions, experimental jams, or the development of this system, you are welcome to get in touch via
-            <a href="mailto:jamie@jamiegabriel.org">email</a>. Details of Jamulus-based group sessions will also be posted here when active.
-        </p>
+    <p>
+        Background reading and related literature can be found in the
+        <a href="./background-reading.html">background reading archive</a>.
+        This includes work in machine learning, computational creativity, and experimental music practices that inform the development of the project.
+    </p>
 
-    </div>
 
-</section>
+    <h2 id="code">Related Code</h2>
 
-<footer class="footer" id="contact">
+    <p>
+        The codebase includes tools for large-scale audio recording, dataset organisation, feature extraction, and integration with SuperCollider. There is also ongoing work on deep learning pipelines for analysing rehearsal archives and generating responsive sonic material.
+    </p>
+
+    <p>
+        <a href="https://github.com/jgab3103/Deep-Improv" target="_blank">
+            GitHub repository
+        </a>
+    </p>
+
+
+    <h2 id="get-involved">Getting Involved</h2>
+
+    <p>
+        We sometimes do group jams on a Jamulus server and will post details of these sessions here. If you are interested in experimental improvisation, the project, or participating in future sessions, you are welcome to
+        <a href="mailto:jamie@jamiegabriel.org">get in touch</a>.
+    </p>
+
+</main>
+
+
+<footer class="footer">
+    <div>Research · Music · Computing · Mathematics</div>
     <div>jamie@jamiegabriel.org</div>
 </footer>
 
 </body>
 </html>
+
