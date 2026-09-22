@@ -1,143 +1,296 @@
 <!DOCTYPE html>
+
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Jamie Gabriel</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <style>
-  #mainNav {
-    background-color: #fff !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-  }
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Contact – Jamie Gabriel" />
+<meta name="author" content="Jamie Gabriel" />
+
+<title>Contact | Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
+
+<style>
+:root{
+    --accent:#8B2E3C;
+    --paper:#FAFAFA;
+    --panel:#F4F1EB;
+}
+
+html{
+    scroll-behavior:smooth;
+    background:var(--paper);
+}
+
+body{
+    margin:0;
+    font-family:'Nunito',sans-serif;
+    background:var(--paper);
+    color:#111;
+    line-height:1.75;
+    font-size:16.5px;
+    padding-top:80px;
+}
+
+a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid rgba(139,46,60,.35);
+    transition:.2s;
+}
+
+a:hover{
+    color:#111;
+    border-bottom-color:rgba(139,46,60,.75);
+}
+
+/* Nav */
+
+#mainNav,
+#mainNav.navbar-shrink{
+    background:var(--paper)!important;
+    border-bottom:1px solid rgba(0,0,0,.05);
+    min-height:80px;
+}
+
+#mainNav a{
+    color:#111!important;
+    text-decoration:none!important;
+    border:none!important;
+}
+
+.nav-links{
+    display:flex;
+    gap:2.5rem;
+    align-items:center;
+}
+
+/* Page */
+
+.contact{
+    max-width:1000px;
+    margin:0 auto;
+    padding:60px 24px 120px;
+}
+
+.contact h1{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.7rem;
+    font-weight:500;
+    text-align:center;
+    margin:0 0 40px;
+}
+
+/* Contact Panel */
+
+.panel{
+    background:var(--panel);
+    max-width:680px;
+    margin:0 auto;
+    padding:42px 50px;
+    border-radius:4px;
+    text-align:center;
+}
+
+.panel h2{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.05rem;
+    font-weight:500;
+    margin:0 0 32px;
+}
+
+.item{
+    margin-bottom:26px;
+}
+
+.item:last-of-type{
+    margin-bottom:36px;
+}
+
+.label{
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-weight:700;
+    color:rgba(0,0,0,.55);
+    margin-bottom:4px;
+}
+
+.social{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:24px;
+    padding-top:26px;
+    border-top:1px solid rgba(0,0,0,.1);
+}
+
+.social a{
+    color:#111;
+    border:none;
+    font-size:1.35rem;
+    transition:.2s;
+}
+
+.social a:hover{
+    color:var(--accent);
+    transform:translateY(-2px);
+}
+
+.social-label{
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-weight:700;
+    color:rgba(0,0,0,.55);
+    margin-bottom:14px;
+}
+
+/* Footer */
+
+.footer{
+    background:var(--paper);
+    border-top:1px solid rgba(0,0,0,.06);
+    padding:80px 30px;
+    text-align:center;
+    font-size:.95rem;
+    color:rgba(0,0,0,.7);
+}
+
+@media(max-width:900px){
+    .nav-links{
+        gap:1.5rem;
+    }
+
+    .panel{
+        max-width:none;
+        padding:36px 28px;
+    }
+}
+
+@media(max-width:600px){
+    .contact{
+        padding:45px 18px 90px;
+    }
+
+    .panel{
+        padding:32px 22px;
+    }
+
+    .nav-links{
+        gap:1rem;
+    }
+
+    .social{
+        gap:20px;
+    }
+}
 </style>
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Jamie Gabriel</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                 <li class="nav-item"><a class="nav-link" href="./index.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./articles.html">Articles</a></li>
-                             <li class="nav-item"><a class="nav-link" href="./live-music.html">Live Music</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Masthead-->
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
 
 
-        <!-- Projects-->
-        <section class="projects-section bg-light" id="projects">
-            <div class="container px-4 px-lg-5">
-
-<a href="./index.html">back</a><br/><br/>
-
-                <!-- Featured Project Row-->
-   
-                
-                      <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-md-4 mb-3 mb-md-0">
-                       
-                       <br/>
-Note that I am taking a break from software development stuff at the moment, but feel free to connect with me on LinkedIn if you have questions or want to chat about all that. <br/><br/>For inquiries about gigs or teaching, feel free to get in touch.
-
-                    </div>
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Contact</h4>
-                                <hr class="my-4 mx-auto" />
-
-                              
-                                <div class="small text-black-50"><br/>
-                                    <a href="mailto:jgab3103@gmail.com">jgab3103@gmail.com</a><br/>
-                                    +61(0)490 896 610
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3 mb-md-0">
-                   
-                    </div>
-                </div>
-    <!--             <div class="social d-flex justify-content-center">
-                    <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                    <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                    <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
-                </div> -->
-            </div>
+    <div class="nav-links">
+        <a href="./music.html">Music</a>
+        <a href="./teaching.html">Teaching</a>
+        <a href="./research.html">Research</a>
+          <a href="./contact.html">Contact</a>
+    </div>
+</div>
 
 
-                           <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-    
-                    <div class="col-xl-1 col-lg-1">
+</nav>
+
+<section class="contact">
 
 
+<h1>Contact</h1>
 
-                </div>
-                  <div class="col-xl-12 col-lg-12">
+<div class="panel">
+
+    <h2>Get in Touch</h2>
+
+    <div class="item">
+        <div class="label">Email</div>
+        <div>
+            <a href="mailto:jamie@jamiegabriel.org">
+                jamie@jamiegabriel.org
+            </a>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="label">Website</div>
+        <div>
+            <a href="https://jamiegabriel.org">
+                jamiegabriel.org
+            </a>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="label">Location</div>
+        <div>
+            Lake Macquarie, NSW<br>
+            Australia
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="label">Availability</div>
+        <div>
+            Private teaching, school and university teaching, research collaboration & performance 
+        </div>
+    </div>
+
+    <div class="social-label">Connect</div>
+
+    <div class="social">
+
+        <a href="https://www.linkedin.com/" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+
+        <a href="https://www.instagram.com/" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="https://www.facebook.com/" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+
+    </div>
+
+</div>
 
 
- 
-                   
+</section>
 
-                </div>
-              
-                </div> 
+<footer class="footer">
+    <div>Research · Music · Computing · Mathematics</div>
+    <div>jamie@jamiegabriel.org</div>
+</footer>
 
-                <!-- Project One Row-->
-
-    
-    
-            </div>
-        </section>
-        <!-- Signup-->
-        <section class="signup-section" id="signup">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-md-10 col-lg-8 mx-auto text-center">
-                        
-                      
-                      
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Contact-->
-
-        <!-- Footer-->
-        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Jamie Gabriel 2025</div>
-            <div>Photography - Sally Jamila</div></footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+</body>
 </html>

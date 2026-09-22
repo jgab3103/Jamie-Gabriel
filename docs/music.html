@@ -4,22 +4,28 @@
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<meta name="description" content="Jamie Gabriel — Music">
-<meta name="author" content="Jamie Gabriel">
+<meta name="description" content="Jamie Gabriel — Music" />
+<meta name="author" content="Jamie Gabriel" />
 
 <title>Jamie Gabriel — Music</title>
 
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&family=Varela+Round&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+
+<link href="css/styles.css" rel="stylesheet" />
 
 <style>
+
+/* =========================
+   BASE
+   ========================= */
 
 :root{
     --accent:#8B2E3C;
@@ -42,6 +48,11 @@ body{
     padding-top:80px;
 }
 
+
+/* =========================
+   LINKS
+   ========================= */
+
 a{
     color:var(--accent);
     text-decoration:none;
@@ -55,31 +66,15 @@ a:hover{
 }
 
 
-/* =========================================
-   NAVIGATION
-   ========================================= */
+/* =========================
+   NAV
+   ========================= */
 
 #mainNav,
 #mainNav.navbar-shrink{
     background:var(--paper)!important;
     border-bottom:1px solid rgba(0,0,0,.05);
     min-height:80px;
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    z-index:1000;
-}
-
-#mainNav .container{
-    max-width:1000px;
-    margin:0 auto;
-    min-height:80px;
-    padding:0 24px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
 }
 
 #mainNav a{
@@ -88,21 +83,16 @@ a:hover{
     border:none!important;
 }
 
-.navbar-brand{
-    font-family:'Varela Round',sans-serif;
-    font-size:1.05rem;
-}
-
 .nav-links{
     display:flex;
-    gap:2.75rem;
+    gap:2.5rem;
     align-items:center;
 }
 
 
-/* =========================================
+/* =========================
    PAGE
-   ========================================= */
+   ========================= */
 
 .page{
     max-width:1000px;
@@ -119,9 +109,9 @@ h2{
 }
 
 
-/* =========================================
+/* =========================
    RECORDINGS
-   ========================================= */
+   ========================= */
 
 .recording{
     display:grid;
@@ -161,9 +151,9 @@ h2{
 }
 
 
-/* =========================================
+/* =========================
    PLAYER SWITCHER
-   ========================================= */
+   ========================= */
 
 .player-switcher{
     width:100%;
@@ -198,9 +188,9 @@ h2{
 }
 
 
-/* =========================================
+/* =========================
    PLAYER PANELS
-   ========================================= */
+   ========================= */
 
 .player-content{
     position:relative;
@@ -217,9 +207,9 @@ h2{
 }
 
 
-/* =========================================
+/* =========================
    SPOTIFY
-   ========================================= */
+   ========================= */
 
 .player-content .spotify-frame{
     display:block;
@@ -234,9 +224,9 @@ h2{
 }
 
 
-/* =========================================
+/* =========================
    BANDCAMP
-   ========================================= */
+   ========================= */
 
 .player-content .bandcamp-frame{
     display:block;
@@ -251,9 +241,9 @@ h2{
 }
 
 
-/* =========================================
+/* =========================
    LIVE
-   ========================================= */
+   ========================= */
 
 .live-section{
     margin-top:75px;
@@ -262,12 +252,6 @@ h2{
 .live-section h2{
     margin-bottom:35px;
 }
-
-/*
- * Masonry-style layout:
- * clips flow vertically through three columns,
- * rather than forming rigid rows.
- */
 
 .live{
     columns:3 280px;
@@ -281,9 +265,9 @@ h2{
 }
 
 
-/* =========================================
+/* =========================
    VIDEO
-   ========================================= */
+   ========================= */
 
 .media-video{
     position:relative;
@@ -302,9 +286,9 @@ h2{
 }
 
 
-/* =========================================
+/* =========================
    INSTAGRAM
-   ========================================= */
+   ========================= */
 
 .media-instagram{
     width:100%;
@@ -320,9 +304,9 @@ h2{
 }
 
 
-/* =========================================
+/* =========================
    LIVE CAPTIONS
-   ========================================= */
+   ========================= */
 
 .live-caption{
     color:rgba(0,0,0,.75);
@@ -340,9 +324,9 @@ h2{
 }
 
 
-/* =========================================
+/* =========================
    FOOTER
-   ========================================= */
+   ========================= */
 
 .footer{
     border-top:1px solid rgba(0,0,0,.06);
@@ -354,9 +338,9 @@ h2{
 }
 
 
-/* =========================================
+/* =========================
    RESPONSIVE
-   ========================================= */
+   ========================= */
 
 @media(max-width:900px){
 
@@ -382,6 +366,11 @@ h2{
 
 @media(max-width:600px){
 
+    #mainNav .container{
+        padding-left:18px;
+        padding-right:18px;
+    }
+
     .page{
         padding-top:55px;
     }
@@ -394,14 +383,8 @@ h2{
         columns:1;
     }
 
-    .resources .video-item{
-        grid-template-columns:30px 1fr;
-        gap:10px;
-        padding:10px 0;
-    }
-
-    .video-caption{
-        grid-column:2;
+    .nav-links{
+        gap:1rem;
     }
 
 }
@@ -412,13 +395,13 @@ h2{
 
 <body>
 
-<!-- =========================================
+<!-- =========================
      NAVIGATION
-     ========================================= -->
+     ========================= -->
 
-<nav class="navbar" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 
-<div class="container">
+<div class="container px-4 px-lg-5">
 
 <a class="navbar-brand" href="./index.html">
     Jamie Gabriel
@@ -426,17 +409,12 @@ h2{
 
 <div class="nav-links">
 
-<a href="./music.html">
-    Music
-</a>
 
-<a href="./teaching.html">
-    Teaching
-</a>
+<a href="./music.html">Music</a>
+<a href="./teaching.html">Teaching</a>
+<a href="./research.html">Research</a>
+<a href="./contact.html">Contact</a>
 
-<a href="./research.html">
-    Research
-</a>
 
 </div>
 
@@ -444,17 +422,17 @@ h2{
 
 </nav>
 
-<!-- =========================================
+<!-- =========================
      PAGE
-     ========================================= -->
+     ========================= -->
 
 <main class="page">
 
 <h2>Recordings</h2>
 
-<!-- =========================================
+<!-- =========================
      SINGLE
-     ========================================= -->
+     ========================= -->
 
 <article class="recording">
 
@@ -462,40 +440,43 @@ h2{
 
 <div class="player-tabs">
 
-<button
- class="player-tab active"
- type="button"
- data-player="spotify"
- onclick="showPlayer(this)">
-Spotify </button>
 
 <button
- class="player-tab"
- type="button"
- data-player="bandcamp"
- onclick="showPlayer(this)">
-Bandcamp </button>
+    class="player-tab active"
+    type="button"
+    data-player="spotify"
+    onclick="showPlayer(this)">
+    Spotify
+</button>
+
+<button
+    class="player-tab"
+    type="button"
+    data-player="bandcamp"
+    onclick="showPlayer(this)">
+    Bandcamp
+</button>
+
 
 </div>
 
 <div class="player-content">
 
+
 <div
     class="player-panel active"
     data-player-panel="spotify">
 
-
-<iframe
-    class="spotify-frame single-spotify-frame"
-    data-testid="embed-iframe"
-    src="https://open.spotify.com/embed/album/6eBVoOmpiSzUb2z3DnFlUK?utm_source=generator&si=6ef36b90537c4b09"
-    width="100%"
-    height="152"
-    frameBorder="0"
-    allowfullscreen=""
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-</iframe>
-
+    <iframe
+        class="spotify-frame single-spotify-frame"
+        data-testid="embed-iframe"
+        src="https://open.spotify.com/embed/album/6eBVoOmpiSzUb2z3DnFlUK?utm_source=generator&si=6ef36b90537c4b09"
+        width="100%"
+        height="152"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
 
 </div>
 
@@ -504,8 +485,8 @@ Bandcamp </button>
     data-player-panel="bandcamp"
     data-bandcamp-url="https://bandcamp.com/EmbeddedPlayer/track=3039662765/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/"
     data-bandcamp-height="442">
-
 </div>
+
 
 </div>
 
@@ -529,9 +510,9 @@ Bandcamp </button>
 
 </article>
 
-<!-- =========================================
+<!-- =========================
      SAJA PROJECT
-     ========================================= -->
+     ========================= -->
 
 <article class="recording">
 
@@ -539,40 +520,43 @@ Bandcamp </button>
 
 <div class="player-tabs">
 
-<button
- class="player-tab active"
- type="button"
- data-player="spotify"
- onclick="showPlayer(this)">
-Spotify </button>
 
 <button
- class="player-tab"
- type="button"
- data-player="bandcamp"
- onclick="showPlayer(this)">
-Bandcamp </button>
+    class="player-tab active"
+    type="button"
+    data-player="spotify"
+    onclick="showPlayer(this)">
+    Spotify
+</button>
+
+<button
+    class="player-tab"
+    type="button"
+    data-player="bandcamp"
+    onclick="showPlayer(this)">
+    Bandcamp
+</button>
+
 
 </div>
 
 <div class="player-content">
 
+
 <div
     class="player-panel active"
     data-player-panel="spotify">
 
-
-<iframe
-    class="spotify-frame"
-    data-testid="embed-iframe"
-    src="https://open.spotify.com/embed/artist/3DhKcRde51hmI0VnY4wLNo?utm_source=generator&si=b94d475fc9d34b63"
-    width="100%"
-    height="450"
-    frameBorder="0"
-    allowfullscreen=""
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-</iframe>
-
+    <iframe
+        class="spotify-frame"
+        data-testid="embed-iframe"
+        src="https://open.spotify.com/embed/artist/3DhKcRde51hmI0VnY4wLNo?utm_source=generator&si=b94d475fc9d34b63"
+        width="100%"
+        height="450"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
 
 </div>
 
@@ -581,8 +565,8 @@ Bandcamp </button>
     data-player-panel="bandcamp"
     data-bandcamp-url="https://bandcamp.com/EmbeddedPlayer/album=2354495077/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/"
     data-bandcamp-height="687">
-
 </div>
+
 
 </div>
 
@@ -606,9 +590,9 @@ Bandcamp </button>
 
 </article>
 
-<!-- =========================================
+<!-- =========================
      LIVE CLIPS
-     ========================================= -->
+     ========================= -->
 
 <section class="live-section">
 
@@ -628,7 +612,6 @@ Bandcamp </button>
     data-instgrm-captioned
     data-instgrm-permalink="https://www.instagram.com/reel/DdZAwdDJaKT/"
     data-instgrm-version="14">
-
 </blockquote>
 
 
@@ -692,7 +675,6 @@ Not an effect in sight — just jazz!
     data-instgrm-captioned
     data-instgrm-permalink="https://www.instagram.com/reel/DYV4gWXG56L/"
     data-instgrm-version="14">
-
 </blockquote>
 
 
@@ -756,7 +738,6 @@ with Nord, Elektron Octatrack and Digitone II.
     data-instgrm-captioned
     data-instgrm-permalink="https://www.instagram.com/reel/DdWTbBdJSat/"
     data-instgrm-version="14">
-
 </blockquote>
 
 
@@ -788,7 +769,6 @@ Live performance clip.
     data-instgrm-captioned
     data-instgrm-permalink="https://www.instagram.com/reel/DLtqVWmym_0/"
     data-instgrm-version="14">
-
 </blockquote>
 
 
@@ -852,7 +832,6 @@ recorded on Nord, Elektron Octatrack and Syntakt.
     data-instgrm-captioned
     data-instgrm-permalink="https://www.instagram.com/reel/DFcAS9rhqVA/"
     data-instgrm-version="14">
-
 </blockquote>
 
 
@@ -975,9 +954,9 @@ using reverse reverb and delay effects.
 
 </main>
 
-<!-- =========================================
+<!-- =========================
      FOOTER
-     ========================================= -->
+     ========================= -->
 
 <footer class="footer">
 
@@ -991,18 +970,13 @@ using reverse reverb and delay effects.
 
 </footer>
 
-<!-- =========================================
+<!-- =========================
      PLAYER SWITCHING
-     ========================================= -->
+     ========================= -->
 
 <script>
 
 function loadBandcamp(panel){
-
-    /*
-     * Only create the Bandcamp iframe the
-     * first time the user selects Bandcamp.
-     */
 
     if(panel.dataset.loaded === 'true'){
         return;
@@ -1023,10 +997,6 @@ function loadBandcamp(panel){
     iframe.frameBorder = '0';
 
     iframe.setAttribute('seamless', '');
-
-    /*
-     * Add the fallback Bandcamp link.
-     */
 
     const link = document.createElement('a');
 
@@ -1053,17 +1023,7 @@ function loadBandcamp(panel){
 
 function showPlayer(button){
 
-    /*
-     * Find ONLY the recording containing
-     * the clicked button.
-     */
-
     const switcher = button.closest('.player-switcher');
-
-    /*
-     * Get tabs and panels from this
-     * switcher only.
-     */
 
     const tabs = switcher.querySelectorAll('.player-tab');
 
@@ -1071,10 +1031,6 @@ function showPlayer(button){
 
     const player = button.dataset.player;
 
-    /*
-     * If Bandcamp was selected, create
-     * its iframe before displaying it.
-     */
 
     if(player === 'bandcamp'){
 
@@ -1083,16 +1039,11 @@ function showPlayer(button){
         );
 
         if(panel){
-
             loadBandcamp(panel);
-
         }
 
     }
 
-    /*
-     * Reset this switcher only.
-     */
 
     tabs.forEach(function(tab){
 
@@ -1100,39 +1051,32 @@ function showPlayer(button){
 
     });
 
+
     panels.forEach(function(panel){
 
         panel.classList.remove('active');
 
     });
 
-    /*
-     * Activate clicked tab.
-     */
 
     button.classList.add('active');
 
-    /*
-     * Activate matching player.
-     */
 
     const panel = switcher.querySelector(
         '[data-player-panel="' + player + '"]'
     );
 
     if(panel){
-
         panel.classList.add('active');
-
     }
 
 }
 
 </script>
 
-<!-- =========================================
+<!-- =========================
      INSTAGRAM EMBED
-     ========================================= -->
+     ========================= -->
 
 <script async src="https://www.instagram.com/embed.js"></script>
 
