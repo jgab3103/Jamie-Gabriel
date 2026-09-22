@@ -389,6 +389,40 @@ h2{
 
 }
 
+/* =========================
+   LIVE FILTERS
+   ========================= */
+
+.live-filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:-10px 0 28px;
+}
+
+.filter-btn{
+    padding:8px 14px;
+    border:1px solid rgba(0,0,0,.12);
+    border-radius:999px;
+    background:transparent;
+    color:rgba(0,0,0,.7);
+    font-family:'Nunito',sans-serif;
+    font-size:.85rem;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.filter-btn:hover{
+    border-color:rgba(139,46,60,.4);
+    color:#111;
+}
+
+.filter-btn.active{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+}
+
 </style>
 
 </head>
@@ -598,6 +632,14 @@ h2{
 
 <h2>Live Clips</h2>
 
+<div class="live-filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="ensemble">Ensemble</button>
+    <button class="filter-btn" data-filter="solo-piano">Solo Piano</button>
+    <button class="filter-btn" data-filter="solo-guitar">Solo Guitar</button>
+    <button class="filter-btn" data-filter="improv">Improv</button>
+</div>
+
 <div class="live">
 
 <!-- 1 — INSTAGRAM -->
@@ -633,7 +675,7 @@ Live performance clip.
 
 <!-- 2 — YOUTUBE -->
 
-<div class="live-item">
+<div class="live-item" data-tags="ensemble">
 
 <div class="media-video">
 
@@ -696,7 +738,7 @@ Live performance clip.
 
 <!-- 4 — YOUTUBE -->
 
-<div class="live-item">
+<div class="live-item" data-tags="solo-piano">
 
 <div class="media-video">
 
@@ -1072,6 +1114,31 @@ function showPlayer(button){
 
 </script>
 
+
+<script>
+const filterButtons = document.querySelectorAll('.filter-btn');
+const liveItems = document.querySelectorAll('.live-item');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+
+        filterButtons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.dataset.filter;
+
+        liveItems.forEach(item => {
+            const tags = item.dataset.tags || '';
+
+            if (filter === 'all' || tags.includes(filter)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
 <!-- =========================
      INSTAGRAM EMBED
      ========================= -->
