@@ -148,8 +148,28 @@ select{
     font-size:.95rem;
 }
 
+/* Composer names shown permanently on the map */
+
+.composer-label{
+    background:transparent;
+    border:none;
+    box-shadow:none;
+    color:#222;
+    font-family:'Nunito',sans-serif;
+    font-size:12px;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+.composer-label:before{
+    display:none;
+}
+
+/* Popup styling */
+
 .leaflet-popup-content{
     font-family:'Nunito',sans-serif;
+    min-width:190px;
 }
 
 .leaflet-popup-content h3{
@@ -159,8 +179,8 @@ select{
 }
 
 .leaflet-popup-content p{
-    margin:4px 0;
-    line-height:1.4;
+    margin:5px 0;
+    line-height:1.45;
 }
 
 .footer{
@@ -173,11 +193,18 @@ select{
 }
 
 @media(max-width:900px){
-    .nav-links{gap:1.5rem;}
-    .panel{padding:24px;}
+
+    .nav-links{
+        gap:1.5rem;
+    }
+
+    .panel{
+        padding:24px;
+    }
 }
 
 @media(max-width:700px){
+
     .controls{
         grid-template-columns:1fr;
     }
@@ -193,6 +220,10 @@ select{
     .diary{
         padding:45px 18px 90px;
     }
+
+    .composer-label{
+        font-size:11px;
+    }
 }
 </style>
 </head>
@@ -200,19 +231,24 @@ select{
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+
 <div class="container px-4 px-lg-5">
 
 <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
 
 <div class="nav-links">
+
 <a href="./music.html">Music</a>
 <a href="./teaching.html">Teaching</a>
 <a href="./research.html">Research</a>
 <a href="./contact.html">Contact</a>
+
 </div>
 
 </div>
+
 </nav>
+
 
 <section class="diary">
 
@@ -222,14 +258,18 @@ select{
 A growing map of music I'm listening to, studying and teaching. Each pin marks the place a work was composed, with the composer, year and notes. Use the timeline and period filter to explore music across geography and history.
 </p>
 
+
 <div class="panel">
 
 <div class="controls">
 
 <div>
+
 <div class="label">Year</div>
+
 <div style="margin-bottom:8px;">
-Show works composed up to <span id="yearValue">2026</span>
+Show works composed up to
+<span id="yearValue">2026</span>
 </div>
 
 <input
@@ -238,129 +278,308 @@ type="range"
 min="1600"
 max="2026"
 value="2026">
+
 </div>
 
+
 <div>
+
 <div class="label">Period</div>
+
 <select id="periodFilter">
+
 <option value="all">All periods</option>
 <option value="Baroque">Baroque</option>
 <option value="Classical">Classical</option>
 <option value="Romantic">Romantic</option>
 <option value="Modern">Modern</option>
 <option value="Jazz">Jazz</option>
+
 </select>
+
 </div>
 
 </div>
+
 
 <div id="map"></div>
 
+
 <div class="stats">
-<div><span id="count">0</span> works visible</div>
-<div>1600–2026</div>
+
+<div>
+<span id="count">0</span> works visible
+</div>
+
+<div>
+1600–2026
+</div>
+
 </div>
 
 </div>
 
 </section>
 
+
 <footer class="footer">
+
 <div>jamie@jamiegabriel.org</div>
+
 </footer>
 
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <script src="works.js"></script>
 
-<script>
-// Create map
-const map = L.map("map", {
-    worldCopyJump: true
-}).setView([25, 10], 2);
 
-// OpenStreetMap tiles
+<script>
+
+// --------------------------------------------------
+// MAP
+// --------------------------------------------------
+
+const map = L.map("map", {
+    worldCopyJump:true
+}).setView([25,10],2);
+
+
+// OpenStreetMap
+
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; OpenStreetMap contributors"
+
+    attribution:"&copy; OpenStreetMap contributors"
+
 }).addTo(map);
 
-// UI elements
-const slider = document.getElementById("yearSlider");
-const yearValue = document.getElementById("yearValue");
-const period = document.getElementById("periodFilter");
-const count = document.getElementById("count");
 
-// Layer for markers
-const markerLayer = L.layerGroup().addTo(map);
+// --------------------------------------------------
+// CONTROLS
+// --------------------------------------------------
 
-// Colour by musical period
+const slider =
+    document.getElementById("yearSlider");
+
+const yearValue =
+    document.getElementById("yearValue");
+
+const period =
+    document.getElementById("periodFilter");
+
+const count =
+    document.getElementById("count");
+
+
+// Marker layer
+
+const markerLayer =
+    L.layerGroup().addTo(map);
+
+
+// --------------------------------------------------
+// COLOURS
+// --------------------------------------------------
+
 function colour(p){
+
     return {
+
         "Baroque":"#8B2E3C",
+
         "Classical":"#3B5B92",
+
         "Romantic":"#5F7A39",
+
         "Modern":"#B36B2C",
+
         "Jazz":"#222222"
+
     }[p] || "#8B2E3C";
+
 }
 
-// Draw visible works
+
+// --------------------------------------------------
+// DRAW WORKS
+// --------------------------------------------------
+
 function draw(){
 
     markerLayer.clearLayers();
 
-console.log("Works loaded:", works);
 
-    const year = Number(slider.value);
-    const selectedPeriod = period.value;
+    const year =
+        Number(slider.value);
 
-    yearValue.textContent = year;
+    const selectedPeriod =
+        period.value;
 
-    const visible = works.filter(work => {
-        return work.year <= year &&
-               (selectedPeriod === "all" || work.period === selectedPeriod);
-    });
 
-    count.textContent = visible.length;
+    yearValue.textContent =
+        year;
+
+
+    const visible =
+        works.filter(work => {
+
+            return work.year <= year &&
+                   (
+                       selectedPeriod === "all" ||
+                       work.period === selectedPeriod
+                   );
+
+        });
+
+
+    count.textContent =
+        visible.length;
+
 
     const bounds = [];
 
+
     visible.forEach(work => {
 
-        const marker = L.circleMarker([work.lat, work.lng],{
-            radius:7,
-            fillColor:colour(work.period),
-            color:"#ffffff",
-            weight:2,
-            fillOpacity:1
-        });
+
+        // ------------------------------------------
+        // MAP MARKER
+        // ------------------------------------------
+
+        const marker =
+            L.circleMarker(
+                [work.lat, work.lng],
+                {
+                    radius:7,
+
+                    fillColor:
+                        colour(work.period),
+
+                    color:"#ffffff",
+
+                    weight:2,
+
+                    fillOpacity:1
+                }
+            );
+
+
+        // ------------------------------------------
+        // PERMANENT COMPOSER NAME
+        // ------------------------------------------
+
+        marker.bindTooltip(
+            work.composer,
+            {
+                permanent:true,
+
+                direction:"right",
+
+                offset:[8,0],
+
+                className:"composer-label"
+            }
+        );
+
+
+        // ------------------------------------------
+        // POPUP
+        // ------------------------------------------
 
         marker.bindPopup(`
-            <h3>${work.title}</h3>
-            <p><strong>${work.composer}</strong></p>
-            <p>${work.year} · ${work.place}</p>
-            <p><em>${work.period}</em></p>
-            ${work.notes ? `<p>${work.notes}</p>` : ""}
+
+            <h3>
+                ${work.title}
+            </h3>
+
+            <p>
+                <strong>
+                    ${work.composer}
+                </strong>
+            </p>
+
+            <p>
+                ${work.year}
+                ·
+                ${work.composedPlace}
+            </p>
+
+            <p>
+                ${work.born}–${work.died}
+                <br>
+                Born:
+                ${work.birthplace}
+            </p>
+
+            <p>
+                <em>
+                    ${work.period}
+                </em>
+            </p>
+
+            ${
+                work.notes
+                ? `<p>${work.notes}</p>`
+                : ""
+            }
+
         `);
 
+
         marker.addTo(markerLayer);
-        bounds.push([work.lat, work.lng]);
+
+
+        bounds.push([
+            work.lat,
+            work.lng
+        ]);
+
     });
 
+
+    // ------------------------------------------
+    // ZOOM TO VISIBLE WORKS
+    // ------------------------------------------
+
     if(bounds.length){
-        map.fitBounds(bounds,{
-            padding:[40,40],
-            maxZoom:5
-        });
+
+        map.fitBounds(
+            bounds,
+            {
+                padding:[40,40],
+                maxZoom:5
+            }
+        );
+
     }else{
-        map.setView([25,10],2);
+
+        map.setView(
+            [25,10],
+            2
+        );
+
     }
+
 }
 
-// Events
-slider.addEventListener("input", draw);
-period.addEventListener("change", draw);
+
+// --------------------------------------------------
+// EVENTS
+// --------------------------------------------------
+
+slider.addEventListener(
+    "input",
+    draw
+);
+
+period.addEventListener(
+    "change",
+    draw
+);
+
 
 // Initial draw
+
 draw();
 
 </script>
