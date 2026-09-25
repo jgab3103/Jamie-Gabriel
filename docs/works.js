@@ -4,6 +4,7 @@ const works = [
     title: "The Rite of Spring",
     composer: "Igor Stravinsky",
     year: 1913,
+    firstHeard: 1998,
 
     composedPlace: "Paris, France",
     lat: 48.8766,
@@ -21,6 +22,7 @@ const works = [
     title: "Symphony No. 8",
     composer: "Antonín Dvořák",
     year: 1890,
+    firstHeard: 2004,
 
     composedPlace: "Vysoká u Příbramě, Czech Republic",
     lat: 49.6025,
@@ -38,6 +40,7 @@ const works = [
     title: "Daphnis et Chloé",
     composer: "Maurice Ravel",
     year: 1912,
+    firstHeard: 2001,
 
     composedPlace: "Paris, France",
     lat: 48.8566,
@@ -55,6 +58,7 @@ const works = [
     title: "Gurre-Lieder",
     composer: "Arnold Schoenberg",
     year: 1911,
+    firstHeard: 2017,
 
     composedPlace: "Vienna, Austria",
     lat: 48.2082,
@@ -72,6 +76,7 @@ const works = [
     title: "Quartet for the End of Time",
     composer: "Olivier Messiaen",
     year: 1941,
+    firstHeard: 2008,
 
     composedPlace: "Görlitz, Germany",
     lat: 51.1520,
@@ -89,6 +94,7 @@ const works = [
     title: "Sunday at the Village Vanguard",
     composer: "Bill Evans",
     year: 1961,
+    firstHeard: 1994,
 
     composedPlace: "New York City, USA",
     lat: 40.7506,
@@ -106,6 +112,7 @@ const works = [
     title: "Standards, Vol. 1",
     composer: "Keith Jarrett",
     year: 1983,
+    firstHeard: 1997,
 
     composedPlace: "New York City, USA",
     lat: 40.7306,
@@ -123,6 +130,7 @@ const works = [
     title: "Piano Sonata No. 1",
     composer: "Nikolai Kapustin",
     year: 1984,
+    firstHeard: 2012,
 
     composedPlace: "Moscow, Russia",
     lat: 55.7558,
@@ -140,6 +148,7 @@ const works = [
     title: "Electric Dreams",
     composer: "John McLaughlin",
     year: 1979,
+    firstHeard: 1991,
 
     composedPlace: "New York City, USA",
     lat: 40.7106,
