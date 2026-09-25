@@ -20,6 +20,47 @@ const works = [
     period: "Romantic",
     notes: "Composed in 1889 and premiered in Prague in 1890."
 },
+{
+    title: "Symphony No. 7",
+    composer: "Antonín Dvořák",
+    year: 1885,
+    firstHeard: 2004,
+
+    composedPlace: "Prague, Czech Republic",
+    lat: 50.0755,
+    lng: 14.4270,
+
+    born: 1841,
+    died: 1904,
+    birthplace: "Nelahozeves, Czech Republic",
+
+    firstPerformancePlace: "London, England",
+    firstPerformanceDate: "22 April 1885",
+
+    period: "Romantic",
+    notes: "Composed in Prague between December 1884 and March 1885 and premiered in London."
+},
+
+{
+    title: "Symphony No. 9 'From the New World'",
+    composer: "Antonín Dvořák",
+    year: 1893,
+    firstHeard: 2004,
+
+    composedPlace: "New York City, USA",
+    lat: 40.7420,
+    lng: -73.9910,
+
+    born: 1841,
+    died: 1904,
+    birthplace: "Nelahozeves, Czech Republic",
+
+    firstPerformancePlace: "New York City, USA",
+    firstPerformanceDate: "16 December 1893",
+
+    period: "Romantic",
+    notes: "Composed during Dvořák's time as director of the National Conservatory of Music of America and premiered at Carnegie Hall."
+},
 
 {
     title: "Sunday at the Village Vanguard",
@@ -187,6 +228,69 @@ const works = [
 
     period: "Modern",
     notes: "Composed in 1913 and premiered in Paris."
+},
+{
+    title: "Petrushka",
+    composer: "Igor Stravinsky",
+    year: 1911,
+    firstHeard: 1999,
+
+    composedPlace: "Lausanne, Switzerland",
+    lat: 46.5197,
+    lng: 6.6323,
+
+    born: 1882,
+    died: 1971,
+    birthplace: "Oranienbaum, Russia",
+
+    firstPerformancePlace: "Paris, France",
+    firstPerformanceDate: "13 June 1911",
+
+    period: "Modern",
+    notes: "Ballet in four scenes composed for Sergei Diaghilev and the Ballets Russes."
+},
+
+{
+    title: "The Firebird",
+    composer: "Igor Stravinsky",
+    year: 1910,
+    firstHeard: 1998,
+
+    composedPlace: "Paris, France",
+    lat: 48.8600,
+    lng: 2.3450,
+
+    born: 1882,
+    died: 1971,
+    birthplace: "Oranienbaum, Russia",
+
+    firstPerformancePlace: "Paris, France",
+    firstPerformanceDate: "25 June 1910",
+
+    period: "Modern",
+    notes: "Ballet composed for Sergei Diaghilev's Ballets Russes, based on Russian folklore."
+},
+
+{
+    title: "Pulcinella",
+    composer: "Igor Stravinsky",
+    year: 1920,
+    firstHeard: 2003,
+
+    composedPlace: "Paris, France",
+    lat: 48.8530,
+    lng: 2.3650,
+
+    born: 1882,
+    died: 1971,
+    birthplace: "Oranienbaum, Russia",
+
+    firstPerformancePlace: "Paris, France",
+    firstPerformanceDate: "15 May 1920",
+
+    period: "Modern",
+    notes: "Neoclassical ballet based on music attributed to Giovanni Battista Pergolesi, commissioned by Sergei Diaghilev."
 }
+
 
 ];
