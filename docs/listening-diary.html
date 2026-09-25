@@ -598,35 +598,38 @@ function draw(changedSlider){
 
         marker.bindPopup(`
 
-            <h3>${work.title}</h3>
+            
 
-            <p>
-                <strong>${work.composer}</strong>
-            </p>
+    <p>
+    <strong>${work.composer}</strong>  ${work.born}–${work.died || "present"}<br>
+    Born: ${work.birthplace}
+</p>
+<h3>${work.title}</h3>
+<p>
+    <em>Music composed:</em> ${work.year} · ${work.composedPlace}
+</p>
 
-            <p>
-                ${work.year} · ${work.composedPlace}
-            </p>
-
-            <p>
-    First heard: ${work.firstHeard}
+<p>
+    <em>Place first performed:</em> ${work.firstPerformancePlace || "—"}<br>
+    <em>Date first performed:</em> ${work.firstPerformanceDate || "—"}
 </p>
 
 
-            <p>
-                ${work.born}–${work.died}<br>
-                Born: ${work.birthplace}
-            </p>
+
 
             <p>
-                <em>${work.period}</em>
+                <em>Period:</em> ${work.period}
             </p>
 
             ${
                 work.notes
-                ? `<p>${work.notes}</p>`
+                ? `<p><em>Notes:</em> ${work.notes}</p>`
                 : ""
             }
+
+                <p>
+    <em>The year I first heard this: </em>${work.firstHeard || "—"}
+</p>
 
         `);
 
