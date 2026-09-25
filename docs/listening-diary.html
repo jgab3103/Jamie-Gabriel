@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Listening Diary – Jamie Gabriel"/>
+<title>Listening Diary | Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet"/>
+
+<style>
+:root{
+    --accent:#8B2E3C;
+    --paper:#FAFAFA;
+    --panel:#F4F1EB;
+}
+
+html{
+    scroll-behavior:smooth;
+    background:var(--paper);
+}
+
+body{
+    margin:0;
+    font-family:'Nunito',sans-serif;
+    background:var(--paper);
+    color:#111;
+    line-height:1.75;
+    font-size:16.5px;
+    padding-top:80px;
+}
+
+a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid rgba(139,46,60,.35);
+}
+
+#mainNav,
+#mainNav.navbar-shrink{
+    background:var(--paper)!important;
+    border-bottom:1px solid rgba(0,0,0,.05);
+    min-height:80px;
+}
+
+#mainNav a{
+    color:#111!important;
+    text-decoration:none!important;
+    border:none!important;
+}
+
+.nav-links{
+    display:flex;
+    gap:2.5rem;
+    align-items:center;
+}
+
+.diary{
+    max-width:1100px;
+    margin:0 auto;
+    padding:60px 24px 120px;
+}
+
+h1{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.7rem;
+    font-weight:500;
+    text-align:center;
+    margin:0 0 18px;
+}
+
+.intro{
+    max-width:680px;
+    margin:0 auto 42px;
+    text-align:center;
+    color:#444;
+}
+
+.panel{
+    background:var(--panel);
+    border-radius:4px;
+    padding:28px;
+}
+
+.controls{
+    display:grid;
+    grid-template-columns:1fr 220px;
+    gap:20px;
+    align-items:end;
+    margin-bottom:22px;
+}
+
+.label{
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-weight:700;
+    color:rgba(0,0,0,.55);
+    margin-bottom:8px;
+}
+
+#yearValue{
+    font-weight:700;
+    color:var(--accent);
+}
+
+input[type=range]{
+    width:100%;
+    accent-color:var(--accent);
+}
+
+select{
+    width:100%;
+    padding:10px;
+    border:1px solid rgba(0,0,0,.15);
+    background:white;
+    font-family:inherit;
+}
+
+#map{
+    height:560px;
+    border-radius:3px;
+    overflow:hidden;
+}
+
+.stats{
+    display:flex;
+    justify-content:space-between;
+    margin-top:18px;
+    color:#555;
+    font-size:.95rem;
+}
+
+.leaflet-popup-content h3{
+    margin:0 0 6px;
+    font-size:1rem;
+    color:var(--accent);
+}
+
+.leaflet-popup-content p{
+    margin:4px 0;
+    line-height:1.45;
+}
+
+.footer{
+    background:var(--paper);
+    border-top:1px solid rgba(0,0,0,.06);
+    padding:80px 30px;
+    text-align:center;
+    color:#777;
+}
+
+@media(max-width:700px){
+    .controls{
+        grid-template-columns:1fr;
+    }
+
+    #map{
+        height:420px;
+    }
+
+    .nav-links{
+        gap:1rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+<div class="container px-4 px-lg-5">
+
+<a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+
+<div class="nav-links">
+<a href="./music.html">Music</a>
+<a href="./teaching.html">Teaching</a>
+<a href="./research.html">Research</a>
+<a href="./contact.html">Contact</a>
+</div>
+
+</div>
+</nav>
+
+<section class="diary">
+
+<h1>Listening Diary</h1>
+
+<p class="intro">
+A growing map of the music I'm listening to and studying. Each pin marks the place a work was composed, with the composer, year and notes. Students are welcome to explore the collection and discover connections across geography and history.
+</p>
+
+<div class="panel">
+
+<div class="controls">
+
+<div>
+<div class="label">Latest year</div>
+<div style="margin-bottom:8px;">
+Show works composed up to <span id="yearValue">2026</span>
+</div>
+<input id="yearSlider" type="range" min="1600" max="2026" value="2026"/>
+</div>
+
+<div>
+<div class="label">Period</div>
+<select id="periodFilter">
+<option value="all">All periods</option>
+<option>Baroque</option>
+<option>Classical</option>
+<option>Romantic</option>
+<option>Modern</option>
+<option>Jazz</option>
+</select>
+</div>
+
+</div>
+
+<div id="map"></div>
+
+<div class="stats">
+<div><span id="count">0</span> works visible</div>
+<div>1600–2026</div>
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+<div>jamie@jamiegabriel.org</div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="works.js"></script>
+
+<script>
+const map = L.map("map",{
+    worldCopyJump:true
+}).setView([30,10],2);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{
+    attribution:"© OpenStreetMap contributors"
+}).addTo(map);
+
+let markers=[];
+
+const slider=document.getElementById("yearSlider");
+const yearValue=document.getElementById("yearValue");
+const period=document.getElementById("periodFilter");
+const count=document.getElementById("count");
+
+function colour(period){
+    return{
+        "Baroque":"#8B2E3C",
+        "Classical":"#355C7D",
+        "Romantic":"#6C8A3B",
+        "Modern":"#8C5A2B",
+        "Jazz":"#222"
+    }[period]||"#8B2E3C";
+}
+
+function draw(){
+
+    markers.forEach(m=>map.removeLayer(m));
+    markers=[];
+
+    const y=Number(slider.value);
+    const p=period.value;
+
+    const visible=works.filter(w=>{
+        const yearOK=w.year<=y;
+        const periodOK=(p==="all")||(w.period===p);
+        return yearOK&&periodOK;
+    });
+
+    visible.forEach(w=>{
+
+        const marker=L.circleMarker([w.lat,w.lng],{
+            radius:7,
+            fillColor:colour(w.period),
+            color:"#fff",
+            weight:2,
+            fillOpacity:1
+        }).addTo(map);
+
+        marker.bindPopup(`
+            <h3>${w.title}</h3>
+            <p><strong>${w.composer}</strong></p>
+            <p>${w.year} · ${w.place}</p>
+            <p><em>${w.period}</em></p>
+            ${w.notes ? `<p>${w.notes}</p>` : ""}
+        `);
+
+        markers.push(marker);
+    });
+
+    count.textContent=visible.length;
+    yearValue.textContent=y;
+}
+
+slider.addEventListener("input",draw);
+period.addEventListener("change",draw);
+
+draw();
+</script>
+
+</body>
+</html>
