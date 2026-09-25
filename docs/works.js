@@ -1,3 +1,6 @@
+
+console.log("Works loaded:", works);
+
 const works = [
   {
     title: "Goldberg Variations",
