@@ -76,12 +76,22 @@ a:hover{
     align-items:center;
 }
 
-/* INTRO */
+/* INTRO + LISTENING DIARY */
 
-.intro{
+.intro-layout{
     max-width:1000px;
     margin:0 auto;
     padding:60px 24px 40px;
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) 280px;
+    gap:50px;
+    align-items:start;
+}
+
+.intro{
+    max-width:none;
+    margin:0;
+    padding:0;
 }
 
 .intro h1{
@@ -96,37 +106,38 @@ a:hover{
     margin-bottom:22px;
 }
 
-/* LISTENING DIARY */
-
 .diary-panel{
-    max-width:1000px;
-    margin:0 auto 40px;
-    padding:0 24px;
+    margin:0;
+    padding:0;
 }
 
 .diary-card{
     background:var(--panel);
-    padding:24px 28px;
+    padding:30px 28px 32px;
     box-sizing:border-box;
-    border-radius:4px;
+    border-radius:5px;
+    border-top:4px solid var(--accent);
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
 
 .diary-card h3{
     font-family:'Varela Round',sans-serif;
-    font-size:1.05rem;
-    margin:0 0 8px;
+    font-size:1.15rem;
+    margin:0 0 12px;
     font-weight:500;
+    color:#111;
 }
 
 .diary-card p{
     margin:0;
     color:rgba(0,0,0,.72);
-    max-width:70ch;
+    line-height:1.65;
 }
 
 .diary-card a{
     display:inline-block;
-    margin-top:12px;
+    margin-top:18px;
+    font-weight:600;
 }
 
 /* TEACHING AREAS */
@@ -246,6 +257,15 @@ a:hover{
 
 @media(max-width:900px){
 
+    .intro-layout{
+        grid-template-columns:1fr;
+        gap:10px;
+    }
+
+    .diary-panel{
+        margin-top:10px;
+    }
+
     .areas{
         grid-template-columns:1fr;
         gap:0;
@@ -282,59 +302,80 @@ a:hover{
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+
     <div class="container px-4 px-lg-5">
 
-    <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+        <a class="navbar-brand" href="./index.html">
+            Jamie Gabriel
+        </a>
 
-    <div class="nav-links">
-        <a href="./music.html">Music</a>
-        <a href="./teaching.html">Teaching</a>
-        <a href="./research.html">Research</a>
-        <a href="./contact.html">Contact</a>
+        <div class="nav-links">
+            <a href="./music.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./research.html">Research</a>
+            <a href="./contact.html">Contact</a>
+        </div>
+
     </div>
-
-</div>
 
 </nav>
 
-<section class="intro">
 
-<h1>Teaching</h1>
+<!-- INTRO -->
 
-<p>
-    I have a couple of decades experience teaching students across a wide range of ages, backgrounds and levels of experience, all the way from complete beginners and university researchers and professional musicians. I have taught on subjects like harmony and analysis, composition, music history, instrumental studies and ensemble performace, as well as computer science and mathematics. I have also had the opportunity to mentor some amazing software developers and data scientists. I have presented in all kinds of settings from informal workshops to formal academic settings. I just love learning new things and sharing them when I can.
-</p>
+<section class="intro-layout">
 
-<p>
-    After a career break in 2024-5 from corporate life followed by some exciting travels, I decided to formalise my school teaching qualifications and returned to university studies (yet again!) to complete a Master of Teaching degree. This has let me become qualified to teach in both Primary and Secondary settings. As a secondary education teacher, I decided to specialise in Music and History (my first degree, way back when, was in History and Philosophy, and this seemed like a nice break of my decades of math and tech). At the same time, I have returned to work as a musician, composer and researcher, bringing together practical musical experience with my academic and technical. It has been great. 
-</p>
+    <div class="intro">
 
-<p>
-    Why do I love teaching? Because I've had the good fortune to learn from amazing teachers and to spend my life exploring all kinds of fascinating ideas. I love sharing knowledge and helping students, whatever their starting point and wherever they are on their learning journey, so they can discover how they learn best and develop a lifelong curiosity about the world.
-
-
-On this page, I try and post useful as I create them or come across them. It is all a bit aspirational, to be sure, and there is not a lot here yet. But bear with me. Learning takes a lifetime.
-</p>
-
-</section>
-
-<!-- LISTENING DIARY -->
-
-<section class="diary-panel">
-
-    <div class="diary-card">
-
-        <h3>Listening Diary</h3>
+        <h1>Teaching</h1>
 
         <p>
-            A growing map of music I'm listening to, studying and teaching, tracing works across geography and music history.
+            I have a couple of decades experience teaching students across a wide range of ages, backgrounds and levels of experience, all the way from complete beginners and university researchers and professional musicians. I have taught on subjects like harmony and analysis, composition, music history, instrumental studies and ensemble performace, as well as computer science and mathematics. I have also had the opportunity to mentor some amazing software developers and data scientists. I have presented in all kinds of settings from informal workshops to formal academic settings. I just love learning new things and sharing them when I can.
         </p>
 
-        <a href="./listening-diary.html">Explore the Listening Diary →</a>
+        <p>
+            After a career break in 2024-5 from corporate life followed by some exciting travels, I decided to formalise my school teaching qualifications and returned to university studies (yet again!) to complete a Master of Teaching degree. This has let me become qualified to teach in both Primary and Secondary settings. As a secondary education teacher, I decided to specialise in Music and History (my first degree, way back when, was in History and Philosophy, and this seemed like a nice break of my decades of math and tech). At the same time, I have returned to work as a musician, composer and researcher, bringing together practical musical experience with my academic and technical. It has been great. 
+        </p>
+
+        <p>
+            Why do I love teaching? Because I've had the good fortune to learn from amazing teachers and to spend my life exploring all kinds of fascinating ideas. I love sharing knowledge and helping students, whatever their starting point and wherever they are on their learning journey, so they can discover how they learn best and develop a lifelong curiosity about the world.
+
+            On this page, I try and post useful as I create them or come across them. It is all a bit aspirational, to be sure, and there is not a lot here yet. But bear with me. Learning takes a lifetime.
+        </p>
 
     </div>
 
+
+    <!-- LISTENING DIARY -->
+
+    <aside class="diary-panel">
+
+        <div class="diary-card">
+
+            <h3>My Listening Diary</h3>
+
+            <p>
+            
+Listening is the most important part of music. It is why we are drawn to it and want to learn. It is so important to listen actively, have a sense of the history and context of what you are hearing, which will always let you find enw connections and explore new music. <br/><br/> 
+
+Keep a list of what you are listening to and learn about the context in which it was created. 
+
+I have kept a listening diary for a long time now, as a way of making that process visible and being able to go back rediscover things. 
+
+
+
+            </p>
+
+            <a href="./listening-diary.html">
+                My Listening Diary →
+            </a>
+
+        </div>
+
+    </aside>
+
 </section>
+
 
 <section class="areas">
 
@@ -358,70 +399,92 @@ On this page, I try and post useful as I create them or come across them. It is 
                     <i class="fab fa-youtube"></i>
                 </a>
             </div>
+
             <div class="video-title">
                 <a href="https://www.youtube.com/embed/2RwkftNDTNU" target="_blank">
                     Lesson 1 · Preliminary Voice Leading Exercise
                 </a>
             </div>
+
             <div class="video-caption">
                 <a href="./assets/pdf-files/Lesson_1_notes.pdf">PDF</a>
             </div>
         </div>
 
+
         <div class="video-item">
+
             <div class="video-icon">
                 <a href="https://www.youtube.com/embed/5wNH7qJSFhA" target="_blank">
                     <i class="fab fa-youtube"></i>
                 </a>
             </div>
+
             <div class="video-title">
                 <a href="https://www.youtube.com/embed/5wNH7qJSFhA" target="_blank">
                     Lesson 2 · Chord Shapes for Jazz
                 </a>
             </div>
+
             <div class="video-caption">
                 <a href="./assets/pdf-files/Lesson_2_notes.pdf">PDF</a>
             </div>
+
         </div>
 
+
         <div class="video-item">
+
             <div class="video-icon">
                 <a href="https://www.youtube.com/embed/a7XrhvSdGsc" target="_blank">
                     <i class="fab fa-youtube"></i>
                 </a>
             </div>
+
             <div class="video-title">
                 <a href="https://www.youtube.com/embed/a7XrhvSdGsc" target="_blank">
                     Lesson 3 · More Chord Shapes for Jazz
                 </a>
             </div>
+
             <div class="video-caption">
                 <a href="./assets/pdf-files/Lesson_3_notes.pdf">PDF</a>
             </div>
+
         </div>
 
+
         <div class="video-item">
+
             <div class="video-icon">
                 <a href="#">
                     <i class="fab fa-youtube"></i>
                 </a>
             </div>
+
             <div class="video-title">
                 <a href="#">Transcribing Effectively</a>
             </div>
+
             <div class="video-caption"></div>
+
         </div>
 
+
         <div class="video-item">
+
             <div class="video-icon">
                 <a href="#">
                     <i class="fab fa-youtube"></i>
                 </a>
             </div>
+
             <div class="video-title">
                 <a href="#">Why Reading Music Is Important</a>
             </div>
+
             <div class="video-caption"></div>
+
         </div>
 
     </div>
@@ -429,6 +492,7 @@ On this page, I try and post useful as I create them or come across them. It is 
 </details>
 
 </div>
+
 
 <!-- CLASSICAL PIANO -->
 
@@ -450,6 +514,7 @@ On this page, I try and post useful as I create them or come across them. It is 
 
 </div>
 
+
 <!-- COMPOSITION, ORCHESTRATION & ANALYSIS -->
 
 <div class="area">
@@ -465,6 +530,7 @@ On this page, I try and post useful as I create them or come across them. It is 
 </details>
 
 </div>
+
 
 <!-- SOUND SYNTHESIS -->
 
@@ -486,6 +552,7 @@ On this page, I try and post useful as I create them or come across them. It is 
 
 </div>
 
+
 <!-- RHYTHM TRAINING -->
 
 <div class="area">
@@ -506,6 +573,7 @@ On this page, I try and post useful as I create them or come across them. It is 
 
 </div>
 
+
 <!-- CREATIVE MUSIC TECHNOLOGY -->
 
 <div class="area">
@@ -525,6 +593,7 @@ On this page, I try and post useful as I create them or come across them. It is 
 </details>
 
 </div>
+
 
 <!-- ACADEMIC WRITING -->
 
@@ -550,9 +619,13 @@ On this page, I try and post useful as I create them or come across them. It is 
 
 </section>
 
+
 <footer class="footer">
-   
-    <div>jamie@jamiegabriel.org</div>
+
+    <div>
+        jamie@jamiegabriel.org
+    </div>
+
 </footer>
 
 </body>
