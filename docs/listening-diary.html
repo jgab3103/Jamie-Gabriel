@@ -116,17 +116,16 @@ a:hover{
     margin-bottom:8px;
 }
 
-/* Two-ended year slider */
 
-/* Two-ended year slider */
+/* ---------------------------------------------
+   Two-ended year slider
+--------------------------------------------- */
 
 .range-slider{
     position:relative;
     height:24px;
     margin-top:4px;
 }
-
-/* Custom track */
 
 .range-slider::before{
     content:"";
@@ -138,8 +137,6 @@ a:hover{
     background:#D8D1CA;
     border-radius:3px;
 }
-
-/* Both native sliders */
 
 .range-slider input[type=range]{
     position:absolute;
@@ -155,8 +152,6 @@ a:hover{
     -webkit-appearance:none;
 }
 
-/* Hide both native tracks */
-
 .range-slider input[type=range]::-webkit-slider-runnable-track{
     height:6px;
     background:transparent;
@@ -168,8 +163,6 @@ a:hover{
     background:transparent;
     border:none;
 }
-
-/* Handles */
 
 .range-slider input[type=range]::-webkit-slider-thumb{
     appearance:none;
@@ -196,8 +189,6 @@ a:hover{
     cursor:pointer;
 }
 
-/* Layering */
-
 #maxYearSlider{
     z-index:2;
 }
@@ -212,11 +203,6 @@ a:hover{
     font-weight:700;
 }
 
-#minYearValue,
-#maxYearValue{
-    color:var(--accent);
-    font-weight:700;
-}
 
 select{
     width:100%;
@@ -227,12 +213,115 @@ select{
     font-size:15px;
 }
 
+
+/* ---------------------------------------------
+   Map / Table tabs
+--------------------------------------------- */
+
+.view-tabs{
+    display:flex;
+    gap:0;
+    margin-bottom:16px;
+    border-bottom:1px solid rgba(0,0,0,.12);
+}
+
+.view-tab{
+    border:none;
+    background:transparent;
+    padding:9px 18px;
+    font-family:'Nunito',sans-serif;
+    font-size:14px;
+    font-weight:700;
+    color:rgba(0,0,0,.55);
+    cursor:pointer;
+    border-bottom:3px solid transparent;
+}
+
+.view-tab.active{
+    color:var(--accent);
+    border-bottom-color:var(--accent);
+}
+
+.view-tab:hover{
+    color:#111;
+}
+
+
+/* ---------------------------------------------
+   Map
+--------------------------------------------- */
+
 #map{
     height:560px;
     border-radius:3px;
     overflow:hidden;
     border:1px solid rgba(0,0,0,.08);
 }
+
+
+/* ---------------------------------------------
+   Table
+--------------------------------------------- */
+
+.table-view{
+    display:none;
+    overflow-x:auto;
+}
+
+.works-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+    background:#fff;
+}
+
+.works-table th,
+.works-table td{
+    padding:10px 12px;
+    text-align:left;
+    border-bottom:1px solid rgba(0,0,0,.08);
+    vertical-align:top;
+}
+
+.works-table th{
+    background:#F4F1EB;
+    font-weight:700;
+    color:#333;
+    white-space:nowrap;
+    cursor:pointer;
+    user-select:none;
+}
+
+.works-table th:hover{
+    color:var(--accent);
+}
+
+.works-table th.sort-asc::after{
+    content:" ↑";
+    color:var(--accent);
+}
+
+.works-table th.sort-desc::after{
+    content:" ↓";
+    color:var(--accent);
+}
+
+.works-table td:first-child{
+    font-weight:700;
+}
+
+.works-table .period-cell{
+    white-space:nowrap;
+}
+
+.works-table small{
+    color:#666;
+}
+
+
+/* ---------------------------------------------
+   Stats
+--------------------------------------------- */
 
 .stats{
     display:flex;
@@ -242,7 +331,10 @@ select{
     font-size:.95rem;
 }
 
-/* Permanent composer surname labels */
+
+/* ---------------------------------------------
+   Permanent composer surname labels
+--------------------------------------------- */
 
 .composer-label{
     background:#FFFFFF;
@@ -261,6 +353,11 @@ select{
     display:none;
 }
 
+
+/* ---------------------------------------------
+   Leaflet popup
+--------------------------------------------- */
+
 .leaflet-popup-content{
     font-family:'Nunito',sans-serif;
     min-width:190px;
@@ -277,6 +374,11 @@ select{
     line-height:1.45;
 }
 
+
+/* ---------------------------------------------
+   Footer
+--------------------------------------------- */
+
 .footer{
     background:var(--paper);
     border-top:1px solid rgba(0,0,0,.06);
@@ -285,6 +387,11 @@ select{
     font-size:.95rem;
     color:rgba(0,0,0,.7);
 }
+
+
+/* ---------------------------------------------
+   Responsive
+--------------------------------------------- */
 
 @media(max-width:900px){
 
@@ -318,7 +425,20 @@ select{
 
     .composer-label{
         font-size:11px;
-         padding:2px 4px;
+        padding:2px 4px;
+    }
+
+    .view-tab{
+        padding:8px 14px;
+    }
+
+    .works-table{
+        font-size:13px;
+    }
+
+    .works-table th,
+    .works-table td{
+        padding:8px 10px;
     }
 
 }
@@ -327,7 +447,9 @@ select{
 
 </head>
 
+
 <body>
+
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 
@@ -359,10 +481,14 @@ select{
         A growing map of music I'm listening to, studying and teaching.
         Each pin marks the place a work was composed, with the composer,
         year and notes. Use the timeline and period filter to explore
-        music across geography and history. <br/><a href="#why-listening-diary">Why this is important.</a>  </p>
+        music across geography and history.
+        <br/>
+        <a href="#why-listening-diary">Why this is important.</a>
+    </p>
 
 
     <div class="panel">
+
 
         <div class="controls">
 
@@ -377,25 +503,26 @@ select{
                     <span id="maxYearValue">2026</span>
                 </div>
 
-<div class="range-slider">
 
-    <input
-        id="minYearSlider"
-        type="range"
-        min="1600"
-        max="2026"
-        value="1600"
-    >
+                <div class="range-slider">
 
-    <input
-        id="maxYearSlider"
-        type="range"
-        min="1600"
-        max="2026"
-        value="2026"
-    >
+                    <input
+                        id="minYearSlider"
+                        type="range"
+                        min="1600"
+                        max="2026"
+                        value="1600"
+                    >
 
-</div>
+                    <input
+                        id="maxYearSlider"
+                        type="range"
+                        min="1600"
+                        max="2026"
+                        value="2026"
+                    >
+
+                </div>
 
             </div>
 
@@ -420,7 +547,81 @@ select{
         </div>
 
 
-        <div id="map"></div>
+        <!-- Map / Table switcher -->
+
+        <div class="view-tabs">
+
+            <button
+                class="view-tab active"
+                data-view="map-view"
+                type="button"
+            >
+                Map
+            </button>
+
+            <button
+                class="view-tab"
+                data-view="table-view"
+                type="button"
+            >
+                Table
+            </button>
+
+        </div>
+
+
+        <!-- Map view -->
+
+        <div id="map" class="map-view"></div>
+
+
+        <!-- Table view -->
+
+        <div id="table-view" class="table-view">
+
+            <table class="works-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th data-sort="composer">
+                            Composer
+                        </th>
+
+                        <th data-sort="title">
+                            Work
+                        </th>
+
+                        <th data-sort="year">
+                            Year
+                        </th>
+
+                        <th data-sort="composedPlace">
+                            Place composed
+                        </th>
+
+                        <th data-sort="firstPerformancePlace">
+                            First performed
+                        </th>
+
+                        <th data-sort="period">
+                            Period
+                        </th>
+
+                        <th data-sort="firstHeard">
+                            First heard
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="worksTableBody"></tbody>
+
+            </table>
+
+        </div>
 
 
         <div class="stats">
@@ -435,24 +636,41 @@ select{
 
         </div>
 
+
     </div>
 
 </section>
+
 
 <section class="diary" id="why-listening-diary">
 
     <h2>Why keep a listening diary?</h2>
 
     <p>
-        Listening is such the most important parts of learning music, but it is so easy for it to become something we do without really noticing how much we are hearing, discovering and learning. A listening diary is a great way of making that process visible and keeps you exploring new things.
+        Listening is one of the most important parts of learning music,
+        but it is so easy for it to become something we do without really
+        noticing how much we are hearing, discovering and learning.
+        A listening diary is a great way of making that process visible
+        and keeps you exploring new things.
     </p>
 
     <p>
-        There are lots of ways to keep one. A simple list with basic information is fine, tracking particular composers or performances or works. I like the combination of geography and history. Mapping music makes it possible to see composers and works in their historical context, compare different and follow the ways musical ideas travelled and changed as composers encountered different influences.
+        There are lots of ways to keep one. A simple list with basic
+        information is fine, tracking particular composers, performances
+        or works. I like the combination of <strong>geography and history</strong>.
+        Mapping music makes it possible to see composers and works in their
+        historical context, compare different composers and traditions,
+        and follow the ways musical ideas travelled and changed as composers
+        encountered different influences.
     </p>
 
     <p>
-        It is also a great way of tracking your own musical journey. When I look back over my diary, I am fascinated to see how my interests have developed and the things that I keep returning to, and the connections I was not aware of. Most importantly, it encourages the habit of egular, active listening and continually finding new music.
+        It is also a great way of tracking your own musical journey.
+        When I look back over my diary, I am fascinated to see how my
+        interests have developed, the things that I keep returning to,
+        and the connections I was not aware of. Most importantly, it
+        encourages the habit of <strong>regular, active listening</strong>
+        and continually finding new music.
     </p>
 
 </section>
@@ -497,6 +715,15 @@ const period = document.getElementById("periodFilter");
 const count = document.getElementById("count");
 
 const markerLayer = L.layerGroup().addTo(map);
+
+const tabs = document.querySelectorAll(".view-tab");
+const mapView = document.getElementById("map");
+const tableView = document.getElementById("table-view");
+const tableBody = document.getElementById("worksTableBody");
+
+
+let tableSortField = "year";
+let tableSortDirection = "asc";
 
 
 function colour(p){
@@ -598,27 +825,30 @@ function draw(changedSlider){
 
         marker.bindPopup(`
 
-            
+            <p>
+                <strong>${work.composer}</strong>
+                ${work.born}–${work.died || "present"}<br>
+                Born: ${work.birthplace}
+            </p>
 
-    <p>
-    <strong>${work.composer}</strong>  ${work.born}–${work.died || "present"}<br>
-    Born: ${work.birthplace}
-</p>
-<h3>${work.title}</h3>
-<p>
-    <em>Music composed:</em> ${work.year} · ${work.composedPlace}
-</p>
-
-<p>
-    <em>Place first performed:</em> ${work.firstPerformancePlace || "—"}<br>
-    <em>Date first performed:</em> ${work.firstPerformanceDate || "—"}
-</p>
-
-
-
+            <h3>${work.title}</h3>
 
             <p>
-                <em>Period:</em> ${work.period}
+                <em>Music composed:</em>
+                ${work.year} · ${work.composedPlace}
+            </p>
+
+            <p>
+                <em>Place first performed:</em>
+                ${work.firstPerformancePlace || "—"}<br>
+
+                <em>Date first performed:</em>
+                ${work.firstPerformanceDate || "—"}
+            </p>
+
+            <p>
+                <em>Period:</em>
+                ${work.period}
             </p>
 
             ${
@@ -627,9 +857,10 @@ function draw(changedSlider){
                 : ""
             }
 
-                <p>
-    <em>The year I first heard this: </em>${work.firstHeard || "—"}
-</p>
+            <p>
+                <em>The year I first heard this:</em>
+                ${work.firstHeard || "—"}
+            </p>
 
         `);
 
@@ -663,8 +894,226 @@ function draw(changedSlider){
 
     }
 
+
+    /* Keep table synchronised with filters */
+
+    if(tableView.style.display !== "none"){
+        renderTable();
+    }
+
 }
 
+
+/* --------------------------------------------------
+   Render sortable table
+-------------------------------------------------- */
+
+function renderTable(){
+
+    const minYear = Number(minSlider.value);
+    const maxYear = Number(maxSlider.value);
+    const selectedPeriod = period.value;
+
+
+    let visible = works.filter(work => {
+
+        return work.year >= minYear &&
+               work.year <= maxYear &&
+               (
+                   selectedPeriod === "all" ||
+                   work.period === selectedPeriod
+               );
+
+    });
+
+
+    visible.sort((a,b) => {
+
+        let aValue = a[tableSortField];
+        let bValue = b[tableSortField];
+
+
+        if(aValue == null){
+            aValue = "";
+        }
+
+        if(bValue == null){
+            bValue = "";
+        }
+
+
+        if(typeof aValue === "number" &&
+           typeof bValue === "number"){
+
+            return tableSortDirection === "asc"
+                ? aValue - bValue
+                : bValue - aValue;
+
+        }
+
+
+        return tableSortDirection === "asc"
+            ? String(aValue).localeCompare(String(bValue))
+            : String(bValue).localeCompare(String(aValue));
+
+    });
+
+
+    tableBody.innerHTML = visible.map(work => {
+
+        const performance =
+            work.firstPerformancePlace || "—";
+
+        const performanceDate =
+            work.firstPerformanceDate
+                ? `<br><small>${work.firstPerformanceDate}</small>`
+                : "";
+
+
+        return `
+
+            <tr>
+
+                <td>
+                    ${work.composer}
+                </td>
+
+                <td>
+                    ${work.title}
+                </td>
+
+                <td>
+                    ${work.year}
+                </td>
+
+                <td>
+                    ${work.composedPlace}
+                </td>
+
+                <td>
+                    ${performance}
+                    ${performanceDate}
+                </td>
+
+                <td class="period-cell">
+                    ${work.period}
+                </td>
+
+                <td>
+                    ${work.firstHeard || "—"}
+                </td>
+
+            </tr>
+
+        `;
+
+    }).join("");
+
+
+    /* Update sort indicators */
+
+    document.querySelectorAll(".works-table th").forEach(th => {
+
+        th.classList.remove(
+            "sort-asc",
+            "sort-desc"
+        );
+
+
+        if(th.dataset.sort === tableSortField){
+
+            th.classList.add(
+                tableSortDirection === "asc"
+                    ? "sort-asc"
+                    : "sort-desc"
+            );
+
+        }
+
+    });
+
+}
+
+
+/* --------------------------------------------------
+   Map / Table tabs
+-------------------------------------------------- */
+
+tabs.forEach(tab => {
+
+    tab.addEventListener("click", () => {
+
+        tabs.forEach(t => {
+            t.classList.remove("active");
+        });
+
+        tab.classList.add("active");
+
+
+        const view = tab.dataset.view;
+
+
+        if(view === "map-view"){
+
+            mapView.style.display = "block";
+            tableView.style.display = "none";
+
+
+            setTimeout(() => {
+                map.invalidateSize();
+            },50);
+
+
+        }else{
+
+            mapView.style.display = "none";
+            tableView.style.display = "block";
+
+            renderTable();
+
+        }
+
+    });
+
+});
+
+
+/* --------------------------------------------------
+   Table sorting
+-------------------------------------------------- */
+
+document.querySelectorAll(".works-table th").forEach(th => {
+
+    th.addEventListener("click", () => {
+
+        const field = th.dataset.sort;
+
+
+        if(tableSortField === field){
+
+            tableSortDirection =
+                tableSortDirection === "asc"
+                    ? "desc"
+                    : "asc";
+
+        }else{
+
+            tableSortField = field;
+            tableSortDirection = "asc";
+
+        }
+
+
+        renderTable();
+
+    });
+
+});
+
+
+/* --------------------------------------------------
+   Filters
+-------------------------------------------------- */
 
 minSlider.addEventListener(
     "input",
