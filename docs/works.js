@@ -6,7 +6,7 @@ const works = [
     year: 1913,
 
     composedPlace: "Paris, France",
-    lat: 48.8566,
+    lat: 48.8766,
     lng: 2.3522,
 
     born: 1882,
@@ -16,6 +16,7 @@ const works = [
     period: "Modern",
     notes: "Composed in 1913 and premiered in Paris."
 },
+
 {
     title: "Symphony No. 8",
     composer: "Antonín Dvořák",
@@ -40,7 +41,7 @@ const works = [
 
     composedPlace: "Paris, France",
     lat: 48.8566,
-    lng: 2.3522,
+    lng: 2.3722,
 
     born: 1875,
     died: 1937,
@@ -49,6 +50,7 @@ const works = [
     period: "Modern",
     notes: "Ballet composed between 1909 and 1912 for Sergei Diaghilev and the Ballets Russes."
 },
+
 {
     title: "Gurre-Lieder",
     composer: "Arnold Schoenberg",
@@ -89,7 +91,7 @@ const works = [
     year: 1961,
 
     composedPlace: "New York City, USA",
-    lat: 40.7306,
+    lat: 40.7506,
     lng: -74.0027,
 
     born: 1929,
@@ -107,7 +109,7 @@ const works = [
 
     composedPlace: "New York City, USA",
     lat: 40.7306,
-    lng: -74.0027,
+    lng: -73.9827,
 
     born: 1945,
     died: null,
@@ -140,7 +142,7 @@ const works = [
     year: 1979,
 
     composedPlace: "New York City, USA",
-    lat: 40.7306,
+    lat: 40.7106,
     lng: -74.0027,
 
     born: 1942,
