@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 <meta name="description" content="Listening Diary – Jamie Gabriel"/>
+<meta name="author" content="Jamie Gabriel"/>
+
 <title>Listening Diary | Jamie Gabriel</title>
 
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet"/>
 <link href="css/styles.css" rel="stylesheet"/>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
 <style>
 :root{
@@ -39,6 +43,12 @@ a{
     color:var(--accent);
     text-decoration:none;
     border-bottom:1px solid rgba(139,46,60,.35);
+    transition:.2s;
+}
+
+a:hover{
+    color:#111;
+    border-bottom-color:rgba(139,46,60,.75);
 }
 
 #mainNav,
@@ -66,7 +76,7 @@ a{
     padding:60px 24px 120px;
 }
 
-h1{
+.diary h1{
     font-family:'Varela Round',sans-serif;
     font-size:1.7rem;
     font-weight:500;
@@ -75,7 +85,7 @@ h1{
 }
 
 .intro{
-    max-width:680px;
+    max-width:700px;
     margin:0 auto 42px;
     text-align:center;
     color:#444;
@@ -83,20 +93,20 @@ h1{
 
 .panel{
     background:var(--panel);
+    padding:30px;
     border-radius:4px;
-    padding:28px;
 }
 
 .controls{
     display:grid;
     grid-template-columns:1fr 220px;
-    gap:20px;
+    gap:24px;
     align-items:end;
-    margin-bottom:22px;
+    margin-bottom:24px;
 }
 
 .label{
-    font-size:.75rem;
+    font-size:.8rem;
     text-transform:uppercase;
     letter-spacing:.08em;
     font-weight:700;
@@ -105,8 +115,8 @@ h1{
 }
 
 #yearValue{
-    font-weight:700;
     color:var(--accent);
+    font-weight:700;
 }
 
 input[type=range]{
@@ -116,24 +126,30 @@ input[type=range]{
 
 select{
     width:100%;
-    padding:10px;
+    padding:10px 12px;
     border:1px solid rgba(0,0,0,.15);
     background:white;
     font-family:inherit;
+    font-size:15px;
 }
 
 #map{
     height:560px;
     border-radius:3px;
     overflow:hidden;
+    border:1px solid rgba(0,0,0,.08);
 }
 
 .stats{
     display:flex;
     justify-content:space-between;
-    margin-top:18px;
+    margin-top:16px;
     color:#555;
     font-size:.95rem;
+}
+
+.leaflet-popup-content{
+    font-family:'Nunito',sans-serif;
 }
 
 .leaflet-popup-content h3{
@@ -144,7 +160,7 @@ select{
 
 .leaflet-popup-content p{
     margin:4px 0;
-    line-height:1.45;
+    line-height:1.4;
 }
 
 .footer{
@@ -152,7 +168,13 @@ select{
     border-top:1px solid rgba(0,0,0,.06);
     padding:80px 30px;
     text-align:center;
-    color:#777;
+    font-size:.95rem;
+    color:rgba(0,0,0,.7);
+}
+
+@media(max-width:900px){
+    .nav-links{gap:1.5rem;}
+    .panel{padding:24px;}
 }
 
 @media(max-width:700px){
@@ -166,6 +188,10 @@ select{
 
     .nav-links{
         gap:1rem;
+    }
+
+    .diary{
+        padding:45px 18px 90px;
     }
 }
 </style>
@@ -193,7 +219,7 @@ select{
 <h1>Listening Diary</h1>
 
 <p class="intro">
-A growing map of the music I'm listening to and studying. Each pin marks the place a work was composed, with the composer, year and notes. Students are welcome to explore the collection and discover connections across geography and history.
+A growing map of music I'm listening to, studying and teaching. Each pin marks the place a work was composed, with the composer, year and notes. Use the timeline and period filter to explore music across geography and history.
 </p>
 
 <div class="panel">
@@ -201,22 +227,28 @@ A growing map of the music I'm listening to and studying. Each pin marks the pla
 <div class="controls">
 
 <div>
-<div class="label">Latest year</div>
+<div class="label">Year</div>
 <div style="margin-bottom:8px;">
 Show works composed up to <span id="yearValue">2026</span>
 </div>
-<input id="yearSlider" type="range" min="1600" max="2026" value="2026"/>
+
+<input
+id="yearSlider"
+type="range"
+min="1600"
+max="2026"
+value="2026">
 </div>
 
 <div>
 <div class="label">Period</div>
 <select id="periodFilter">
 <option value="all">All periods</option>
-<option>Baroque</option>
-<option>Classical</option>
-<option>Romantic</option>
-<option>Modern</option>
-<option>Jazz</option>
+<option value="Baroque">Baroque</option>
+<option value="Classical">Classical</option>
+<option value="Romantic">Romantic</option>
+<option value="Modern">Modern</option>
+<option value="Jazz">Jazz</option>
 </select>
 </div>
 
@@ -241,74 +273,94 @@ Show works composed up to <span id="yearValue">2026</span>
 <script src="works.js"></script>
 
 <script>
-const map = L.map("map",{
-    worldCopyJump:true
-}).setView([30,10],2);
+// Create map
+const map = L.map("map", {
+    worldCopyJump: true
+}).setView([25, 10], 2);
 
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{
-    attribution:"© OpenStreetMap contributors"
+// OpenStreetMap tiles
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors"
 }).addTo(map);
 
-let markers=[];
+// UI elements
+const slider = document.getElementById("yearSlider");
+const yearValue = document.getElementById("yearValue");
+const period = document.getElementById("periodFilter");
+const count = document.getElementById("count");
 
-const slider=document.getElementById("yearSlider");
-const yearValue=document.getElementById("yearValue");
-const period=document.getElementById("periodFilter");
-const count=document.getElementById("count");
+// Layer for markers
+const markerLayer = L.layerGroup().addTo(map);
 
-function colour(period){
-    return{
+// Colour by musical period
+function colour(p){
+    return {
         "Baroque":"#8B2E3C",
-        "Classical":"#355C7D",
-        "Romantic":"#6C8A3B",
-        "Modern":"#8C5A2B",
-        "Jazz":"#222"
-    }[period]||"#8B2E3C";
+        "Classical":"#3B5B92",
+        "Romantic":"#5F7A39",
+        "Modern":"#B36B2C",
+        "Jazz":"#222222"
+    }[p] || "#8B2E3C";
 }
 
+// Draw visible works
 function draw(){
 
-    markers.forEach(m=>map.removeLayer(m));
-    markers=[];
+    markerLayer.clearLayers();
 
-    const y=Number(slider.value);
-    const p=period.value;
+    const year = Number(slider.value);
+    const selectedPeriod = period.value;
 
-    const visible=works.filter(w=>{
-        const yearOK=w.year<=y;
-        const periodOK=(p==="all")||(w.period===p);
-        return yearOK&&periodOK;
+    yearValue.textContent = year;
+
+    const visible = works.filter(work => {
+        return work.year <= year &&
+               (selectedPeriod === "all" || work.period === selectedPeriod);
     });
 
-    visible.forEach(w=>{
+    count.textContent = visible.length;
 
-        const marker=L.circleMarker([w.lat,w.lng],{
+    const bounds = [];
+
+    visible.forEach(work => {
+
+        const marker = L.circleMarker([work.lat, work.lng],{
             radius:7,
-            fillColor:colour(w.period),
-            color:"#fff",
+            fillColor:colour(work.period),
+            color:"#ffffff",
             weight:2,
             fillOpacity:1
-        }).addTo(map);
+        });
 
         marker.bindPopup(`
-            <h3>${w.title}</h3>
-            <p><strong>${w.composer}</strong></p>
-            <p>${w.year} · ${w.place}</p>
-            <p><em>${w.period}</em></p>
-            ${w.notes ? `<p>${w.notes}</p>` : ""}
+            <h3>${work.title}</h3>
+            <p><strong>${work.composer}</strong></p>
+            <p>${work.year} · ${work.place}</p>
+            <p><em>${work.period}</em></p>
+            ${work.notes ? `<p>${work.notes}</p>` : ""}
         `);
 
-        markers.push(marker);
+        marker.addTo(markerLayer);
+        bounds.push([work.lat, work.lng]);
     });
 
-    count.textContent=visible.length;
-    yearValue.textContent=y;
+    if(bounds.length){
+        map.fitBounds(bounds,{
+            padding:[40,40],
+            maxZoom:5
+        });
+    }else{
+        map.setView([25,10],2);
+    }
 }
 
-slider.addEventListener("input",draw);
-period.addEventListener("change",draw);
+// Events
+slider.addEventListener("input", draw);
+period.addEventListener("change", draw);
 
+// Initial draw
 draw();
+
 </script>
 
 </body>
