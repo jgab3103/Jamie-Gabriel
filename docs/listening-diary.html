@@ -154,11 +154,12 @@ select{
     background:transparent;
     border:none;
     box-shadow:none;
-    color:#222;
+    color:#6F202F;
     font-family:'Nunito',sans-serif;
-    font-size:12px;
-    font-weight:600;
+    font-size:14px;
+    font-weight:700;
     white-space:nowrap;
+    padding:0;
 }
 
 .composer-label:before{
@@ -468,19 +469,18 @@ function draw(){
         // PERMANENT COMPOSER NAME
         // ------------------------------------------
 
-        marker.bindTooltip(
-            work.composer,
-            {
-                permanent:true,
+const surname =
+    work.composer.trim().split(/\s+/).pop();
 
-                direction:"right",
-
-                offset:[8,0],
-
-                className:"composer-label"
-            }
-        );
-
+marker.bindTooltip(
+    surname,
+    {
+        permanent:true,
+        direction:"right",
+        offset:[9,0],
+        className:"composer-label"
+    }
+);
 
         // ------------------------------------------
         // POPUP
