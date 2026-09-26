@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+<meta name="description"
+      content="Konnakol – An introduction to rhythm and syllables"/>
+<meta name="author" content="Jamie Gabriel"/>
+
+<title>Konnakol | Jamie Gabriel</title>
+
+<link rel="icon" href="images/favicon.ico"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Varela+Round&display=swap"
+      rel="stylesheet"/>
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<link rel="stylesheet" href="css/styles.css"/>
+
+<style>
+
+:root {
+    --accent: #8B2E3C;
+    --paper: #FAFAFA;
+    --panel: #F4F1EB;
+}
+
+
+/* --------------------------------------------------
+   Navigation
+-------------------------------------------------- */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    height: 80px;
+
+    background: var(--paper);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+}
+
+nav .brand {
+    font-family: "Varela Round", sans-serif;
+    font-size: 1.15rem;
+    color: #222;
+    text-decoration: none;
+}
+
+nav .links {
+    display: flex;
+    gap: 28px;
+}
+
+nav .links a {
+    font-family: "Nunito", sans-serif;
+    font-size: 0.95rem;
+    color: #333;
+    text-decoration: none;
+}
+
+nav .links a:hover {
+    color: var(--accent);
+}
+
+
+/* --------------------------------------------------
+   Page
+-------------------------------------------------- */
+
+body {
+    margin: 0;
+    padding-top: 80px;
+
+    background: var(--paper);
+
+    color: #333;
+
+    font-family: "Nunito", sans-serif;
+    font-size: 16.5px;
+    line-height: 1.75;
+}
+
+.lesson {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px 120px;
+}
+
+.lesson h1 {
+    margin: 0 0 20px;
+
+    text-align: center;
+
+    font-family: "Varela Round", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+
+    color: #222;
+}
+
+.lesson-intro {
+    max-width: 680px;
+    margin: 0 auto 70px;
+
+    text-align: left;
+}
+
+.lesson-section {
+    margin-bottom: 65px;
+}
+
+.lesson-section h2 {
+    margin-bottom: 18px;
+
+    font-family: "Varela Round", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+
+    color: #222;
+}
+
+.lesson-section p {
+    max-width: 720px;
+}
+
+.lesson-section strong {
+    color: #222;
+}
+
+
+/* --------------------------------------------------
+   8-beat hand pattern
+-------------------------------------------------- */
+
+.beat-panel {
+    margin: 35px 0;
+    padding: 30px;
+
+    background: var(--panel);
+    border-radius: 10px;
+}
+
+.beat-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+
+    text-align: center;
+}
+
+.beat {
+    min-height: 75px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--paper);
+    border-radius: 7px;
+}
+
+.beat-action {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.beat-number {
+    margin-top: 5px;
+
+    font-size: 0.72rem;
+    opacity: 0.55;
+}
+
+.beat-description {
+    margin-top: 18px;
+
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+
+
+/* --------------------------------------------------
+   Syllables
+-------------------------------------------------- */
+
+.syllables {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+
+    margin: 30px 0;
+}
+
+.syllable {
+    padding: 22px 15px;
+
+    background: var(--panel);
+    border-radius: 9px;
+
+    text-align: center;
+}
+
+.syllable-name {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-family: "Varela Round", sans-serif;
+    font-size: 1.1rem;
+
+    color: var(--accent);
+}
+
+.syllable-description {
+    font-size: 0.85rem;
+}
+
+
+/* --------------------------------------------------
+   Rhythm examples
+-------------------------------------------------- */
+
+.example {
+    margin: 30px 0;
+    padding: 25px;
+
+    background: var(--panel);
+    border-radius: 9px;
+
+    overflow-x: auto;
+}
+
+.example-label {
+    margin-bottom: 18px;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+
+    color: var(--accent);
+}
+
+
+/*
+   The syllable grid uses subdivisions.
+
+   The pulse grid underneath always uses 8 beats.
+
+   This means the beginning of every TA can be aligned
+   directly with the beginning of the corresponding beat.
+*/
+
+
+/* --------------------------------------------------
+   Spoken rhythm
+-------------------------------------------------- */
+
+.rhythm-grid {
+    display: grid;
+    align-items: center;
+
+    min-width: 560px;
+
+    font-family: "Varela Round", sans-serif;
+    text-align: center;
+}
+
+
+/* 2 × TA KA DI MI
+   8 beats / 2 patterns = 4 beats each
+   Each syllable therefore occupies 1 beat.
+*/
+
+.rhythm-grid.two-times {
+    grid-template-columns: repeat(8, 1fr);
+}
+
+
+/* 4 × TA KA DI MI
+   8 beats / 4 patterns = 2 beats each
+   Each syllable occupies half a beat.
+*/
+
+.rhythm-grid.four-times {
+    grid-template-columns: repeat(16, 1fr);
+    font-size: 0.9rem;
+}
+
+
+/* 8 × TA KA DI MI
+   Each TA KA DI MI occupies one beat.
+   Each syllable therefore occupies 1/4 beat.
+*/
+
+.rhythm-grid.eight-times {
+    grid-template-columns: repeat(32, 1fr);
+    font-size: 0.72rem;
+}
+
+
+/* --------------------------------------------------
+   Underlying pulse
+-------------------------------------------------- */
+
+.pulse-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+
+    min-width: 560px;
+
+    margin-top: 15px;
+
+    text-align: center;
+}
+
+.pulse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pulse-mark {
+    width: 9px;
+    height: 9px;
+
+    margin-bottom: 5px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+}
+
+.pulse-action {
+    font-size: 0.62rem;
+    line-height: 1.2;
+
+    opacity: 0.7;
+}
+
+.pulse-number {
+    margin-top: 3px;
+
+    font-size: 0.65rem;
+
+    opacity: 0.45;
+}
+
+
+/* --------------------------------------------------
+   Key idea
+-------------------------------------------------- */
+
+.key-idea {
+    margin: 35px 0 0;
+    padding: 20px 25px;
+
+    border-left: 4px solid var(--accent);
+
+    background: var(--panel);
+
+    border-radius: 0 8px 8px 0;
+}
+
+.key-idea strong {
+    color: var(--accent);
+}
+
+.key-idea p {
+    margin: 8px 0 0;
+}
+
+
+/* --------------------------------------------------
+   Progression
+-------------------------------------------------- */
+
+.progression {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 35px 0;
+
+    flex-wrap: wrap;
+}
+
+.progression-step {
+    padding: 12px 18px;
+
+    background: var(--panel);
+    border-radius: 7px;
+
+    font-family: "Varela Round", sans-serif;
+
+    color: var(--accent);
+}
+
+.progression-arrow {
+    opacity: 0.4;
+}
+
+
+/* --------------------------------------------------
+   Exercise
+-------------------------------------------------- */
+
+.exercise {
+    margin-top: 35px;
+    padding: 30px;
+
+    background: var(--panel);
+    border-radius: 10px;
+}
+
+.exercise h3 {
+    margin-top: 0;
+
+    font-family: "Varela Round", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.exercise ol {
+    margin-bottom: 0;
+}
+
+
+/* --------------------------------------------------
+   Footer
+-------------------------------------------------- */
+
+footer {
+    padding: 80px 30px;
+
+    border-top: 1px solid rgba(0,0,0,0.08);
+
+    text-align: center;
+
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+
+/* --------------------------------------------------
+   Responsive
+-------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .beat-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .syllables {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 0 18px;
+    }
+
+    nav .links {
+        gap: 14px;
+    }
+
+    nav .links a {
+        font-size: 0.85rem;
+    }
+
+    .lesson {
+        padding: 45px 20px 90px;
+    }
+
+    .lesson h1 {
+        font-size: 1.5rem;
+    }
+
+    .beat-panel {
+        padding: 20px 12px;
+    }
+
+    .beat-grid {
+        gap: 5px;
+    }
+
+    .beat {
+        min-height: 65px;
+    }
+
+    .beat-action {
+        font-size: 0.7rem;
+    }
+
+    .syllables {
+        gap: 8px;
+    }
+
+    .syllable {
+        padding: 18px 8px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- Navigation -->
+
+<nav>
+
+    <a class="brand" href="./index.html">
+        Jamie Gabriel
+    </a>
+
+    <div class="links">
+
+        <a href="./music.html">Music</a>
+        <a href="./teaching.html">Teaching</a>
+        <a href="./research.html">Research</a>
+        <a href="./contact.html">Contact</a>
+    </div>
+
+</nav>
+
+
+<!-- Lesson -->
+
+<main class="lesson">
+
+
+<h1>Konnakol</h1>
+
+
+<div class="lesson-intro">
+
+    <p>
+        Konnakol is a South Indian rhythmic practice in which
+        rhythm is spoken using syllables. It is closely associated
+        with the Carnatic musical tradition, where rhythmic patterns
+        are learned, remembered, communicated and performed through
+        the voice.
+    </p>
+
+    <p>
+        The syllables form part of a wider rhythmic language known
+        as <em>solkattu</em>. As the rhythms are spoken, the underlying
+        rhythmic cycle, or <em>tāla</em>, can be marked with the hands
+        through claps, waves and finger counts. This gives the
+        musician a physical and vocal way of experiencing rhythm at
+        the same time.
+    </p>
+
+    <p>
+        Konnakol has developed through an oral tradition of teaching
+        and learning, passed between musicians through demonstration,
+        repetition and practice. Its value is not simply in the
+        complexity of the rhythms, but in the clarity with which
+        rhythm can be heard, spoken, memorised and internalised.
+        
+    </p>
+
+    <p>
+        These notes are a practical introduction for musicians coming
+        from a Western musical background. They draw particularly on
+        the teaching of drummer and educator
+        <a href="https://www.youtube.com/@AsafSirkis"
+           target="_blank"
+           rel="noopener noreferrer">Asaf Sirkis</a>,
+        whose <em>Mastering Rhythm with Konnakol</em> series presents
+        the ideas through a clear, step-by-step approach. Sirkis has
+        studied Konnakol with South Indian mridangam musicians and
+        has developed his own teaching approach for Western musicians.
+        
+    </p>
+
+    <p>
+        For a more detailed exploration, see
+        <a href="https://www.routledge.com/Applying-Karnatic-Rhythmical-Techniques-to-Western-Music/Reina/p/book/9781472451507"
+           target="_blank"
+           rel="noopener noreferrer">
+            <em>Applying Karnatic Rhythmical Techniques to Western Music</em>
+        </a>
+        by Rafael Reina. The book explores the architecture of the
+        Karnatic rhythmic system and its application to Western
+        classical music, jazz, composition and improvisation.
+       
+    </p>
+
+    <p>
+        The aim here is not to reproduce the full tradition, but to
+        use some of its ideas as a practical way of developing a
+        stronger sense of pulse, subdivision, coordination and
+        rhythmic structure.
+    </p>
+
+</div>
+
+
+<!-- 1. Eight beat cycle -->
+
+<div class="lesson-section">
+
+    <h2>1. Start with an 8-beat cycle</h2>
+
+    <p>
+        First, we need a steady pulse. We can keep track of
+        eight beats using a simple pattern with the hand.
+    </p>
+
+
+    <div class="beat-panel">
+
+        <div class="beat-grid">
+
+            <div class="beat">
+                <div class="beat-action">CLAP</div>
+                <div class="beat-number">1</div>
+            </div>
+
+            <div class="beat">
+                <div class="beat-action">PINKIE</div>
+                <div class="beat-number">2</div>
+            </div>
+
+            <div class="beat">
+                <div class="beat-action">RING</div>
+                <div class="beat-number">3</div>
+            </div>
+
+            <div class="beat">
+                <div class="beat-action">MIDDLE</div>
+                <div class="beat-number">4</div>
+            </div>
+
+            <div class="beat">
+                <div class="beat-action">CLAP</div>
+                <div class="beat-number">5</div>
+            </div>
+
+            <div class="beat">
+                <div class="beat-action">WAVE</div>
+                <div class="beat-number">6</div>
+            </div>
+
+            <div class="beat">
+                <div class="beat-action">CLAP</div>
+                <div class="beat-number">7</div>
+            </div>
+
+            <div class="beat">
+                <div class="beat-action">WAVE</div>
+                <div class="beat-number">8</div>
+            </div>
+
+        </div>
+
+        <div class="beat-description">
+            Keep repeating this 8-beat cycle as a steady pulse.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- 2. Syllables -->
+
+<div class="lesson-section">
+
+    <h2>2. We use syllables to enunciate rhythmic patterns</h2>
+
+    <p>
+        In Konnakol, different syllables are used to enunciate
+        rhythmic patterns of different lengths and subdivisions.
+    </p>
+
+
+    <div class="syllables">
+
+        <div class="syllable">
+
+            <span class="syllable-name">
+                THA
+            </span>
+
+            <span class="syllable-description">
+                1 note per beat
+            </span>
+
+        </div>
+
+
+        <div class="syllable">
+
+            <span class="syllable-name">
+                TA KA
+            </span>
+
+            <span class="syllable-description">
+                2 notes per beat
+            </span>
+
+        </div>
+
+
+        <div class="syllable">
+
+            <span class="syllable-name">
+                TA KI TA
+            </span>
+
+            <span class="syllable-description">
+                3 notes per beat
+            </span>
+
+        </div>
+
+
+        <div class="syllable">
+
+            <span class="syllable-name">
+                TA KA DI MI
+            </span>
+
+            <span class="syllable-description">
+                4 notes per beat
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- 3. Focus -->
+
+<div class="lesson-section">
+
+    <h2>3. Let's focus on the 4-note pattern TA KA DI MI</h2>
+
+    <p>
+        For now, we'll leave the other syllable patterns aside
+        and concentrate on:
+    </p>
+
+
+    <div class="example">
+
+        <div class="example-label">
+            Our pattern
+        </div>
+
+
+        <div class="rhythm-grid two-times">
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+        </div>
+
+
+        <div class="pulse-grid">
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">1</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">PINKIE</div>
+                <div class="pulse-number">2</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">RING</div>
+                <div class="pulse-number">3</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">MIDDLE</div>
+                <div class="pulse-number">4</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">5</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">WAVE</div>
+                <div class="pulse-number">6</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">7</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">WAVE</div>
+                <div class="pulse-number">8</div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <p>
+        The syllables stay the same. What changes is
+        <strong>how many times we fit the pattern into our
+        8-beat cycle.</strong>
+    </p>
+
+</div>
+
+
+<!-- 4. Two times -->
+
+<div class="lesson-section">
+
+    <h2>4. Two times around the cycle</h2>
+
+    <p>
+        First, say <strong>TA KA DI MI</strong> twice across
+        the 8 beats. Each pattern takes 4 beats.
+    </p>
+
+
+    <div class="example">
+
+        <div class="example-label">
+            2 × TA KA DI MI
+        </div>
+
+
+        <div class="rhythm-grid two-times">
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+        </div>
+
+
+        <div class="pulse-grid">
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">1</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">PINKIE</div>
+                <div class="pulse-number">2</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">RING</div>
+                <div class="pulse-number">3</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">MIDDLE</div>
+                <div class="pulse-number">4</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">5</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">WAVE</div>
+                <div class="pulse-number">6</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">7</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">WAVE</div>
+                <div class="pulse-number">8</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- 5. Four times -->
+
+<div class="lesson-section">
+
+    <h2>5. Four times around the cycle</h2>
+
+    <p>
+        Now double the rate. Each <strong>TA KA DI MI</strong>
+        pattern takes 2 beats.
+    </p>
+
+
+    <div class="example">
+
+        <div class="example-label">
+            4 × TA KA DI MI
+        </div>
+
+
+        <div class="rhythm-grid four-times">
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+        </div>
+
+
+        <div class="pulse-grid">
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">1</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">PINKIE</div>
+                <div class="pulse-number">2</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">RING</div>
+                <div class="pulse-number">3</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">MIDDLE</div>
+                <div class="pulse-number">4</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">5</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">WAVE</div>
+                <div class="pulse-number">6</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">7</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">WAVE</div>
+                <div class="pulse-number">8</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- 6. Eight times -->
+
+<div class="lesson-section">
+
+    <h2>6. Eight times around the cycle</h2>
+
+    <p>
+        Now double the rate again. Each <strong>TA KA DI MI</strong>
+        fits into a single beat.
+    </p>
+
+
+    <div class="example">
+
+        <div class="example-label">
+            8 × TA KA DI MI
+        </div>
+
+
+        <div class="rhythm-grid eight-times">
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+            <span>TA</span>
+            <span>KA</span>
+            <span>DI</span>
+            <span>MI</span>
+
+        </div>
+
+
+        <div class="pulse-grid">
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">1</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">PINKIE</div>
+                <div class="pulse-number">2</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">RING</div>
+                <div class="pulse-number">3</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">MIDDLE</div>
+                <div class="pulse-number">4</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">5</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">WAVE</div>
+                <div class="pulse-number">6</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">CLAP</div>
+                <div class="pulse-number">7</div>
+            </div>
+
+            <div class="pulse">
+                <div class="pulse-mark"></div>
+                <div class="pulse-action">WAVE</div>
+                <div class="pulse-number">8</div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="key-idea">
+
+        <strong>Key Idea</strong>
+
+        <p>
+            One of the underlying strengths of Konnakol is that it
+            gives us a methodical way to build rhythmic complexity.
+            We can start with a steady pulse and gradually introduce
+            1-, 2-, 3- and 4-note patterns, increasing the complexity
+            while keeping the underlying beat clear.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- 7. Exercise -->
+
+<div class="lesson-section">
+
+    <h2>7. The exercise</h2>
+
+    <p>
+        Keep the 8-beat hand pattern going continuously while
+        speaking <strong>TA KA DI MI</strong>.
+    </p>
+
+
+    <div class="progression">
+
+        <div class="progression-step">
+            2 ×
+        </div>
+
+        <div class="progression-arrow">
+            →
+        </div>
+
+        <div class="progression-step">
+            4 ×
+        </div>
+
+        <div class="progression-arrow">
+            →
+        </div>
+
+        <div class="progression-step">
+            8 ×
+        </div>
+
+        <div class="progression-arrow">
+            →
+        </div>
+
+        <div class="progression-step">
+            4 ×
+        </div>
+
+        <div class="progression-arrow">
+            →
+        </div>
+
+        <div class="progression-step">
+            2 ×
+        </div>
+
+    </div>
+
+
+    <div class="exercise">
+
+        <h3>Try it</h3>
+
+        <ol>
+
+            <li>
+                Establish the 8-beat hand pattern.
+            </li>
+
+            <li>
+                Speak <strong>TA KA DI MI</strong> twice
+                across the cycle.
+            </li>
+
+            <li>
+                Move to four times across the cycle.
+            </li>
+
+            <li>
+                Move to eight times across the cycle.
+            </li>
+
+            <li>
+                Return to four times, then two times.
+            </li>
+
+            <li>
+                Keep the underlying pulse steady throughout.
+            </li>
+
+        </ol>
+
+    </div>
+
+</div>
+
+
+</main>
+
+
+<!-- Footer -->
+
+<footer>
+
+    <p>
+        <a href="mailto:jamie@jamiegabriel.org">
+            jamie@jamiegabriel.org
+        </a>
+    </p>
+
+    <p>
+        © Jamie Gabriel
+    </p>
+
+</footer>
+
+
+</body>
+</html>
