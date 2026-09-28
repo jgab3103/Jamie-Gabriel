@@ -89,7 +89,7 @@ a:hover{
 .intro{
     max-width:700px;
     margin:0 auto 42px;
-    text-align:center;
+    text-align:left;
     color:#444;
 }
 
@@ -101,10 +101,13 @@ a:hover{
 
 .controls{
     display:grid;
-    grid-template-columns:1fr 220px;
+    grid-template-columns:1fr;
     gap:24px;
-    align-items:end;
     margin-bottom:24px;
+}
+
+.control-block{
+    min-width:0;
 }
 
 .label{
@@ -116,10 +119,9 @@ a:hover{
     margin-bottom:8px;
 }
 
-
-/* ---------------------------------------------
-   Two-ended year slider
---------------------------------------------- */
+.range-description{
+    margin-bottom:8px;
+}
 
 .range-slider{
     position:relative;
@@ -189,20 +191,23 @@ a:hover{
     cursor:pointer;
 }
 
-#maxYearSlider{
+#maxYearSlider,
+#maxListenSlider{
     z-index:2;
 }
 
-#minYearSlider{
+#minYearSlider,
+#minListenSlider{
     z-index:3;
 }
 
 #minYearValue,
-#maxYearValue{
+#maxYearValue,
+#minListenValue,
+#maxListenValue{
     color:var(--accent);
     font-weight:700;
 }
-
 
 select{
     width:100%;
@@ -212,11 +217,6 @@ select{
     font-family:inherit;
     font-size:15px;
 }
-
-
-/* ---------------------------------------------
-   Map / Table tabs
---------------------------------------------- */
 
 .view-tabs{
     display:flex;
@@ -246,22 +246,12 @@ select{
     color:#111;
 }
 
-
-/* ---------------------------------------------
-   Map
---------------------------------------------- */
-
 #map{
     height:560px;
     border-radius:3px;
     overflow:hidden;
     border:1px solid rgba(0,0,0,.08);
 }
-
-
-/* ---------------------------------------------
-   Table
---------------------------------------------- */
 
 .table-view{
     display:none;
@@ -318,11 +308,6 @@ select{
     color:#666;
 }
 
-
-/* ---------------------------------------------
-   Stats
---------------------------------------------- */
-
 .stats{
     display:flex;
     justify-content:space-between;
@@ -330,11 +315,6 @@ select{
     color:#555;
     font-size:.95rem;
 }
-
-
-/* ---------------------------------------------
-   Permanent composer surname labels
---------------------------------------------- */
 
 .composer-label{
     background:#FFFFFF;
@@ -353,11 +333,6 @@ select{
     display:none;
 }
 
-
-/* ---------------------------------------------
-   Leaflet popup
---------------------------------------------- */
-
 .leaflet-popup-content{
     font-family:'Nunito',sans-serif;
     min-width:190px;
@@ -374,11 +349,6 @@ select{
     line-height:1.45;
 }
 
-
-/* ---------------------------------------------
-   Footer
---------------------------------------------- */
-
 .footer{
     background:var(--paper);
     border-top:1px solid rgba(0,0,0,.06);
@@ -387,11 +357,6 @@ select{
     font-size:.95rem;
     color:rgba(0,0,0,.7);
 }
-
-
-/* ---------------------------------------------
-   Responsive
---------------------------------------------- */
 
 @media(max-width:900px){
 
@@ -406,10 +371,6 @@ select{
 }
 
 @media(max-width:700px){
-
-    .controls{
-        grid-template-columns:1fr;
-    }
 
     #map{
         height:420px;
@@ -447,9 +408,7 @@ select{
 
 </head>
 
-
 <body>
-
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 
@@ -472,7 +431,6 @@ select{
 
 </nav>
 
-
 <section class="diary">
 
     <h1>Listening Diary</h1>
@@ -480,29 +438,27 @@ select{
     <p class="intro">
         A growing map of music I'm listening to, studying and teaching.
         Each pin marks the place a work was composed, with the composer,
-        year and notes. Use the timeline and period filter to explore
-        music across geography and history. Click on the dots to get details of the work.
+        year and notes. Use the timelines and period filter to explore
+        music across geography, history and my own listening history.
+        Click on the dots to get details of the work.
         <br/>
         <a href="#why-listening-diary">Why this is important.</a>
     </p>
 
-
     <div class="panel">
-
 
         <div class="controls">
 
-            <div>
+            <div class="control-block">
 
-                <div class="label">Years</div>
+                <div class="label">Composition</div>
 
-                <div style="margin-bottom:8px;">
-                    Show works from
+                <div class="range-description">
+                    Show works composed from
                     <span id="minYearValue">1600</span>
                     to
                     <span id="maxYearValue">2026</span>
                 </div>
-
 
                 <div class="range-slider">
 
@@ -527,7 +483,41 @@ select{
             </div>
 
 
-            <div>
+            <div class="control-block">
+
+                <div class="label">Listening</div>
+
+                <div class="range-description">
+                    Show music I listened to from
+                    <span id="minListenValue">January 1991</span>
+                    to
+                    <span id="maxListenValue">September 2026</span>
+                </div>
+
+                <div class="range-slider">
+
+                    <input
+                        id="minListenSlider"
+                        type="range"
+                        min="0"
+                        max="428"
+                        value="0"
+                    >
+
+                    <input
+                        id="maxListenSlider"
+                        type="range"
+                        min="0"
+                        max="428"
+                        value="428"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="control-block">
 
                 <div class="label">Period</div>
 
@@ -546,8 +536,6 @@ select{
 
         </div>
 
-
-        <!-- Map / Table switcher -->
 
         <div class="view-tabs">
 
@@ -570,12 +558,8 @@ select{
         </div>
 
 
-        <!-- Map view -->
-
         <div id="map" class="map-view"></div>
 
-
-        <!-- Table view -->
 
         <div id="table-view" class="table-view">
 
@@ -609,7 +593,7 @@ select{
                             Period
                         </th>
 
-                        <th data-sort="firstHeard">
+                        <th data-sort="listens">
                             When I was <br/>listening to this
                         </th>
 
@@ -635,7 +619,6 @@ select{
             </div>
 
         </div>
-
 
     </div>
 
@@ -686,16 +669,17 @@ select{
 
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 <script src="works.js"></script>
 
-
 <script>
+
+/* --------------------------------------------------
+   Map
+-------------------------------------------------- */
 
 const map = L.map("map", {
     worldCopyJump:true
 }).setView([25,10],2);
-
 
 L.tileLayer(
     "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -705,52 +689,431 @@ L.tileLayer(
 ).addTo(map);
 
 
-const minSlider = document.getElementById("minYearSlider");
-const maxSlider = document.getElementById("maxYearSlider");
+/* --------------------------------------------------
+   Elements
+-------------------------------------------------- */
 
-const minYearValue = document.getElementById("minYearValue");
-const maxYearValue = document.getElementById("maxYearValue");
+const minSlider =
+    document.getElementById("minYearSlider");
 
-const period = document.getElementById("periodFilter");
-const count = document.getElementById("count");
+const maxSlider =
+    document.getElementById("maxYearSlider");
 
-const markerLayer = L.layerGroup().addTo(map);
+const minListenSlider =
+    document.getElementById("minListenSlider");
 
-const tabs = document.querySelectorAll(".view-tab");
-const mapView = document.getElementById("map");
-const tableView = document.getElementById("table-view");
-const tableBody = document.getElementById("worksTableBody");
+const maxListenSlider =
+    document.getElementById("maxListenSlider");
 
+const minYearValue =
+    document.getElementById("minYearValue");
+
+const maxYearValue =
+    document.getElementById("maxYearValue");
+
+const minListenValue =
+    document.getElementById("minListenValue");
+
+const maxListenValue =
+    document.getElementById("maxListenValue");
+
+const period =
+    document.getElementById("periodFilter");
+
+const count =
+    document.getElementById("count");
+
+const markerLayer =
+    L.layerGroup().addTo(map);
+
+const tabs =
+    document.querySelectorAll(".view-tab");
+
+const mapView =
+    document.getElementById("map");
+
+const tableView =
+    document.getElementById("table-view");
+
+const tableBody =
+    document.getElementById("worksTableBody");
 
 let tableSortField = "year";
 let tableSortDirection = "asc";
 
 
+/* --------------------------------------------------
+   Listening date range
+-------------------------------------------------- */
+
+const LISTEN_START_YEAR = 1991;
+const LISTEN_START_MONTH = 1;
+
+
+/* --------------------------------------------------
+   Find earliest and latest listening dates
+   in the diary
+-------------------------------------------------- */
+
+function getListeningBounds(){
+
+    const dates = [];
+
+    works.forEach(work => {
+
+        if(
+            work.listens &&
+            Array.isArray(work.listens)
+        ){
+
+            work.listens.forEach(date => {
+
+                if(date){
+                    dates.push(String(date));
+                }
+
+            });
+
+        }
+
+    });
+
+
+    if(!dates.length){
+
+        return {
+            earliest:"1991-01",
+            latest:"2026-09"
+        };
+
+    }
+
+
+    dates.sort();
+
+
+    return {
+        earliest:dates[0],
+        latest:dates[dates.length - 1]
+    };
+
+}
+
+
+const listeningBounds =
+    getListeningBounds();
+
+
+/* --------------------------------------------------
+   Convert YYYY-MM to slider number
+-------------------------------------------------- */
+
+function monthToNumber(value){
+
+    const parts =
+        String(value).split("-");
+
+    const year =
+        Number(parts[0]);
+
+    const month =
+        Number(parts[1]);
+
+    return (
+        (year - LISTEN_START_YEAR) * 12 +
+        (month - LISTEN_START_MONTH)
+    );
+
+}
+
+
+/* --------------------------------------------------
+   Convert slider number to YYYY-MM
+-------------------------------------------------- */
+
+function numberToMonth(value){
+
+    const totalMonths =
+        Number(value);
+
+    const year =
+        LISTEN_START_YEAR +
+        Math.floor(totalMonths / 12);
+
+    const month =
+        (totalMonths % 12) + 1;
+
+    return (
+        String(year) +
+        "-" +
+        String(month).padStart(2,"0")
+    );
+
+}
+
+
+/* --------------------------------------------------
+   Configure listening sliders from actual data
+-------------------------------------------------- */
+
+const earliestListenNumber =
+    monthToNumber(
+        listeningBounds.earliest
+    );
+
+const latestListenNumber =
+    monthToNumber(
+        listeningBounds.latest
+    );
+
+
+minListenSlider.min =
+    earliestListenNumber;
+
+minListenSlider.max =
+    latestListenNumber;
+
+minListenSlider.value =
+    earliestListenNumber;
+
+
+maxListenSlider.min =
+    earliestListenNumber;
+
+maxListenSlider.max =
+    latestListenNumber;
+
+maxListenSlider.value =
+    latestListenNumber;
+
+
+/* --------------------------------------------------
+   Format YYYY-MM for display
+-------------------------------------------------- */
+
+function formatListenDate(date){
+
+    if(!date){
+        return "—";
+    }
+
+    const parts =
+        String(date).split("-");
+
+    const year =
+        parts[0];
+
+    const month =
+        parts[1];
+
+
+    if(!month){
+
+        return year;
+
+    }
+
+
+    const dateObject =
+        new Date(
+            Number(year),
+            Number(month) - 1,
+            1
+        );
+
+
+    return dateObject.toLocaleDateString(
+        "en-AU",
+        {
+            month:"long",
+            year:"numeric"
+        }
+    );
+
+}
+
+
+/* --------------------------------------------------
+   Get most recent listen
+-------------------------------------------------- */
+
+function mostRecentListen(work){
+
+    if(
+        !work.listens ||
+        !Array.isArray(work.listens) ||
+        work.listens.length === 0
+    ){
+
+        return null;
+
+    }
+
+
+    return [...work.listens]
+        .sort()
+        .at(-1);
+
+}
+
+
+/* --------------------------------------------------
+   Check listening range
+-------------------------------------------------- */
+
+function wasListenedToInRange(
+    work,
+    minListen,
+    maxListen
+){
+
+    if(
+        !work.listens ||
+        !Array.isArray(work.listens) ||
+        work.listens.length === 0
+    ){
+
+        return false;
+
+    }
+
+
+    return work.listens.some(listen => {
+
+        return listen >= minListen &&
+               listen <= maxListen;
+
+    });
+
+}
+
+
+/* --------------------------------------------------
+   Get current filters
+-------------------------------------------------- */
+
+function getFilters(){
+
+    let minYear =
+        Number(minSlider.value);
+
+    let maxYear =
+        Number(maxSlider.value);
+
+
+    if(minYear > maxYear){
+
+        minYear = maxYear;
+
+    }
+
+
+    let minListen =
+        numberToMonth(
+            Number(minListenSlider.value)
+        );
+
+    let maxListen =
+        numberToMonth(
+            Number(maxListenSlider.value)
+        );
+
+
+    if(minListen > maxListen){
+
+        minListen = maxListen;
+
+    }
+
+
+    return {
+
+        minYear,
+        maxYear,
+        minListen,
+        maxListen,
+        selectedPeriod:period.value
+
+    };
+
+}
+
+
+/* --------------------------------------------------
+   Colour by period
+-------------------------------------------------- */
+
 function colour(p){
 
     return {
+
         "Baroque":"#8B2E3C",
         "Classical":"#3B5B92",
         "Romantic":"#5F7A39",
         "Modern":"#B36B2C",
         "Jazz":"#222222"
+
     }[p] || "#8B2E3C";
 
 }
 
+
+/* --------------------------------------------------
+   Filter works
+-------------------------------------------------- */
+
+function filteredWorks(){
+
+    const filters =
+        getFilters();
+
+
+    return works.filter(work => {
+
+        const compositionMatches =
+            work.year >= filters.minYear &&
+            work.year <= filters.maxYear;
+
+
+        const listeningMatches =
+            wasListenedToInRange(
+                work,
+                filters.minListen,
+                filters.maxListen
+            );
+
+
+        const periodMatches =
+            filters.selectedPeriod === "all" ||
+            work.period === filters.selectedPeriod;
+
+
+        return (
+            compositionMatches &&
+            listeningMatches &&
+            periodMatches
+        );
+
+    });
+
+}
+
+
+/* --------------------------------------------------
+   Draw map
+-------------------------------------------------- */
 
 function draw(changedSlider){
 
     markerLayer.clearLayers();
 
 
-    let minYear = Number(minSlider.value);
-    let maxYear = Number(maxSlider.value);
+    let minYear =
+        Number(minSlider.value);
 
-    const selectedPeriod = period.value;
+    let maxYear =
+        Number(maxSlider.value);
 
-
-    /* Prevent the handles crossing */
 
     if(minYear > maxYear){
 
@@ -769,23 +1132,57 @@ function draw(changedSlider){
     }
 
 
-    minYearValue.textContent = minYear;
-    maxYearValue.textContent = maxYear;
+    let minListen =
+        Number(minListenSlider.value);
+
+    let maxListen =
+        Number(maxListenSlider.value);
 
 
-    const visible = works.filter(work => {
+    if(minListen > maxListen){
 
-        return work.year >= minYear &&
-               work.year <= maxYear &&
-               (
-                   selectedPeriod === "all" ||
-                   work.period === selectedPeriod
-               );
+        if(changedSlider === minListenSlider){
 
-    });
+            minListenSlider.value = maxListen;
+            minListen = maxListen;
+
+        }else{
+
+            maxListenSlider.value = minListen;
+            maxListen = minListen;
+
+        }
+
+    }
 
 
-    count.textContent = visible.length;
+    const minListenDate =
+        numberToMonth(minListen);
+
+    const maxListenDate =
+        numberToMonth(maxListen);
+
+
+    minYearValue.textContent =
+        minYear;
+
+    maxYearValue.textContent =
+        maxYear;
+
+
+    minListenValue.textContent =
+        formatListenDate(minListenDate);
+
+    maxListenValue.textContent =
+        formatListenDate(maxListenDate);
+
+
+    const visible =
+        filteredWorks();
+
+
+    count.textContent =
+        visible.length;
 
 
     const bounds = [];
@@ -793,23 +1190,24 @@ function draw(changedSlider){
 
     visible.forEach(work => {
 
+        const marker =
+            L.circleMarker(
+                [work.lat, work.lng],
+                {
+                    radius:7,
+                    fillColor:colour(work.period),
+                    color:"#ffffff",
+                    weight:2,
+                    fillOpacity:1
+                }
+            );
 
-        const marker = L.circleMarker(
-            [work.lat, work.lng],
-            {
-                radius:7,
-                fillColor:colour(work.period),
-                color:"#ffffff",
-                weight:2,
-                fillOpacity:1
-            }
-        );
-
-
-        /* Permanent surname label */
 
         const surname =
-            work.composer.trim().split(/\s+/).pop();
+            work.composer
+                .trim()
+                .split(/\s+/)
+                .pop();
 
 
         marker.bindTooltip(
@@ -821,6 +1219,25 @@ function draw(changedSlider){
                 className:"composer-label"
             }
         );
+
+
+        const recentListen =
+            mostRecentListen(work);
+
+
+        const listeningHistory =
+            work.listens &&
+            Array.isArray(work.listens) &&
+            work.listens.length
+
+                ? [...work.listens]
+                    .sort()
+                    .map(listen =>
+                        formatListenDate(listen)
+                    )
+                    .join(", ")
+
+                : "—";
 
 
         marker.bindPopup(`
@@ -857,19 +1274,25 @@ function draw(changedSlider){
                 : ""
             }
 
-        <p>
-    <em>Most recent listen:</em>
-    ${
-        work.listens && work.listens.length
-            ? work.listens[work.listens.length - 1]
-            : "—"
-    }
-</p>
+            <p>
+                <em>Most recent listen:</em>
+                ${
+                    recentListen
+                        ? formatListenDate(recentListen)
+                        : "—"
+                }
+            </p>
+
+            <p>
+                <em>Listening history:</em><br>
+                ${listeningHistory}
+            </p>
 
         `);
 
 
         marker.addTo(markerLayer);
+
 
         bounds.push([
             work.lat,
@@ -899,10 +1322,10 @@ function draw(changedSlider){
     }
 
 
-    /* Keep table synchronised with filters */
-
     if(tableView.style.display !== "none"){
+
         renderTable();
+
     }
 
 }
@@ -914,40 +1337,52 @@ function draw(changedSlider){
 
 function renderTable(){
 
-    const minYear = Number(minSlider.value);
-    const maxYear = Number(maxSlider.value);
-    const selectedPeriod = period.value;
-
-
-    let visible = works.filter(work => {
-
-        return work.year >= minYear &&
-               work.year <= maxYear &&
-               (
-                   selectedPeriod === "all" ||
-                   work.period === selectedPeriod
-               );
-
-    });
+    let visible =
+        filteredWorks();
 
 
     visible.sort((a,b) => {
 
-        let aValue = a[tableSortField];
-        let bValue = b[tableSortField];
+        let aValue;
+        let bValue;
+
+
+        if(tableSortField === "listens"){
+
+            aValue =
+                mostRecentListen(a) || "";
+
+            bValue =
+                mostRecentListen(b) || "";
+
+        }else{
+
+            aValue =
+                a[tableSortField];
+
+            bValue =
+                b[tableSortField];
+
+        }
 
 
         if(aValue == null){
+
             aValue = "";
+
         }
 
         if(bValue == null){
+
             bValue = "";
+
         }
 
 
-        if(typeof aValue === "number" &&
-           typeof bValue === "number"){
+        if(
+            typeof aValue === "number" &&
+            typeof bValue === "number"
+        ){
 
             return tableSortDirection === "asc"
                 ? aValue - bValue
@@ -957,84 +1392,109 @@ function renderTable(){
 
 
         return tableSortDirection === "asc"
-            ? String(aValue).localeCompare(String(bValue))
-            : String(bValue).localeCompare(String(aValue));
+            ? String(aValue)
+                .localeCompare(String(bValue))
+            : String(bValue)
+                .localeCompare(String(aValue));
 
     });
 
 
-    tableBody.innerHTML = visible.map(work => {
+    tableBody.innerHTML =
+        visible.map(work => {
 
-        const performance =
-            work.firstPerformancePlace || "—";
-
-        const performanceDate =
-            work.firstPerformanceDate
-                ? `<br><small>${work.firstPerformanceDate}</small>`
-                : "";
+            const performance =
+                work.firstPerformancePlace ||
+                "—";
 
 
-        return `
+            const performanceDate =
+                work.firstPerformanceDate
 
-            <tr>
+                    ? `<br><small>${work.firstPerformanceDate}</small>`
 
-                <td>
-                    ${work.composer}
-                </td>
-
-                <td>
-                    ${work.title}
-                </td>
-
-                <td>
-                    ${work.year}
-                </td>
-
-                <td>
-                    ${work.composedPlace}
-                </td>
-
-                <td>
-                    ${performance}
-                    ${performanceDate}
-                </td>
-
-                <td class="period-cell">
-                    ${work.period}
-                </td>
-
-                <td>
-                    ${work.firstHeard || "—"}
-                </td>
-
-            </tr>
-
-        `;
-
-    }).join("");
+                    : "";
 
 
-    /* Update sort indicators */
+            const listeningHistory =
+                work.listens &&
+                Array.isArray(work.listens) &&
+                work.listens.length
 
-    document.querySelectorAll(".works-table th").forEach(th => {
+                    ? [...work.listens]
+                        .sort()
+                        .map(listen =>
+                            formatListenDate(listen)
+                        )
+                        .join(", ")
 
-        th.classList.remove(
-            "sort-asc",
-            "sort-desc"
-        );
+                    : "—";
 
 
-        if(th.dataset.sort === tableSortField){
+            return `
 
-            th.classList.add(
-                tableSortDirection === "asc"
-                    ? "sort-asc"
-                    : "sort-desc"
+                <tr>
+
+                    <td>
+                        ${work.composer}
+                    </td>
+
+                    <td>
+                        ${work.title}
+                    </td>
+
+                    <td>
+                        ${work.year}
+                    </td>
+
+                    <td>
+                        ${work.composedPlace}
+                    </td>
+
+                    <td>
+                        ${performance}
+                        ${performanceDate}
+                    </td>
+
+                    <td class="period-cell">
+                        ${work.period}
+                    </td>
+
+                    <td>
+                        ${listeningHistory}
+                    </td>
+
+                </tr>
+
+            `;
+
+        }).join("");
+
+
+    document
+        .querySelectorAll(".works-table th")
+        .forEach(th => {
+
+            th.classList.remove(
+                "sort-asc",
+                "sort-desc"
             );
 
-        }
 
-    });
+            if(
+                th.dataset.sort ===
+                tableSortField
+            ){
+
+                th.classList.add(
+                    tableSortDirection === "asc"
+                        ? "sort-asc"
+                        : "sort-desc"
+                );
+
+            }
+
+        });
 
 }
 
@@ -1048,30 +1508,43 @@ tabs.forEach(tab => {
     tab.addEventListener("click", () => {
 
         tabs.forEach(t => {
+
             t.classList.remove("active");
+
         });
+
 
         tab.classList.add("active");
 
 
-        const view = tab.dataset.view;
+        const view =
+            tab.dataset.view;
 
 
         if(view === "map-view"){
 
-            mapView.style.display = "block";
-            tableView.style.display = "none";
+            mapView.style.display =
+                "block";
+
+            tableView.style.display =
+                "none";
 
 
             setTimeout(() => {
+
                 map.invalidateSize();
+
             },50);
 
 
         }else{
 
-            mapView.style.display = "none";
-            tableView.style.display = "block";
+            mapView.style.display =
+                "none";
+
+            tableView.style.display =
+                "block";
+
 
             renderTable();
 
@@ -1086,37 +1559,43 @@ tabs.forEach(tab => {
    Table sorting
 -------------------------------------------------- */
 
-document.querySelectorAll(".works-table th").forEach(th => {
+document
+    .querySelectorAll(".works-table th")
+    .forEach(th => {
 
-    th.addEventListener("click", () => {
+        th.addEventListener("click", () => {
 
-        const field = th.dataset.sort;
-
-
-        if(tableSortField === field){
-
-            tableSortDirection =
-                tableSortDirection === "asc"
-                    ? "desc"
-                    : "asc";
-
-        }else{
-
-            tableSortField = field;
-            tableSortDirection = "asc";
-
-        }
+            const field =
+                th.dataset.sort;
 
 
-        renderTable();
+            if(tableSortField === field){
+
+                tableSortDirection =
+                    tableSortDirection === "asc"
+                        ? "desc"
+                        : "asc";
+
+            }else{
+
+                tableSortField =
+                    field;
+
+                tableSortDirection =
+                    "asc";
+
+            }
+
+
+            renderTable();
+
+        });
 
     });
 
-});
-
 
 /* --------------------------------------------------
-   Filters
+   Composition year filters
 -------------------------------------------------- */
 
 minSlider.addEventListener(
@@ -1124,18 +1603,40 @@ minSlider.addEventListener(
     () => draw(minSlider)
 );
 
-
 maxSlider.addEventListener(
     "input",
     () => draw(maxSlider)
 );
 
 
+/* --------------------------------------------------
+   Listening month filters
+-------------------------------------------------- */
+
+minListenSlider.addEventListener(
+    "input",
+    () => draw(minListenSlider)
+);
+
+maxListenSlider.addEventListener(
+    "input",
+    () => draw(maxListenSlider)
+);
+
+
+/* --------------------------------------------------
+   Period filter
+-------------------------------------------------- */
+
 period.addEventListener(
     "change",
     () => draw()
 );
 
+
+/* --------------------------------------------------
+   Initial draw
+-------------------------------------------------- */
 
 draw();
 

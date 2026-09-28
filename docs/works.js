@@ -7,7 +7,7 @@ const works = [
     year: 1721,
 
     listens: [
-        "2001-07",
+        "2007-07",
         "2012-03",
         "2018-11",
         "2023-06",
@@ -34,7 +34,14 @@ const works = [
     title: "Symphony No. 8",
     composer: "Antonín Dvořák",
     year: 1890,
-    firstHeard: 2004,
+
+    listens: [
+        "2006-04",
+        "2011-09",
+        "2017-02",
+        "2022-08",
+        "2026-01"
+    ],
 
     composedPlace: "Vysoká u Příbramě, Czech Republic",
     lat: 49.6025,
@@ -50,11 +57,19 @@ const works = [
     period: "Romantic",
     notes: "Composed in 1889 and premiered in Prague in 1890."
 },
+
 {
     title: "Symphony No. 7",
     composer: "Antonín Dvořák",
     year: 1885,
-    firstHeard: 2004,
+
+    listens: [
+        "2004-06",
+        "2010-11",
+        "2016-05",
+        "2021-10",
+        "2026-09"
+    ],
 
     composedPlace: "Prague, Czech Republic",
     lat: 50.0755,
@@ -75,7 +90,14 @@ const works = [
     title: "Symphony No. 9 'From the New World'",
     composer: "Antonín Dvořák",
     year: 1893,
-    firstHeard: 2004,
+
+    listens: [
+        "2005-02",
+        "2009-07",
+        "2015-12",
+        "2020-06",
+        "2025-11"
+    ],
 
     composedPlace: "New York City, USA",
     lat: 40.7420,
@@ -96,7 +118,14 @@ const works = [
     title: "Sunday at the Village Vanguard",
     composer: "Bill Evans",
     year: 1961,
-    firstHeard: 1994,
+
+    listens: [
+        "2006-03",
+        "2011-08",
+        "2017-06",
+        "2022-12",
+        "2026-04"
+    ],
 
     composedPlace: "New York City, USA",
     lat: 40.7506,
@@ -117,7 +146,14 @@ const works = [
     title: "Standards, Vol. 1",
     composer: "Keith Jarrett",
     year: 1983,
-    firstHeard: 1997,
+
+    listens: [
+        "2007-01",
+        "2013-05",
+        "2018-10",
+        "2023-03",
+        "2026-08"
+    ],
 
     composedPlace: "New York City, USA",
     lat: 40.7306,
@@ -138,7 +174,14 @@ const works = [
     title: "Piano Sonata No. 1",
     composer: "Nikolai Kapustin",
     year: 1984,
-    firstHeard: 2012,
+
+    listens: [
+        "2012-04",
+        "2015-11",
+        "2019-07",
+        "2023-01",
+        "2026-05"
+    ],
 
     composedPlace: "Moscow, Russia",
     lat: 55.7558,
@@ -159,7 +202,14 @@ const works = [
     title: "Electric Dreams",
     composer: "John McLaughlin",
     year: 1979,
-    firstHeard: 1991,
+
+    listens: [
+        "2008-02",
+        "2013-09",
+        "2017-12",
+        "2022-05",
+        "2025-09"
+    ],
 
     composedPlace: "New York City, USA",
     lat: 40.7106,
@@ -180,7 +230,14 @@ const works = [
     title: "Quartet for the End of Time",
     composer: "Olivier Messiaen",
     year: 1941,
-    firstHeard: 2008,
+
+    listens: [
+        "2008-06",
+        "2012-12",
+        "2018-04",
+        "2023-09",
+        "2026-02"
+    ],
 
     composedPlace: "Görlitz, Germany",
     lat: 51.1520,
@@ -201,7 +258,14 @@ const works = [
     title: "Daphnis et Chloé",
     composer: "Maurice Ravel",
     year: 1912,
-    firstHeard: 2001,
+
+    listens: [
+        "2007-11",
+        "2011-04",
+        "2016-09",
+        "2021-03",
+        "2026-07"
+    ],
 
     composedPlace: "Paris, France",
     lat: 48.8566,
@@ -222,7 +286,14 @@ const works = [
     title: "Gurre-Lieder",
     composer: "Arnold Schoenberg",
     year: 1911,
-    firstHeard: 2017,
+
+    listens: [
+        "2010-03",
+        "2014-08",
+        "2019-11",
+        "2023-07",
+        "2026-03"
+    ],
 
     composedPlace: "Vienna, Austria",
     lat: 48.2082,
@@ -243,7 +314,14 @@ const works = [
     title: "The Rite of Spring",
     composer: "Igor Stravinsky",
     year: 1913,
-    firstHeard: 1998,
+
+    listens: [
+        "2008-09",
+        "2012-02",
+        "2017-10",
+        "2022-04",
+        "2026-09"
+    ],
 
     composedPlace: "Paris, France",
     lat: 48.8766,
@@ -259,11 +337,19 @@ const works = [
     period: "Modern",
     notes: "Composed in 1913 and premiered in Paris."
 },
+
 {
     title: "Petrushka",
     composer: "Igor Stravinsky",
     year: 1911,
-    firstHeard: 1999,
+
+    listens: [
+        "2009-01",
+        "2013-06",
+        "2018-03",
+        "2021-11",
+        "2025-06"
+    ],
 
     composedPlace: "Lausanne, Switzerland",
     lat: 46.5197,
@@ -284,7 +370,14 @@ const works = [
     title: "The Firebird",
     composer: "Igor Stravinsky",
     year: 1910,
-    firstHeard: 1998,
+
+    listens: [
+        "2008-05",
+        "2012-10",
+        "2017-04",
+        "2022-09",
+        "2026-06"
+    ],
 
     composedPlace: "Paris, France",
     lat: 48.8600,
@@ -305,7 +398,14 @@ const works = [
     title: "Pulcinella",
     composer: "Igor Stravinsky",
     year: 1920,
-    firstHeard: 2003,
+
+    listens: [
+        "2006-11",
+        "2011-05",
+        "2016-12",
+        "2020-08",
+        "2025-02"
+    ],
 
     composedPlace: "Paris, France",
     lat: 48.8530,
