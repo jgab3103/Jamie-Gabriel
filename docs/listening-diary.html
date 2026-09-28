@@ -610,7 +610,7 @@ select{
                         </th>
 
                         <th data-sort="firstHeard">
-                            First heard
+                            When I was <br/>listening to this
                         </th>
 
                     </tr>
@@ -857,10 +857,14 @@ function draw(changedSlider){
                 : ""
             }
 
-            <p>
-                <em>The year I first heard this:</em>
-                ${work.firstHeard || "—"}
-            </p>
+        <p>
+    <em>Most recent listen:</em>
+    ${
+        work.listens && work.listens.length
+            ? work.listens[work.listens.length - 1]
+            : "—"
+    }
+</p>
 
         `);
 

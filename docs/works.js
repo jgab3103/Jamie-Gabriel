@@ -1,5 +1,35 @@
 const works = [
 
+
+    {
+    title: "Brandenburg Concerto No. 3",
+    composer: "Johann Sebastian Bach",
+    year: 1721,
+
+    listens: [
+        "2001-07",
+        "2012-03",
+        "2018-11",
+        "2023-06",
+        "2026-09"
+    ],
+
+    composedPlace: "Köthen, Germany",
+    lat: 51.7217,
+    lng: 11.9706,
+
+    born: 1685,
+    died: 1750,
+    birthplace: "Eisenach, Germany",
+
+    firstPerformancePlace: "Köthen, Germany",
+    firstPerformanceDate: "1721-03",
+
+    period: "Baroque",
+
+    notes: "Part of the six Brandenburg Concertos, presented to Christian Ludwig, Margrave of Brandenburg-Schwedt."
+},
+
 {
     title: "Symphony No. 8",
     composer: "Antonín Dvořák",
