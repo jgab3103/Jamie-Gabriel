@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
@@ -74,12 +74,19 @@ a:hover{
     align-items:center;
 }
 
-/* CONTENT */
+/* PAGE LAYOUT */
 
-.content{
-    max-width:960px;
+.page-layout{
+    max-width:1180px;
     margin:0 auto;
     padding:70px 24px 120px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 290px;
+    gap:55px;
+}
+
+.content{
+    min-width:0;
 }
 
 .content h1{
@@ -97,7 +104,7 @@ a:hover{
 }
 
 .content p{
-    max-width:70ch;
+    max-width:72ch;
     margin-bottom:22px;
 }
 
@@ -119,6 +126,111 @@ a:hover{
     margin-bottom:8px;
 }
 
+/* TECHNICAL NOTES */
+
+.note{
+    border-left:2px solid var(--accent);
+    padding:10px 0 10px 22px;
+    margin:35px 0;
+    max-width:72ch;
+}
+
+.technical{
+    font-family:monospace;
+    font-size:.92rem;
+    line-height:1.65;
+    background:#F4F1EB;
+    padding:22px;
+    margin:30px 0;
+    overflow-x:auto;
+}
+
+/* LISTENING SIDEBAR */
+
+.listen-panel{
+    position:sticky;
+    top:105px;
+    align-self:start;
+}
+
+.listen-heading{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.05rem;
+    font-weight:500;
+    margin-bottom:12px;
+}
+
+.listen-intro{
+    font-size:.84rem;
+    color:rgba(0,0,0,.62);
+    line-height:1.5;
+    margin-bottom:28px;
+}
+
+/* RECORDING GROUP */
+
+.recording-group{
+    border-top:1px solid rgba(0,0,0,.12);
+    padding-top:20px;
+    margin-top:22px;
+}
+
+.recording-group:first-of-type{
+    border-top:none;
+    padding-top:0;
+    margin-top:0;
+}
+
+.group-title{
+    font-family:'Varela Round',sans-serif;
+    font-size:1rem;
+    line-height:1.35;
+    margin-bottom:3px;
+}
+
+.group-description{
+    font-size:.78rem;
+    color:rgba(0,0,0,.52);
+    line-height:1.45;
+    margin-bottom:14px;
+}
+
+/* INDIVIDUAL TRACK */
+
+.track{
+    margin:0 0 15px;
+}
+
+.track-label{
+    font-size:.82rem;
+    font-weight:700;
+    line-height:1.35;
+    margin-bottom:6px;
+}
+
+.track-description{
+    font-size:.75rem;
+    color:rgba(0,0,0,.52);
+    line-height:1.4;
+    margin-bottom:7px;
+}
+
+.track-placeholder{
+    background:#F4F1EB;
+    border-radius:5px;
+    min-height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:rgba(0,0,0,.4);
+    font-size:.72rem;
+}
+
+.track-placeholder audio{
+    display:block;
+    width:100%;
+}
+
 /* FOOTER */
 
 .footer{
@@ -128,9 +240,29 @@ a:hover{
     color:rgba(0,0,0,.7);
 }
 
-/* MOBILE */
+/* RESPONSIVE */
 
-@media(max-width:900px){
+@media(max-width:1000px){
+
+    .page-layout{
+        grid-template-columns:minmax(0,1fr) 250px;
+        gap:35px;
+    }
+
+}
+
+@media(max-width:800px){
+
+    .page-layout{
+        display:block;
+        padding-top:50px;
+    }
+
+    .listen-panel{
+        position:static;
+        margin-top:65px;
+        max-width:500px;
+    }
 
     .nav-links{
         gap:1.5rem;
@@ -140,7 +272,7 @@ a:hover{
 
 @media(max-width:600px){
 
-    .content{
+    .page-layout{
         padding-top:50px;
     }
 
@@ -155,90 +287,533 @@ a:hover{
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
 
-        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+
+    <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
 
         <div class="nav-links">
-            <a href="./album.html">Music</a>
+
+            <a href="./music.html">Music</a>
             <a href="./teaching.html">Teaching</a>
             <a href="./research.html">Research</a>
+            <a href="./contact.html">Contact</a>
+
         </div>
 
-    </div>
+</div>
+
+
 </nav>
 
+<div class="page-layout">
 
 <main class="content">
 
-    <h1>Deep Improv</h1>
 
-    <div class="toc">
-        <ul>
-            <li><a href="#description">Overview</a></li>
-            <li><a href="#background">Background reading</a></li>
-            <li><a href="#code">Related code</a></li>
-            <li><a href="#get-involved">Getting involved</a></li>
-        </ul>
-    </div>
+<h1>Deep Improv</h1>
 
-
-    <h2 id="description">Overview</h2>
-
-    <p>
-        <strong>Deep Improv</strong> is an ongoing ensemble-based improvisation project centred on deep listening, collective performance, and continuous recording. Every rehearsal and performance is captured in full, forming a growing archive of musical interaction that is used as primary material for analysis and creative development.
-    </p>
-
-    <p>
-        Rather than focusing on collecting MIDI or symbolic representations, the project works directly with audio. This includes live instrumental performance, electronically generated sound, and a library of samples, many drawn from public domain orchestral recordings. These materials are treated as fluid sources for transformation, recombination, and reinterpretation during playing.
-    </p>
-
-    <p>
-        The recorded archive is analysed using deep learning frameworks centred on representation learning and latent structure inference. In place of explicit, hand-crafted feature extraction, the approach relies on autoencoding architectures, nonlinear dimensionality reduction, and sequence models to learn from the audio stream.
-    </p>
-
-    <p>
-        Particular emphasis is placed on aligned-dimensional embedding (ADE) strategies, in which temporally distributed events are mapped into a shared latent space and examined through graph-based formalisations. We also use Catalan-type combinatorial structures that are proving to provide a useful lens for modelling hierarchical segmentation and dependencies across musical time. The aim is to understand the more subtle relationships between gesture, texture, and ensemble interaction.
-    </p>
-
-    <p>
-        These extracted structures are then fed into a real-time synthesis environment built in SuperCollider, which acts as another member of the ensemble, responding to learned patterns, tendencies, and emergent behaviours within the group. The result is what we loosely termed <strong>“smart improv”</strong>, where human performers and machine processes co-exist within the same musical space.
-    </p>
-
-    <p>
-        Ultimately, the idea is to explore what happens when listening is extended beyond the moment of performance — when the traces of improvisation are recursively analysed, transformed, and reintroduced into the creative process.
-    </p>
+<div class="toc">
+    <ul>
+        <li><a href="#description">Overview</a></li>
+        <li><a href="#material">Sound as material</a></li>
+        <li><a href="#compositional">Compositional approaches</a></li>
+        <li><a href="#code">Code and computation</a></li>
+        <li><a href="#live">Technology-assisted improvisation</a></li>
+        <li><a href="#research">Research directions</a></li>
+        <li><a href="#background">Background reading</a></li>
+        <li><a href="#github">Code</a></li>
+    </ul>
+</div>
 
 
-    <h2 id="background">Background Reading</h2>
+<h2 id="description">Overview</h2>
 
-    <p>
-        Background reading and related literature can be found in the
-        <a href="./background-reading.html">background reading archive</a>.
-        This includes work in machine learning, computational creativity, and experimental music practices that inform the development of the project.
-    </p>
+<p>
+    <strong>Deep Improv</strong> is an ongoing research and creative practice exploring
+    the relationship between improvisation, recorded sound, computation, and live
+    performance. The project asks how technology can extend improvisational practice
+    without replacing the performer: recordings can become material, algorithms can
+    become instruments, and data captured during performance can become another form
+    of musical response.
+</p>
+
+<p>
+    The project is particularly interested in the space between composition and
+    improvisation. Rather than treating a recording as a finished musical object,
+    recorded sound can be fragmented, reversed, stretched, filtered, layered,
+    spatialised, analysed, or recombined to produce <strong>prepared recordings</strong>.
+    These recordings then become stimuli for improvisors: material to respond to,
+    interrupt, imitate, transform, or deliberately contradict.
+</p>
+
+<p>
+    The resulting process is neither conventional composition nor conventional
+    improvisation. A recording may be prepared in advance using code, but its
+    meaning is determined in the live encounter with performers, instruments,
+    acoustic space, and other sounds.
+</p>
 
 
-    <h2 id="code">Related Code</h2>
+<h2 id="material">Sound as Material</h2>
 
-    <p>
-        The codebase includes tools for large-scale audio recording, dataset organisation, feature extraction, and integration with SuperCollider. There is also ongoing work on deep learning pipelines for analysing rehearsal archives and generating responsive sonic material.
-    </p>
+<p>
+    A central influence is the <strong>musique concrète</strong> tradition, particularly
+    the work of Pierre Schaeffer and the idea of treating recorded sound as a
+    <em>sound object</em>. The recording is detached from its original narrative
+    context and becomes something that can be cut, repeated, transformed and
+    reorganised.
+</p>
 
-    <p>
-        <a href="https://github.com/jgab3103/Deep-Improv" target="_blank">
-            GitHub repository
-        </a>
-    </p>
+<p>
+    Deep Improv extends this idea through digital computation. Instead of physically
+    cutting tape, a program can search thousands of seconds of recorded material,
+    identify regions according to acoustic properties, and construct new temporal
+    relationships between them.
+</p>
+
+<p>
+    Public-domain orchestral recordings are particularly useful in this context.
+    Works by composers such as Debussy, Mahler and Sibelius can be treated not simply
+    as compositions to be analysed, but as large reservoirs of timbre, gesture,
+    texture, harmony and orchestral movement.
+</p>
+
+<p>
+    A short orchestral event can therefore become a completely different object:
+    reversed, time-expanded, layered with another recording, embedded in a drone,
+    or allowed to decay into a long reverberant field. The resulting recording
+    retains traces of its source while functioning as new material for improvisation.
+</p>
+
+<div class="note">
+    The important distinction is between <strong>using a recording as a reference</strong>
+    and <strong>using a recording as material</strong>. Deep Improv is primarily
+    concerned with the latter.
+</div>
 
 
-    <h2 id="get-involved">Getting Involved</h2>
+<h2 id="compositional">Compositional Approaches</h2>
 
-    <p>
-        We sometimes do group jams on a Jamulus server and will post details of these sessions here. If you are interested in experimental improvisation, the project, or participating in future sessions, you are welcome to
-        <a href="mailto:jamie@jamiegabriel.org">get in touch</a>.
-    </p>
+<p>
+    The project draws on a broad history of experimental approaches to sound,
+    structure and chance. Schaeffer's manipulation of recorded sound provides one
+    point of departure, while the work of <strong>Iannis Xenakis</strong> provides
+    another: the use of mathematical and computational processes to generate,
+    organise and transform musical structures.
+</p>
+
+<p>
+    Other important reference points include the electronic and spatial practices
+    of Karlheinz Stockhausen, the indeterminate procedures of John Cage, the
+    transformative tape and studio practices associated with Luciano Berio and
+    other post-war composers, and later developments in sampling, digital signal
+    processing and computer music.
+</p>
+
+<p>
+    These influences are not treated as a fixed stylistic model. Instead, they
+    suggest different ways of thinking about musical material: as objects,
+    processes, probability distributions, gestures, spatial events, data, or
+    transformations.
+</p>
+
+<p>
+    Current experiments include selecting material according to loudness,
+    spectral brightness, onset density and other acoustic characteristics;
+    reversing and time-expanding orchestral passages; creating long-form
+    transformations from multiple recordings; and constructing evolving
+    relationships between continuous drones and fragmented instrumental material.
+</p>
+
+<div class="technical">
+    recorded audio<br>
+    &nbsp;&nbsp;↓<br>
+    analysis / segmentation<br>
+    &nbsp;&nbsp;↓<br>
+    selection of musical events<br>
+    &nbsp;&nbsp;↓<br>
+    transformation / recombination<br>
+    &nbsp;&nbsp;↓<br>
+    prepared recording<br>
+    &nbsp;&nbsp;↓<br>
+    live improvisation<br>
+    &nbsp;&nbsp;↓<br>
+    real-time capture and analysis<br>
+    &nbsp;&nbsp;↓<br>
+    new material / performer response
+</div>
+
+
+<h2 id="code">Code and Computation</h2>
+
+<p>
+    Computation is used both as a compositional tool and as a means of investigating
+    musical structure. Python provides a flexible environment for manipulating
+    recorded audio, extracting measurements, selecting material and constructing
+    new recordings. SuperCollider provides a complementary environment for
+    real-time synthesis, transformation and interaction.
+</p>
+
+<p>
+    Current experiments use digital signal processing techniques including
+    segmentation, time stretching, reversal, convolution, delay, spatial
+    processing and spectral analysis. Audio can also be represented as measurable
+    data: amplitude, spectral centroid, onset density, frequency content and
+    temporal change can all become criteria for selecting or transforming musical
+    material.
+</p>
+
+<p>
+    This makes it possible to construct processes that would be impractical to
+    perform manually. A program can search a long orchestral recording for regions
+    with particular characteristics, select them according to a set of constraints,
+    transform them, and assemble the resulting material into a new temporal form.
+</p>
+
+<p>
+    The intention is not necessarily to automate composition. Instead, computation
+    provides a different way of listening to a recording and a different set of
+    possibilities for preparing material for human performers.
+</p>
+
+
+<h2 id="live">Technology-Assisted Improvisation</h2>
+
+<p>
+    The next stage of Deep Improv moves these processes into the performance itself.
+    During an improvisation, software can capture audio and other performance data
+    in real time, analyse what is happening, and return information or sound to the
+    performers.
+</p>
+
+<p>
+    This creates a feedback loop between performer and computational system:
+</p>
+
+<div class="technical">
+    PERFORMANCE<br>
+    &nbsp;&nbsp;↓<br>
+    audio / MIDI / control data<br>
+    &nbsp;&nbsp;↓<br>
+    real-time analysis<br>
+    &nbsp;&nbsp;↓<br>
+    detected gesture / texture / event<br>
+    &nbsp;&nbsp;↓<br>
+    computational transformation<br>
+    &nbsp;&nbsp;↓<br>
+    sound / visual / control stimulus<br>
+    &nbsp;&nbsp;↓<br>
+    PERFORMER RESPONSE
+</div>
+
+<p>
+    The system therefore becomes another participant in the improvisation. It might
+    respond to density, register, rhythmic activity, silence, spectral change or
+    other measurable characteristics of the performance. A performer could receive
+    a transformed fragment of something played several minutes earlier, while
+    another performer responds to the resulting texture.
+</p>
+
+<p>
+    This approach is deliberately different from a conventional backing track or
+    interactive effects processor. The aim is to create systems in which the
+    computational process has access to the history of the performance and can
+    introduce that history back into the musical present.
+</p>
+
+
+<h2 id="research">Research Directions</h2>
+
+<p>
+    Several related research questions emerge from this practice.
+</p>
+
+<p>
+    <strong>How can recorded sound function as an improvisational stimulus?</strong>
+    Rather than asking how an algorithm can generate music autonomously, the project
+    asks how computationally prepared material changes what musicians hear,
+    anticipate and play.
+</p>
+
+<p>
+    <strong>What kinds of musical information are useful in real-time interaction?</strong>
+    Amplitude, spectral characteristics, event density and temporal structure are
+    relatively straightforward to measure, but their usefulness to performers is
+    less obvious. The research therefore treats the performer as part of the
+    evaluation loop.
+</p>
+
+<p>
+    <strong>How much agency should the computational system have?</strong>
+    A system might simply provide material, suggest a transformation, respond to
+    performance data, or generate its own musical response. These different levels
+    of agency produce very different improvisational relationships.
+</p>
+
+<p>
+    <strong>Can the history of an improvisation become its future material?</strong>
+    This is perhaps the central question of Deep Improv: whether a performance can
+    continually accumulate a memory of itself and use that memory as material for
+    subsequent improvisation.
+</p>
+
+<p>
+    The longer-term aim is to develop practical systems in which recording,
+    analysis, transformation and performance form a continuous loop rather than
+    separate stages of a production process.
+</p>
+
+
+<h2 id="background">Background Reading</h2>
+
+<p>
+    Background reading includes literature in musique concrète, electroacoustic
+    composition, computer music, algorithmic composition, computational creativity,
+    machine learning and improvisation.
+</p>
+
+<p>
+    The
+    <a href="./background-reading.html">background reading archive</a>
+    collects relevant papers, books and other resources as the project develops.
+</p>
+
+
+<h2 id="github">Code</h2>
+
+<p>
+    Experimental code for audio analysis, transformation, recording and
+    computational improvisation is available through the
+    <a href="https://github.com/jgab3103/Deep-Improv"
+       target="_blank"
+       rel="noopener">
+        Deep Improv GitHub repository
+    </a>.
+</p>
+
+<p>
+    The repository is intended as an evolving research environment rather than a
+    single software product. Experiments range from offline preparation of audio
+    material to real-time systems for performance and interaction.
+</p>
+
 
 </main>
 
+<!-- LISTENING SIDEBAR -->
+
+<aside class="listen-panel">
+
+
+<div class="listen-heading">Listen</div>
+
+<div class="listen-intro">
+    Coming soon.
+</div>
+
+
+<!-- GROUP 1 -->
+<!-- 
+<section class="recording-group">
+
+    <div class="group-title">
+        Debussy
+    </div>
+
+    <div class="group-description">
+        La fille aux cheveux de lin
+    </div>
+
+
+    <div class="track">
+
+        <div class="track-label">
+            Source recording
+        </div>
+
+        <div class="track-placeholder">
+            Recording placeholder
+        </div>
+
+
+
+    </div>
+
+
+    <div class="track">
+
+        <div class="track-label">
+            Prepared recording
+        </div>
+
+        <div class="track-placeholder">
+            Recording placeholder
+        </div>
+
+   
+
+    </div>
+
+
+    <div class="track">
+
+        <div class="track-label">
+            Live improvisation
+        </div>
+
+        <div class="track-placeholder">
+            Recording placeholder
+        </div>
+
+      
+
+    </div>
+
+</section>
+
+
+<!-- GROUP 2 -->
+
+<!-- <section class="recording-group">
+
+    <div class="group-title">
+        Sibelius
+    </div>
+
+    <div class="group-description">
+        Symphony No. 7
+    </div>
+
+
+<iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/track=3039662765/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true/" seamless><a href="https://sajaproject.bandcamp.com/track/sunday-girl">Sunday Girl by SAJA Project</a></iframe>
+
+
+    <div class="track">
+
+        <div class="track-label">
+            Prepared recording
+        </div>
+
+        <div class="track-placeholder">
+            Recording placeholder
+        </div>
+
+    </div>
+
+
+    <div class="track">
+
+        <div class="track-label">
+            Transformation study
+        </div>
+
+        <div class="track-placeholder">
+            Recording placeholder
+        </div>
+
+    </div>
+
+</section> -->
+
+
+<!-- GROUP 3 -->
+
+<!-- <section class="recording-group">
+
+    <div class="group-title">
+        Deep Improv 01
+    </div>
+
+    <div class="group-description">
+        Prepared material / improvisation
+    </div>
+
+
+    <div class="track">
+
+        <div class="track-label">
+            Drone
+        </div>
+
+        <div class="track-placeholder">
+            Recording placeholder
+        </div>
+
+    </div>
+
+
+    <div class="track">
+
+        <div class="track-label">
+            Orchestral material
+        </div>
+
+        <div class="track-placeholder">
+            Recording placeholder
+        </div>
+
+    </div>
+
+
+    <div class="track">
+
+        <div class="track-label">
+            Combined work
+        </div>
+
+        <div class="track-placeholder">
+            Recording placeholder
+        </div>
+
+    </div>
+
+
+    <div class="track">
+
+        <div class="track-label">
+            Live performance
+        </div>
+
+        <div class="track-placeholder">
+            Recording placeholder
+        </div>
+
+    </div>
+
+</section> -->
+
+
+<!-- ADDITIONAL GROUP TEMPLATE -->
+
+<!--
+<section class="recording-group">
+
+    <div class="group-title">
+        Composer / Project
+    </div>
+
+    <div class="group-description">
+        Description
+    </div>
+
+    <div class="track">
+
+        <div class="track-label">
+            Recording title
+        </div>
+
+        <div class="track-placeholder">
+            Recording placeholder
+        </div>
+
+    </div>
+
+</section>
+-->
+
+
+</aside>
+
+</div>
 
 <footer class="footer">
     <div>Research · Music · Computing · Mathematics</div>
@@ -247,4 +822,3 @@ a:hover{
 
 </body>
 </html>
-
