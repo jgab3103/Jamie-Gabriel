@@ -218,6 +218,21 @@ select{
     font-size:15px;
 }
 
+.listen-selects{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.listen-select-label{
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-weight:700;
+    color:rgba(0,0,0,.55);
+    margin-bottom:5px;
+}
+
 .view-tabs{
     display:flex;
     gap:0;
@@ -494,23 +509,27 @@ select{
                     <span id="maxListenValue">September 2026</span>
                 </div>
 
-                <div class="range-slider">
+                <div class="listen-selects">
 
-                    <input
-                        id="minListenSlider"
-                        type="range"
-                        min="0"
-                        max="428"
-                        value="0"
-                    >
+                    <div>
 
-                    <input
-                        id="maxListenSlider"
-                        type="range"
-                        min="0"
-                        max="428"
-                        value="428"
-                    >
+                        <div class="listen-select-label">
+                            From
+                        </div>
+
+                        <select id="minListenSelect"></select>
+
+                    </div>
+
+                    <div>
+
+                        <div class="listen-select-label">
+                            To
+                        </div>
+
+                        <select id="maxListenSelect"></select>
+
+                    </div>
 
                 </div>
 
@@ -699,11 +718,11 @@ const minSlider =
 const maxSlider =
     document.getElementById("maxYearSlider");
 
-const minListenSlider =
-    document.getElementById("minListenSlider");
+const minListenSelect =
+    document.getElementById("minListenSelect");
 
-const maxListenSlider =
-    document.getElementById("maxListenSlider");
+const maxListenSelect =
+    document.getElementById("maxListenSelect");
 
 const minYearValue =
     document.getElementById("minYearValue");
@@ -805,7 +824,7 @@ const listeningBounds =
 
 
 /* --------------------------------------------------
-   Convert YYYY-MM to slider number
+   Convert YYYY-MM to number
 -------------------------------------------------- */
 
 function monthToNumber(value){
@@ -828,7 +847,7 @@ function monthToNumber(value){
 
 
 /* --------------------------------------------------
-   Convert slider number to YYYY-MM
+   Convert number to YYYY-MM
 -------------------------------------------------- */
 
 function numberToMonth(value){
@@ -850,41 +869,6 @@ function numberToMonth(value){
     );
 
 }
-
-
-/* --------------------------------------------------
-   Configure listening sliders from actual data
--------------------------------------------------- */
-
-const earliestListenNumber =
-    monthToNumber(
-        listeningBounds.earliest
-    );
-
-const latestListenNumber =
-    monthToNumber(
-        listeningBounds.latest
-    );
-
-
-minListenSlider.min =
-    earliestListenNumber;
-
-minListenSlider.max =
-    latestListenNumber;
-
-minListenSlider.value =
-    earliestListenNumber;
-
-
-maxListenSlider.min =
-    earliestListenNumber;
-
-maxListenSlider.max =
-    latestListenNumber;
-
-maxListenSlider.value =
-    latestListenNumber;
 
 
 /* --------------------------------------------------
@@ -931,6 +915,71 @@ function formatListenDate(date){
     );
 
 }
+
+
+/* --------------------------------------------------
+   Configure listening dropdowns
+-------------------------------------------------- */
+
+const earliestListenNumber =
+    monthToNumber(
+        listeningBounds.earliest
+    );
+
+const latestListenNumber =
+    monthToNumber(
+        listeningBounds.latest
+    );
+
+
+for(
+    let i = earliestListenNumber;
+    i <= latestListenNumber;
+    i++
+){
+
+    const date =
+        numberToMonth(i);
+
+    const label =
+        formatListenDate(date);
+
+
+    const minOption =
+        document.createElement("option");
+
+    minOption.value =
+        date;
+
+    minOption.textContent =
+        label;
+
+    minListenSelect.appendChild(
+        minOption
+    );
+
+
+    const maxOption =
+        document.createElement("option");
+
+    maxOption.value =
+        date;
+
+    maxOption.textContent =
+        label;
+
+    maxListenSelect.appendChild(
+        maxOption
+    );
+
+}
+
+
+minListenSelect.value =
+    listeningBounds.earliest;
+
+maxListenSelect.value =
+    listeningBounds.latest;
 
 
 /* --------------------------------------------------
@@ -1009,14 +1058,10 @@ function getFilters(){
 
 
     let minListen =
-        numberToMonth(
-            Number(minListenSlider.value)
-        );
+        minListenSelect.value;
 
     let maxListen =
-        numberToMonth(
-            Number(maxListenSlider.value)
-        );
+        maxListenSelect.value;
 
 
     if(minListen > maxListen){
@@ -1103,7 +1148,7 @@ function filteredWorks(){
    Draw map
 -------------------------------------------------- */
 
-function draw(changedSlider){
+function draw(changedControl){
 
     markerLayer.clearLayers();
 
@@ -1117,7 +1162,7 @@ function draw(changedSlider){
 
     if(minYear > maxYear){
 
-        if(changedSlider === minSlider){
+        if(changedControl === minSlider){
 
             minSlider.value = maxYear;
             minYear = maxYear;
@@ -1133,34 +1178,27 @@ function draw(changedSlider){
 
 
     let minListen =
-        Number(minListenSlider.value);
+        minListenSelect.value;
 
     let maxListen =
-        Number(maxListenSlider.value);
+        maxListenSelect.value;
 
 
     if(minListen > maxListen){
 
-        if(changedSlider === minListenSlider){
+        if(changedControl === minListenSelect){
 
-            minListenSlider.value = maxListen;
+            minListenSelect.value = maxListen;
             minListen = maxListen;
 
         }else{
 
-            maxListenSlider.value = minListen;
+            maxListenSelect.value = minListen;
             maxListen = minListen;
 
         }
 
     }
-
-
-    const minListenDate =
-        numberToMonth(minListen);
-
-    const maxListenDate =
-        numberToMonth(maxListen);
 
 
     minYearValue.textContent =
@@ -1171,10 +1209,10 @@ function draw(changedSlider){
 
 
     minListenValue.textContent =
-        formatListenDate(minListenDate);
+        formatListenDate(minListen);
 
     maxListenValue.textContent =
-        formatListenDate(maxListenDate);
+        formatListenDate(maxListen);
 
 
     const visible =
@@ -1610,17 +1648,17 @@ maxSlider.addEventListener(
 
 
 /* --------------------------------------------------
-   Listening month filters
+   Listening dropdown filters
 -------------------------------------------------- */
 
-minListenSlider.addEventListener(
-    "input",
-    () => draw(minListenSlider)
+minListenSelect.addEventListener(
+    "change",
+    () => draw(minListenSelect)
 );
 
-maxListenSlider.addEventListener(
-    "input",
-    () => draw(maxListenSlider)
+maxListenSelect.addEventListener(
+    "change",
+    () => draw(maxListenSelect)
 );
 
 

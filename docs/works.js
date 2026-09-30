@@ -1,6 +1,4 @@
-
 const works = [
-
 
     {
     title: "Brandenburg Concerto No. 3",
@@ -9,9 +7,7 @@ const works = [
 
     listens: [
         "2026-02",
-        "2026-04",
         "2026-06",
-        "2026-08",
         "2026-09"
     ],
 
@@ -37,11 +33,8 @@ const works = [
     year: 1890,
 
     listens: [
-        "2026-02",
-        "2026-04",
-        "2026-06",
-        "2026-08",
-        "2026-09"
+        "2026-03",
+        "2026-07"
     ],
 
     composedPlace: "Vysoká u Příbramě, Czech Republic",
@@ -66,9 +59,7 @@ const works = [
 
     listens: [
         "2026-01",
-        "2026-03",
         "2026-05",
-        "2026-07",
         "2026-09"
     ],
 
@@ -94,10 +85,8 @@ const works = [
 
     listens: [
         "2026-01",
-        "2026-03",
-        "2026-05",
-        "2026-07",
-        "2026-09"
+        "2026-04",
+        "2026-08"
     ],
 
     composedPlace: "New York City, USA",
@@ -122,9 +111,7 @@ const works = [
 
     listens: [
         "2026-02",
-        "2026-04",
         "2026-06",
-        "2026-08",
         "2026-09"
     ],
 
@@ -149,11 +136,8 @@ const works = [
     year: 1983,
 
     listens: [
-        "2026-02",
-        "2026-04",
-        "2026-06",
-        "2026-08",
-        "2026-09"
+        "2026-03",
+        "2026-08"
     ],
 
     composedPlace: "New York City, USA",
@@ -178,9 +162,6 @@ const works = [
 
     listens: [
         "2026-04",
-        "2026-05",
-        "2026-06",
-        "2026-08",
         "2026-09"
     ],
 
@@ -206,10 +187,8 @@ const works = [
 
     listens: [
         "2026-02",
-        "2026-04",
-        "2026-06",
-        "2026-07",
-        "2026-09"
+        "2026-05",
+        "2026-08"
     ],
 
     composedPlace: "New York City, USA",
@@ -233,10 +212,8 @@ const works = [
     year: 1941,
 
     listens: [
-        "2026-02",
-        "2026-04",
-        "2026-06",
-        "2026-08",
+        "2026-03",
+        "2026-07",
         "2026-09"
     ],
 
@@ -262,9 +239,7 @@ const works = [
 
     listens: [
         "2026-02",
-        "2026-04",
         "2026-06",
-        "2026-08",
         "2026-09"
     ],
 
@@ -290,10 +265,7 @@ const works = [
 
     listens: [
         "2026-03",
-        "2026-05",
-        "2026-07",
-        "2026-08",
-        "2026-09"
+        "2026-08"
     ],
 
     composedPlace: "Vienna, Austria",
@@ -318,8 +290,6 @@ const works = [
 
     listens: [
         "2026-03",
-        "2026-04",
-        "2026-06",
         "2026-07",
         "2026-09"
     ],
@@ -345,11 +315,8 @@ const works = [
     year: 1911,
 
     listens: [
-        "2026-03",
         "2026-04",
-        "2026-06",
-        "2026-07",
-        "2026-09"
+        "2026-08"
     ],
 
     composedPlace: "Lausanne, Switzerland",
@@ -374,9 +341,7 @@ const works = [
 
     listens: [
         "2026-02",
-        "2026-04",
         "2026-06",
-        "2026-08",
         "2026-09"
     ],
 
@@ -401,10 +366,8 @@ const works = [
     year: 1920,
 
     listens: [
-        "2026-02",
-        "2026-03",
+        "2026-01",
         "2026-05",
-        "2026-07",
         "2026-08"
     ],
 
@@ -422,6 +385,5 @@ const works = [
     period: "Modern",
     notes: "Neoclassical ballet based on music attributed to Giovanni Battista Pergolesi, commissioned by Sergei Diaghilev."
 }
-
 
 ];
