@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Music Lessons – Jamie Gabriel" />
+<meta name="author" content="Jamie Gabriel" />
+
+<title>Lessons | Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
+
+<style>
+:root{
+    --accent:#8B2E3C;
+    --paper:#FAFAFA;
+    --panel:#F4F1EB;
+}
+
+html{
+    scroll-behavior:smooth;
+    background:var(--paper);
+}
+
+body{
+    margin:0;
+    font-family:'Nunito',sans-serif;
+    background:var(--paper);
+    color:#111;
+    line-height:1.75;
+    font-size:16.5px;
+    padding-top:80px;
+}
+
+a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid rgba(139,46,60,.35);
+    transition:.2s;
+}
+
+a:hover{
+    color:#111;
+    border-bottom-color:rgba(139,46,60,.75);
+}
+
+/* Nav */
+
+#mainNav,
+#mainNav.navbar-shrink{
+    background:var(--paper)!important;
+    border-bottom:1px solid rgba(0,0,0,.05);
+    min-height:80px;
+}
+
+#mainNav a{
+    color:#111!important;
+    text-decoration:none!important;
+    border:none!important;
+}
+
+.nav-links{
+    display:flex;
+    gap:2.5rem;
+    align-items:center;
+}
+
+/* Page */
+
+.lessons{
+    max-width:1000px;
+    margin:0 auto;
+    padding:60px 24px 120px;
+}
+
+.lessons h1{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.7rem;
+    font-weight:500;
+    text-align:center;
+    margin:0 0 40px;
+}
+
+.intro{
+    max-width:760px;
+    margin:0 auto 42px;
+    text-align:center;
+}
+
+.intro p{
+    margin:0 0 14px;
+}
+
+.intro p:last-child{
+    margin-bottom:0;
+}
+
+/* Lesson Layout */
+
+.lesson-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+    align-items:start;
+}
+
+.panel{
+    background:var(--panel);
+    padding:40px 42px;
+    border-radius:4px;
+}
+
+.panel h2{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.05rem;
+    font-weight:500;
+    margin:0 0 28px;
+}
+
+.panel h3{
+    font-family:'Varela Round',sans-serif;
+    font-size:.95rem;
+    font-weight:500;
+    margin:28px 0 10px;
+}
+
+.panel h3:first-of-type{
+    margin-top:0;
+}
+
+.panel p{
+    margin:0 0 18px;
+}
+
+.panel p:last-child{
+    margin-bottom:0;
+}
+
+/* Lesson Areas */
+
+.lesson-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.lesson-list li{
+    padding:13px 0;
+    border-bottom:1px solid rgba(0,0,0,.09);
+}
+
+.lesson-list li:first-child{
+    padding-top:0;
+}
+
+.lesson-list li:last-child{
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+.lesson-title{
+    font-weight:700;
+}
+
+.lesson-description{
+    font-size:.95rem;
+    color:rgba(0,0,0,.7);
+    margin-top:2px;
+}
+
+/* Lesson Expanders */
+
+.lesson-details{
+    margin-top:8px;
+}
+
+.lesson-details summary{
+    display:inline-block;
+    color:var(--accent);
+    font-size:.82rem;
+    font-weight:700;
+    cursor:pointer;
+    list-style:none;
+    border-bottom:1px solid rgba(139,46,60,.35);
+}
+
+.lesson-details summary::-webkit-details-marker{
+    display:none;
+}
+
+.lesson-details summary::after{
+    content:" +";
+    font-weight:700;
+}
+
+.lesson-details[open] summary::after{
+    content:" −";
+}
+
+.lesson-details summary:hover{
+    color:#111;
+    border-bottom-color:rgba(139,46,60,.75);
+}
+
+.lesson-detail-content{
+    margin-top:12px;
+    padding:14px 16px;
+    background:rgba(255,255,255,.35);
+    border-left:2px solid rgba(139,46,60,.35);
+    font-size:.9rem;
+    color:rgba(0,0,0,.72);
+}
+
+.lesson-detail-content p{
+    margin:0 0 12px;
+}
+
+.lesson-detail-content p:last-child{
+    margin-bottom:0;
+}
+
+/* Pricing */
+
+.pricing{
+    margin-top:34px;
+    padding-top:28px;
+    border-top:1px solid rgba(0,0,0,.1);
+}
+
+.price-item{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:13px 0;
+    border-bottom:1px solid rgba(0,0,0,.09);
+}
+
+.price-item:last-child{
+    border-bottom:none;
+}
+
+.price-name{
+    font-weight:700;
+}
+
+.price-detail{
+    color:rgba(0,0,0,.65);
+    font-size:.95rem;
+}
+
+.price{
+    white-space:nowrap;
+    font-weight:700;
+    color:var(--accent);
+}
+
+/* Booking */
+
+.booking{
+    margin-top:28px;
+    padding-top:28px;
+    border-top:1px solid rgba(0,0,0,.1);
+    text-align:center;
+}
+
+.booking p{
+    margin-bottom:18px;
+}
+
+.button{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:10px 22px;
+    border-radius:3px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.button:hover{
+    background:#111;
+    color:#fff;
+    border:none;
+}
+
+/* Footer */
+
+.footer{
+    background:var(--paper);
+    border-top:1px solid rgba(0,0,0,.06);
+    padding:80px 30px;
+    text-align:center;
+    font-size:.95rem;
+    color:rgba(0,0,0,.7);
+}
+
+@media(max-width:900px){
+    .nav-links{
+        gap:1.5rem;
+    }
+
+    .lesson-layout{
+        grid-template-columns:1fr;
+    }
+
+    .panel{
+        padding:36px 28px;
+    }
+}
+
+@media(max-width:600px){
+    .lessons{
+        padding:45px 18px 90px;
+    }
+
+    .panel{
+        padding:32px 22px;
+    }
+
+    .nav-links{
+        gap:1rem;
+    }
+
+    .price-item{
+        display:block;
+    }
+
+    .price{
+        display:block;
+        margin-top:3px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+
+        <div class="nav-links">
+            <a href="./music.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./research.html">Research</a>
+            <a href="./contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<section class="lessons">
+
+    <h1>Music Lessons</h1>
+
+    <div class="intro">
+        <p>
+            Individual music lessons for beginners through advanced students,
+            with a focus on practical music-making, creativity and developing
+            your own musical voice.
+        </p>
+
+        <p>
+            Lessons are available during school terms, or as individual
+            one-off sessions.
+        </p>
+    </div>
+
+    <div class="lesson-layout">
+
+        <div class="panel">
+
+            <h2>Lessons</h2>
+
+            <ul class="lesson-list">
+
+                <li>
+                    <div class="lesson-title">Piano</div>
+                    <div class="lesson-description">
+                        Classical piano, technique, repertoire, sight-reading,
+                        theory and musicianship.
+                    </div>
+
+                    <details class="lesson-details">
+                        <summary>More about piano</summary>
+                        <div class="lesson-detail-content">
+                            <p>
+                                Add detailed information here about your piano
+                                teaching, repertoire, technique, practice,
+                                musicianship and the texts or resources you use.
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <li>
+                    <div class="lesson-title">Guitar</div>
+                    <div class="lesson-description">
+                        Modern guitar, jazz, fusion, improvisation,
+                        harmony and contemporary practice.
+                    </div>
+
+                    <details class="lesson-details">
+                        <summary>More about guitar</summary>
+                        <div class="lesson-detail-content">
+                            <p>
+                                Add detailed information here about your guitar
+                                teaching, including jazz and fusion, improvisation,
+                                harmony, repertoire and the texts or resources
+                                you use.
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <li>
+                    <div class="lesson-title">Composition</div>
+                    <div class="lesson-description">
+                        Developing ideas, form, harmony, notation,
+                        arranging and composing for different ensembles.
+                    </div>
+
+                    <details class="lesson-details">
+                        <summary>More about composition</summary>
+                        <div class="lesson-detail-content">
+                            <p>
+                                Add detailed information here about your
+                                composition teaching, approaches to developing
+                                musical ideas, form, harmony, notation and
+                                arranging.
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <li>
+                    <div class="lesson-title">Orchestration</div>
+                    <div class="lesson-description">
+                        Instrumental colour, ranges, combinations,
+                        scoring and analysis of orchestral music.
+                    </div>
+
+                    <details class="lesson-details">
+                        <summary>More about orchestration</summary>
+                        <div class="lesson-detail-content">
+                            <p>
+                                Add detailed information here about orchestration,
+                                including instrumental ranges, combinations,
+                                scoring and the texts or analytical resources
+                                you use.
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <li>
+                    <div class="lesson-title">Analysis</div>
+                    <div class="lesson-description">
+                        Learning how music works through detailed listening,
+                        score study, harmony, form and musical structure.
+                    </div>
+
+                    <details class="lesson-details">
+                        <summary>More about analysis</summary>
+                        <div class="lesson-detail-content">
+                            <p>
+                                Add detailed information here about your
+                                analytical approach, including listening,
+                                score study, harmony, form, structure and
+                                specific analytical texts or methods.
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <li>
+                    <div class="lesson-title">Electronic Music</div>
+                    <div class="lesson-description">
+                        Sound, synthesis, sequencing, electronic instruments,
+                        experimental music and creative technology.
+                    </div>
+
+                    <details class="lesson-details">
+                        <summary>More about electronic music</summary>
+                        <div class="lesson-detail-content">
+                            <p>
+                                Add detailed information here about electronic
+                                music, synthesis, sequencing, sound design,
+                                electronic instruments, experimental approaches
+                                and the software or hardware you use.
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>Fees & Booking</h2>
+
+            <p>
+                Lessons can be booked regularly for a school term, or arranged
+                as individual sessions when a regular weekly commitment isn't
+                suitable.
+            </p>
+
+            <div class="pricing">
+
+                <div class="price-item">
+                    <div>
+                        <div class="price-name">Term lessons</div>
+                        <div class="price-detail">
+                            30 minutes · weekly during term
+                        </div>
+                    </div>
+                    <div class="price">$40</div>
+                </div>
+
+                <div class="price-item">
+                    <div>
+                        <div class="price-name">One-off lesson</div>
+                        <div class="price-detail">
+                            45 minutes
+                        </div>
+                    </div>
+                    <div class="price">$50</div>
+                </div>
+
+            </div>
+
+            <div class="booking">
+
+                <p>
+                    To discuss lessons or arrange a time, get in touch by email.
+                </p>
+
+                <a class="button" href="mailto:jamie@jamiegabriel.org">
+                    Enquire about lessons
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+    <div>jamie@jamiegabriel.org</div>
+</footer>
+
+</body>
+</html>

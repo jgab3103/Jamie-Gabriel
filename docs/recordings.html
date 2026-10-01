@@ -1,212 +1,778 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>Recordings – Jamie Gabriel</title>
+
+<meta name="description" content="Jamie Gabriel — Works" />
+<meta name="author" content="Jamie Gabriel" />
+
+<title>Jamie Gabriel — Works</title>
 
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
 
 <link href="css/styles.css" rel="stylesheet" />
 
 <style>
 
 /* =========================
-   BASE (MATCH SITE)
+   BASE
    ========================= */
 
-:root {
-    --accent: #8B2E3C;
+:root{
+    --accent:#8B2E3C;
+    --paper:#FAFAFA;
+    --panel:#F4F1EB;
 }
 
-html {
-    scroll-behavior: smooth;
-    background: #FAFAFA;
+html{
+    scroll-behavior:smooth;
+    background:var(--paper);
 }
 
-body {
-    margin: 0;
-    font-family: 'Nunito', sans-serif;
-    background: #FAFAFA;
-    color: #111;
-    line-height: 1.75;
-    font-size: 16.5px;
-    padding-top: 80px;
+body{
+    margin:0;
+    font-family:'Nunito',sans-serif;
+    background:var(--paper);
+    color:#111;
+    line-height:1.75;
+    font-size:16.5px;
+    padding-top:80px;
 }
 
-/* LINKS */
-a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(139, 46, 60, 0.35);
-    transition: all 0.2s ease;
+
+/* =========================
+   LINKS
+   ========================= */
+
+a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid rgba(139,46,60,.35);
+    transition:.2s;
 }
 
-a:hover {
-    color: #111;
-    border-bottom-color: rgba(139, 46, 60, 0.75);
+a:hover{
+    color:#111;
+    border-bottom-color:rgba(139,46,60,.75);
 }
 
-/* NAV */
+
+/* =========================
+   NAV
+   ========================= */
+
 #mainNav,
-#mainNav.navbar-shrink {
-    background: #FAFAFA !important;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    min-height: 80px;
+#mainNav.navbar-shrink{
+    background:var(--paper)!important;
+    border-bottom:1px solid rgba(0,0,0,.05);
+    min-height:80px;
 }
 
-#mainNav a {
-    color: #111 !important;
-    text-decoration: none !important;
+#mainNav a{
+    color:#111!important;
+    text-decoration:none!important;
+    border:none!important;
 }
+
+.nav-links{
+    display:flex;
+    gap:2.5rem;
+    align-items:center;
+}
+
 
 /* =========================
-   PAGE LAYOUT
+   PAGE
    ========================= */
 
-.page {
-    max-width: 1000px;
-    margin: auto;
-    padding: 80px 24px 140px;
+.page{
+    max-width:1000px;
+    margin:0 auto;
+    padding:60px 24px 120px;
+    box-sizing:border-box;
 }
 
-h1 {
-    font-family: 'Varela Round', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 10px;
+h2{
+    font-family:'Varela Round',sans-serif;
+    font-weight:500;
+    font-size:1.7rem;
+    margin:0 0 35px;
 }
 
-.back-link {
-    display: inline-block;
-    margin-bottom: 40px;
-    color: rgba(0,0,0,0.6);
-    font-size: 0.95rem;
-}
 
 /* =========================
-   RECORDING ROWS
+   RECORDINGS
    ========================= */
 
-.recording {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 40px;
-    padding: 28px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-    align-items: start;
+.recording{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 280px;
+    gap:50px;
+
+    padding:30px;
+    margin-bottom:28px;
+
+    background:var(--panel);
+    border-radius:4px;
+
+    box-sizing:border-box;
+    align-items:start;
 }
 
-.recording:last-child {
-    border-bottom: none;
+.recording-details{
+    padding-top:8px;
 }
 
-/* IMAGE TILE (COLOUR VERSION) */
-.media-wrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: 12px;
-    overflow: hidden;
-
-    transition: opacity 0.3s ease, transform 0.3s ease;
+.recording-details h3{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.25rem;
+    font-weight:500;
+    margin:0 0 10px;
 }
 
-.recording:hover .media-wrapper {
-    opacity: 0.92;
-    transform: scale(1.01);
+.recording-meta{
+    font-size:.92rem;
+    color:rgba(0,0,0,.6);
+    margin-bottom:22px;
 }
 
-.media-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
+.recording-details p{
+    max-width:45ch;
+    color:rgba(0,0,0,.75);
 }
 
-/* TEXT BLOCK */
-.recording-text h2 {
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.2rem;
-    margin: 0 0 10px;
-    font-weight: 500;
+
+/* =========================
+   PLAYER SWITCHER
+   ========================= */
+
+.player-switcher{
+    width:100%;
+    min-width:0;
 }
 
-.recording-meta {
-    font-size: 0.95rem;
-    color: rgba(0,0,0,0.6);
-    margin-bottom: 12px;
+.player-tabs{
+    display:flex;
+    gap:18px;
+    margin-bottom:12px;
+    align-items:center;
 }
 
-.recording-text p {
-    max-width: 65ch;
-    margin: 0;
-    font-size: 0.98rem;
-    color: rgba(0,0,0,0.75);
+.player-tab{
+    padding:0 0 3px;
+    border:0!important;
+    border-bottom:1px solid transparent!important;
+    background:none;
+    color:rgba(0,0,0,.5);
+    font-family:'Nunito',sans-serif;
+    font-size:.82rem;
+    cursor:pointer;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .recording {
-        grid-template-columns: 1fr;
-        gap: 16px;
+.player-tab:hover{
+    color:#111;
+}
+
+.player-tab.active{
+    color:var(--accent);
+    border-bottom-color:rgba(139,46,60,.55)!important;
+}
+
+
+/* =========================
+   PLAYER PANELS
+   ========================= */
+
+.player-content{
+    position:relative;
+    width:100%;
+}
+
+.player-panel{
+    width:100%;
+    display:none;
+}
+
+.player-panel.active{
+    display:block;
+}
+
+
+/* =========================
+   SPOTIFY
+   ========================= */
+
+.player-content .spotify-frame{
+    display:block;
+    width:100%;
+    height:450px;
+    border:0;
+    border-radius:12px;
+}
+
+.player-content .single-spotify-frame{
+    height:152px;
+}
+
+
+/* =========================
+   BANDCAMP
+   ========================= */
+
+.player-content .bandcamp-frame{
+    display:block;
+    width:100%;
+    height:687px;
+    border:0;
+    border-radius:12px;
+}
+
+.player-content .single-bandcamp-frame{
+    height:442px;
+}
+
+
+/* =========================
+   LIVE
+   ========================= */
+
+.live-section{
+    margin-top:75px;
+}
+
+.live-section h2{
+    margin-bottom:35px;
+}
+
+.live{
+    columns:3 280px;
+    column-gap:28px;
+}
+
+.live-item{
+    min-width:0;
+    break-inside:avoid;
+    margin-bottom:42px;
+}
+
+
+/* =========================
+   VIDEO
+   ========================= */
+
+.media-video{
+    position:relative;
+    width:100%;
+    aspect-ratio:16 / 9;
+    overflow:hidden;
+    margin-bottom:16px;
+    background:var(--panel);
+}
+
+.media-video iframe{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+
+/* =========================
+   INSTAGRAM
+   ========================= */
+
+.media-instagram{
+    width:100%;
+    margin-bottom:16px;
+    overflow:hidden;
+}
+
+.media-instagram .instagram-media{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+}
+
+
+/* =========================
+   LIVE CAPTIONS
+   ========================= */
+
+.live-caption{
+    color:rgba(0,0,0,.75);
+    font-size:.92rem;
+    line-height:1.6;
+}
+
+.live-caption strong{
+    display:block;
+    margin-bottom:7px;
+    font-family:'Varela Round',sans-serif;
+    font-size:1rem;
+    font-weight:500;
+    color:#111;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer{
+    border-top:1px solid rgba(0,0,0,.06);
+    padding:70px 24px;
+    text-align:center;
+    color:rgba(0,0,0,.45);
+    font-size:.85rem;
+    line-height:1.8;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media(max-width:900px){
+
+    #mainNav .container{
+        padding-left:24px;
+        padding-right:24px;
     }
+
+    .nav-links{
+        gap:1.5rem;
+    }
+
+    .recording{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .live{
+        columns:2 280px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    #mainNav .container{
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+    .page{
+        padding-top:55px;
+    }
+
+    .recording{
+        padding:24px;
+    }
+
+    .live{
+        columns:1;
+    }
+
+    .nav-links{
+        gap:1rem;
+    }
+
+}
+
+/* =========================
+   LIVE FILTERS
+   ========================= */
+
+.live-filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:-10px 0 28px;
+}
+
+.filter-btn{
+    padding:8px 14px;
+    border:1px solid rgba(0,0,0,.12);
+    border-radius:999px;
+    background:transparent;
+    color:rgba(0,0,0,.7);
+    font-family:'Nunito',sans-serif;
+    font-size:.85rem;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.filter-btn:hover{
+    border-color:rgba(139,46,60,.4);
+    color:#111;
+}
+
+.filter-btn.active{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
 }
 
 </style>
 
 </head>
 
-<body id="page-top">
+<body>
+
+<!-- =========================
+     NAVIGATION
+     ========================= -->
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
-    </div>
-</nav>
 
-<div class="page">
+<div class="container px-4 px-lg-5">
 
-    <h1>Recordings</h1>
-    <a class="back-link" href="./index.html">← Back</a>
+<a class="navbar-brand" href="./index.html">
+    Jamie Gabriel
+</a>
 
-    <!-- RECORDING 1 -->
-    <div class="recording">
-        <div class="media-wrapper">
-            <img src="assets/img/AlbumCover.jpg" alt="SAJA Project">
-        </div>
-        <div class="recording-text">
-            <h2><a href="https://sajaproject.com/">SAJA Project</a></h2>
-            <div class="recording-meta">Studio Recording - 2025<br/>
-                Album recorded with <a href="https://sallyjamila.com/">Sally Jamila</a> 
-            </p>
-        </div>
-    </div>
+<div class="nav-links">
 
-    <!-- RECORDING 2 -->
-<!--     <div class="recording">
-        <div class="media-wrapper">
-            <img src="assets/img/AlbumCover2.png" alt="Lofi Sessions">
-        </div>
-        <div class="recording-text">
-            <h2>Lofi Sessions</h2>
-            <div class="recording-meta">Live recording — 20 Sept 2025</div>
-            <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-        </div>
-    </div> -->
 
-  
+<a href="./music.html">Music</a>
+<a href="./teaching.html">Teaching</a>
+<a href="./recordings.html">Recordings</a>
+<a href="./contact.html">Contact</a>
+
 
 </div>
 
+</div>
+
+</nav>
+
+<!-- =========================
+     PAGE
+     ========================= -->
+
+<main class="page">
+
+<h2>Recordings</h2>
+
+<!-- =========================
+     SINGLE
+     ========================= -->
+
+<article class="recording">
+
+<div class="player-switcher">
+
+<div class="player-tabs">
+
+
+<button
+    class="player-tab active"
+    type="button"
+    data-player="spotify"
+    onclick="showPlayer(this)">
+    Spotify
+</button>
+
+<button
+    class="player-tab"
+    type="button"
+    data-player="bandcamp"
+    onclick="showPlayer(this)">
+    Bandcamp
+</button>
+
+
+</div>
+
+<div class="player-content">
+
+
+<div
+    class="player-panel active"
+    data-player-panel="spotify">
+
+    <iframe
+        class="spotify-frame single-spotify-frame"
+        data-testid="embed-iframe"
+        src="https://open.spotify.com/embed/album/6eBVoOmpiSzUb2z3DnFlUK?utm_source=generator&si=6ef36b90537c4b09"
+        width="100%"
+        height="152"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+
+</div>
+
+<div
+    class="player-panel"
+    data-player-panel="bandcamp"
+    data-bandcamp-url="https://bandcamp.com/EmbeddedPlayer/track=3039662765/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/"
+    data-bandcamp-height="442">
+</div>
+
+
+</div>
+
+</div>
+
+<div class="recording-details">
+
+<h3>Sunday Girl</h3>
+
+<div class="recording-meta">
+    Release · 4 September 2026
+</div>
+
+<p>
+    <a href="https://sajaproject.com/sunday-girl.html">
+        More details
+    </a>
+</p>
+
+</div>
+
+</article>
+
+<!-- =========================
+     SAJA PROJECT
+     ========================= -->
+
+<article class="recording">
+
+<div class="player-switcher">
+
+<div class="player-tabs">
+
+
+<button
+    class="player-tab active"
+    type="button"
+    data-player="spotify"
+    onclick="showPlayer(this)">
+    Spotify
+</button>
+
+<button
+    class="player-tab"
+    type="button"
+    data-player="bandcamp"
+    onclick="showPlayer(this)">
+    Bandcamp
+</button>
+
+
+</div>
+
+<div class="player-content">
+
+
+<div
+    class="player-panel active"
+    data-player-panel="spotify">
+
+    <iframe
+        class="spotify-frame"
+        data-testid="embed-iframe"
+        src="https://open.spotify.com/embed/artist/3DhKcRde51hmI0VnY4wLNo?utm_source=generator&si=b94d475fc9d34b63"
+        width="100%"
+        height="450"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+
+</div>
+
+<div
+    class="player-panel"
+    data-player-panel="bandcamp"
+    data-bandcamp-url="https://bandcamp.com/EmbeddedPlayer/album=2354495077/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/"
+    data-bandcamp-height="687">
+</div>
+
+
+</div>
+
+</div>
+
+<div class="recording-details">
+
+<h3>SAJA Project</h3>
+
+<div class="recording-meta">
+    Release · 13 August 2026
+</div>
+
+<p>
+    <a href="https://sajaproject.com/album.html">
+        More details
+    </a>
+</p>
+
+</div>
+
+</article>
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
+<footer class="footer">
+
+
+
+<div>
+    jamie@jamiegabriel.org
+</div>
+
+</footer>
+
+<!-- =========================
+     PLAYER SWITCHING
+     ========================= -->
+
+<script>
+
+function loadBandcamp(panel){
+
+    if(panel.dataset.loaded === 'true'){
+        return;
+    }
+
+    const iframe = document.createElement('iframe');
+
+    iframe.className = 'bandcamp-frame';
+
+    if(panel.dataset.bandcampHeight === '442'){
+        iframe.classList.add('single-bandcamp-frame');
+    }
+
+    iframe.src = panel.dataset.bandcampUrl;
+
+    iframe.width = '100%';
+
+    iframe.frameBorder = '0';
+
+    iframe.setAttribute('seamless', '');
+
+    const link = document.createElement('a');
+
+    if(panel.dataset.bandcampHeight === '442'){
+
+        link.href = 'https://sajaproject.bandcamp.com/track/sunday-girl';
+        link.textContent = 'Sunday Girl by SAJA Project';
+
+    }else{
+
+        link.href = 'https://sajaproject.bandcamp.com/album/saja-project-01';
+        link.textContent = 'SAJA Project 01 by SAJA Project';
+
+    }
+
+    iframe.appendChild(link);
+
+    panel.appendChild(iframe);
+
+    panel.dataset.loaded = 'true';
+
+}
+
+
+function showPlayer(button){
+
+    const switcher = button.closest('.player-switcher');
+
+    const tabs = switcher.querySelectorAll('.player-tab');
+
+    const panels = switcher.querySelectorAll('.player-panel');
+
+    const player = button.dataset.player;
+
+
+    if(player === 'bandcamp'){
+
+        const panel = switcher.querySelector(
+            '[data-player-panel="bandcamp"]'
+        );
+
+        if(panel){
+            loadBandcamp(panel);
+        }
+
+    }
+
+
+    tabs.forEach(function(tab){
+
+        tab.classList.remove('active');
+
+    });
+
+
+    panels.forEach(function(panel){
+
+        panel.classList.remove('active');
+
+    });
+
+
+    button.classList.add('active');
+
+
+    const panel = switcher.querySelector(
+        '[data-player-panel="' + player + '"]'
+    );
+
+    if(panel){
+        panel.classList.add('active');
+    }
+
+}
+
+</script>
+
+
+<script>
+const filterButtons = document.querySelectorAll('.filter-btn');
+const liveItems = document.querySelectorAll('.live-item');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+
+        filterButtons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.dataset.filter;
+
+        liveItems.forEach(item => {
+            const tags = item.dataset.tags || '';
+
+            if (filter === 'all' || tags.includes(filter)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+<!-- =========================
+     INSTAGRAM EMBED
+     ========================= -->
+
+<script async src="https://www.instagram.com/embed.js"></script>
+
 </body>
+
 </html>
