@@ -1,8 +1,57 @@
+
 const works = [
 
-    {
+{
+    title: "Golden Retrieve Her",
+    composer: "Adja",
+    year: 2025,
+
+    listens: [
+        "2026-10"
+    ],
+
+    composedPlace: "Ghent, Belgium",
+    lat: 51.0543,
+    lng: 3.7174,
+
+    born: null,
+    died: null,
+    birthplace: "Belgium",
+
+    firstPerformancePlace: "Belgium",
+    firstPerformanceDate: "11 April 2025",
+
+    period: "Neo-Soul / Jazz",
+    notes: "Debut full-length album by Belgian singer and composer Adja, blending soul, jazz, groove and experimental production. Created with guitarist and arranger Alexis Nootens, with contributions from Adam Scrimshire, Koen Gisen and a large ensemble of musicians."
+},
+
+{
+    title: "Music Has the Right to Children",
+    composer: "Boards of Canada",
+    year: 1998,
+
+    listens: [
+        "2026-10"
+    ],
+
+    composedPlace: "Pentland Hills, Scotland",
+    lat: 55.8500,
+    lng: -3.3000,
+
+    born: null,
+    died: null,
+    birthplace: "Scotland",
+
+    firstPerformancePlace: "United Kingdom",
+    firstPerformanceDate: "20 April 1998",
+
+    period: "Electronic / IDM / Ambient",
+    notes: "Debut widely released studio album by Scottish electronic duo Michael Sandison and Marcus Eoin. Recorded at their Hexagon Sun studio and released through Warp and Skam. Known for degraded analogue textures, nostalgic synthesiser melodies, found sounds and hip-hop-influenced rhythms."
+},
+
+{
     title: "Brandenburg Concerto No. 3",
-    composer: "Johann Sebastian Bach",
+    composer: "Bach, Johann Sebastian",
     year: 1721,
 
     listens: [
@@ -28,8 +77,104 @@ const works = [
 },
 
 {
+    title: "Symphony No. 1 in C Minor (WAB 101, 1866 Linz Version)",
+    composer: "Bruckner, Anton",
+    year: 1866,
+
+    listens: [
+        "2026-09"
+    ],
+
+    composedPlace: "Linz, Austria",
+    lat: 48.3069,
+    lng: 14.2858,
+
+    born: 1824,
+    died: 1896,
+    birthplace: "Ansfelden, Austria",
+
+    firstPerformancePlace: "Linz, Austria",
+    firstPerformanceDate: "9 May 1868",
+
+    period: "Romantic",
+    notes: "Composed in 1865–1866 and premiered in Linz in 1868 under Bruckner's direction. The original Linz version is notably energetic and bold, with striking rhythmic drive and adventurous orchestration. Bruckner subsequently revised the work in 1877 and produced a substantially revised Vienna version in 1890–1891."
+},
+
+{
+    title: "Seven Pieces for Small Orchestra (B. 15)",
+    composer: "Dvořák, Antonín",
+    year: 1867,
+
+    listens: [
+        "2026-09"
+    ],
+
+    composedPlace: "Prague, Czech Republic",
+    lat: 50.0768,
+    lng: 14.4285,
+
+    born: 1841,
+    died: 1904,
+    birthplace: "Nelahozeves, Czech Republic",
+
+    firstPerformancePlace: "London, England",
+    firstPerformanceDate: "31 January 1991",
+
+    period: "Romantic",
+    notes: "Composed between 12 January and 5 February 1867 as seven short orchestral interludes. Written while Dvořák was a viola player at Prague's Provisional Theatre. Rediscovered in 1951 and first published in 1989. Its first documented complete concert performance took place in London in 1991, more than a century after Dvořák's death."
+},
+
+{
+    title: "Symphony No. 1 in C Minor 'The Bells of Zlonice' (B. 9)",
+    composer: "Dvořák, Antonín",
+    year: 1865,
+
+    listens: [
+        "2026-09"
+    ],
+
+    composedPlace: "Prague, Czech Republic",
+    lat: 50.0775,
+    lng: 14.4292,
+
+    born: 1841,
+    died: 1904,
+    birthplace: "Nelahozeves, Czech Republic",
+
+    firstPerformancePlace: "Brno, Czech Republic",
+    firstPerformanceDate: "4 October 1936",
+
+    period: "Romantic",
+    notes: "Composed between 14 February and 24 March 1865 when Dvořák was 23. Influenced by Beethoven and Schubert but already displaying his emerging individual style. Dvořák believed the manuscript lost and never heard the symphony performed. Rediscovered after his death and premiered in Brno in 1936."
+},
+
+{
+    title: "Symphony No. 2 in B-flat Major (Op. 4, B. 12)",
+    composer: "Dvořák, Antonín",
+    year: 1865,
+
+    listens: [
+        "2026-09"
+    ],
+
+    composedPlace: "Prague, Czech Republic",
+    lat: 50.0782,
+    lng: 14.4300,
+
+    born: 1841,
+    died: 1904,
+    birthplace: "Nelahozeves, Czech Republic",
+
+    firstPerformancePlace: "Prague, Czech Republic",
+    firstPerformanceDate: "11 March 1888",
+
+    period: "Romantic",
+    notes: "Composed between August and October 1865, only months after the First Symphony. An expansive early work showing the influence of Beethoven, Schubert and Wagner. Dvořák substantially revised the orchestration in 1887, and the symphony was premiered by Adolf Čech in Prague in 1888."
+},
+
+{
     title: "Symphony No. 8",
-    composer: "Antonín Dvořák",
+    composer: "Dvořák, Antonín",
     year: 1890,
 
     listens: [
@@ -54,7 +199,7 @@ const works = [
 
 {
     title: "Symphony No. 7",
-    composer: "Antonín Dvořák",
+    composer: "Dvořák, Antonín",
     year: 1885,
 
     listens: [
@@ -80,7 +225,7 @@ const works = [
 
 {
     title: "Symphony No. 9 'From the New World'",
-    composer: "Antonín Dvořák",
+    composer: "Dvořák, Antonín",
     year: 1893,
 
     listens: [
@@ -106,7 +251,7 @@ const works = [
 
 {
     title: "Sunday at the Village Vanguard",
-    composer: "Bill Evans",
+    composer: "Evans, Bill",
     year: 1961,
 
     listens: [
@@ -132,7 +277,7 @@ const works = [
 
 {
     title: "Standards, Vol. 1",
-    composer: "Keith Jarrett",
+    composer: "Jarrett, Keith",
     year: 1983,
 
     listens: [
@@ -156,8 +301,56 @@ const works = [
 },
 
 {
+    title: "Equinoxe Infinity",
+    composer: "Jarre, Jean-Michel",
+    year: 2018,
+
+    listens: [
+        "2026-10"
+    ],
+
+    composedPlace: "France",
+    lat: 48.8566,
+    lng: 2.3522,
+
+    born: 1948,
+    died: null,
+    birthplace: "Lyon, France",
+
+    firstPerformancePlace: "France",
+    firstPerformanceDate: "16 November 2018",
+
+    period: "Electronic / Ambient",
+    notes: "A sequel to Jarre's 1978 album Equinoxe, revisiting its mysterious Watchers figures forty years later. Combines analogue-style synthesis, contemporary electronic production and themes concerning technology, artificial intelligence and humanity's future."
+},
+
+{
+    title: "Oxymore",
+    composer: "Jarre, Jean-Michel",
+    year: 2022,
+
+    listens: [
+        "2026-10"
+    ],
+
+    composedPlace: "France",
+    lat: 48.8578,
+    lng: 2.3550,
+
+    born: 1948,
+    died: null,
+    birthplace: "Lyon, France",
+
+    firstPerformancePlace: "France",
+    firstPerformanceDate: "21 October 2022",
+
+    period: "Electronic / Musique Concrète",
+    notes: "An immersive electronic album conceived in multichannel and binaural audio, dedicated to Pierre Henry. Incorporates sound material recorded by Henry and draws on the French musique concrète tradition associated with Pierre Schaeffer and the GRM."
+},
+
+{
     title: "Piano Sonata No. 1",
-    composer: "Nikolai Kapustin",
+    composer: "Kapustin, Nikolai",
     year: 1984,
 
     listens: [
@@ -182,7 +375,7 @@ const works = [
 
 {
     title: "Electric Dreams",
-    composer: "John McLaughlin",
+    composer: "McLaughlin, John",
     year: 1979,
 
     listens: [
@@ -207,8 +400,32 @@ const works = [
 },
 
 {
+    title: "Music for Abandoned Heights",
+    composer: "McLaughlin, John",
+    year: 2026,
+
+    listens: [
+        "2026-10"
+    ],
+
+    composedPlace: "London, England",
+    lat: 51.5260,
+    lng: -0.2020,
+
+    born: 1942,
+    died: null,
+    birthplace: "Doncaster, England",
+
+    firstPerformancePlace: "London, England",
+    firstPerformanceDate: "2026-01",
+
+    period: "Jazz Fusion",
+    notes: "Originally composed as a film score for Abandoned Heights, directed by Jack Stallings. Recorded in 2019 at Eastcote Studios, London, with Gary Husband, Julian Siegel, Misha Mullov-Abbado and Etienne Mbappé. Released by Impex Records in 2026."
+},
+
+{
     title: "Quartet for the End of Time",
-    composer: "Olivier Messiaen",
+    composer: "Messiaen, Olivier",
     year: 1941,
 
     listens: [
@@ -234,7 +451,7 @@ const works = [
 
 {
     title: "Daphnis et Chloé",
-    composer: "Maurice Ravel",
+    composer: "Ravel, Maurice",
     year: 1912,
 
     listens: [
@@ -260,7 +477,7 @@ const works = [
 
 {
     title: "Gurre-Lieder",
-    composer: "Arnold Schoenberg",
+    composer: "Schoenberg, Arnold",
     year: 1911,
 
     listens: [
@@ -285,7 +502,7 @@ const works = [
 
 {
     title: "The Rite of Spring",
-    composer: "Igor Stravinsky",
+    composer: "Stravinsky, Igor",
     year: 1913,
 
     listens: [
@@ -311,7 +528,7 @@ const works = [
 
 {
     title: "Petrushka",
-    composer: "Igor Stravinsky",
+    composer: "Stravinsky, Igor",
     year: 1911,
 
     listens: [
@@ -336,7 +553,7 @@ const works = [
 
 {
     title: "The Firebird",
-    composer: "Igor Stravinsky",
+    composer: "Stravinsky, Igor",
     year: 1910,
 
     listens: [
@@ -362,7 +579,7 @@ const works = [
 
 {
     title: "Pulcinella",
-    composer: "Igor Stravinsky",
+    composer: "Stravinsky, Igor",
     year: 1920,
 
     listens: [

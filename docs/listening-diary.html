@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -209,7 +210,8 @@ a:hover{
     font-weight:700;
 }
 
-select{
+select,
+#searchFilter{
     width:100%;
     padding:10px 12px;
     border:1px solid rgba(0,0,0,.15);
@@ -453,7 +455,7 @@ select{
     <p class="intro">
         A growing map of music I'm listening to, studying and teaching.
         Each pin marks the place a work was composed, with the composer,
-        year and notes. Use the timelines and period filter to explore
+        year and notes. Use the timelines and search box to explore
         music across geography, history and my own listening history.
         Click on the dots to get details of the work.
         <br/>
@@ -497,7 +499,6 @@ select{
 
             </div>
 
-
             <div class="control-block">
 
                 <div class="label">Listening</div>
@@ -535,26 +536,20 @@ select{
 
             </div>
 
-
             <div class="control-block">
 
-                <div class="label">Period</div>
+                <div class="label">Search anything</div>
 
-                <select id="periodFilter">
-
-                    <option value="all">All periods</option>
-                    <option value="Baroque">Baroque</option>
-                    <option value="Classical">Classical</option>
-                    <option value="Romantic">Romantic</option>
-                    <option value="Modern">Modern</option>
-                    <option value="Jazz">Jazz</option>
-
-                </select>
+                <input
+                    id="searchFilter"
+                    type="search"
+                    placeholder="Composer, work, period, place, notes..."
+                    aria-label="Search listening diary"
+                >
 
             </div>
 
         </div>
-
 
         <div class="view-tabs">
 
@@ -576,9 +571,7 @@ select{
 
         </div>
 
-
         <div id="map" class="map-view"></div>
-
 
         <div id="table-view" class="table-view">
 
@@ -626,7 +619,6 @@ select{
 
         </div>
 
-
         <div class="stats">
 
             <div>
@@ -642,7 +634,6 @@ select{
     </div>
 
 </section>
-
 
 <section class="diary" id="why-listening-diary">
 
@@ -677,7 +668,6 @@ select{
 
 </section>
 
-
 <footer class="footer">
 
     <div>
@@ -685,7 +675,6 @@ select{
     </div>
 
 </footer>
-
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="works.js"></script>
@@ -736,8 +725,8 @@ const minListenValue =
 const maxListenValue =
     document.getElementById("maxListenValue");
 
-const period =
-    document.getElementById("periodFilter");
+const searchFilter =
+    document.getElementById("searchFilter");
 
 const count =
     document.getElementById("count");
@@ -797,7 +786,6 @@ function getListeningBounds(){
 
     });
 
-
     if(!dates.length){
 
         return {
@@ -807,9 +795,7 @@ function getListeningBounds(){
 
     }
 
-
     dates.sort();
-
 
     return {
         earliest:dates[0],
@@ -817,7 +803,6 @@ function getListeningBounds(){
     };
 
 }
-
 
 const listeningBounds =
     getListeningBounds();
@@ -890,13 +875,11 @@ function formatListenDate(date){
     const month =
         parts[1];
 
-
     if(!month){
 
         return year;
 
     }
-
 
     const dateObject =
         new Date(
@@ -904,7 +887,6 @@ function formatListenDate(date){
             Number(month) - 1,
             1
         );
-
 
     return dateObject.toLocaleDateString(
         "en-AU",
@@ -931,7 +913,6 @@ const latestListenNumber =
         listeningBounds.latest
     );
 
-
 for(
     let i = earliestListenNumber;
     i <= latestListenNumber;
@@ -943,7 +924,6 @@ for(
 
     const label =
         formatListenDate(date);
-
 
     const minOption =
         document.createElement("option");
@@ -957,7 +937,6 @@ for(
     minListenSelect.appendChild(
         minOption
     );
-
 
     const maxOption =
         document.createElement("option");
@@ -973,7 +952,6 @@ for(
     );
 
 }
-
 
 minListenSelect.value =
     listeningBounds.earliest;
@@ -997,7 +975,6 @@ function mostRecentListen(work){
         return null;
 
     }
-
 
     return [...work.listens]
         .sort()
@@ -1026,7 +1003,6 @@ function wasListenedToInRange(
 
     }
 
-
     return work.listens.some(listen => {
 
         return listen >= minListen &&
@@ -1049,13 +1025,11 @@ function getFilters(){
     let maxYear =
         Number(maxSlider.value);
 
-
     if(minYear > maxYear){
 
         minYear = maxYear;
 
     }
-
 
     let minListen =
         minListenSelect.value;
@@ -1063,13 +1037,11 @@ function getFilters(){
     let maxListen =
         maxListenSelect.value;
 
-
     if(minListen > maxListen){
 
         minListen = maxListen;
 
     }
-
 
     return {
 
@@ -1077,7 +1049,7 @@ function getFilters(){
         maxYear,
         minListen,
         maxListen,
-        selectedPeriod:period.value
+        searchQuery:searchFilter.value.trim().toLocaleLowerCase()
 
     };
 
@@ -1112,13 +1084,14 @@ function filteredWorks(){
     const filters =
         getFilters();
 
+    const searchTerms =
+        filters.searchQuery.split(/\s+/).filter(Boolean);
 
     return works.filter(work => {
 
         const compositionMatches =
             work.year >= filters.minYear &&
             work.year <= filters.maxYear;
-
 
         const listeningMatches =
             wasListenedToInRange(
@@ -1127,16 +1100,31 @@ function filteredWorks(){
                 filters.maxListen
             );
 
+        const searchableText = [
+            work.composer,
+            work.title,
+            work.year,
+            work.composedPlace,
+            work.birthplace,
+            work.firstPerformancePlace,
+            work.firstPerformanceDate,
+            work.period,
+            work.notes,
+            ...(Array.isArray(work.listens) ? work.listens : [])
+        ]
+            .filter(value => value != null)
+            .join(" ")
+            .toLocaleLowerCase();
 
-        const periodMatches =
-            filters.selectedPeriod === "all" ||
-            work.period === filters.selectedPeriod;
-
+        const searchMatches =
+            searchTerms.every(term =>
+                searchableText.includes(term)
+            );
 
         return (
             compositionMatches &&
             listeningMatches &&
-            periodMatches
+            searchMatches
         );
 
     });
@@ -1152,13 +1140,11 @@ function draw(changedControl){
 
     markerLayer.clearLayers();
 
-
     let minYear =
         Number(minSlider.value);
 
     let maxYear =
         Number(maxSlider.value);
-
 
     if(minYear > maxYear){
 
@@ -1176,13 +1162,11 @@ function draw(changedControl){
 
     }
 
-
     let minListen =
         minListenSelect.value;
 
     let maxListen =
         maxListenSelect.value;
-
 
     if(minListen > maxListen){
 
@@ -1200,13 +1184,11 @@ function draw(changedControl){
 
     }
 
-
     minYearValue.textContent =
         minYear;
 
     maxYearValue.textContent =
         maxYear;
-
 
     minListenValue.textContent =
         formatListenDate(minListen);
@@ -1214,17 +1196,13 @@ function draw(changedControl){
     maxListenValue.textContent =
         formatListenDate(maxListen);
 
-
     const visible =
         filteredWorks();
-
 
     count.textContent =
         visible.length;
 
-
     const bounds = [];
-
 
     visible.forEach(work => {
 
@@ -1240,13 +1218,9 @@ function draw(changedControl){
                 }
             );
 
-
-        const surname =
-            work.composer
-                .trim()
-                .split(/\s+/)
-                .pop();
-
+        const surname = work.composer.includes(",")
+            ? work.composer.split(",")[0].trim()
+            : work.composer.trim();
 
         marker.bindTooltip(
             surname,
@@ -1258,10 +1232,8 @@ function draw(changedControl){
             }
         );
 
-
         const recentListen =
             mostRecentListen(work);
-
 
         const listeningHistory =
             work.listens &&
@@ -1276,7 +1248,6 @@ function draw(changedControl){
                     .join(", ")
 
                 : "—";
-
 
         marker.bindPopup(`
 
@@ -1328,9 +1299,7 @@ function draw(changedControl){
 
         `);
 
-
         marker.addTo(markerLayer);
-
 
         bounds.push([
             work.lat,
@@ -1338,7 +1307,6 @@ function draw(changedControl){
         ]);
 
     });
-
 
     if(bounds.length){
 
@@ -1359,7 +1327,6 @@ function draw(changedControl){
 
     }
 
-
     if(tableView.style.display !== "none"){
 
         renderTable();
@@ -1378,12 +1345,10 @@ function renderTable(){
     let visible =
         filteredWorks();
 
-
     visible.sort((a,b) => {
 
         let aValue;
         let bValue;
-
 
         if(tableSortField === "listens"){
 
@@ -1403,7 +1368,6 @@ function renderTable(){
 
         }
 
-
         if(aValue == null){
 
             aValue = "";
@@ -1416,7 +1380,6 @@ function renderTable(){
 
         }
 
-
         if(
             typeof aValue === "number" &&
             typeof bValue === "number"
@@ -1428,7 +1391,6 @@ function renderTable(){
 
         }
 
-
         return tableSortDirection === "asc"
             ? String(aValue)
                 .localeCompare(String(bValue))
@@ -1437,7 +1399,6 @@ function renderTable(){
 
     });
 
-
     tableBody.innerHTML =
         visible.map(work => {
 
@@ -1445,14 +1406,12 @@ function renderTable(){
                 work.firstPerformancePlace ||
                 "—";
 
-
             const performanceDate =
                 work.firstPerformanceDate
 
                     ? `<br><small>${work.firstPerformanceDate}</small>`
 
                     : "";
-
 
             const listeningHistory =
                 work.listens &&
@@ -1467,7 +1426,6 @@ function renderTable(){
                         .join(", ")
 
                     : "—";
-
 
             return `
 
@@ -1508,7 +1466,6 @@ function renderTable(){
 
         }).join("");
 
-
     document
         .querySelectorAll(".works-table th")
         .forEach(th => {
@@ -1517,7 +1474,6 @@ function renderTable(){
                 "sort-asc",
                 "sort-desc"
             );
-
 
             if(
                 th.dataset.sort ===
@@ -1551,13 +1507,10 @@ tabs.forEach(tab => {
 
         });
 
-
         tab.classList.add("active");
-
 
         const view =
             tab.dataset.view;
-
 
         if(view === "map-view"){
 
@@ -1567,13 +1520,11 @@ tabs.forEach(tab => {
             tableView.style.display =
                 "none";
 
-
             setTimeout(() => {
 
                 map.invalidateSize();
 
             },50);
-
 
         }else{
 
@@ -1582,7 +1533,6 @@ tabs.forEach(tab => {
 
             tableView.style.display =
                 "block";
-
 
             renderTable();
 
@@ -1606,7 +1556,6 @@ document
             const field =
                 th.dataset.sort;
 
-
             if(tableSortField === field){
 
                 tableSortDirection =
@@ -1623,7 +1572,6 @@ document
                     "asc";
 
             }
-
 
             renderTable();
 
@@ -1663,11 +1611,11 @@ maxListenSelect.addEventListener(
 
 
 /* --------------------------------------------------
-   Period filter
+   Search filter
 -------------------------------------------------- */
 
-period.addEventListener(
-    "change",
+searchFilter.addEventListener(
+    "input",
     () => draw()
 );
 
