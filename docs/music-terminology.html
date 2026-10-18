@@ -1,0 +1,817 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Music Terminology – A multilingual dictionary of musical terms" />
+<meta name="author" content="Jamie Gabriel" />
+
+<title>Music Terminology | Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+
+<link href="css/styles.css" rel="stylesheet" />
+
+<style>
+:root {
+    --accent: #8B2E3C;
+    --paper: #FAFAFA;
+    --panel: #F4F1EB;
+    --ink: #292929;
+    --muted: #777;
+    --line: #e4e0da;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--paper);
+}
+
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: var(--paper);
+    color: #111;
+    line-height: 1.75;
+    font-size: 16.5px;
+    padding-top: 80px;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(139,46,60,.35);
+    transition: .2s;
+}
+
+a:hover {
+    color: #111;
+    border-bottom-color: rgba(139,46,60,.75);
+}
+
+/* Navigation */
+
+#mainNav,
+#mainNav.navbar-shrink {
+    background: var(--paper) !important;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    min-height: 80px;
+}
+
+#mainNav a {
+    color: #111 !important;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    border-bottom: none;
+}
+
+/* Main layout */
+
+.dictionary-page {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 60px 24px 110px;
+}
+
+h1 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 500;
+    margin: 0 0 10px;
+    line-height: 1.35;
+}
+
+.intro {
+    max-width: 75ch;
+    color: rgba(0,0,0,.65);
+    font-size: .98rem;
+    margin: 0 0 38px;
+}
+
+/* Search and controls */
+
+.search-panel {
+    background: var(--panel);
+    padding: 25px;
+    border-radius: 5px;
+    margin-bottom: 24px;
+}
+
+.search-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: end;
+}
+
+.control {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.control label {
+    font-size: 12px;
+    font-weight: 800;
+    color: #555;
+    letter-spacing: .02em;
+}
+
+.control input,
+.control select {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    border: 1px solid #d8d5d0;
+    border-radius: 4px;
+    padding: 11px 13px;
+    background: white;
+    color: #222;
+}
+
+.search-control {
+    flex: 1;
+    min-width: 230px;
+}
+
+.search-control input {
+    width: 100%;
+}
+
+.control select {
+    min-width: 170px;
+}
+
+.reset-button {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    padding: 11px 20px;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.reset-button:hover {
+    opacity: .88;
+}
+
+/* Results */
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 12px;
+}
+
+.results-header h2 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin: 0;
+}
+
+#result-count {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+}
+
+.terms-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.terms-table th {
+    background: #f8f7f5;
+    text-align: left;
+    padding: 15px 16px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #555;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+}
+
+.terms-table td {
+    padding: 15px 16px;
+    border-bottom: 1px solid #eeece9;
+    vertical-align: top;
+}
+
+.terms-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.terms-table tbody tr:hover {
+    background: #faf8f5;
+}
+
+.term-primary {
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.term-category {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    background: var(--panel);
+    border-radius: 3px;
+    color: #666;
+    white-space: nowrap;
+}
+
+.term-note {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 45px 20px;
+    color: #777;
+}
+
+/* Information */
+
+.info-panel {
+    background: var(--panel);
+    border-radius: 5px;
+    padding: 24px;
+    margin-top: 28px;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.info-panel p {
+    max-width: 95ch;
+    margin: 8px 0 0;
+}
+
+/* Footer */
+
+.footer {
+    background: var(--paper);
+    border-top: 1px solid rgba(0,0,0,.06);
+    padding: 80px 30px;
+    text-align: center;
+    font-size: .95rem;
+    color: rgba(0,0,0,.7);
+}
+
+@media(max-width:700px) {
+    .nav-links {
+        gap: 1.4rem;
+        font-size: .95rem;
+    }
+
+    h1 {
+        font-size: 1.55rem;
+    }
+
+    .dictionary-page {
+        padding: 35px 15px 70px;
+    }
+
+    .search-panel {
+        padding: 18px;
+    }
+
+    .terms-table {
+        min-width: 850px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+
+        <div class="nav-links">
+            <a href="./music.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./recordings.html">Recordings</a>
+            <a href="./contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Main content -->
+
+<main class="dictionary-page">
+
+    <h1>Music Terminology</h1>
+
+    <p class="intro">
+        A multilingual dictionary of musical terms, exploring the
+        language of music across Italian, English, French and German.
+        Search for a term in any language to discover its meaning
+        and equivalent expressions in other musical traditions.
+    </p>
+
+    <!-- Search controls -->
+
+    <section class="search-panel">
+
+        <div class="search-controls">
+
+            <div class="control search-control">
+                <label for="search">SEARCH MUSICAL TERMS</label>
+                <input
+                    type="search"
+                    id="search"
+                    placeholder="e.g. andante, langsam, crescendo..."
+                    autocomplete="off"
+                />
+            </div>
+
+            <div class="control">
+                <label for="category">CATEGORY</label>
+                <select id="category">
+                    <option value="All">All categories</option>
+                    <option value="Tempo">Tempo</option>
+                    <option value="Dynamics">Dynamics</option>
+                    <option value="Articulation">Articulation</option>
+                    <option value="Expression">Expression</option>
+                </select>
+            </div>
+
+            <button class="reset-button" id="reset">Reset</button>
+
+        </div>
+
+    </section>
+
+    <!-- Dictionary -->
+
+    <section>
+
+        <div class="results-header">
+            <h2>Dictionary</h2>
+            <span id="result-count"></span>
+        </div>
+
+        <div class="table-wrapper">
+
+            <table class="terms-table">
+
+                <thead>
+                    <tr>
+                        <th>Italian</th>
+                        <th>English</th>
+                        <th>French</th>
+                        <th>German</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+
+                <tbody id="terms-body"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <!-- Notes -->
+
+    <section class="info-panel">
+
+        <strong>About musical terminology</strong>
+
+        <p>
+            Italian has traditionally been the dominant language
+            of musical notation, particularly for tempo, dynamics
+            and articulation. However, composers have also used
+            French, German and other languages to communicate
+            musical intentions.
+        </p>
+
+        <p>
+            Not every musical term has an exact equivalent in
+            another language. Some translations are descriptive,
+            while others reflect conventions used by composers
+            in different historical and cultural contexts.
+        </p>
+
+    </section>
+
+</main>
+
+<!-- Footer -->
+
+<footer class="footer">
+    <div>jamie@jamiegabriel.org</div>
+</footer>
+
+<script>
+
+/*
+  MUSIC TERMINOLOGY DATA
+
+  Each entry contains:
+
+  id          Unique identifier
+  italian     Italian term
+  english     English equivalent
+  french      French equivalent
+  german      German equivalent
+  category    Musical category
+  note        Optional explanation
+
+  This array can later be moved into
+  a separate music-terms.js file.
+*/
+
+const musicTerms = [
+
+    {
+        id: 1,
+        italian: "Largo",
+        english: "Broadly; very slowly",
+        french: "Large; très lent",
+        german: "Breit; sehr langsam",
+        category: "Tempo",
+        note: "Suggests a broad, spacious character rather than simply a metronome speed."
+    },
+
+    {
+        id: 2,
+        italian: "Adagio",
+        english: "Slowly; at ease",
+        french: "Lentement",
+        german: "Langsam; ruhig",
+        category: "Tempo",
+        note: "Generally a slow tempo, often with a calm or expressive character."
+    },
+
+    {
+        id: 3,
+        italian: "Andante",
+        english: "At a walking pace",
+        french: "Allant; en allant",
+        german: "Gehend",
+        category: "Tempo",
+        note: "Traditionally associated with a flowing, walking movement."
+    },
+
+    {
+        id: 4,
+        italian: "Moderato",
+        english: "Moderately",
+        french: "Modéré",
+        german: "Mäßig",
+        category: "Tempo",
+        note: "A moderate tempo or character."
+    },
+
+    {
+        id: 5,
+        italian: "Allegro",
+        english: "Fast; lively",
+        french: "Vif; animé",
+        german: "Schnell; lebhaft",
+        category: "Tempo",
+        note: "Historically also implies cheerfulness or liveliness."
+    },
+
+    {
+        id: 6,
+        italian: "Presto",
+        english: "Very fast",
+        french: "Très vite",
+        german: "Sehr schnell",
+        category: "Tempo",
+        note: "A rapid tempo."
+    },
+
+    {
+        id: 7,
+        italian: "Accelerando",
+        english: "Gradually getting faster",
+        french: "En accélérant",
+        german: "Beschleunigend",
+        category: "Tempo",
+        note: "Often abbreviated accel."
+    },
+
+    {
+        id: 8,
+        italian: "Ritardando",
+        english: "Gradually slowing down",
+        french: "En ralentissant",
+        german: "Allmählich langsamer werdend",
+        category: "Tempo",
+        note: "Often abbreviated rit."
+    },
+
+    {
+        id: 9,
+        italian: "Piano",
+        english: "Softly",
+        french: "Doucement",
+        german: "Leise",
+        category: "Dynamics",
+        note: "Usually indicated by the symbol p."
+    },
+
+    {
+        id: 10,
+        italian: "Forte",
+        english: "Loudly; strongly",
+        french: "Fort",
+        german: "Laut; kräftig",
+        category: "Dynamics",
+        note: "Usually indicated by the symbol f."
+    },
+
+    {
+        id: 11,
+        italian: "Crescendo",
+        english: "Gradually getting louder",
+        french: "En augmentant progressivement l'intensité",
+        german: "Lauter werdend",
+        category: "Dynamics",
+        note: "Can be indicated by the hairpin symbol <."
+    },
+
+    {
+        id: 12,
+        italian: "Diminuendo",
+        english: "Gradually getting softer",
+        french: "En diminuant progressivement l'intensité",
+        german: "Leiser werdend",
+        category: "Dynamics",
+        note: "Can be indicated by the hairpin symbol >."
+    },
+
+    {
+        id: 13,
+        italian: "Sforzando",
+        english: "Sudden strong emphasis",
+        french: "Fortement accentué",
+        german: "Stark hervorgehoben",
+        category: "Dynamics",
+        note: "Often abbreviated sf or sfz; implies a forceful accent."
+    },
+
+    {
+        id: 14,
+        italian: "Staccato",
+        english: "Detached; short",
+        french: "Détaché",
+        german: "Kurz; abgestoßen",
+        category: "Articulation",
+        note: "Notes are separated, though the exact duration depends on context."
+    },
+
+    {
+        id: 15,
+        italian: "Legato",
+        english: "Smoothly connected",
+        french: "Lié",
+        german: "Gebunden",
+        category: "Articulation",
+        note: "Notes are connected without perceptible gaps."
+    },
+
+    {
+        id: 16,
+        italian: "Marcato",
+        english: "Marked; emphasised",
+        french: "Marqué",
+        german: "Markiert; betont",
+        category: "Articulation",
+        note: "A strongly marked articulation."
+    },
+
+    {
+        id: 17,
+        italian: "Dolce",
+        english: "Sweetly; gently",
+        french: "Doux; doucement",
+        german: "Sanft; lieblich",
+        category: "Expression",
+        note: "An expressive indication suggesting tenderness or sweetness."
+    },
+
+    {
+        id: 18,
+        italian: "Cantabile",
+        english: "In a singing style",
+        french: "Chantant",
+        german: "Gesanglich",
+        category: "Expression",
+        note: "Often used for lyrical, melodic passages."
+    },
+
+    {
+        id: 19,
+        italian: "Con brio",
+        english: "With vigour; spirit",
+        french: "Avec entrain",
+        german: "Mit Schwung; feurig",
+        category: "Expression",
+        note: "Suggests energy and animation."
+    },
+
+    {
+        id: 20,
+        italian: "Espressivo",
+        english: "Expressively",
+        french: "Expressif",
+        german: "Ausdrucksvoll",
+        category: "Expression",
+        note: "Often abbreviated espress."
+    }
+
+];
+
+/* DOM references */
+
+const searchInput = document.getElementById("search");
+const categorySelect = document.getElementById("category");
+const termsBody = document.getElementById("terms-body");
+const resultCount = document.getElementById("result-count");
+const resetButton = document.getElementById("reset");
+
+/*
+  Normalise text so searching is not
+  sensitive to capitalisation or accents.
+*/
+
+function normalise(text) {
+    return String(text || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+}
+
+/*
+  Safely create table cells.
+*/
+
+function createCell(text, className = "") {
+    const td = document.createElement("td");
+    td.textContent = text || "—";
+
+    if (className) {
+        td.className = className;
+    }
+
+    return td;
+}
+
+/*
+  Render the dictionary.
+*/
+
+function renderTerms() {
+
+    const query = normalise(searchInput.value.trim());
+    const category = categorySelect.value;
+
+    const filtered = musicTerms.filter(term => {
+
+        const matchesCategory =
+            category === "All" ||
+            term.category === category;
+
+        const searchableText = normalise([
+            term.italian,
+            term.english,
+            term.french,
+            term.german,
+            term.category,
+            term.note
+        ].join(" "));
+
+        const matchesSearch =
+            searchableText.includes(query);
+
+        return matchesCategory && matchesSearch;
+    });
+
+    filtered.sort((a, b) =>
+        a.italian.localeCompare(b.italian)
+    );
+
+    termsBody.innerHTML = "";
+
+    resultCount.textContent =
+        filtered.length + " terms";
+
+    if (filtered.length === 0) {
+
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+
+        cell.colSpan = 5;
+        cell.className = "empty-state";
+        cell.textContent =
+            "No matching musical terms found.";
+
+        row.appendChild(cell);
+        termsBody.appendChild(row);
+
+        return;
+    }
+
+    filtered.forEach(term => {
+
+        const row = document.createElement("tr");
+
+        const italianCell = createCell(
+            term.italian,
+            "term-primary"
+        );
+
+        if (term.note) {
+            const note = document.createElement("div");
+            note.className = "term-note";
+            note.textContent = term.note;
+            italianCell.appendChild(note);
+        }
+
+        const englishCell = createCell(term.english);
+        const frenchCell = createCell(term.french);
+        const germanCell = createCell(term.german);
+
+        const categoryCell = document.createElement("td");
+        const badge = document.createElement("span");
+
+        badge.className = "term-category";
+        badge.textContent = term.category;
+
+        categoryCell.appendChild(badge);
+
+        row.append(
+            italianCell,
+            englishCell,
+            frenchCell,
+            germanCell,
+            categoryCell
+        );
+
+        termsBody.appendChild(row);
+    });
+}
+
+/* Events */
+
+searchInput.addEventListener("input", renderTerms);
+categorySelect.addEventListener("change", renderTerms);
+
+resetButton.addEventListener("click", () => {
+    searchInput.value = "";
+    categorySelect.value = "All";
+    renderTerms();
+});
+
+/* Initial display */
+
+renderTerms();
+
+</script>
+
+</body>
+</html>
