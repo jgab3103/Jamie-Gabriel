@@ -116,27 +116,33 @@ a:hover {
 }
 
 /* =========================
-   SIDEBAR
+   SIDEBAR COLUMN
    ========================= */
 
+.sidebar-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
 .about-sidebar {
-    border: 1px solid rgba(0,0,0,0.10);
-    padding: 20px;
+    background: #F4F1EB;
+    padding: 28px;
     box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
 }
 
 .about-image {
-    margin-bottom: 35px;
+    margin-bottom: 28px;
 }
 
 .about-image img {
     width: 100%;
     max-width: 220px;
     height: auto;
-    object-fit: cover;
     display: block;
-
- 
+    object-fit: cover;
     opacity: 0.92;
 }
 
@@ -152,6 +158,39 @@ a:hover {
 
 .cv-links li {
     margin-bottom: 10px;
+}
+
+/* =========================
+   CONFERENCES & EVENTS
+   ========================= */
+
+.events-sidebar h2 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.15rem;
+    margin: 0 0 22px;
+    color: #111;
+}
+
+.event {
+    margin-bottom: 18px;
+}
+
+.event:last-child {
+    margin-bottom: 0;
+}
+
+.event-year {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+}
+
+.event-name {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: #222;
 }
 
 /* =========================
@@ -214,7 +253,7 @@ a:hover {
         gap: 40px;
     }
 
-    .about-sidebar {
+    .sidebar-column {
         order: -1;
     }
 
@@ -225,31 +264,6 @@ a:hover {
     .nav-links {
         gap: 1.5rem;
     }
-}
-
-/* =========================
-   SIDEBAR
-   ========================= */
-
-.about-sidebar {
-    background: #F4F1EB;
-    padding: 28px;
-    box-sizing: border-box;
-    border: none;
-    border-radius: 4px;
-}
-
-.about-image {
-    margin-bottom: 28px;
-}
-
-.about-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-
-    opacity: 0.92;
 }
 
 </style>
@@ -263,11 +277,10 @@ a:hover {
         <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
 
         <div class="nav-links">
-<a href="./music.html">Music</a>
-<a href="./teaching.html">Teaching</a>
-<a href="./recordings.html">Recordings</a>
-<a href="./contact.html">Contact</a>
-
+            <a href="./music.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./recordings.html">Recordings</a>
+            <a href="./contact.html">Contact</a>
         </div>
 
     </div>
@@ -283,20 +296,22 @@ a:hover {
 
             <p>
                 I started out a little undecided as to whether to pursue music or computer science. I ended up going with music first, studying first at Australian Institute of Music and the Sydney Conservatorium of Music, before completing
-                postgraduate studies at Macquarie University and the University of Technology Sydney. 
-
-            </p>
-            <p>I hold a PhD in computational musicology focused on machine learning approaches to music analysis.
+                postgraduate studies at Macquarie University and the University of Technology Sydney.
             </p>
 
+            <p>
+                I hold a PhD in computational musicology focused on machine learning approaches to music analysis.
+            </p>
 
             <p>
                 I spent a number of years teaching in tertiary settings, on subjects like musicology, harmony, improvisation, music history, ensemble practice, and composition. I also became increasingly involved in computer science and math and over the past two decades I have developed all kinds of software in languages like C, C++, Java, R, Haskell, and Python, which included a large scale digital humanities project for the search and anlaysis of large XML orchestral datasets.
             </p>
+
             <p>
-                In 2012 I made the move out of academia into more pure data science and machine learning roles. I worked primarily in health analytics and developed deep learning systems and data security solutions across a range of corporate and government roles. 
-</p>
-<p>
+                In 2012 I made the move out of academia into more pure data science and machine learning roles. I worked primarily in health analytics and developed deep learning systems and data security solutions across a range of corporate and government roles.
+            </p>
+
+            <p>
                 This culminated
                 in my appointment as Chief Data Officer at the Cancer Institute NSW, a role I held from 2018 until 2025. It was
                 a pretty amazing time, giving me the opportunity to lead data and analytics strategy at scale, manage large data science
@@ -318,67 +333,121 @@ a:hover {
                 I have also recently released a first album,
                 <a href="https://sajaproject.com/">SAJA Project 01</a>
                 with Aotearoa based artist
-                <a href="https://sallyjamila.com/">Sally Jamila</a>. It has been amazing to make this recording with my partner in music and in life, and we are looking forward to recording more music soon. 
-            </p>
-            <p>
-                I think that is about it. I have two beautiful children and try and get to the water every day. Sometimes I think I should get a dog and do (at least some) yoga. 
+                <a href="https://sallyjamila.com/">Sally Jamila</a>. It has been amazing to make this recording with my partner in music and in life, and we are looking forward to recording more music soon.
             </p>
 
+            <p>
+                I think that is about it. I have two beautiful children and try and get to the water every day. Sometimes I think I should get a dog and do (at least some) yoga.
+            </p>
 
         </div>
 
-        <aside class="about-sidebar">
+        <!-- RIGHT COLUMN: TWO SEPARATE SIDEBARS -->
 
-            <div class="about-image">
-                <img src="assets/img/JamieFaceEdited_5357.jpeg" alt="Jamie Gabriel">
-            </div>
+        <div class="sidebar-column">
 
-            <div class="cv-links">
+            <!-- FIRST SIDEBAR: PHOTO, CV AND SOCIAL -->
 
-                <div>
-                    Having moved between two careers, I have found it is simpler to have two different CV's.
-                    One outlines my experience in software development, enterprise technologies, data science and executive roles.
-                    <br><br>
-                    The other is focused on my music, teaching and research. 
+            <aside class="about-sidebar">
+
+                <div class="about-image">
+                    <img src="assets/img/JamieFaceEdited_5357.jpeg" alt="Jamie Gabriel">
                 </div>
 
-                <br/>
+                <div class="cv-links">
 
-                <ul>
-                    <li>
-                        <a href="./assets/pdf-files/Resume_Teaching_JamieGabriel.pdf">
-                            Music, Teaching and Research CV
-                        </a>
-                    </li>
+                    <div>
+                        Having moved between two careers, I have found it is simpler to have two different CV's.
+                        One outlines my experience in software development, enterprise technologies, data science and executive roles.
+                        <br><br>
+                        The other is focused on my music, teaching and research.
+                    </div>
 
-                    <li>
-                        <a href="./assets/pdf-files/ResumeIT.pdf">
-                            Data &amp; Technology CV
-                        </a>
-                    </li>
-                </ul>
+                    <br/>
 
-            </div>
+                    <ul>
+                        <li>
+                            <a href="./assets/pdf-files/Resume_Teaching_JamieGabriel.pdf">
+                                Music, Teaching and Research CV
+                            </a>
+                        </li>
 
+                        <li>
+                            <a href="./assets/pdf-files/ResumeIT.pdf">
+                                Data &amp; Technology CV
+                            </a>
+                        </li>
+                    </ul>
 
+                </div>
 
-            <div class="social-links">
+                <div class="social-links">
 
-                <a href="https://www.instagram.com/jgab2275/" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
+                    <a href="https://www.instagram.com/jgab2275/" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
 
-                <a href="https://www.facebook.com/jamie.gabriel.775451" aria-label="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
+                    <a href="https://www.facebook.com/jamie.gabriel.775451" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
 
-                <a href="https://www.linkedin.com/in/jamie-gabriel-b41a0059/" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
+                    <a href="https://www.linkedin.com/in/jamie-gabriel-b41a0059/" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
 
-            </div>
+                </div>
 
-        </aside>
+            </aside>
+
+            <!-- SECOND SIDEBAR: CONFERENCES & EVENTS -->
+
+            <aside class="about-sidebar events-sidebar">
+
+                <h2>Conferences &amp; Events</h2>
+
+                <div class="event">
+                    <div class="event-year">2025</div>
+                    <div class="event-name">AJIRN Conference, Auckland</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-year">2020</div>
+                    <div class="event-name">Data and Analytics in Health Conference, Melbourne</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-year">2019</div>
+                    <div class="event-name">PyCon AU, Sydney</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-year">2017</div>
+                    <div class="event-name">PyCon AU, Melbourne</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-year">2015</div>
+                    <div class="event-name">ISMIR Conference, Málaga</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-year">2013</div>
+                    <div class="event-name">Stockholm Music Acoustics Conference</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-year">2012</div>
+                    <div class="event-name">ACM Recommender Systems Conference</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-year">2011</div>
+                    <div class="event-name">Apple WWDC, San Francisco</div>
+                </div>
+
+            </aside>
+
+        </div>
 
     </div>
 
