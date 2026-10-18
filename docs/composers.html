@@ -1,0 +1,958 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Interactive composer timeline exploring the lives and creative periods of classical composers – Jamie Gabriel" />
+<meta name="author" content="Jamie Gabriel" />
+
+<title>Composer Timeline | Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+
+<link href="css/styles.css" rel="stylesheet" />
+
+<style>
+:root {
+    --accent: #8B2E3C;
+    --paper: #FAFAFA;
+    --panel: #F4F1EB;
+    --ink: #292929;
+    --muted: #777;
+    --line: #e4e0da;
+    --baroque: #9B734C;
+    --classical: #4F8496;
+    --romantic: #9B526B;
+    --modern: #637D66;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--paper);
+}
+
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: var(--paper);
+    color: #111;
+    line-height: 1.75;
+    font-size: 16.5px;
+    padding-top: 80px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(139,46,60,.35);
+    transition: .2s;
+}
+
+a:hover {
+    color: #111;
+    border-bottom-color: rgba(139,46,60,.75);
+}
+
+/* Navigation */
+
+#mainNav,
+#mainNav.navbar-shrink {
+    background: var(--paper) !important;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    min-height: 80px;
+}
+
+#mainNav a {
+    color: #111 !important;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    border-bottom: none;
+}
+
+/* Main layout */
+
+.timeline-page {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+}
+
+.page-intro {
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 500;
+    margin: 0 0 10px;
+    line-height: 1.35;
+}
+
+.page-intro p {
+    max-width: 75ch;
+    margin: 0;
+    color: rgba(0,0,0,.6);
+    font-size: .98rem;
+}
+
+/* Timeline panels */
+
+.panel {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 24px;
+    margin-bottom: 22px;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: end;
+}
+
+.control {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.control label {
+    font-size: 12px;
+    font-weight: 800;
+    color: #555;
+}
+
+.control input,
+.control select,
+.controls button {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    border: 1px solid #d8d5d0;
+    border-radius: 4px;
+    padding: 9px 11px;
+    background: white;
+    color: #222;
+}
+
+.control input[type="number"] {
+    width: 100px;
+}
+
+.control input[type="search"] {
+    width: 210px;
+}
+
+.controls button {
+    cursor: pointer;
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    padding: 9px 18px;
+}
+
+.controls button:hover {
+    opacity: .88;
+}
+
+/* Legend */
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    font-size: 13px;
+    margin-top: 24px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.swatch {
+    display: inline-block;
+    width: 24px;
+    height: 10px;
+    border-radius: 3px;
+}
+
+.swatch.life {
+    background: #d9d9d9;
+}
+
+.swatch.baroque {
+    background: var(--baroque);
+}
+
+.swatch.classical {
+    background: var(--classical);
+}
+
+.swatch.romantic {
+    background: var(--romantic);
+}
+
+.swatch.modern {
+    background: var(--modern);
+}
+
+/* Chart */
+
+.chart-scroll {
+    overflow-x: auto;
+}
+
+.chart {
+    min-width: 850px;
+}
+
+.chart-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.chart-heading h2 {
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 500;
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--accent);
+}
+
+#count {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.timeline-row {
+    display: grid;
+    grid-template-columns: 175px minmax(0, 1fr) 100px;
+    min-height: 38px;
+    align-items: center;
+    border-bottom: 1px solid #f0eeeb;
+}
+
+.timeline-row:last-child {
+    border-bottom: 0;
+}
+
+.timeline-row.composer {
+    cursor: pointer;
+}
+
+.timeline-row.composer:hover {
+    background: #faf8f5;
+}
+
+.timeline-row.selected {
+    background: #f8edf0;
+}
+
+.timeline-row.dimmed {
+    opacity: .22;
+}
+
+.name {
+    font-size: 13px;
+    font-weight: 700;
+    padding-right: 12px;
+}
+
+.dates {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    padding-left: 8px;
+}
+
+.plot {
+    position: relative;
+    height: 38px;
+    min-width: 0;
+}
+
+.gridline {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #eeece9;
+    pointer-events: none;
+}
+
+.axis {
+    height: 40px;
+    position: relative;
+    border-bottom: 1px solid #bbb;
+}
+
+.tick {
+    position: absolute;
+    bottom: 6px;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: #777;
+}
+
+.tick.first {
+    transform: none;
+}
+
+.tick.last {
+    transform: translateX(-100%);
+}
+
+/* Lifespan and activity bars */
+
+.life-bar {
+    position: absolute;
+    height: 14px;
+    top: 12px;
+    background: #d9d9d9;
+    border-radius: 3px;
+}
+
+.active-bar {
+    position: absolute;
+    height: 14px;
+    top: 12px;
+    border-radius: 3px;
+    opacity: .95;
+}
+
+.active-bar.Baroque {
+    background: var(--baroque);
+}
+
+.active-bar.Classical {
+    background: var(--classical);
+}
+
+.active-bar.Romantic {
+    background: var(--romantic);
+}
+
+.active-bar.Modern {
+    background: var(--modern);
+}
+
+.selected .active-bar {
+    outline: 2px solid #333;
+    outline-offset: 2px;
+}
+
+/* Tooltip */
+
+.tooltip {
+    position: fixed;
+    z-index: 100;
+    background: #282828;
+    color: white;
+    border-radius: 6px;
+    padding: 12px 15px;
+    font-size: 12px;
+    line-height: 1.7;
+    pointer-events: none;
+    display: none;
+    max-width: 260px;
+    box-shadow: 0 5px 20px #0002;
+}
+
+.tooltip strong {
+    font-size: 14px;
+}
+
+/* Explanatory text */
+
+.info {
+    background: var(--panel);
+    font-size: 13px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.info p {
+    max-width: 95ch;
+    margin: 10px 0 16px;
+}
+
+.info p:last-child {
+    margin-bottom: 0;
+}
+
+#selection-info {
+    color: var(--accent);
+    font-weight: 700;
+    margin-top: 15px;
+    min-height: 20px;
+    font-size: 13px;
+}
+
+/* Footer */
+
+.footer {
+    background: var(--paper);
+    border-top: 1px solid rgba(0,0,0,.06);
+    padding: 80px 30px;
+    text-align: center;
+    font-size: .95rem;
+    color: rgba(0,0,0,.7);
+}
+
+/* Responsive */
+
+@media(max-width:700px) {
+    .nav-links {
+        gap: 1.4rem;
+        font-size: .95rem;
+    }
+
+    h1 {
+        font-size: 1.55rem;
+    }
+
+    .timeline-page {
+        padding: 35px 15px 70px;
+    }
+
+    .panel {
+        padding: 15px;
+    }
+
+    .timeline-row {
+        grid-template-columns: 145px minmax(0,1fr) 85px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
+
+        <div class="nav-links">
+            <a href="./music.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./recordings.html">Recordings</a>
+            <a href="./contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Main content -->
+
+<main class="timeline-page">
+
+    <div class="page-intro">
+        <h1>Composer Timeline</h1>
+        <p>
+            Exploring the lives and creative periods of composers across
+            musical history. Compare their lifespans, discover their
+            contemporaries and explore the connections between
+            different musical eras.
+        </p>
+    </div>
+
+    <!-- Controls -->
+
+    <section class="panel">
+
+        <div class="controls">
+
+            <div class="control">
+                <label for="search">SEARCH COMPOSERS</label>
+                <input type="search" id="search" placeholder="Search by name...">
+            </div>
+
+            <div class="control">
+                <label for="period">MUSICAL PERIOD</label>
+                <select id="period">
+                    <option value="All">All periods</option>
+                    <option value="Baroque">Baroque</option>
+                    <option value="Classical">Classical</option>
+                    <option value="Romantic">Romantic</option>
+                    <option value="Modern">Modern</option>
+                </select>
+            </div>
+
+            <div class="control">
+                <label for="startYear">FROM YEAR</label>
+                <input type="number" id="startYear" value="1600">
+            </div>
+
+            <div class="control">
+                <label for="endYear">TO YEAR</label>
+                <input type="number" id="endYear" value="2000">
+            </div>
+
+            <div class="control">
+                <label for="sort">SORT BY</label>
+                <select id="sort">
+                    <option value="birth">Birth year</option>
+                    <option value="active">First active year</option>
+                    <option value="name">Composer name</option>
+                </select>
+            </div>
+
+            <button id="reset">Reset</button>
+
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <span class="swatch life"></span> Lifespan
+            </div>
+            <div class="legend-item">
+                <span class="swatch baroque"></span> Baroque
+            </div>
+            <div class="legend-item">
+                <span class="swatch classical"></span> Classical
+            </div>
+            <div class="legend-item">
+                <span class="swatch romantic"></span> Romantic
+            </div>
+            <div class="legend-item">
+                <span class="swatch modern"></span> Modern
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Timeline -->
+
+    <section class="panel">
+
+        <div class="chart-heading">
+            <h2>Lives &amp; Creative Activity</h2>
+            <span id="count"></span>
+        </div>
+
+        <div class="chart-scroll">
+            <div class="chart" id="chart"></div>
+        </div>
+
+        <div id="selection-info"></div>
+
+    </section>
+
+    <!-- Explanation -->
+
+    <section class="panel info">
+
+        <strong>Reading the timeline</strong>
+
+        <p>
+            Each grey bar represents a composer's lifespan, from birth
+            to death. The coloured section indicates their approximate
+            period of musical activity. These dates are intended as
+            broad historical guides rather than definitive boundaries
+            of creative work.
+        </p>
+
+        <p>
+            Hover over a composer to see their dates. Click a composer
+            to highlight other composers whose active years overlapped.
+            Click the same composer again to clear the selection.
+        </p>
+
+        <p>
+            Musical period classifications are necessarily approximate.
+            Composers whose careers span different stylistic eras have
+            been assigned a single broad category for this visualisation.
+        </p>
+
+    </section>
+
+</main>
+
+<!-- Tooltip -->
+
+<div class="tooltip" id="tooltip"></div>
+
+<!-- Footer -->
+
+<footer class="footer">
+    <div>jamie@jamiegabriel.org</div>
+</footer>
+
+<script>
+/*
+  COMPOSER DATA
+
+  Format:
+  [Name, Birth, Death, Active From, Active To, Period]
+
+  Active years are approximate.
+*/
+
+const rawComposers = [
+    ["Monteverdi", 1567, 1643, 1582, 1643, "Baroque"],
+    ["Schütz", 1585, 1672, 1611, 1672, "Baroque"],
+    ["Lully", 1632, 1687, 1652, 1687, "Baroque"],
+    ["Corelli", 1653, 1713, 1675, 1713, "Baroque"],
+    ["Purcell", 1659, 1695, 1676, 1695, "Baroque"],
+    ["Vivaldi", 1678, 1741, 1703, 1741, "Baroque"],
+    ["Telemann", 1681, 1767, 1701, 1767, "Baroque"],
+    ["J. S. Bach", 1685, 1750, 1703, 1750, "Baroque"],
+    ["Handel", 1685, 1759, 1705, 1759, "Baroque"],
+    ["D. Scarlatti", 1685, 1757, 1701, 1757, "Baroque"],
+    ["Rameau", 1683, 1764, 1706, 1764, "Baroque"],
+
+    ["C. P. E. Bach", 1714, 1788, 1731, 1788, "Classical"],
+    ["Gluck", 1714, 1787, 1741, 1787, "Classical"],
+    ["Haydn", 1732, 1809, 1750, 1803, "Classical"],
+    ["Mozart", 1756, 1791, 1761, 1791, "Classical"],
+    ["Beethoven", 1770, 1827, 1782, 1826, "Classical"],
+    ["Schubert", 1797, 1828, 1810, 1828, "Classical"],
+
+    ["Berlioz", 1803, 1869, 1825, 1869, "Romantic"],
+    ["Mendelssohn", 1809, 1847, 1820, 1847, "Romantic"],
+    ["Chopin", 1810, 1849, 1827, 1849, "Romantic"],
+    ["Schumann", 1810, 1856, 1829, 1854, "Romantic"],
+    ["Liszt", 1811, 1886, 1822, 1886, "Romantic"],
+    ["Wagner", 1813, 1883, 1832, 1883, "Romantic"],
+    ["Verdi", 1813, 1901, 1839, 1893, "Romantic"],
+    ["Bruckner", 1824, 1896, 1845, 1896, "Romantic"],
+    ["Brahms", 1833, 1897, 1851, 1897, "Romantic"],
+    ["Tchaikovsky", 1840, 1893, 1860, 1893, "Romantic"],
+    ["Dvořák", 1841, 1904, 1861, 1904, "Romantic"],
+    ["Mahler", 1860, 1911, 1876, 1910, "Romantic"],
+
+    ["Debussy", 1862, 1918, 1880, 1918, "Modern"],
+    ["R. Strauss", 1864, 1949, 1881, 1948, "Modern"],
+    ["Sibelius", 1865, 1957, 1883, 1926, "Modern"],
+    ["Ravel", 1875, 1937, 1893, 1937, "Modern"],
+    ["Stravinsky", 1882, 1971, 1902, 1966, "Modern"],
+    ["Bartók", 1881, 1945, 1899, 1945, "Modern"],
+    ["Webern", 1883, 1945, 1899, 1943, "Modern"],
+    ["Berg", 1885, 1935, 1907, 1935, "Modern"],
+    ["Prokofiev", 1891, 1953, 1902, 1953, "Modern"],
+    ["Shostakovich", 1906, 1975, 1919, 1975, "Modern"]
+];
+
+const composers = rawComposers.map((d, id) => ({
+    id,
+    name: d[0],
+    birth: d[1],
+    death: d[2],
+    activeStart: d[3],
+    activeEnd: d[4],
+    period: d[5]
+}));
+
+const chart = document.getElementById("chart");
+const tooltip = document.getElementById("tooltip");
+const selectionInfo = document.getElementById("selection-info");
+
+let selectedId = null;
+
+const $ = id => document.getElementById(id);
+
+function overlaps(a, b) {
+    return a.activeStart <= b.activeEnd &&
+           b.activeStart <= a.activeEnd;
+}
+
+function percentage(year, start, end) {
+    return ((year - start) / (end - start)) * 100;
+}
+
+function makeGrid(plot, start, end) {
+    const interval = end - start > 250 ? 50 :
+                     end - start > 100 ? 25 :
+                     end - start > 40 ? 10 : 5;
+
+    const first = Math.ceil(start / interval) * interval;
+
+    for (let year = first; year <= end; year += interval) {
+        const line = document.createElement("div");
+        line.className = "gridline";
+        line.style.left = percentage(year, start, end) + "%";
+        plot.appendChild(line);
+    }
+}
+
+function makeAxis(start, end) {
+    const row = document.createElement("div");
+    row.className = "timeline-row";
+
+    const label = document.createElement("div");
+    label.className = "name";
+    label.textContent = "Composer";
+
+    const axis = document.createElement("div");
+    axis.className = "axis";
+
+    const interval = end - start > 250 ? 50 :
+                     end - start > 100 ? 25 :
+                     end - start > 40 ? 10 : 5;
+
+    const years = [start];
+
+    for (
+        let y = Math.ceil(start / interval) * interval;
+        y < end;
+        y += interval
+    ) {
+        if (y > start) years.push(y);
+    }
+
+    years.push(end);
+
+    years.forEach((year, index) => {
+        const tick = document.createElement("span");
+        tick.className = "tick";
+
+        if (index === 0) tick.classList.add("first");
+        if (index === years.length - 1) tick.classList.add("last");
+
+        tick.style.left = percentage(year, start, end) + "%";
+        tick.textContent = year;
+        axis.appendChild(tick);
+    });
+
+    const right = document.createElement("div");
+    right.className = "dates";
+    right.textContent = "Born–Died";
+
+    row.append(label, axis, right);
+    return row;
+}
+
+function makeBar(plot, className, from, to, start, end) {
+    const clippedStart = Math.max(from, start);
+    const clippedEnd = Math.min(to, end);
+
+    if (clippedEnd <= clippedStart) return;
+
+    const bar = document.createElement("div");
+    bar.className = className;
+
+    bar.style.left =
+        percentage(clippedStart, start, end) + "%";
+
+    bar.style.width =
+        percentage(clippedEnd, start, end) -
+        percentage(clippedStart, start, end) + "%";
+
+    plot.appendChild(bar);
+}
+
+function showTooltip(event, composer) {
+    tooltip.innerHTML = `
+        <strong>${composer.name}</strong>
+        <div>${composer.period} period</div>
+        <div>Born: ${composer.birth}</div>
+        <div>Died: ${composer.death}</div>
+        <div>Age: approximately ${composer.death - composer.birth}</div>
+        <div>Active: ${composer.activeStart}–${composer.activeEnd}</div>
+    `;
+
+    tooltip.style.display = "block";
+    moveTooltip(event);
+}
+
+function moveTooltip(event) {
+    const width = tooltip.offsetWidth;
+    const height = tooltip.offsetHeight;
+
+    const x = Math.min(
+        event.clientX + 15,
+        window.innerWidth - width - 12
+    );
+
+    const y = Math.min(
+        event.clientY + 15,
+        window.innerHeight - height - 12
+    );
+
+    tooltip.style.left = Math.max(8, x) + "px";
+    tooltip.style.top = Math.max(8, y) + "px";
+}
+
+function render() {
+    const search = $("search").value.trim().toLowerCase();
+    const period = $("period").value;
+    const start = Number($("startYear").value);
+    const end = Number($("endYear").value);
+    const sort = $("sort").value;
+
+    if (!Number.isFinite(start) ||
+        !Number.isFinite(end) ||
+        end <= start) {
+        chart.textContent = "Please enter a valid year range.";
+        return;
+    }
+
+    let visible = composers.filter(c => {
+        const matchesSearch =
+            c.name.toLowerCase().includes(search);
+
+        const matchesPeriod =
+            period === "All" || c.period === period;
+
+        const matchesYears =
+            c.death >= start && c.birth <= end;
+
+        return matchesSearch &&
+               matchesPeriod &&
+               matchesYears;
+    });
+
+    visible.sort((a, b) => {
+        if (sort === "name") {
+            return a.name.localeCompare(b.name);
+        }
+
+        if (sort === "active") {
+            return a.activeStart - b.activeStart;
+        }
+
+        return a.birth - b.birth ||
+               a.name.localeCompare(b.name);
+    });
+
+    chart.innerHTML = "";
+    chart.appendChild(makeAxis(start, end));
+
+    const selected = composers.find(c => c.id === selectedId);
+
+    visible.forEach(c => {
+        const row = document.createElement("div");
+        row.className = "timeline-row composer";
+
+        if (selected) {
+            if (c.id === selected.id) {
+                row.classList.add("selected");
+            } else if (!overlaps(c, selected)) {
+                row.classList.add("dimmed");
+            }
+        }
+
+        const name = document.createElement("div");
+        name.className = "name";
+        name.textContent = c.name;
+
+        const plot = document.createElement("div");
+        plot.className = "plot";
+
+        makeGrid(plot, start, end);
+
+        makeBar(
+            plot,
+            "life-bar",
+            c.birth,
+            c.death,
+            start,
+            end
+        );
+
+        makeBar(
+            plot,
+            "active-bar " + c.period,
+            c.activeStart,
+            c.activeEnd,
+            start,
+            end
+        );
+
+        const dates = document.createElement("div");
+        dates.className = "dates";
+        dates.textContent = `${c.birth}–${c.death}`;
+
+        row.append(name, plot, dates);
+
+        row.addEventListener("mouseenter", e => {
+            showTooltip(e, c);
+        });
+
+        row.addEventListener("mousemove", moveTooltip);
+
+        row.addEventListener("mouseleave", () => {
+            tooltip.style.display = "none";
+        });
+
+        row.addEventListener("click", () => {
+            selectedId = selectedId === c.id ? null : c.id;
+            tooltip.style.display = "none";
+            render();
+        });
+
+        chart.appendChild(row);
+    });
+
+    $("count").textContent =
+        visible.length + " composers";
+
+    if (selected) {
+        const overlapping = visible.filter(c =>
+            c.id !== selected.id && overlaps(c, selected)
+        );
+
+        selectionInfo.textContent =
+            `${selected.name}: ${overlapping.length} other displayed ` +
+            `composers have overlapping active periods.`;
+    } else {
+        selectionInfo.textContent =
+            "Click a composer to explore overlapping creative periods.";
+    }
+
+    if (!visible.length) {
+        const empty = document.createElement("p");
+        empty.textContent =
+            "No composers match the current filters.";
+        chart.appendChild(empty);
+    }
+}
+
+["search", "period", "startYear", "endYear", "sort"].forEach(id => {
+    $(id).addEventListener("input", render);
+});
+
+$("reset").addEventListener("click", () => {
+    $("search").value = "";
+    $("period").value = "All";
+    $("startYear").value = 1600;
+    $("endYear").value = 2000;
+    $("sort").value = "birth";
+
+    selectedId = null;
+    render();
+});
+
+render();
+</script>
+
+</body>
+</html>
