@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Repertoire and ensemble charts by Jamie Gabriel" />
+<meta name="author" content="Jamie Gabriel" />
+
+<title>Repertoire | Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+
+<link href="css/styles.css" rel="stylesheet" />
+
+<style>
+
+/* =========================
+   BASE
+   ========================= */
+
+:root {
+    --accent: #8B2E3C;
+    --paper: #FAFAFA;
+    --panel: #F4F1EB;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--paper);
+}
+
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: var(--paper);
+    color: #111;
+    line-height: 1.75;
+    font-size: 16.5px;
+    padding-top: 80px;
+}
+
+/* =========================
+   LINKS
+   ========================= */
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(139,46,60,.35);
+    transition: .2s;
+}
+
+a:hover {
+    color: #111;
+    border-bottom-color: rgba(139,46,60,.75);
+}
+
+/* =========================
+   NAVIGATION
+   ========================= */
+
+#mainNav,
+#mainNav.navbar-shrink {
+    background: var(--paper) !important;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    min-height: 80px;
+}
+
+#mainNav a {
+    color: #111 !important;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    border-bottom: none;
+}
+
+/* =========================
+   PAGE LAYOUT
+   ========================= */
+
+.article {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px 120px;
+}
+
+h1 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 500;
+    margin: 0 0 20px;
+    line-height: 1.35;
+}
+
+.intro {
+    max-width: 65ch;
+    margin-bottom: 35px;
+}
+
+/* =========================
+   SEARCH
+   ========================= */
+
+.search-container {
+    margin: 35px 0 22px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 13px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    color: #111;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.16);
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color .2s;
+}
+
+.search-container input:focus {
+    border-color: var(--accent);
+}
+
+.search-container input::placeholder {
+    color: #888;
+}
+
+/* =========================
+   REPERTOIRE TABLE
+   ========================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.repertoire-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .95rem;
+}
+
+.repertoire-table thead {
+    background: var(--panel);
+}
+
+.repertoire-table th {
+    text-align: left;
+    padding: 15px 18px;
+    font-weight: 800;
+    font-size: .85rem;
+    letter-spacing: .02em;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+.repertoire-table td {
+    padding: 15px 18px;
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    vertical-align: middle;
+}
+
+.repertoire-table tbody tr:hover {
+    background: rgba(244,241,235,.45);
+}
+
+.repertoire-table th:first-child,
+.repertoire-table td:first-child {
+    width: 60%;
+}
+
+.repertoire-table th:nth-child(2),
+.repertoire-table th:nth-child(3),
+.repertoire-table td:nth-child(2),
+.repertoire-table td:nth-child(3) {
+    width: 20%;
+    white-space: nowrap;
+}
+
+.file-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: .9rem;
+}
+
+.file-link i {
+    font-size: .85rem;
+}
+
+.no-results {
+    display: none;
+    padding: 25px 18px;
+    color: #777;
+    font-style: italic;
+    text-align: center;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+    background: var(--paper);
+    border-top: 1px solid rgba(0,0,0,.06);
+    padding: 80px 30px;
+    text-align: center;
+    font-size: .95rem;
+    color: rgba(0,0,0,.7);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .nav-links {
+        gap: 1.4rem;
+        font-size: .95rem;
+    }
+
+    h1 {
+        font-size: 1.55rem;
+    }
+
+    .repertoire-table th,
+    .repertoire-table td {
+        padding: 12px 10px;
+        font-size: .85rem;
+    }
+
+    .file-link {
+        font-size: .82rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+
+    <div class="container px-4 px-lg-5">
+
+        <a class="navbar-brand" href="./index.html">
+            Jamie Gabriel
+        </a>
+
+        <div class="nav-links">
+            <a href="./music.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./recordings.html">Recordings</a>
+            <a href="./contact.html">Contact</a>
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- MAIN CONTENT -->
+
+<main class="article">
+
+    <h1>Repertoire</h1>
+
+    <p class="intro">
+        A collection of charts and arrangements I am playing with others so they can be easily accessed. I haved tried to provide MuseScore files 
+        if transposition is needed. <br/><br/>
+        But hopefully no one needs to really ever visit this page. Cos, of course we are all off-book! <span style="font-size:0.85em;">😅</span>  </p>
+
+    <!-- SEARCH -->
+
+    <div class="search-container">
+
+        <input
+            type="search"
+            id="repertoireSearch"
+            placeholder="Search repertoire..."
+            aria-label="Search repertoire"
+            autocomplete="off"
+        >
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-wrapper">
+
+        <table class="repertoire-table" id="repertoireTable">
+
+            <thead>
+                <tr>
+                    <th>Song Title</th>
+                    <th>PDF</th>
+                    <th>MuseScore File</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <!-- EXAMPLE ROW 1 -->
+
+                <tr>
+                    <td>Gardian Angel, John MchLaughlin</td>
+                    <td>
+                        <a class="file-link"
+                           href="./assets/pdf-files/1_GardianAngel.pdf"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </a>
+                    </td>
+                    <td>
+                        <a class="file-link"
+                           href="./assets/musescore-files/1_GardianAngel.mscz"
+                           download>
+                            <i class="fas fa-music"></i> MuseScore
+                        </a>
+                    </td>
+                </tr>
+
+                <!-- EXAMPLE ROW 2 -->
+
+                <tr>
+                    <td>Waltz for Agnes, Marek Dykta</td>
+                    <td>
+                        <a class="file-link"
+                           href="./assets/pdf-files/Waltz%20for%20Agnes.pdf"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </a>
+                    </td>
+                    <td>
+                        <a class="file-link"
+                           href="./assets/musescore-files/Waltz%20for%20Agnes.mscz"
+                           download>
+                            <i class="fas fa-music"></i> MuseScore
+                        </a>
+                    </td>
+                </tr>
+
+                <!-- EXAMPLE ROW 3 -->
+
+                <tr>
+                    <td>Follow Me, Pat Metheny</td>
+                    <td>
+                        <a class="file-link"
+                           href="./assets/pdf-files/Follow%20Me.pdf"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </a>
+                    </td>
+                    <td>
+                        <a class="file-link"
+                           href="./assets/musescore-files/Follow%20Me.mscz"
+                           download>
+                            <i class="fas fa-music"></i> MuseScore
+                        </a>
+                    </td>
+                </tr>
+
+                <!--
+                ADD NEW SONGS BY COPYING A ROW:
+
+                <tr>
+                    <td>Song Title</td>
+                    <td>
+                        <a class="file-link"
+                           href="./assets/pdf-files/filename.pdf"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </a>
+                    </td>
+                    <td>
+                        <a class="file-link"
+                           href="./assets/musescore-files/filename.mscz"
+                           download>
+                            <i class="fas fa-music"></i> MuseScore
+                        </a>
+                    </td>
+                </tr>
+
+                -->
+
+            </tbody>
+
+        </table>
+
+        <div class="no-results" id="noResults">
+            No repertoire found matching your search.
+        </div>
+
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+    <div>jamie@jamiegabriel.org</div>
+</footer>
+
+<!-- SEARCH SCRIPT -->
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const searchInput = document.getElementById('repertoireSearch');
+    const table = document.getElementById('repertoireTable');
+    const rows = table.querySelectorAll('tbody tr');
+    const noResults = document.getElementById('noResults');
+
+    searchInput.addEventListener('input', function() {
+
+        const query = this.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        rows.forEach(function(row) {
+
+            const text = row.textContent.toLowerCase();
+            const matches = text.includes(query);
+
+            row.style.display = matches ? '' : 'none';
+
+            if (matches) {
+                visibleCount++;
+            }
+
+        });
+
+        noResults.style.display =
+            visibleCount === 0 ? 'block' : 'none';
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
