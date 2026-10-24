@@ -1,0 +1,1320 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Interactive music note reading practice across five clef modes.">
+<meta name="author" content="Jamie Gabriel">
+
+<title>Find That Note! | Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+
+<style>
+@font-face{
+    font-family:'Bravura';
+    src:url('https://cdn.jsdelivr.net/gh/steinbergmedia/bravura@master/redist/woff/Bravura.woff2') format('woff2');
+    font-weight:normal;
+    font-style:normal;
+    font-display:block;
+}
+
+:root{
+    --accent:#8B2E3C;
+    --paper:#FAFAFA;
+    --panel:#F4F1EB;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    background:var(--paper);
+}
+
+body{
+    margin:0;
+    font-family:'Nunito',sans-serif;
+    background:var(--paper);
+    color:#111;
+    line-height:1.75;
+    font-size:16.5px;
+    padding-top:80px;
+}
+
+a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid rgba(139,46,60,.35);
+    transition:.2s;
+}
+
+a:hover{
+    color:#111;
+    border-bottom-color:rgba(139,46,60,.75);
+}
+
+/* Navigation */
+
+#mainNav,
+#mainNav.navbar-shrink{
+    background:var(--paper)!important;
+    border-bottom:1px solid rgba(0,0,0,.05);
+    min-height:80px;
+}
+
+#mainNav a{
+    color:#111!important;
+    text-decoration:none!important;
+    border:none!important;
+}
+
+.nav-links{
+    display:flex;
+    gap:2.5rem;
+    align-items:center;
+}
+
+.nav-links a{
+    border-bottom:none;
+}
+
+/* Article */
+
+.article{
+    max-width:820px;
+    margin:0 auto;
+    padding:60px 24px 120px;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:24px;
+    font-size:.95rem;
+}
+
+h1{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.9rem;
+    font-weight:500;
+    margin:0 0 10px;
+    line-height:1.35;
+}
+
+.meta{
+    color:rgba(0,0,0,.55);
+    font-size:.9rem;
+    margin-bottom:40px;
+}
+
+.intro{
+    margin-bottom:36px;
+}
+
+.intro p{
+    max-width:65ch;
+    margin:0;
+}
+
+/* Quiz */
+
+.quiz{
+    background:var(--panel);
+    border-radius:4px;
+    padding:36px 30px 40px;
+}
+
+/* Statistics */
+
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:32px;
+}
+
+.stat{
+    background:#fff;
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:4px;
+    padding:12px 22px;
+    text-align:center;
+    min-width:120px;
+}
+
+.stat strong{
+    display:block;
+    font-family:'Varela Round',sans-serif;
+    font-size:1.5rem;
+    font-weight:500;
+    line-height:1.5;
+}
+
+.stat span{
+    display:block;
+    font-size:.8rem;
+    color:rgba(0,0,0,.55);
+}
+
+/* Staff */
+
+.staff-wrap{
+    background:#fff;
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:4px;
+    padding:12px;
+    margin-bottom:28px;
+}
+
+.staff-wrap svg{
+    display:block;
+    width:100%;
+    max-width:680px;
+    height:auto;
+    margin:auto;
+}
+
+/* Question */
+
+.question{
+    text-align:center;
+    font-family:'Varela Round',sans-serif;
+    font-size:1.15rem;
+    margin-bottom:22px;
+}
+
+/* Answer buttons */
+
+.answers{
+    display:grid;
+    grid-template-columns:repeat(7,minmax(0,1fr));
+    gap:9px;
+}
+
+.quiz button{
+    font-family:'Nunito',sans-serif;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.answer{
+    background:#fff;
+    color:#111;
+    border:1px solid rgba(0,0,0,.18);
+    border-radius:4px;
+    min-height:58px;
+    font-size:1.35rem;
+}
+
+.answer:hover:not(:disabled){
+    border-color:var(--accent);
+    color:var(--accent);
+}
+
+.answer:focus-visible{
+    outline:3px solid rgba(139,46,60,.25);
+}
+
+.answer:disabled{
+    cursor:default;
+}
+
+.answer.correct{
+    background:#e6f4e9;
+    border-color:#32874d;
+    color:#226638;
+}
+
+.answer.wrong{
+    background:#fce9e9;
+    border-color:#ba4040;
+    color:#a12c35;
+}
+
+/* Feedback */
+
+.feedback{
+    text-align:center;
+    min-height:55px;
+    margin-top:22px;
+    font-size:1rem;
+    font-weight:700;
+}
+
+.feedback small{
+    display:block;
+    font-size:.82rem;
+    font-weight:500;
+    color:rgba(0,0,0,.55);
+    margin-top:4px;
+}
+
+/* Controls */
+
+.controls{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.controls button{
+    border-radius:4px;
+    padding:12px 22px;
+    font-size:.95rem;
+}
+
+.controls .primary{
+    background:var(--accent);
+    border:1px solid var(--accent);
+    color:#fff;
+}
+
+.controls .primary:hover{
+    background:#6f2330;
+}
+
+.controls .secondary{
+    background:transparent;
+    border:1px solid rgba(0,0,0,.2);
+    color:#555;
+}
+
+.controls .secondary:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+}
+
+.controls button[hidden]{
+    display:none;
+}
+
+/* Exercise options */
+
+.options{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:32px;
+    padding-top:24px;
+    border-top:1px solid rgba(0,0,0,.08);
+    font-size:.85rem;
+    color:rgba(0,0,0,.65);
+}
+
+.option-group{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.options select{
+    background:#fff;
+    border:1px solid rgba(0,0,0,.2);
+    border-radius:4px;
+    padding:9px 12px;
+    font-family:'Nunito',sans-serif;
+    font-size:.85rem;
+    color:#111;
+    max-width:100%;
+}
+
+/* Footer */
+
+.footer{
+    background:var(--paper);
+    border-top:1px solid rgba(0,0,0,.06);
+    padding:80px 30px;
+    text-align:center;
+    font-size:.95rem;
+    color:rgba(0,0,0,.7);
+}
+
+.resource-credit{
+    margin-top:10px;
+    font-size:.82rem;
+    color:rgba(0,0,0,.45);
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+    .nav-links{
+        gap:1.4rem;
+        font-size:.95rem;
+    }
+
+    h1{
+        font-size:1.55rem;
+    }
+
+    .article{
+        padding:40px 16px 80px;
+    }
+
+    .quiz{
+        padding:24px 12px 30px;
+    }
+
+    .stats{
+        gap:8px;
+    }
+
+    .stat{
+        min-width:85px;
+        padding:10px 12px;
+    }
+
+    .stat strong{
+        font-size:1.25rem;
+    }
+
+    .answers{
+        gap:5px;
+    }
+
+    .answer{
+        min-height:50px;
+        font-size:1.15rem;
+    }
+
+    .staff-wrap{
+        padding:4px;
+    }
+
+    .options{
+        justify-content:flex-start;
+    }
+}
+
+@media print{
+
+    #mainNav,
+    .stats,
+    .answers,
+    .feedback,
+    .controls,
+    .options,
+    .footer{
+        display:none!important;
+    }
+
+    body{
+        padding-top:0;
+    }
+
+    .article{
+        padding:0;
+    }
+
+    .quiz{
+        background:#fff;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+
+        <a class="navbar-brand" href="./index.html">
+            Jamie Gabriel
+        </a>
+
+        <div class="nav-links">
+            <a href="./music.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./recordings.html">Recordings</a>
+            <a href="./contact.html">Contact</a>
+        </div>
+
+    </div>
+</nav>
+
+<!-- Main -->
+
+<main class="article">
+
+    <a class="back-link" href="./teaching.html">
+        ← Teaching Resources
+    </a>
+
+    <h1>Find That Note!</h1>
+
+    <div class="meta">
+        Interactive Music Exercise · SM_4
+    </div>
+
+    <div class="intro">
+        <p>
+            Practise reading music in different clefs.
+            Choose a clef and the range of notes you want
+            to practise, then identify each note using
+            the letters A to G.
+        </p>
+    </div>
+
+    <section class="quiz" aria-label="Note reading quiz">
+
+        <!-- Score -->
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong id="correct">0</strong>
+                <span>Correct</span>
+            </div>
+
+            <div class="stat">
+                <strong id="total">0</strong>
+                <span>Questions</span>
+            </div>
+
+            <div class="stat">
+                <strong id="streak">0</strong>
+                <span>Streak</span>
+            </div>
+
+        </div>
+
+        <!-- Staff -->
+
+        <div class="staff-wrap">
+
+            <svg
+                id="staff"
+                viewBox="0 0 680 355"
+                role="img"
+                aria-label="Music staff showing a single note">
+            </svg>
+
+        </div>
+
+        <div class="question">
+            What note is this?
+        </div>
+
+        <!-- Answers -->
+
+        <div
+            class="answers"
+            id="answers"
+            aria-label="Choose a note name">
+        </div>
+
+        <!-- Feedback -->
+
+        <div
+            class="feedback"
+            id="feedback"
+            role="status"
+            aria-live="polite">
+        </div>
+
+        <!-- Controls -->
+
+        <div class="controls">
+
+            <button
+                class="primary"
+                id="next"
+                type="button"
+                hidden>
+                Next note →
+            </button>
+
+            <button
+                class="secondary"
+                id="reset"
+                type="button">
+                Reset score
+            </button>
+
+        </div>
+
+        <!-- Options -->
+
+        <div class="options">
+
+            <div class="option-group">
+
+                <label for="clef">Clef:</label>
+
+                <select id="clef">
+                    <option value="grand">Grand Staff</option>
+                    <option value="treble">Treble</option>
+                    <option value="bass">Bass</option>
+                    <option value="alto">Alto</option>
+                    <option value="soprano">Soprano</option>
+                </select>
+
+            </div>
+
+            <div class="option-group">
+
+                <label for="lowest">Lowest note:</label>
+                <select id="lowest"></select>
+
+            </div>
+
+            <div class="option-group">
+
+                <label for="highest">Highest note:</label>
+                <select id="highest"></select>
+
+            </div>
+
+            <div class="option-group">
+
+                <label for="speed">Next question:</label>
+
+                <select id="speed">
+                    <option value="1300">Automatically</option>
+                    <option value="0">When I click Next</option>
+                </select>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- Footer -->
+
+<footer class="footer">
+
+    <div>jamie@jamiegabriel.org</div>
+
+    <div class="resource-credit">
+        Developed by Sally and Jamie at SAJA Music · SM_4
+    </div>
+
+</footer>
+
+<script>
+(() => {
+    'use strict';
+
+    const NS = 'http://www.w3.org/2000/svg';
+
+    const svg = document.getElementById('staff');
+    const names = ['C','D','E','F','G','A','B'];
+
+    const clefSelect = document.getElementById('clef');
+    const lowestSelect = document.getElementById('lowest');
+    const highestSelect = document.getElementById('highest');
+    const speedSelect = document.getElementById('speed');
+
+    const nextButton = document.getElementById('next');
+    const feedback = document.getElementById('feedback');
+
+    let current = null;
+    let locked = false;
+    let score = 0;
+    let total = 0;
+    let streak = 0;
+    let timer = null;
+    let last = null;
+
+    /*
+      Diatonic note indexing:
+
+      C4 = 0
+      D4 = 1
+      E4 = 2
+      F4 = 3
+      G4 = 4
+      A4 = 5
+      B4 = 6
+      C5 = 7
+
+      B3 = -1
+      A3 = -2
+
+      C2 = -14
+      C6 = 14
+
+      Each diatonic step = 12 SVG units.
+      Each staff line is 24 SVG units apart.
+    */
+
+    const MIN_NOTE = -14;
+    const MAX_NOTE = 14;
+
+    const left = 112;
+    const right = 618;
+    const noteX = 389;
+    const step = 12;
+
+    /*
+      Single staff:
+
+      Bottom line = y218
+      Top line = y122
+      Middle line = y170
+
+      Bottom-line pitches:
+
+      Treble: E4 = 2
+      Bass: G2 = -10
+      Alto: F3 = -4? No.
+
+      Alto C4 is on centre line.
+      Four diatonic steps below C4 = F3.
+      F3 = -4.
+
+      Soprano: C4 = 0 on bottom line.
+    */
+
+    const singleBottom = 218;
+
+    const clefs = {
+
+        treble:{
+            glyph:'\uE050',
+            bottomPitch:2,
+            referencePitch:4,
+            referenceY:194
+        },
+
+        bass:{
+            glyph:'\uE062',
+            bottomPitch:-10,
+            referencePitch:-4,
+            referenceY:146
+        },
+
+        alto:{
+            glyph:'\uE05C',
+            bottomPitch:-4,
+            referencePitch:0,
+            referenceY:170
+        },
+
+        soprano:{
+            glyph:'\uE05C',
+            bottomPitch:0,
+            referencePitch:0,
+            referenceY:218
+        }
+    };
+
+    function make(tag, attrs, parent=svg) {
+
+        const e = document.createElementNS(NS,tag);
+
+        Object.entries(attrs).forEach(([k,v]) => {
+            e.setAttribute(k,v);
+        });
+
+        parent.appendChild(e);
+
+        return e;
+    }
+
+    function drawLine(x1,y1,x2,y2,width=1.5) {
+
+        return make('line',{
+            x1,y1,x2,y2,
+            stroke:'#222',
+            'stroke-width':width
+        });
+    }
+
+    function label(n) {
+
+        const i = ((n%7)+7)%7;
+
+        return names[i] + (4+Math.floor(n/7));
+    }
+
+    function drawStaff(bottom) {
+
+        for(let i=0;i<5;i++) {
+
+            drawLine(
+                left,
+                bottom-i*24,
+                right,
+                bottom-i*24
+            );
+        }
+    }
+
+    /*
+      Professional SMuFL clef glyphs.
+
+      G clef: U+E050
+      F clef: U+E062
+      C clef: U+E05C
+
+      C clefs share the same glyph.
+      Their vertical placement determines
+      whether they are alto or soprano.
+    */
+
+    function drawClef(glyph,referenceY) {
+
+        const t = make('text',{
+            x:153,
+            y:referenceY,
+            'font-family':'Bravura',
+            'font-size':96,
+            fill:'#111'
+        });
+
+        t.textContent = glyph;
+    }
+
+    /*
+      Grand staff:
+
+      Treble:
+      F5 y57
+      D5 y81
+      B4 y105
+      G4 y129
+      E4 y153
+
+      Middle C y177
+
+      Bass:
+      A3 y201
+      F3 y225
+      D3 y249
+      B2 y273
+      G2 y297
+    */
+
+    function drawGrandStaff() {
+
+        drawStaff(153);
+        drawStaff(297);
+
+        drawLine(left,57,left,297,1.8);
+
+        make('path',{
+            d:`
+                M 103 57
+                C 78 57 83 116 68 177
+                C 83 238 78 297 103 297
+            `,
+            fill:'none',
+            stroke:'#222',
+            'stroke-width':2
+        });
+
+        drawClef('\uE050',129);
+        drawClef('\uE062',225);
+    }
+
+    function drawSingleStaff(mode) {
+
+        drawStaff(singleBottom);
+
+        drawLine(left,122,left,218,1.8);
+
+        const config = clefs[mode];
+
+        drawClef(
+            config.glyph,
+            config.referenceY
+        );
+    }
+
+    /*
+      Convert a pitch to its correct staff
+      position for the selected clef.
+    */
+
+    function pitchY(n,mode) {
+
+        if(mode==='grand') {
+
+            return 177-n*step;
+        }
+
+        const bottomPitch = clefs[mode].bottomPitch;
+
+        return singleBottom-(n-bottomPitch)*step;
+    }
+
+    /*
+      Ledger lines for a single staff.
+
+      The line immediately above the staff
+      is 24 units above its top line.
+
+      The line immediately below the staff
+      is 24 units below its bottom line.
+    */
+
+    function drawSingleLedgerLines(y) {
+
+        const top = 122;
+        const bottom = 218;
+
+        if(y < top) {
+
+            for(let ly=top-24;ly>=y;ly-=24) {
+
+                drawLine(
+                    noteX-26,ly,
+                    noteX+26,ly,
+                    1.8
+                );
+            }
+        }
+
+        if(y > bottom) {
+
+            for(let ly=bottom+24;ly<=y;ly+=24) {
+
+                drawLine(
+                    noteX-26,ly,
+                    noteX+26,ly,
+                    1.8
+                );
+            }
+        }
+    }
+
+    /*
+      Ledger lines for grand staff.
+
+      Middle C is at y177.
+
+      The C4 ledger line is needed only
+      when the note is actually on C4.
+
+      Additional ledger lines are drawn
+      above the treble and below the bass.
+    */
+
+    function drawGrandLedgerLines(n,y) {
+
+        if(n===0) {
+
+            drawLine(
+                noteX-26,177,
+                noteX+26,177,
+                1.8
+            );
+        }
+
+        if(y<57) {
+
+            for(let ly=33;ly>=y;ly-=24) {
+
+                drawLine(
+                    noteX-26,ly,
+                    noteX+26,ly,
+                    1.8
+                );
+            }
+        }
+
+        if(y>297) {
+
+            for(let ly=321;ly<=y;ly+=24) {
+
+                drawLine(
+                    noteX-26,ly,
+                    noteX+26,ly,
+                    1.8
+                );
+            }
+        }
+    }
+
+    function drawNote(y,stemDown) {
+
+        make('ellipse',{
+            cx:noteX,
+            cy:y,
+            rx:13.5,
+            ry:9.5,
+            transform:`rotate(-18 ${noteX} ${y})`,
+            fill:'#111'
+        });
+
+        if(stemDown) {
+
+            drawLine(
+                noteX-12,
+                y+2,
+                noteX-12,
+                y+62,
+                3
+            );
+
+        } else {
+
+            drawLine(
+                noteX+12,
+                y-2,
+                noteX+12,
+                y-62,
+                3
+            );
+        }
+    }
+
+    function render(n) {
+
+        svg.replaceChildren();
+
+        const mode = clefSelect.value;
+        const y = pitchY(n,mode);
+
+        if(mode==='grand') {
+
+            drawGrandStaff();
+
+            drawGrandLedgerLines(n,y);
+
+        } else {
+
+            drawSingleStaff(mode);
+
+            drawSingleLedgerLines(y);
+        }
+
+        /*
+          Standard stem direction:
+          Notes on or above the middle line
+          generally use downward stems.
+
+          Grand staff chooses the nearest
+          staff for this purpose.
+        */
+
+        let stemDown;
+
+        if(mode==='grand') {
+
+            if(y<=177) {
+                stemDown = y<=105;
+            } else {
+                stemDown = y<=249;
+            }
+
+        } else {
+
+            stemDown = y<=170;
+        }
+
+        drawNote(y,stemDown);
+
+        /*
+          Dynamic viewBox.
+
+          Keeps the single staff centred,
+          while allowing extreme ledger
+          notes to remain visible.
+        */
+
+        const defaultTop = mode==='grand' ? 0 : 65;
+        const defaultBottom = mode==='grand' ? 355 : 295;
+
+        const top = Math.min(defaultTop,y-85);
+        const bottom = Math.max(defaultBottom,y+85);
+
+        svg.setAttribute(
+            'viewBox',
+            `0 ${top} 680 ${bottom-top}`
+        );
+
+        svg.setAttribute(
+            'aria-label',
+            mode==='grand'
+                ? 'Grand staff showing a single note'
+                : mode+' clef staff showing a single note'
+        );
+    }
+
+    /*
+      Populate note range selectors.
+    */
+
+    function populateNoteRanges() {
+
+        for(let n=MIN_NOTE;n<=MAX_NOTE;n++) {
+
+            const option=document.createElement('option');
+
+            option.value=n;
+            option.textContent=label(n);
+
+            lowestSelect.appendChild(option);
+            highestSelect.appendChild(option.cloneNode(true));
+        }
+
+        // Default C4 to G5
+
+        lowestSelect.value=0;
+        highestSelect.value=11;
+    }
+
+    function pool() {
+
+        const low=Number(lowestSelect.value);
+        const high=Number(highestSelect.value);
+
+        return Array.from(
+            {length:high-low+1},
+            (_,i)=>low+i
+        );
+    }
+
+    function newQuestion() {
+
+        clearTimeout(timer);
+        timer=null;
+
+        locked=false;
+
+        nextButton.hidden=true;
+        feedback.textContent='';
+
+        const available=pool();
+
+        let n;
+
+        do {
+
+            n=available[
+                Math.floor(Math.random()*available.length)
+            ];
+
+        } while(n===last && available.length>1);
+
+        last=n;
+        current=n;
+
+        render(n);
+
+        document.querySelectorAll('.answer').forEach(b=>{
+
+            b.disabled=false;
+            b.className='answer';
+        });
+    }
+
+    function choose(value) {
+
+        if(locked || current===null)return;
+
+        locked=true;
+        total++;
+
+        const correct=names[
+            ((current%7)+7)%7
+        ];
+
+        const good=value===correct;
+
+        if(good) {
+
+            score++;
+            streak++;
+
+        } else {
+
+            streak=0;
+        }
+
+        document.getElementById('correct').textContent=score;
+        document.getElementById('total').textContent=total;
+        document.getElementById('streak').textContent=streak;
+
+        document.querySelectorAll('.answer').forEach(b=>{
+
+            b.disabled=true;
+
+            if(b.textContent===correct) {
+
+                b.classList.add('correct');
+
+            } else if(b.textContent===value) {
+
+                b.classList.add('wrong');
+            }
+        });
+
+        feedback.textContent=good
+            ? '✓ Correct!'
+            : '✗ Not quite — that is '+correct+'.';
+
+        const detail=document.createElement('small');
+
+        detail.textContent='The note is '+label(current)+'.';
+
+        feedback.appendChild(detail);
+
+        nextButton.hidden=false;
+
+        const delay=Number(speedSelect.value);
+
+        if(delay) {
+
+            timer=setTimeout(newQuestion,delay);
+        }
+    }
+
+    /*
+      Create answer buttons.
+    */
+
+    for(const n of ['A','B','C','D','E','F','G']) {
+
+        const b=document.createElement('button');
+
+        b.className='answer';
+        b.textContent=n;
+        b.type='button';
+
+        b.addEventListener('click',()=>choose(n));
+
+        document.getElementById('answers').appendChild(b);
+    }
+
+    /*
+      Next question.
+    */
+
+    nextButton.addEventListener('click',newQuestion);
+
+    /*
+      Reset score.
+    */
+
+    document.getElementById('reset').addEventListener('click',()=>{
+
+        score=0;
+        total=0;
+        streak=0;
+
+        ['correct','total','streak'].forEach(id=>{
+            document.getElementById(id).textContent='0';
+        });
+
+        newQuestion();
+    });
+
+    /*
+      Clef selection.
+
+      Changing clef creates a new question
+      but preserves the score and range.
+    */
+
+    clefSelect.addEventListener('change',()=>{
+
+        last=null;
+        newQuestion();
+    });
+
+    /*
+      Note range controls.
+    */
+
+    lowestSelect.addEventListener('change',()=>{
+
+        if(Number(lowestSelect.value)>Number(highestSelect.value)) {
+
+            highestSelect.value=lowestSelect.value;
+        }
+
+        last=null;
+        newQuestion();
+    });
+
+    highestSelect.addEventListener('change',()=>{
+
+        if(Number(highestSelect.value)<Number(lowestSelect.value)) {
+
+            lowestSelect.value=highestSelect.value;
+        }
+
+        last=null;
+        newQuestion();
+    });
+
+    /*
+      Keyboard shortcuts.
+
+      A-G = answer
+      Enter = next question
+
+      Ignore keys while dropdowns are focused.
+    */
+
+    document.addEventListener('keydown',e=>{
+
+        if(e.altKey||e.ctrlKey||e.metaKey)return;
+
+        if(
+            document.activeElement &&
+            ['SELECT','INPUT','TEXTAREA'].includes(
+                document.activeElement.tagName
+            )
+        )return;
+
+        const k=e.key.toUpperCase();
+
+        if(k.length===1 && 'ABCDEFG'.includes(k)) {
+
+            choose(k);
+        }
+
+        if(e.key==='Enter' && locked) {
+
+            newQuestion();
+        }
+    });
+
+    /*
+      Initialise.
+    */
+
+    populateNoteRanges();
+
+    if(document.fonts && document.fonts.load) {
+
+        document.fonts.load('96px Bravura')
+            .then(newQuestion)
+            .catch(newQuestion);
+
+    } else {
+
+        newQuestion();
+    }
+
+})();
+</script>
+
+</body>
+</html>
