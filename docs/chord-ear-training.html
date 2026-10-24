@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Interactive chord quality and inversion ear training — Jamie Gabriel" />
+<meta name="author" content="Jamie Gabriel" />
+<title>Chord Ear Training | Jamie Gabriel</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--line:#e5dedb;--ink:#171315}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--paper)}body{margin:0;padding-top:80px;font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);font-size:16.5px;line-height:1.75}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35)}a:hover{color:#111}
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.05);min-height:80px}#mainNav a{color:#111!important;text-decoration:none!important;border:0!important}.nav-links{display:flex;gap:2.5rem;align-items:center}
+.article{max-width:800px;margin:0 auto;padding:60px 24px 110px}.back-link{display:inline-block;margin-bottom:24px;font-size:.95rem}h1{font-family:'Varela Round',sans-serif;font-size:1.9rem;font-weight:500;margin:0 0 10px;line-height:1.35}.meta{color:#777;font-size:.9rem;margin-bottom:25px}p{max-width:65ch;margin:0 0 22px}.panel{background:var(--panel);border-radius:5px;padding:24px;margin:22px 0}.panel h2{font-family:'Varela Round',sans-serif;font-size:1.05rem;font-weight:500;margin:0 0 15px}.small{font-size:.86rem;color:#6d6265}.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:13px}.btn{font:700 .92rem 'Nunito',sans-serif;cursor:pointer;border:1px solid #d6c8c9;border-radius:5px;padding:10px 15px;background:white;color:var(--accent)}.btn:hover{border-color:var(--accent)}.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}.btn:disabled{opacity:.48;cursor:default}.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 18px}.check{display:flex;align-items:center;gap:9px;font-size:.94rem;line-height:1.35;cursor:pointer}.check input{accent-color:var(--accent);width:17px;height:17px;flex-shrink:0}.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.field label{display:block;font-weight:700;font-size:.85rem;margin-bottom:5px}.field select{width:100%;padding:10px;border:1px solid #d6c8c9;border-radius:5px;background:#fff;color:var(--ink);font:inherit}.exercise{border:1px solid var(--line);border-radius:5px;padding:28px 22px;text-align:center;margin-top:24px}.exercise h2{font:500 1.3rem 'Varela Round',sans-serif;margin:0 0 8px}.exercise .prompt{color:#74696c;font-size:.9rem;margin-bottom:22px}.answer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0}.answer{padding:13px 9px;border:1px solid #d6c8c9;background:white;border-radius:5px;cursor:pointer;font:700 .92rem 'Nunito',sans-serif;color:#30292b}.answer.selected{border:2px solid var(--accent);background:#f4e7e9;box-shadow:0 0 0 1px var(--accent)}.answer:hover:not(:disabled){border-color:var(--accent);background:#fcf6f6}.answer:disabled{cursor:default}.answer.correct{background:#e1f3e8;border-color:#3f9d65;color:#225c39}.answer.wrong{background:#f9e1e1;border-color:#cb7777;color:#8c2f35}.feedback{min-height:46px;margin-top:14px;font-size:.96rem}.stats{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;color:#6c6264;font-size:.9rem}.footer{background:var(--paper);border-top:1px solid rgba(0,0,0,.06);padding:80px 30px;text-align:center;font-size:.95rem;color:rgba(0,0,0,.7)}.hidden{display:none!important}.separator{border:0;border-top:1px solid #e0d7d3;margin:20px 0}.pill{font-size:.82rem;color:#6c6264}.status{font-size:.9rem;color:#8B2E3C;min-height:22px}
+@media(max-width:700px){.nav-links{gap:1.2rem;font-size:.88rem}.article{padding-top:38px}h1{font-size:1.55rem}.panel{padding:18px}.controls{grid-template-columns:1fr}.exercise{padding:20px 13px}}@media(max-width:420px){.checks{grid-template-columns:1fr}.nav-links{gap:.65rem;font-size:.77rem}#mainNav .container{padding-left:12px!important;padding-right:12px!important}.navbar-brand{font-size:.95rem}}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="container px-4 px-lg-5"><a class="navbar-brand" href="./index.html">Jamie Gabriel</a><div class="nav-links"><a href="./music.html">Music</a><a href="./teaching.html">Teaching</a><a href="./recordings.html">Recordings</a><a href="./contact.html">Contact</a></div></div></nav>
+<main class="article">
+<a class="back-link" href="./teaching.html">← Teaching resources</a>
+<h1>What Chord Do You Hear?</h1>
+<div class="meta">Aural Skills · Chord Ear Training</div>
+<p>Learn to recognise chord qualities by ear, from simple major and minor triads to seventh chords. Choose the chords and inversions you want to practise, listen, and identify what you hear.</p>
+<section class="panel" aria-labelledby="settingsTitle"><h2 id="settingsTitle">1. Choose your chords</h2><div class="toolbar"><button class="btn" id="presetBasic">Major &amp; minor</button><button class="btn" id="presetTriads">All triads</button><button class="btn" id="presetSevenths">All sevenths</button><button class="btn" id="selectAll">Select all</button><button class="btn" id="clearAll">Clear</button></div><div class="checks" id="chordChecks"></div><hr class="separator"><h2>2. Choose inversions</h2><div class="toolbar"><button class="btn" id="rootOnly">Root only</button><button class="btn" id="allInversions">All inversions</button></div><div class="checks" id="inversionChecks"></div><p class="small" style="margin:12px 0 0">Third inversion applies to seventh chords only. Other inversions are available where the chord has enough notes.</p><hr class="separator"><div class="controls"><div class="field"><label>Answer format</label><div class="small">Choose the chord quality and its inversion separately for every question.</div></div><div class="field"><label for="playMode">Playback</label><select id="playMode"><option value="block">Chord together</option><option value="arp">Arpeggio then chord</option><option value="both">Chord then arpeggio</option></select></div></div><div class="status" id="selectionStatus" aria-live="polite"></div></section>
+<section class="exercise" aria-labelledby="questionTitle"><div class="pill" id="questionCount">QUESTION 1</div><h2 id="questionTitle">What chord do you hear?</h2><div class="prompt">Listen carefully, then choose an answer.</div><div class="toolbar" style="justify-content:center"><button class="btn primary" id="playButton">▶ Play chord</button><button class="btn" id="replayButton">↻ Replay</button><button class="btn" id="arpButton">♫ Arpeggiate</button></div><div style="text-align:left;margin:20px auto;max-width:620px"><h3 style="font-size:1rem;margin:0 0 8px">1. Choose the chord quality</h3><div id="answerGrid" class="answer-grid"></div><h3 style="font-size:1rem;margin:20px 0 8px">2. Choose the inversion</h3><div id="inversionAnswerGrid" class="answer-grid"></div><div class="toolbar" style="justify-content:center;margin-top:18px"><button class="btn primary" id="checkAnswer" disabled>Check both answers ✓</button></div></div><div id="feedback" class="feedback" role="status" aria-live="polite"></div><div class="toolbar" style="justify-content:center"><button class="btn" id="revealButton">Reveal answer</button><button class="btn primary" id="nextButton">Next chord →</button></div><div class="stats"><span id="score">0 correct / 0 attempted</span><span id="accuracy">Accuracy —</span></div></section>
+<p class="small">Tip: listen for the overall colour of the chord first. To recognise inversions, pay attention to the bass note and the spacing of the voices. This exercise uses a soft electric-piano sound generated directly in your browser.</p>
+</main><footer class="footer"><div>jamie@jamiegabriel.org</div></footer>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const TYPES=[{id:'maj',label:'Major triad',tones:[0,4,7],family:'triad'},{id:'min',label:'Minor triad',tones:[0,3,7],family:'triad'},{id:'dim',label:'Diminished triad',tones:[0,3,6],family:'triad'},{id:'aug',label:'Augmented triad',tones:[0,4,8],family:'triad'},{id:'sus2',label:'Suspended 2nd',tones:[0,2,7],family:'triad'},{id:'sus4',label:'Suspended 4th',tones:[0,5,7],family:'triad'},{id:'maj7',label:'Major 7th',tones:[0,4,7,11],family:'seventh'},{id:'dom7',label:'Dominant 7th',tones:[0,4,7,10],family:'seventh'},{id:'min7',label:'Minor 7th',tones:[0,3,7,10],family:'seventh'},{id:'minmaj7',label:'Minor-major 7th',tones:[0,3,7,11],family:'seventh'},{id:'halfDim7',label:'Half-diminished 7th',tones:[0,3,6,10],family:'seventh'},{id:'dim7',label:'Diminished 7th',tones:[0,3,6,9],family:'seventh'},{id:'maj7b5',label:'Major 7♭5',tones:[0,4,6,11],family:'seventh'},{id:'augMaj7',label:'Major 7♯5',tones:[0,4,8,11],family:'seventh'},{id:'dom7b5',label:'Dominant 7♭5',tones:[0,4,6,10],family:'seventh'},{id:'aug7',label:'Dominant 7♯5',tones:[0,4,8,10],family:'seventh'},{id:'dom7sus4',label:'Dominant 7sus4',tones:[0,5,7,10],family:'seventh'}];
+const INV=['Root position','1st inversion','2nd inversion','3rd inversion'];
+const NOTES=['C','C♯','D','E♭','E','F','F♯','G','A♭','A','B♭','B'];
+let ctx=null,question=null,answered=false,correct=0,attempted=0,round=0,chosenQuality=null,chosenInversion=null;
+function checks(){ $('chordChecks').innerHTML=TYPES.map(t=>`<label class="check"><input type="checkbox" class="chordCheck" value="${t.id}" ${['maj','min'].includes(t.id)?'checked':''}>${t.label}</label>`).join('');$('inversionChecks').innerHTML=INV.map((x,i)=>`<label class="check"><input type="checkbox" class="invCheck" value="${i}" checked>${x}</label>`).join('') }
+function selectedTypes(){return TYPES.filter(t=>document.querySelector(`.chordCheck[value="${t.id}"]`).checked)}
+function selectedInv(){return [...document.querySelectorAll('.invCheck:checked')].map(x=>+x.value)}
+function validInv(t){return selectedInv().filter(i=>i<t.tones.length)}
+function options(){return selectedTypes().flatMap(t=>validInv(t).map(inv=>({type:t,inv})))}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function setTypes(ids){document.querySelectorAll('.chordCheck').forEach(c=>c.checked=ids.includes(c.value));updateSettings()}
+function setInv(ids){document.querySelectorAll('.invCheck').forEach(c=>c.checked=ids.includes(+c.value));updateSettings()}
+function updateSettings(){const n=options().length;$('selectionStatus').textContent=n?`${selectedTypes().length} chord types · ${n} chord/inversion combinations available`:'Select at least one chord and one compatible inversion.';$('playButton').disabled=!n;$('replayButton').disabled=!n;$('nextButton').disabled=!n;if(n)newQuestion();else{$('answerGrid').innerHTML='';$('inversionAnswerGrid').innerHTML='';$('checkAnswer').disabled=true;question=null;$('feedback').textContent='Choose some chords and inversions to begin.'}}
+function midiName(n){return NOTES[(n%12+12)%12]+(Math.floor(n/12)-1)}
+function pitches(t,inv,root){const a=t.tones.map(x=>root+x);for(let i=0;i<inv;i++)a[i]+=12;return a.sort((a,b)=>a-b)}
+function newQuestion(){
+ const p=options();if(!p.length)return;
+ const chosen=pick(p),root=48+Math.floor(Math.random()*12);
+ question={...chosen,root,notes:pitches(chosen.type,chosen.inv,root)};
+ round++;answered=false;chosenQuality=null;chosenInversion=null;
+ $('questionCount').textContent=`QUESTION ${round}`;
+ $('feedback').textContent='';$('revealButton').disabled=false;
+ $('checkAnswer').disabled=true;renderAnswers();
+}
+function renderAnswers(){
+ const qualityGrid=$('answerGrid'),inversionGrid=$('inversionAnswerGrid');
+ qualityGrid.innerHTML='';inversionGrid.innerHTML='';
+ selectedTypes().forEach(type=>{
+  const b=document.createElement('button');b.className='answer';b.textContent=type.label;
+  b.dataset.id=type.id;b.setAttribute('aria-pressed','false');
+  b.onclick=()=>{if(answered)return;chosenQuality=type.id;qualityGrid.querySelectorAll('button').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',String(x===b))});enableCheck()};
+  qualityGrid.appendChild(b);
+ });
+ [...new Set(options().map(o=>o.inv))].sort().forEach(inv=>{
+  const b=document.createElement('button');b.className='answer';b.textContent=INV[inv];b.dataset.inv=inv;
+  b.setAttribute('aria-pressed','false');
+  b.onclick=()=>{if(answered)return;chosenInversion=inv;inversionGrid.querySelectorAll('button').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',String(x===b))});enableCheck()};
+  inversionGrid.appendChild(b);
+ });
+}
+function enableCheck(){$('checkAnswer').disabled=answered||chosenQuality===null||chosenInversion===null}
+function finish(revealed=false){
+ if(answered||!question)return;
+ answered=true;
+ const qualityRight=chosenQuality===question.type.id;
+ const inversionRight=chosenInversion===question.inv;
+ if(!revealed){attempted++;if(qualityRight&&inversionRight)correct++}
+ $('answerGrid').querySelectorAll('button').forEach(b=>{
+  b.disabled=true;if(b.dataset.id===question.type.id)b.classList.add('correct');
+  else if(!revealed&&b.dataset.id===chosenQuality)b.classList.add('wrong');
+ });
+ $('inversionAnswerGrid').querySelectorAll('button').forEach(b=>{
+  b.disabled=true;if(+b.dataset.inv===question.inv)b.classList.add('correct');
+  else if(!revealed&&+b.dataset.inv===chosenInversion)b.classList.add('wrong');
+ });
+ const outcome=revealed?'Answer revealed. ':qualityRight&&inversionRight?'✓ Both correct! ':qualityRight?'Chord correct; inversion incorrect. ':inversionRight?'Inversion correct; chord incorrect. ':'Not quite. ';
+ $('feedback').textContent=outcome+`${question.type.label}, ${INV[question.inv]}. Notes (bass to top): ${question.notes.map(midiName).join(' – ')}.`;
+ $('score').textContent=`${correct} correct / ${attempted} attempted`;
+ $('accuracy').textContent=`Accuracy ${attempted?Math.round(correct/attempted*100)+'%':'—'}`;
+ $('revealButton').disabled=true;$('checkAnswer').disabled=true;
+}
+function freq(m){return 440*Math.pow(2,(m-69)/12)}
+function tone(m,t,d=1.5,volume=.12){const f=freq(m),out=ctx.createGain(),filter=ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=2100;filter.Q.value=.5;out.connect(filter);filter.connect(ctx.destination);out.gain.setValueAtTime(.0001,t);out.gain.exponentialRampToValueAtTime(volume,t+.025);out.gain.exponentialRampToValueAtTime(volume*.4,t+.23);out.gain.exponentialRampToValueAtTime(.0001,t+d);[[1,.75],[2,.16],[3,.055],[4,.02]].forEach(([ratio,gain])=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=f*ratio;g.gain.value=gain;o.connect(g);g.connect(out);o.start(t);o.stop(t+d+.05)})}
+async function play(mode){if(!question)return;try{if(!ctx)ctx=new (window.AudioContext||window.webkitAudioContext)();await ctx.resume();const notes=question.notes,t=ctx.currentTime+.05;const chord=(at)=>notes.forEach(n=>tone(n,at,1.8,.13/Math.sqrt(notes.length/2)));const arp=(at)=>notes.forEach((n,i)=>tone(n,at+i*.34,1.3,.13));if(mode==='arp')arp(t);else if(mode==='both'){chord(t);arp(t+2.0)}else chord(t)}catch(e){$('feedback').textContent='Could not start audio. Please check browser audio permissions.'}}
+$('presetBasic').onclick=()=>setTypes(['maj','min']);$('presetTriads').onclick=()=>setTypes(TYPES.filter(t=>t.family==='triad').map(t=>t.id));$('presetSevenths').onclick=()=>setTypes(TYPES.filter(t=>t.family==='seventh').map(t=>t.id));$('selectAll').onclick=()=>setTypes(TYPES.map(t=>t.id));$('clearAll').onclick=()=>setTypes([]);$('rootOnly').onclick=()=>setInv([0]);$('allInversions').onclick=()=>setInv([0,1,2,3]);$('chordChecks').addEventListener('change',updateSettings);$('inversionChecks').addEventListener('change',updateSettings);$('playButton').onclick=()=>play($('playMode').value);$('replayButton').onclick=()=>play($('playMode').value);$('arpButton').onclick=()=>play('arp');$('nextButton').onclick=newQuestion;$('revealButton').onclick=()=>finish(true);$('checkAnswer').onclick=()=>finish(false);
+checks();updateSettings();
+})();
+</script>
+</body></html>
