@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Find That Note! An interactive grand staff note-reading exercise by Jamie Gabriel." />
+<meta name="author" content="Jamie Gabriel" />
+<title>Find That Note! | Jamie Gabriel</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{margin:0;font-family:'Nunito',sans-serif;background:var(--paper);color:#111;line-height:1.75;font-size:16.5px;padding-top:80px}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35);transition:.2s}a:hover{color:#111;border-bottom-color:rgba(139,46,60,.75)}
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.05);min-height:80px}
+#mainNav a{color:#111!important;text-decoration:none!important;border:none!important}
+.nav-links{display:flex;gap:2.5rem;align-items:center}.nav-links a{border-bottom:none}
+.article{max-width:720px;margin:0 auto;padding:60px 24px 120px}
+.back-link{display:inline-block;margin-bottom:24px;font-size:.95rem}
+h1{font-family:'Varela Round',sans-serif;font-size:1.9rem;font-weight:500;margin:0 0 10px;line-height:1.35}
+.meta{color:rgba(0,0,0,.55);font-size:.9rem;margin-bottom:30px}
+p{max-width:65ch;margin-bottom:22px}
+.quiz{background:var(--panel);border-radius:4px;padding:26px 24px;margin:30px 0}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.stat{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:4px;padding:9px 15px;flex:1;min-width:95px}
+.stat strong{display:block;font-size:1.5rem;line-height:1.3;font-weight:800}.stat span{font-size:.78rem;color:#666}
+.staff-wrap{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:4px;padding:12px 6px}
+#staff{display:block;width:100%;height:auto}
+.prompt{text-align:center;font-weight:800;font-size:1.1rem;margin:20px 0 16px}
+.answers{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.answer{min-width:0;min-height:54px;background:white;border:1px solid #d7d0cc;border-radius:4px;font:800 1.25rem 'Nunito',sans-serif;cursor:pointer;color:#111;transition:background .15s,border-color .15s}
+.answer:hover:not(:disabled){border-color:var(--accent);background:#fbf4f4}.answer:focus-visible,.quiz button:focus-visible,.quiz select:focus-visible{outline:3px solid #bc8590;outline-offset:2px}
+.answer:disabled{cursor:default;opacity:.65}.answer.correct{background:#e6f3e8;border-color:#39804d;opacity:1}.answer.wrong{background:#fae7e7;border-color:#ad4040;opacity:1}
+.feedback{text-align:center;min-height:56px;margin:15px 0 4px;font-weight:800}.feedback small{display:block;font-weight:400;color:#555;font-size:.84rem}
+.controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.quiz button.action{padding:10px 18px;border-radius:4px;border:1px solid #d4c9c5;background:white;font:700 .9rem 'Nunito',sans-serif;cursor:pointer}
+.quiz button.primary{background:var(--accent);color:white;border-color:var(--accent)}
+.options{display:flex;flex-wrap:wrap;align-items:center;gap:9px 12px;margin-top:24px;font-size:.86rem;color:#555}
+.options select{font:inherit;background:white;border:1px solid #d4c9c5;border-radius:4px;padding:8px;max-width:100%}
+.footer{background:var(--paper);border-top:1px solid rgba(0,0,0,.06);padding:80px 30px;text-align:center;font-size:.95rem;color:rgba(0,0,0,.7)}
+@media(max-width:700px){.nav-links{gap:1.4rem;font-size:.95rem}h1{font-size:1.55rem}.quiz{padding:16px 12px}.answers{gap:5px}.answer{min-height:47px;font-size:1.1rem}}
+@media print{body{padding-top:0}#mainNav,.answers,.feedback,.controls,.options,.stats,.footer{display:none!important}.article{padding:20px;max-width:none}.quiz{background:white;padding:0}.staff-wrap{border:0}}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="container px-4 px-lg-5"><a class="navbar-brand" href="./index.html">Jamie Gabriel</a><div class="nav-links"><a href="./music.html">Music</a><a href="./teaching.html">Teaching</a><a href="./recordings.html">Recordings</a><a href="./contact.html">Contact</a></div></div></nav>
+<main class="article">
+<h1>Find That Note!</h1>
+<div class="meta">SM_4 · Interactive music learning</div>
+<p>Look at the note on the grand staff. Is it A, B, C, D, E, F or G? Choose an answer and keep practising for as long as you like.</p>
+<section class="quiz" aria-label="Grand staff note quiz">
+<div class="stats"><div class="stat"><strong id="correct">0</strong><span>Correct</span></div><div class="stat"><strong id="total">0</strong><span>Questions</span></div><div class="stat"><strong id="streak">0</strong><span>Current streak</span></div></div>
+<div class="staff-wrap"><svg id="staff" viewBox="0 0 680 355" role="img" aria-label="Grand staff showing one note"></svg></div>
+<div class="prompt">What note is this?</div><div class="answers" id="answers" aria-label="Choose a note name"></div>
+<div class="feedback" id="feedback" aria-live="polite"></div>
+<div class="controls"><button type="button" class="action primary" id="next" hidden>Next note →</button><button type="button" class="action" id="reset">Reset score</button></div>
+<div class="options"><label for="range">Notes:</label><select id="range"><option value="easy">Beginner — notes on the staves</option><option value="middle">Include middle C and nearby notes</option><option value="all">Wider range — more ledger lines</option></select><label for="speed">Next question:</label><select id="speed"><option value="1300">Automatically</option><option value="0">When I click Next</option></select></div>
+</section>
+</main><footer class="footer"><div>jamie@jamiegabriel.org</div></footer>
+<script>
+const NS='http://www.w3.org/2000/svg',svg=document.getElementById('staff'),names=['C','D','E','F','G','A','B'];
+let current=null,locked=false,score=0,total=0,streak=0,timer=null,last=null;
+function label(n){return names[((n%7)+7)%7]+(4+Math.floor(n/7));}
+function make(tag,attrs,parent=svg){const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);parent.appendChild(e);return e;}
+function text(x,y,str,size=20){const t=make('text',{x,y,'font-size':size,'font-family':'Georgia, serif',fill:'#111'});t.textContent=str;return t;}
+// Grand staff geometry: treble E4 is at y=153; middle C4 at y=177;
+// bass A3 is at y=213 and bass G2 at y=297. Each diatonic step = 12px.
+function render(n){
+ svg.replaceChildren();const left=112,right=618,x=389,step=12,trebleBottom=153,bassBottom=297;
+ for(const base of [trebleBottom,bassBottom])for(let i=0;i<5;i++)make('line',{x1:left,y1:base-i*24,x2:right,y2:base-i*24,stroke:'#252525','stroke-width':1.7});
+ text(122,147,'𝄞',90);text(124,269,'𝄢',75);
+ make('line',{x1:left,y1:57,x2:left,y2:297,stroke:'#222','stroke-width':2});
+ make('path',{d:'M 103 57 C 78 57 83 116 68 177 C 83 238 78 297 103 297',fill:'none',stroke:'#222','stroke-width':2});
+ // Pitch positions: C4=0 -> 177; E4=2 -> 153; A3=-2 -> 201;
+ // G2=-10 -> 297. This uses one continuous diatonic coordinate system.
+ const y=177-n*step;
+ // Ledger lines between the staves and beyond their outer boundaries.
+ if(n===0)ledger(177);
+ if(n>10)for(let ly=33;ly>=y;ly-=24)ledger(ly);
+ if(n< -10)for(let ly=321;ly<=y;ly+=24)ledger(ly);
+ make('ellipse',{cx:x,cy:y,rx:13.5,ry:9.5,transform:`rotate(-18 ${x} ${y})`,fill:'#111'});
+ // Stem direction changes for higher notes.
+ if(n>=7)make('line',{x1:x-12,y1:y+2,x2:x-12,y2:y+62,stroke:'#111','stroke-width':3});
+ else make('line',{x1:x+12,y1:y-2,x2:x+12,y2:y-62,stroke:'#111','stroke-width':3});
+ function ledger(ly){make('line',{x1:x-26,y1:ly,x2:x+26,y2:ly,stroke:'#222','stroke-width':1.8});}
+}
+function pool(){const mode=document.getElementById('range').value;
+ // Treble staff: E4..F5 = 2..10; bass staff: G2..A3 = -10..-2.
+ if(mode==='easy')return [...Array(9)].map((_,i)=>i+2).concat([...Array(9)].map((_,i)=>i-10));
+ if(mode==='middle')return [...Array(21)].map((_,i)=>i-10);
+ return [...Array(27)].map((_,i)=>i-13);
+}
+function newQuestion(){clearTimeout(timer);locked=false;document.getElementById('next').hidden=true;document.getElementById('feedback').replaceChildren();const a=pool();let n;do{n=a[Math.floor(Math.random()*a.length)]}while(n===last&&a.length>1);last=n;current=n;render(n);document.querySelectorAll('.answer').forEach(b=>{b.disabled=false;b.className='answer';});}
+function choose(value){if(locked)return;locked=true;total++;const correct=names[((current%7)+7)%7],good=value===correct;if(good){score++;streak++;}else streak=0;for(const [id,v] of [['correct',score],['total',total],['streak',streak]])document.getElementById(id).textContent=v;document.querySelectorAll('.answer').forEach(b=>{b.disabled=true;if(b.textContent===correct)b.classList.add('correct');else if(b.textContent===value)b.classList.add('wrong');});const f=document.getElementById('feedback');f.textContent=good?'✓ Correct!':'✗ Not quite — that is '+correct+'.';const detail=document.createElement('small');detail.textContent='The note is '+label(current)+'.';f.appendChild(detail);document.getElementById('next').hidden=false;const delay=Number(document.getElementById('speed').value);if(delay)timer=setTimeout(newQuestion,delay);}
+for(const n of ['A','B','C','D','E','F','G']){const b=document.createElement('button');b.className='answer';b.textContent=n;b.type='button';b.addEventListener('click',()=>choose(n));document.getElementById('answers').appendChild(b);}
+document.getElementById('next').onclick=newQuestion;
+document.getElementById('reset').onclick=()=>{score=total=streak=0;for(const id of ['correct','total','streak'])document.getElementById(id).textContent='0';newQuestion();};
+document.getElementById('range').onchange=newQuestion;
+document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey||['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName))return;const k=e.key.toUpperCase();if(k.length===1&&'ABCDEFG'.includes(k))choose(k);if(e.key==='Enter'&&locked)newQuestion();});
+newQuestion();
+</script>
+</body></html>
