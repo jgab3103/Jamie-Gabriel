@@ -1,5 +1,32 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Music Teaching – Jamie Gabriel"><meta name="author" content="Jamie Gabriel"><title>Teaching | Jamie Gabriel</title><link rel="icon" href="assets/favicon.ico"><script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script><link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet"><link href="css/styles.css" rel="stylesheet"><style>
 :root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB}html{scroll-behavior:smooth;background:var(--paper)}body{margin:0;font-family:Nunito,sans-serif;background:var(--paper);color:#111;line-height:1.75;font-size:16.5px;padding-top:80px}a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35)}a:hover{color:#111;border-bottom-color:var(--accent)}#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.05);min-height:80px}#mainNav a{color:#111!important;text-decoration:none!important;border:none!important}.nav-links{display:flex;gap:2.75rem;align-items:center}.intro-layout{max-width:1000px;margin:0 auto;padding:60px 24px 40px;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:50px;align-items:start}.intro h1{font-family:'Varela Round',sans-serif;font-size:1.7rem;margin:0 0 30px;font-weight:500}.intro p{max-width:65ch;margin-bottom:22px}.diary-card{background:var(--panel);padding:30px 28px 32px;border-radius:5px;border-top:4px solid var(--accent);box-shadow:0 2px 8px rgba(0,0,0,.06)}.diary-card h3{font-family:'Varela Round',sans-serif;font-size:1.15rem;margin:0 0 12px;font-weight:500}.diary-card p{margin:0;color:rgba(0,0,0,.72);line-height:1.65}.diary-card a{display:inline-block;margin-top:18px;font-weight:600}.library{max-width:1100px;margin:auto;padding:20px 24px 110px}.library h2{font:500 1.5rem 'Varela Round',sans-serif;margin:0 0 10px}.library-intro{color:#666;margin:0 0 24px}.toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:15px}.search{width:100%;max-width:420px;padding:11px 15px;border:1px solid #d6d1cd;border-radius:5px;background:white;font:inherit;font-size:.93rem}.search:focus{outline:2px solid rgba(139,46,60,.2);border-color:var(--accent)}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.filter{border:1px solid #ddd6d2;border-radius:20px;background:transparent;color:#514d4b;padding:6px 13px;font:600 .81rem Nunito,sans-serif;cursor:pointer}.filter:hover,.filter.active{background:var(--accent);border-color:var(--accent);color:white}.table-wrap{overflow-x:auto;border:1px solid #e7e2de;border-radius:5px}table{border-collapse:collapse;width:100%;min-width:620px;font-size:.91rem}thead{background:var(--panel)}th{text-align:left;padding:15px 18px;color:#48413e;font-size:.8rem;letter-spacing:.025em;font-weight:800;cursor:pointer;user-select:none}th:hover{color:var(--accent)}td{padding:13px 18px;border-top:1px solid #ece8e5;vertical-align:middle}tbody tr:nth-child(even){background:#fdfbf9}tbody tr:hover{background:#f8f1ef}.resource-link{display:inline-flex;align-items:baseline;gap:11px;color:#242424;border:0;font-weight:700}.resource-link:hover{color:var(--accent);border:0}.resource-link svg{color:var(--accent);width:15px;flex-shrink:0}.category{color:#5b5551}.type{font-size:.74rem;font-weight:800;letter-spacing:.04em;color:var(--accent)}.pending{color:#888;font-style:italic}.count{color:#777;font-size:.83rem;margin:12px 0}.empty{padding:28px;text-align:center;color:#777}.footer{border-top:1px solid rgba(0,0,0,.06);padding:70px 24px;text-align:center;color:rgba(0,0,0,.7)}@media(max-width:900px){.intro-layout{grid-template-columns:1fr;gap:10px}.nav-links{gap:1.5rem}}@media(max-width:600px){.intro-layout{padding-top:35px}.library{padding-left:14px;padding-right:14px}.search{max-width:none}.nav-links{gap:1rem;font-size:.83rem}td,th{padding:12px}}
+
+.diary-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.lessons-card {
+    background: var(--panel);
+    padding: 24px 28px;
+    border-radius: 5px;
+    border-top: 4px solid var(--accent);
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+.lessons-card h3 {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.15rem;
+    margin: 0 0 10px;
+    font-weight: 500;
+}
+
+.lessons-card a {
+    display: inline-block;
+    font-weight: 600;
+}
+
 </style></head><body><nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 <div class="container px-4 px-lg-5">
 <a class="navbar-brand" href="./index.html">
@@ -46,8 +73,22 @@ I have kept a listening diary for a long time now, as a way of making that proce
                 My Listening Diary →
             </a>
 </div>
+
+<!-- MUSIC LESSONS -->
+<div class="lessons-card">
+    <h3>Lessons</h3>
+
+    <a href="./lessons.html">
+        Book a Music Lesson →
+    </a>
+</div>
+
 </aside>
-</section><section class="library"><h2>Learning Resources</h2><p class="library-intro">Browse worksheets, tutorials, videos and interactive music resources.</p><div class="toolbar"><input id="resourceSearch" class="search" type="search" placeholder="Search learning resources…" aria-label="Search learning resources"></div><div class="filters" id="filterBar" aria-label="Filter by category"></div><div class="table-wrap"><table><thead><tr><th data-sort="title" scope="col">Resource ↕</th><th data-sort="category" scope="col">Category ↕</th><th data-sort="type" scope="col">Type ↕</th></tr></thead><tbody id="resourceRows"></tbody></table><div id="empty" class="empty" hidden>No matching resources. Try another search or category.</div></div><p class="count" id="resultCount" aria-live="polite"></p></section><footer class="footer">
+</section>
+
+
+
+<section class="library"><h2>Learning Resources</h2><p class="library-intro">Browse worksheets, tutorials, videos and interactive music resources.</p><div class="toolbar"><input id="resourceSearch" class="search" type="search" placeholder="Search learning resources…" aria-label="Search learning resources"></div><div class="filters" id="filterBar" aria-label="Filter by category"></div><div class="table-wrap"><table><thead><tr><th data-sort="title" scope="col">Resource ↕</th><th data-sort="category" scope="col">Category ↕</th><th data-sort="type" scope="col">Type ↕</th></tr></thead><tbody id="resourceRows"></tbody></table><div id="empty" class="empty" hidden>No matching resources. Try another search or category.</div></div><p class="count" id="resultCount" aria-live="polite"></p></section><footer class="footer">
 <div>
         jamie@jamiegabriel.org
     </div>
@@ -61,12 +102,13 @@ const resources = [
 {"title":"Modern Guitar  - Drop-3 Seventh-Chord Voicings","url":"./drop-3-voicings.html","category":"Learning Jazz & Fusion Guitar","type":"Web"},
 {"title":"Modern Guitar  - Using Target Tones In Improvisation","url":"./chord-tone-targets.html","category":"Learning Jazz & Fusion Guitar","type":"Web"},
 
-    {"title":"Modern Guitar 4 - Transcribing Effectively","url":"#","category":"Learning Jazz & Fusion Guitar","type":"Video"},
-    {"title":"Modern Guitar 5 - Why Reading Music Is Important","url":"#","category":"Learning Jazz & Fusion Guitar","type":"Video"},
+
 
     {"title":"Piano - Welcome Letter For Lessons","url":"./assets/pdf-files/SM_7_WelcomeToPianoLessons.pdf","category":"Learning Piano","type":"PDF"},
     {"title":"Piano - The Grand Staff Worksheet ","url":"./assets/pdf-files/SM_1_TheGrandStaff.pdf","category":"Learning Piano","type":"PDF"},
-    {"title":"Musicology  - Listening Diary ","url":"./assets/pdf-files/SM_2_MusicListeningDiary.pdf","category":"Learning Piano","type":"PDF"},
+    {"title":"Musicology  - Listening Diary Worksheet","url":"./assets/pdf-files/SM_2_MusicListeningDiary.pdf","category":"Learning Piano","type":"PDF"},
+
+    {"title":"Musicology  - Listening Diary","url":"./listening-diary.html","category":"Musicology","type":"Web"},
     {"title":"Piano  - Find That Key Worksheet ","url":"./assets/pdf-files/SM_3_FindThatKey.pdf","category":"Learning Piano","type":"PDF"},
     {"title":"Piano  - Find That Key Review Worksheet ","url":"./assets/pdf-files/SM_4_FindThatKeyReview.pdf","category":"Learning Piano","type":"PDF"},
     {"title":"Piano  - Notes And Barlines Worksheet ","url":"./assets/pdf-files/SM_5_NotesAndBarlines.pdf","category":"Learning Piano","type":"PDF"},
