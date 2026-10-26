@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +10,16 @@
 <title>Bookings | Jamie Gabriel</title>
 
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+
 <link href="css/styles.css" rel="stylesheet" />
 
 <style>
+
 :root{
     --accent:#8B2E3C;
     --paper:#FAFAFA;
@@ -49,6 +53,8 @@ a:hover{
     border-bottom-color:rgba(139,46,60,.75);
 }
 
+/* NAVIGATION */
+
 #mainNav,
 #mainNav.navbar-shrink{
     background:var(--paper)!important;
@@ -68,6 +74,8 @@ a:hover{
     align-items:center;
 }
 
+/* MAIN BOOKINGS SECTION */
+
 .bookings{
     max-width:1000px;
     margin:0 auto;
@@ -82,12 +90,31 @@ a:hover{
     margin:0 0 18px;
 }
 
+/* PERFORMANCE PHOTO */
+
+.booking-photo{
+    max-width:600px;
+    margin:25px auto 40px;
+    text-align:center;
+}
+
+.booking-photo img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:4px;
+}
+
+/* INTRODUCTION */
+
 .intro{
     max-width:640px;
     margin:0 auto 42px;
     text-align:center;
     color:#444;
 }
+
+/* BOOKINGS PANEL */
 
 .panel{
     background:var(--panel);
@@ -146,6 +173,8 @@ li{
     font-weight:600;
 }
 
+/* FOOTER */
+
 .footer{
     background:var(--paper);
     border-top:1px solid rgba(0,0,0,.06);
@@ -155,99 +184,208 @@ li{
     color:rgba(0,0,0,.7);
 }
 
+/* RESPONSIVE */
+
 @media(max-width:900px){
-    .nav-links{gap:1.5rem;}
-    .panel{padding:36px 28px;}
+
+    .nav-links{
+        gap:1.5rem;
+    }
+
+    .panel{
+        padding:36px 28px;
+    }
+
 }
 
 @media(max-width:600px){
-    .bookings{padding:45px 18px 90px;}
-    .panel{padding:32px 22px;}
-    .nav-links{gap:1rem;}
+
+    .bookings{
+        padding:45px 18px 90px;
+    }
+
+    .panel{
+        padding:32px 22px;
+    }
+
+    .nav-links{
+        gap:1rem;
+    }
+
+    .booking-photo{
+        margin:20px auto 30px;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- NAVIGATION -->
+
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-<div class="container px-4 px-lg-5">
-<a class="navbar-brand" href="./index.html">Jamie Gabriel</a>
 
-<div class="nav-links">
-<a href="./music.html">Music</a>
-<a href="./teaching.html">Teaching</a>
-<a href="./recordings.html">Recordings</a>
-<a href="./contact.html">Contact</a>
+    <div class="container px-4 px-lg-5">
 
-</div>
-</div>
+        <a class="navbar-brand" href="./index.html">
+            Jamie Gabriel
+        </a>
+
+        <div class="nav-links">
+
+            <a href="./music.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./recordings.html">Recordings</a>
+            <a href="./contact.html">Contact</a>
+
+        </div>
+
+    </div>
+
 </nav>
+
+
+<!-- PERFORMANCE BOOKINGS -->
 
 <section class="bookings">
 
-<h1>Performance Bookings</h1>
-
-<p class="intro">
- Available for casual gigs, festivals, private receptions, corporate and community events, and intimate house concerts. I tend to tailor the program to suit the atmosphere of each event, which can be anyting from  relaxed jazz standards to contemporary modern fusion and ambient music.
-</p>
-
-<div class="panel">
-
-<h2>Available For</h2>
-
-<div class="section">
-<div class="label">Performances</div>
-<ul>
-<li>Solo jazz piano</li>
-<li>Solo jazz guitar</li>
-<li>Jazz standards & contemporary improvisation</li>
-<li>Duo and ensemble performances</li>
-<li>Ambient and experimental live sets</li>
-</ul>
-</div>
+    <h1>Performance Bookings</h1>
 
 
+    <!-- PERFORMANCE PHOTO -->
 
-<div class="divider"></div>
+    <div class="booking-photo">
 
-<div class="section">
-<div class="label">Creative Projects</div>
-<ul>
-<li>Soundscape and installation music</li>
-<li>Site-specific performances</li>
-<li>Collaborative interdisciplinary works</li>
-<li>Improvised music for visual art & dance</li>
-<li>Original composition and live accompaniment</li>
-</ul>
-</div>
+        <img
+            src="assets/img/JamiePress1.jpeg"
+            alt="Jamie Gabriel – Performance"
+        />
 
-<div class="divider"></div>
+    </div>
 
-<div class="section">
-<div class="label">Booking Enquiries</div>
-<p>
-For solo performances, it is great if I can come and check out the venue beforehand to make sure the setup and sound will be great on the day. I find people often have particular songs they love and would like to hear an arrangement of. I'm always happy to do this, as it's exciting to explore new repertoire.<br/>
 
-For SAJA Project performances, our stage requirements can be found <a href="#">here</a>.
-</p>
-</div>
+    <!-- INTRODUCTION -->
 
-<div class="divider"></div>
+    <p class="intro">
+        Available for casual gigs, festivals, private receptions,
+        corporate and community events, and intimate house concerts.
+        I tend to tailor the program to suit the atmosphere of each
+        event, which can be anything from relaxed jazz standards to
+        contemporary modern fusion and ambient music.
+    </p>
 
-<div class="cta">
-<div class="label">Email</div>
-<div class="email">
-<a href="mailto:jamie@jamiegabriel.org">jamie@jamiegabriel.org</a>
-</div>
-</div>
 
-</div>
+    <!-- BOOKINGS PANEL -->
+
+    <div class="panel">
+
+        <h2>Available For</h2>
+
+
+        <!-- PERFORMANCES -->
+
+        <div class="section">
+
+            <div class="label">Performances</div>
+
+            <ul>
+                <li>Solo jazz piano</li>
+                <li>Solo jazz guitar</li>
+                <li>Jazz standards &amp; contemporary improvisation</li>
+                <li>Duo and ensemble performances</li>
+                <li>Ambient and experimental live sets</li>
+            </ul>
+
+        </div>
+
+
+        <div class="divider"></div>
+
+
+        <!-- CREATIVE PROJECTS -->
+
+        <div class="section">
+
+            <div class="label">Creative Projects</div>
+
+            <ul>
+                <li>Soundscape and installation music</li>
+                <li>Site-specific performances</li>
+                <li>Collaborative interdisciplinary works</li>
+                <li>Improvised music for visual art &amp; dance</li>
+                <li>Original composition and live accompaniment</li>
+            </ul>
+
+        </div>
+
+
+        <div class="divider"></div>
+
+
+        <!-- BOOKING ENQUIRIES -->
+
+        <div class="section">
+
+            <div class="label">Booking Enquiries</div>
+
+            <p>
+                For solo performances, it is great if I can come and
+                check out the venue beforehand to make sure the setup
+                and sound will be great on the day.
+            </p>
+
+            <p>
+                I find people often have particular songs they love
+                and would like to hear an arrangement of. I'm always
+                happy to do this, as it's exciting to explore new
+                repertoire.
+            </p>
+
+            <p>
+                For SAJA Project performances, our stage requirements
+                can be found
+                <a href="./stage-requirements.html">here</a>.
+            </p>
+
+        </div>
+
+
+        <div class="divider"></div>
+
+
+        <!-- CONTACT -->
+
+        <div class="cta">
+
+            <div class="label">Email</div>
+
+            <div class="email">
+
+                <a href="mailto:jamie@jamiegabriel.org">
+                    jamie@jamiegabriel.org
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
+
+<!-- FOOTER -->
+
 <footer class="footer">
-<div>jamie@jamiegabriel.org</div>
+
+    <div>
+        <a href="mailto:jamie@jamiegabriel.org">
+            jamie@jamiegabriel.org
+        </a>
+    </div>
+
 </footer>
 
 </body>
