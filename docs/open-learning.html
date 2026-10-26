@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Open Learning — the philosophy behind SAJA Music's freely accessible educational resources, developed without advertising or paywalls." />
+<meta name="author" content="Jamie Gabriel" />
+
+<title>Open Learning | Jamie Gabriel</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet" />
+
+<link href="css/styles.css" rel="stylesheet" />
+
+<style>
+:root{
+    --accent:#8B2E3C;
+    --paper:#FAFAFA;
+    --panel:#F4F1EB;
+    --ink:#111;
+    --muted:#666;
+}
+
+html{
+    scroll-behavior:smooth;
+    background:var(--paper);
+}
+
+body{
+    margin:0;
+    font-family:'Nunito',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.75;
+    font-size:16.5px;
+    padding-top:80px;
+}
+
+a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid rgba(139,46,60,.35);
+    transition:.2s;
+}
+
+a:hover{
+    color:#111;
+    border-bottom-color:rgba(139,46,60,.75);
+}
+
+/* Navigation */
+
+#mainNav,
+#mainNav.navbar-shrink{
+    background:var(--paper)!important;
+    border-bottom:1px solid rgba(0,0,0,.05);
+    min-height:80px;
+}
+
+#mainNav a{
+    color:#111!important;
+    text-decoration:none!important;
+    border:none!important;
+}
+
+.nav-links{
+    display:flex;
+    gap:2.5rem;
+    align-items:center;
+}
+
+.nav-links a{
+    border-bottom:none;
+}
+
+/* Article layout */
+
+.article{
+    max-width:720px;
+    margin:0 auto;
+    padding:60px 24px 120px;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:24px;
+    font-size:.95rem;
+}
+
+h1{
+    font-family:'Varela Round',sans-serif;
+    font-size:2.2rem;
+    font-weight:500;
+    margin:0 0 14px;
+    line-height:1.35;
+}
+
+.subtitle{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.2rem;
+    font-weight:400;
+    color:var(--accent);
+    line-height:1.5;
+    margin-bottom:40px;
+}
+
+h2{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.35rem;
+    font-weight:500;
+    margin:52px 0 20px;
+    line-height:1.4;
+}
+
+h3{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.05rem;
+    font-weight:500;
+    margin:30px 0 14px;
+}
+
+p{
+    max-width:65ch;
+    margin-bottom:22px;
+}
+
+strong{
+    font-weight:800;
+}
+
+.meta{
+    color:rgba(0,0,0,.55);
+    font-size:.9rem;
+    margin-bottom:40px;
+}
+
+/* Intro */
+
+.intro{
+    font-size:1.08rem;
+    line-height:1.85;
+}
+
+/* Highlighted statement */
+
+.statement{
+    border-left:3px solid var(--accent);
+    padding:10px 0 10px 24px;
+    margin:36px 0;
+    font-family:'Varela Round',sans-serif;
+    font-size:1.12rem;
+    line-height:1.65;
+    color:#333;
+}
+
+.statement p{
+    margin:0;
+}
+
+/* Principles */
+
+.principles{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:30px 0 36px;
+}
+
+.principle{
+    background:var(--panel);
+    padding:10px 16px;
+    border-radius:4px;
+    font-size:.9rem;
+    font-weight:800;
+    color:var(--accent);
+}
+
+/* Information panels */
+
+.info-panel{
+    background:var(--panel);
+    padding:28px 30px;
+    border-radius:4px;
+    margin:40px 0;
+}
+
+.info-panel h2{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.15rem;
+    font-weight:500;
+    margin:0 0 16px;
+}
+
+.info-panel p{
+    margin-bottom:16px;
+}
+
+.info-panel p:last-child{
+    margin-bottom:0;
+}
+
+/* Buttons */
+
+.button-link{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff!important;
+    padding:11px 20px;
+    border-radius:4px;
+    font-size:.9rem;
+    font-weight:800;
+    text-decoration:none!important;
+    border:none!important;
+    margin-top:8px;
+    transition:background .2s;
+}
+
+.button-link:hover{
+    background:#60202a;
+    color:#fff!important;
+}
+
+.button-outline{
+    display:inline-block;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    padding:10px 20px;
+    border-radius:4px;
+    font-size:.9rem;
+    font-weight:800;
+    text-decoration:none;
+    margin-top:8px;
+}
+
+.button-outline:hover{
+    background:var(--accent);
+    color:#fff;
+}
+
+/* Closing */
+
+.closing{
+    margin-top:60px;
+    padding-top:30px;
+    border-top:1px solid rgba(0,0,0,.1);
+}
+
+.closing-statement{
+    font-family:'Varela Round',sans-serif;
+    font-size:1.15rem;
+    line-height:1.7;
+    color:var(--accent);
+    margin-bottom:30px;
+}
+
+.signature{
+    margin-top:36px;
+    font-size:.95rem;
+    line-height:1.6;
+}
+
+.signature strong{
+    font-size:1rem;
+}
+
+/* Footer */
+
+.footer{
+    background:var(--paper);
+    border-top:1px solid rgba(0,0,0,.06);
+    padding:80px 30px;
+    text-align:center;
+    font-size:.95rem;
+    color:rgba(0,0,0,.7);
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+    .article{
+        padding:40px 20px 80px;
+    }
+
+    .nav-links{
+        gap:1.4rem;
+        font-size:.95rem;
+    }
+
+    h1{
+        font-size:1.8rem;
+    }
+
+    h2{
+        font-size:1.2rem;
+    }
+
+    .subtitle{
+        font-size:1.05rem;
+    }
+
+    .info-panel{
+        padding:22px 20px;
+    }
+
+    .statement{
+        font-size:1rem;
+        padding-left:18px;
+    }
+
+    .principles{
+        gap:8px;
+    }
+
+    .principle{
+        font-size:.8rem;
+        padding:8px 12px;
+    }
+}
+
+@media(max-width:480px){
+
+    #mainNav .container{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:8px;
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+
+    .nav-links{
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:8px 16px;
+        font-size:.85rem;
+    }
+
+    body{
+        padding-top:115px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+
+        <a class="navbar-brand" href="./index.html">
+            Jamie Gabriel
+        </a>
+
+        <div class="nav-links">
+            <a href="./music.html">Music</a>
+            <a href="./teaching.html">Teaching</a>
+            <a href="./recordings.html">Recordings</a>
+            <a href="./contact.html">Contact</a>
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- Article -->
+
+<main class="article">
+
+    <a class="back-link" href="./teaching.html">
+        ← Back to Teaching Resources
+    </a>
+
+    <h1>Open Learning</h1>
+
+    <div class="subtitle">
+        Quality educational resources should be accessible to everyone.
+    </div>
+
+
+    <!-- Introduction -->
+
+    <p class="intro">
+        I believe that access to high-quality educational resources
+        should not depend on someone's financial circumstances.
+        Knowledge is something we develop collectively, and sharing
+        it openly benefits individuals, educational institutions
+        and society more broadly.
+    </p>
+
+    <p>
+        This philosophy has developed over many years working across
+        education, academic research, music and technology.
+        It is also strongly influenced by my background in software
+        development and the open-source community, where collaboration
+        and the free exchange of knowledge have produced some of the
+        most important technological developments of recent decades.
+    </p>
+
+    <p>
+        I believe these principles have an equally important place
+        in education.
+    </p>
+
+
+    <!-- The challenge -->
+
+    <h2>The challenge of finding quality educational resources</h2>
+
+    <p>
+        There is an extraordinary amount of educational material
+        available online, but finding high-quality, freely accessible
+        resources can be surprisingly difficult.
+    </p>
+
+    <p>
+        Teachers routinely spend considerable time searching for
+        appropriate materials, often navigating websites filled
+        with advertising, subscription prompts, restricted content
+        and other commercial distractions.
+    </p>
+
+    <p>
+        This is particularly concerning in school classrooms, where
+        teachers may find themselves relying on advertising-supported
+        platforms simply because suitable alternatives are unavailable
+        or unaffordable.
+    </p>
+
+    <p>
+        I don't see this as a criticism of teachers, who already work
+        under considerable time and resource constraints. Rather,
+        it raises a broader question about how we develop, fund
+        and distribute educational resources.
+    </p>
+
+    <div class="statement">
+        <p>
+            Should students and teachers have to navigate advertising
+            and commercial barriers simply to access good educational
+            content?
+        </p>
+    </div>
+
+    <p>
+        I don't believe they should.
+    </p>
+
+    <p>
+        The issue is not that commercial educational resources have
+        no place. Many excellent resources are developed by commercial
+        organisations, and the expertise involved in creating them
+        deserves recognition and appropriate compensation.
+    </p>
+
+    <p>
+        However, education serves a broader public purpose, and I
+        believe there should always be high-quality alternatives
+        that are freely accessible, particularly for materials
+        intended for use in schools.
+    </p>
+
+    <p>
+        A teacher should be able to open an educational activity in
+        front of a classroom without worrying about inappropriate
+        advertising, distracting commercial content or whether
+        students will be asked to pay to continue learning.
+    </p>
+
+
+    <!-- Successful models -->
+
+    <h2>Learning from successful models</h2>
+
+    <p>
+        There are already excellent examples of organisations
+        demonstrating that educational information can be made
+        widely accessible without relying on conventional advertising
+        or individual paywalls.
+    </p>
+
+    <p>
+        <a href="https://www.wikipedia.org/"
+           target="_blank"
+           rel="noopener noreferrer">Wikipedia</a>
+        is perhaps the most recognisable example.
+        Built through remarkable international collaboration,
+        it provides free access to an enormous body of knowledge,
+        supported primarily through voluntary contributions.
+    </p>
+
+    <p>
+        <a href="https://www.khanacademy.org/"
+           target="_blank"
+           rel="noopener noreferrer">Khan Academy</a>
+        offers another important model.
+        Its extensive collection of educational materials demonstrates
+        how carefully designed digital resources can support independent
+        learning, classroom teaching and lifelong education.
+        Many of its resources can be accessed freely without requiring
+        users to purchase subscriptions or create accounts.
+    </p>
+
+    <p>
+        These organisations operate in different ways, but they share
+        an important principle: making knowledge accessible is central
+        to their purpose, rather than simply a means of attracting
+        paying customers.
+    </p>
+
+    <p>
+        The <strong>open-source software movement</strong> provides
+        another useful parallel. Some of the world's most sophisticated
+        technological infrastructure has been developed through
+        communities that share their work, invite collaboration
+        and recognise the collective benefits of openness.
+    </p>
+
+    <p>
+        These models demonstrate that freely accessible resources
+        need not be simplistic, poorly maintained or inferior
+        to commercial alternatives.
+    </p>
+
+    <p>
+        Indeed, some of the most valuable resources available to
+        educators and learners are the result of precisely this
+        kind of commitment to public access.
+    </p>
+
+
+    <!-- Democratisation -->
+
+    <h2>The democratisation of knowledge</h2>
+
+    <p>
+        Throughout my career, I've been fortunate to learn from
+        extraordinary teachers, musicians, researchers and colleagues.
+        Much of what I know has come from people who were generous
+        with their knowledge, experience and time.
+    </p>
+
+    <p>
+        Sharing what I've learned feels like a natural continuation
+        of that generosity.
+    </p>
+
+    <p>
+        I also believe that education is fundamentally about curiosity.
+        The opportunity to explore an idea, experiment with a concept
+        or discover something new shouldn't be restricted by
+        financial barriers.
+    </p>
+
+    <p>
+        The internet provides an unprecedented opportunity to make
+        knowledge accessible to people across geographic, social
+        and economic boundaries.
+    </p>
+
+    <p>
+        Yet the existence of digital technology does not automatically
+        guarantee equitable access to education. Subscription costs,
+        advertising, restrictive licensing and technological barriers
+        can reproduce many of the inequalities that digital learning
+        has the potential to overcome.
+    </p>
+
+    <p>
+        For this reason, I believe accessibility needs to be a
+        deliberate principle in the design and distribution of
+        educational resources, rather than an incidental feature.
+    </p>
+
+    <p>
+        There is also a broader public benefit to making educational
+        knowledge freely available. When a resource helps a student
+        develop a new skill, supports a teacher in the classroom
+        or encourages someone to pursue an intellectual interest,
+        the benefits extend beyond the individual user.
+    </p>
+
+    <div class="statement">
+        <p>
+            Education is not simply a private commodity.
+            It is also a public good.
+        </p>
+    </div>
+
+
+    <!-- Resources -->
+
+    <h2>The philosophy behind these resources</h2>
+
+    <p>
+        The music learning resources on this website reflect these
+        ideas on a much smaller scale.
+    </p>
+
+    <p>
+        My aim is to develop high-quality educational materials that
+        are freely accessible to students, teachers, parents and
+        anyone interested in learning about music.
+    </p>
+
+    <p>
+        Some are straightforward worksheets and teaching aids.
+        Others are interactive applications designed to help learners
+        explore musical concepts through experimentation, listening
+        and practice.
+    </p>
+
+    <p>
+        The collection includes resources for complete beginners
+        alongside more advanced materials exploring harmony,
+        improvisation, composition, acoustics, music history
+        and music technology.
+    </p>
+
+    <p>
+        I approach their development with the same care that I bring
+        to my own teaching, research and creative work.
+        The intention is not simply to make resources available,
+        but to create materials that are genuinely useful,
+        educationally sound and enjoyable to use.
+    </p>
+
+    <p>
+        I also want them to be accessible in a practical sense.
+    </p>
+
+    <div class="principles">
+        <span class="principle">No advertising</span>
+        <span class="principle">No paywalls</span>
+        <span class="principle">No paid subscriptions</span>
+    </div>
+
+    <p>
+        A teacher should be able to open an activity in front of
+        a class without worrying about inappropriate advertising
+        or distracting commercial content.
+    </p>
+
+    <p>
+        A student should be able to explore an idea out of curiosity,
+        without encountering an artificial barrier to further learning.
+    </p>
+
+    <p>
+        A parent should be able to support their child's musical
+        development without needing to purchase yet another subscription.
+    </p>
+
+    <p>
+        And an independent learner should be able to explore advanced
+        musical ideas simply because they find them interesting.
+    </p>
+
+    <div class="statement">
+        <p>
+            High-quality resources should be developed for learning,
+            rather than for advertising revenue or commercial engagement.
+        </p>
+    </div>
+
+
+    <!-- Funding -->
+
+    <h2>Supporting open education</h2>
+
+    <p>
+        Of course, creating and maintaining high-quality educational
+        resources requires considerable time, effort and expertise.
+    </p>
+
+    <p>
+        Interactive applications also involve ongoing software
+        development, technical maintenance and hosting costs.
+        As the collection grows, these demands will inevitably increase.
+    </p>
+
+    <p>
+        My intention is to keep these resources freely accessible
+        while providing an opportunity for people who find them
+        valuable to contribute voluntarily towards their
+        ongoing development.
+    </p>
+
+    <p>
+        This follows a model familiar from Wikipedia and many
+        open-source projects: people who are willing and able
+        to contribute help sustain resources that remain
+        available to everyone.
+    </p>
+
+    <p>
+        Contributions are entirely optional and do not provide
+        preferential access.
+    </p>
+
+    <p>
+        <strong>
+            Whether you contribute financially or not,
+            you are equally welcome to use the resources.
+        </strong>
+    </p>
+
+    <p>
+        I also recognise that financial contributions are only one
+        way of supporting a project like this. Sharing resources
+        with other educators, providing feedback, suggesting
+        improvements and contributing ideas are equally valuable
+        forms of participation.
+    </p>
+
+    <p>
+        The objective is not to create a commercial educational
+        platform, but to establish a sustainable approach to
+        developing and sharing useful educational materials.
+    </p>
+
+
+    <!-- Contribution panel -->
+
+    <div class="info-panel">
+
+        <h2>Help keep music education free</h2>
+
+        <p>
+            If these resources have been useful to you or your
+            students, you may wish to make a voluntary contribution
+            towards their development and maintenance.
+        </p>
+
+        <p>
+            Contributions help support the continued development
+            of freely accessible educational materials.
+            There is absolutely no obligation to contribute.
+        </p>
+
+        <!-- Add donation link here when available -->
+
+        <!--
+        <a class="button-link"
+           href="YOUR-DONATION-LINK">
+            Support SAJA Music
+        </a>
+        -->
+
+        <p style="font-size:.85rem;color:var(--muted);">
+            Voluntary contributions will be available soon.
+        </p>
+
+    </div>
+
+
+    <!-- SAJA Music -->
+
+    <h2>An evolving project: SAJA Music</h2>
+
+    <p>
+        The resources are currently hosted on my personal website,
+        <a href="https://jamiegabriel.org/">jamiegabriel.org</a>,
+        but they also form part of a much larger project that
+        we are developing through SAJA Music.
+    </p>
+
+    <p>
+        Our longer-term vision for
+        <a href="https://saja-music.com/"
+           target="_blank"
+           rel="noopener noreferrer">SAJA Music</a>
+        is an extensive digital humanities project bringing together
+        music education, musicology, academic research, technology
+        and creative practice.
+    </p>
+
+    <p>
+        We hope to develop a growing collection of freely accessible
+        educational resources, interactive applications and digital
+        tools that encourage people to explore music from a range
+        of perspectives.
+    </p>
+
+    <p>
+        These will encompass the practical experience of playing,
+        listening and creating music, alongside the theoretical,
+        historical, mathematical and computational ideas
+        that underpin it.
+    </p>
+
+    <p>
+        I am particularly interested in the possibilities that
+        digital technologies offer for making complex musical
+        ideas more accessible.
+    </p>
+
+    <p>
+        Interactive applications can allow learners to experiment
+        directly with concepts that might otherwise remain abstract.
+        Musical structures can be explored visually and aurally,
+        historical developments can be examined through interactive
+        representations, and theoretical ideas can be investigated
+        through experimentation rather than explanation alone.
+    </p>
+
+    <p>
+        Digital humanities approaches also offer exciting opportunities
+        to connect musical works, composers, historical contexts,
+        analytical methods and research findings in ways that
+        conventional textbooks and teaching materials cannot
+        easily achieve.
+    </p>
+
+    <p>
+        Our ambition is to bring these approaches together in a
+        coherent collection of resources that supports learning,
+        exploration and discovery across different levels
+        of musical experience.
+    </p>
+
+    <p>
+        While the project is still developing, the underlying
+        philosophy will remain the same: high-quality educational
+        and research resources should be as widely accessible
+        as possible.
+    </p>
+
+
+    <!-- Feedback -->
+
+    <h2>Feedback and collaboration</h2>
+
+    <p>
+        An important part of this philosophy is recognising
+        that educational resources are never really finished.
+    </p>
+
+    <p>
+        They can always be improved through experience,
+        research and the contributions of others.
+    </p>
+
+    <p>
+        I particularly welcome feedback from teachers, students,
+        musicians and researchers who use these resources.
+    </p>
+
+    <p>
+        If something doesn't work as expected, an explanation
+        could be clearer, or you have an idea for a new activity
+        or improvement, I'd love to hear about it.
+    </p>
+
+    <p>
+        I'm especially interested in hearing from classroom teachers
+        about how these materials work in practice, what their
+        students find useful and where there are gaps that
+        better resources might help address.
+    </p>
+
+    <p>
+        This kind of feedback is particularly valuable because
+        educational resources ultimately need to work in real
+        learning environments, with students who bring different
+        abilities, experiences, interests and needs.
+    </p>
+
+    <p>
+        It is also very much in the spirit of the open-source
+        communities that have influenced my work: sharing ideas,
+        learning from others and improving things collectively.
+    </p>
+
+    <p>
+        Over time, I hope that SAJA Music will become more than
+        a collection of resources developed by a small number
+        of people. Ideally, it will provide opportunities for
+        collaboration among educators, musicians, researchers
+        and developers who share an interest in making musical
+        knowledge more accessible.
+    </p>
+
+    <div class="statement">
+        <p>
+            Good educational resources should not only be freely
+            available. They should also be open to improvement
+            through the experience and knowledge of the people
+            who use them.
+        </p>
+    </div>
+
+
+    <!-- Feedback panel -->
+
+    <div class="info-panel">
+
+        <h2>Feedback and suggestions</h2>
+
+        <p>
+            Have you used one of these resources in your teaching
+            or learning? Found something that could be improved?
+            Have an idea for a new activity?
+        </p>
+
+        <p>
+            Feedback from educators, students, musicians and
+            researchers is always welcome.
+        </p>
+
+        <a class="button-outline" href="./contact.html">
+            Share feedback or suggest an improvement →
+        </a>
+
+    </div>
+
+
+    <!-- Looking ahead -->
+
+    <h2>Looking ahead</h2>
+
+    <p>
+        This collection will continue to evolve as we develop
+        new teaching materials, interactive learning tools,
+        musical experiments and digital humanities resources.
+    </p>
+
+    <p>
+        Some will be designed for children taking their first
+        steps in music. Others will explore advanced topics
+        in harmony, improvisation, composition, musicology,
+        acoustics and computational approaches to musical analysis.
+    </p>
+
+    <p>
+        My hope is that these resources will support classroom
+        teachers, private music educators, students, researchers
+        and independent learners, while making a small contribution
+        to the wider movement towards accessible, high-quality
+        education.
+    </p>
+
+    <p>
+        Throughout my career, I've benefited enormously from
+        the generosity of people who have shared their knowledge
+        and encouraged my curiosity.
+    </p>
+
+    <p>
+        Making these resources freely available is one way
+        of continuing that tradition.
+    </p>
+
+    <p>
+        Ultimately, I hope they encourage others to explore music,
+        ask questions, experiment with ideas and discover something
+        they might otherwise never have encountered.
+    </p>
+
+    <p>
+        And if they help someone develop a lifelong curiosity
+        about music and learning, all the better.
+    </p>
+
+
+    <!-- Closing -->
+
+    <div class="closing">
+
+        <div class="closing-statement">
+            Developed for learning.<br>
+            Improved through collaboration.<br>
+            Freely available to everyone.
+        </div>
+
+        <div class="signature">
+            <strong>Jamie Gabriel</strong><br>
+            SAJA Music
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- Footer -->
+
+<footer class="footer">
+    <div>jamie@jamiegabriel.org</div>
+</footer>
+
+</body>
+</html>
