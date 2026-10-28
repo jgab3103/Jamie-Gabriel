@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Jamie Gabriel">
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<meta name="description" content="King of Rivals — a beginner piano exercise with electric piano playback | Jamie Gabriel">
+<title>King of Rivals | Jamie Gabriel</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--ink:#29252a;--muted:#675e62}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:#111;font-family:Nunito,Arial,sans-serif;line-height:1.75;font-size:16.5px;padding-top:80px}
+.page-header{background:#211C15;color:#fff;padding:20px 24px}.page-header .inner{max-width:980px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{font-family:'Varela Round',sans-serif;letter-spacing:.12em;font-size:15px;color:white;text-decoration:none}.back{color:#f2e8e3;text-decoration:none;font-size:14px}.back:hover{text-decoration:underline}
+main.article{max-width:720px;margin:0 auto;padding:60px 24px 120px}.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:900}h1{font-family:'Varela Round',sans-serif;font-size:1.9rem;font-weight:400;margin:8px 0 8px}h2{font-family:'Varela Round',sans-serif;font-size:1.2rem;font-weight:400;margin:0}.lead{color:var(--muted);margin:0 0 28px;font-size:16px}
+.toolbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--panel);border-radius:4px;padding:18px 20px;margin:0 0 25px}.btn{border:0;border-radius:4px;background:var(--accent);color:white;padding:12px 20px;font:800 15px Nunito,Arial,sans-serif;cursor:pointer}.btn:hover{filter:brightness(.9)}.btn:focus-visible,input:focus-visible{outline:3px solid #bd8b93;outline-offset:3px}.btn.secondary{background:#fff;color:var(--accent);border:1px solid #c8a7ad}.tempo{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:800}.tempo input{accent-color:var(--accent);width:140px}.tempo output{min-width:58px;font-variant-numeric:tabular-nums}.status{font-size:13px;color:var(--muted)}
+.part{border:1px solid #e6ddda;border-radius:4px;background:#fff;padding:25px 25px 28px;margin:0 0 22px;break-inside:avoid}.part-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.part-number{font-size:12px;letter-spacing:.13em;color:var(--accent);font-weight:900;text-transform:uppercase}.instruction{margin:12px 0 21px;font-size:16px}.instruction strong{color:var(--accent)}.notes{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}.notes.four{grid-template-columns:repeat(4,minmax(0,1fr))}.note{border:2px solid #ded5d2;border-radius:4px;text-align:center;min-height:115px;padding:11px 5px 9px;transition:background .1s,border-color .1s}.note.active{border-color:var(--accent);background:#f8edef}.pitch{font-family:'Varela Round',sans-serif;font-size:clamp(25px,4.5vw,37px);line-height:1.4}.finger{border-top:1px solid #e8e0dc;margin:5px auto 0;padding-top:5px;font-size:15px;font-weight:900;color:var(--accent)}.note small{font-size:11px;color:var(--muted)}.legend{font-size:12px;color:var(--muted);margin-top:12px}.checks{margin-top:22px;font-size:14px}.check{display:inline-flex;gap:6px;align-items:center;margin-right:16px}.box{display:inline-block;width:16px;height:16px;border:1.6px solid #333;border-radius:2px}.footer{font-size:12px;text-align:center;color:var(--muted);margin-top:28px}.footnote{font-size:13px;color:var(--muted);margin-top:12px}
+@media(max-width:550px){.notes{gap:5px}.note{padding:10px 2px;min-height:95px}.pitch{font-size:25px}.finger{font-size:13px}.part{padding:18px 13px}.notes .note small{font-size:10px}}
+
+.play-along{background:var(--panel);border-radius:4px;padding:26px;margin-top:30px}.play-along h2{margin-bottom:10px}.play-along p{margin:0 0 18px}.play-along .btn{margin-right:10px}.play-along .status{display:inline-block;margin-top:10px}
+/* Jamie Gabriel site navigation and footer */
+#mainNav,#mainNav.navbar-shrink{background:var(--paper)!important;border-bottom:1px solid rgba(0,0,0,.05);min-height:80px}
+#mainNav a{color:#111!important;text-decoration:none!important;border:none!important}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.back-link{display:inline-block;margin-bottom:24px;font-size:.95rem;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,60,.35)}
+.footer{background:var(--paper);border-top:1px solid rgba(0,0,0,.06);padding:80px 30px;text-align:center;font-size:.95rem;color:rgba(0,0,0,.7);margin-top:0}
+@media(max-width:700px){.nav-links{gap:1.4rem;font-size:.95rem}h1{font-size:1.55rem}}
+@media print{@page{size:A4;margin:15mm}body{background:#fff!important;color:#000!important}#mainNav,.back-link,.toolbar,.play-part,.footnote,.play-along{display:none!important}main.article{padding:0;max-width:none}.eyebrow,.part-number,.finger,.instruction strong{color:#000!important}.lead{margin-bottom:15px}.part{border:1.5px solid #000;border-radius:8px;padding:18px;margin-bottom:15px}.note{border:1.5px solid #000;border-radius:5px;min-height:100px}.note.active{background:white!important;border-color:black!important}.finger{border-top:1px solid #000}.checks{margin-top:14px}.footer{color:#000}h1{font-size:31px}}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav"><div class="container px-4 px-lg-5"><a class="navbar-brand" href="./index.html">Jamie Gabriel</a><div class="nav-links"><a href="./music.html">Music</a><a href="./teaching.html">Teaching</a><a href="./recordings.html">Recordings</a><a href="./contact.html">Contact</a></div></div></nav>
+<main class="article">
+<a class="back-link" href="./teaching.html">← Teaching resources</a>
+<div class="eyebrow">Piano learning · Beginner</div>
+<h1>King of Rivals</h1>
+<p><b>MiniBloxia</b></p>
+<p class="lead">A little piano tune for clever fingers. Play each part slowly, then put them together!</p>
+<div class="toolbar" aria-label="Playback controls">
+<button type="button" class="btn" id="playAll">▶ Play the whole tune</button>
+<button type="button" class="btn secondary" id="stop">■ Stop</button>
+<label class="tempo" for="tempo">Speed <input id="tempo" type="range" min="55" max="140" value="90" step="5"><output id="bpm">90 BPM</output></label>
+<span class="status" id="status" aria-live="polite">Ready to play</span>
+</div>
+<section class="part" id="part1" aria-labelledby="part1heading">
+<div class="part-head"><div><div class="part-number">Part 1</div><h2 id="part1heading">The first little tune</h2></div><button type="button" class="btn secondary play-part" data-part="1">▶ Hear Part 1</button></div>
+<p class="instruction"><strong>Start with your thumb (finger 1) on A.</strong> Keep your hand relaxed and follow the finger numbers!</p>
+<div class="notes" aria-label="A4 quarter, A4 quarter, C5 eighth, B4 eighth, A4 eighth, B4 eighth">
+<div class="note"><div class="pitch">A</div><small>quarter note</small><div class="finger">1</div></div>
+<div class="note"><div class="pitch">A</div><small>quarter note</small><div class="finger">1</div></div>
+<div class="note"><div class="pitch">C</div><small>eighth note</small><div class="finger">3</div></div>
+<div class="note"><div class="pitch">B</div><small>eighth note</small><div class="finger">2</div></div>
+<div class="note"><div class="pitch">A</div><small>eighth note</small><div class="finger">1</div></div>
+<div class="note"><div class="pitch">B</div><small>eighth note</small><div class="finger">2</div></div>
+</div>
+<div class="legend">Big letter = note to play · Number underneath = finger to use</div>
+<div class="checks">I played Part 1: <span class="check"><span class="box"></span> Once</span><span class="check"><span class="box"></span> Twice</span><span class="check"><span class="box"></span> Three times</span></div>
+</section>
+<section class="part" id="part2" aria-labelledby="part2heading">
+<div class="part-head"><div><div class="part-number">Part 2</div><h2 id="part2heading">The second little tune</h2></div><button type="button" class="btn secondary play-part" data-part="2">▶ Hear Part 2</button></div>
+<p class="instruction"><strong>Now move your thumb (finger 1) to E.</strong> Your second finger will be on F!</p>
+<div class="notes four" aria-label="F4 quarter, F4 eighth, G4 eighth, E4 eighth">
+<div class="note"><div class="pitch">F</div><small>quarter note</small><div class="finger">2</div></div>
+<div class="note"><div class="pitch">F</div><small>eighth note</small><div class="finger">2</div></div>
+<div class="note"><div class="pitch">G</div><small>eighth note</small><div class="finger">3</div></div>
+<div class="note"><div class="pitch">E</div><small>eighth note</small><div class="finger">1</div></div>
+</div>
+<div class="legend">Big letter = note to play · Number underneath = finger to use</div>
+<div class="checks">I played Part 2: <span class="check"><span class="box"></span> Once</span><span class="check"><span class="box"></span> Twice</span><span class="check"><span class="box"></span> Three times</span></div>
+</section>
+<section class="play-along" aria-labelledby="playAlongHeading">
+<h2 id="playAlongHeading">Now you've learnt it — play along!</h2>
+<p>You've practised both parts. Brilliant! Now put them together. Press play, listen to the electric piano and try to play the whole tune at the same time. Start slowly!</p>
+<button type="button" class="btn" id="playAlong">▶ Play along to the whole tune</button>
+<button type="button" class="btn secondary" id="stopAlong">■ Stop</button>
+<div class="status" id="alongStatus" aria-live="polite">Ready when you are!</div>
+</section>
+<p class="footnote">Tip: In Part 1, both A notes are quarter notes; the rest are eighth notes. In Part 2, the first F is a quarter note and the rest are eighth notes. The sound is made right in your browser—no audio file needed.</p>
+
+</main>
+<footer class="footer"><div>jamie@jamiegabriel.org</div></footer>
+<script>
+(()=>{
+'use strict';
+const melodies={1:[['A4',1],['A4',1],['C5',.5],['B4',.5],['A4',.5],['B4',.5]],2:[['F4',1],['F4',.5],['G4',.5],['E4',.5]]};
+const frequencies={A4:440,B4:493.883301,C5:523.251131,F4:349.228231,G4:391.995436,E4:329.627557};
+const tempo=document.getElementById('tempo'),bpm=document.getElementById('bpm'),status=document.getElementById('status');
+let ctx=null,voices=[],timers=[],generation=0;
+function stop(){generation++;timers.forEach(clearTimeout);timers=[];document.querySelectorAll('.note.active').forEach(n=>n.classList.remove('active'));if(ctx){const t=ctx.currentTime;voices.forEach(g=>{try{g.gain.cancelScheduledValues(t);g.gain.setTargetAtTime(.00001,t,.008)}catch(e){}})}voices=[];status.textContent='Ready to play';document.getElementById('alongStatus').textContent='Ready when you are!'}
+function tone(pitch,start,duration){const hz=frequencies[pitch],gain=ctx.createGain(),filter=ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=3000;gain.connect(filter);filter.connect(ctx.destination);gain.gain.setValueAtTime(.0001,start);gain.gain.exponentialRampToValueAtTime(.17,start+.012);gain.gain.exponentialRampToValueAtTime(.095,start+.10);gain.gain.exponentialRampToValueAtTime(.0001,start+Math.max(.22,duration+.12));voices.push(gain);
+// Soft electric-piano-like sound: a gently detuned fundamental and short bell-like harmonics.
+[[1,.72,'sine'],[1.003,.18,'sine'],[2.01,.19,'sine'],[3.98,.07,'sine']].forEach(([ratio,level,type])=>{const osc=ctx.createOscillator(),amp=ctx.createGain();osc.type=type;osc.frequency.setValueAtTime(hz*ratio,start);amp.gain.setValueAtTime(level,start);amp.gain.exponentialRampToValueAtTime(.0001,start+(ratio>2?.28:Math.max(.25,duration+.1)));osc.connect(amp);amp.connect(gain);osc.start(start);osc.stop(start+Math.max(.32,duration+.2))});}
+async function play(parts){stop();const token=generation;try{ctx??=new(window.AudioContext||window.webkitAudioContext)();await ctx.resume()}catch(e){status.textContent='Audio is unavailable in this browser';return}if(token!==generation)return;const beat=60/Number(tempo.value),start=ctx.currentTime+.06;let offset=0;status.textContent='Playing…';document.getElementById('alongStatus').textContent='Play along now!';parts.forEach((part,partIndex)=>{const boxes=[...document.querySelectorAll('#part'+part+' .note')];melodies[part].forEach(([pitch,beats],i)=>{const at=start+offset;const length=beats*beat;tone(pitch,at,Math.max(.08,length*.88));const delay=Math.max(0,(at-ctx.currentTime)*1000);timers.push(setTimeout(()=>{if(token!==generation)return;document.querySelectorAll('.note.active').forEach(n=>n.classList.remove('active'));boxes[i].classList.add('active')},delay));offset+=length});/* Continue directly into the next part without an extra rest. */});timers.push(setTimeout(()=>{if(token===generation){document.querySelectorAll('.note.active').forEach(n=>n.classList.remove('active'));status.textContent='Great playing!';document.getElementById('alongStatus').textContent='Well done! Try it again!'}},(offset+.2)*1000))}
+tempo.addEventListener('input',()=>bpm.textContent=tempo.value+' BPM');document.getElementById('playAll').addEventListener('click',()=>play([1,2]));document.getElementById('stop').addEventListener('click',stop);document.getElementById('playAlong').addEventListener('click',()=>play([1,2]));document.getElementById('stopAlong').addEventListener('click',stop);document.querySelectorAll('[data-part]').forEach(button=>button.addEventListener('click',()=>play([Number(button.dataset.part)])));window.addEventListener('pagehide',stop);
+})();
+</script>
+</body>
+</html>
