@@ -45,22 +45,75 @@ a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,46,6
 const intervals=[['Unison',0],['Minor 2nd',1],['Major 2nd',2],['Minor 3rd',3],['Major 3rd',4],['Perfect 4th',5],['Tritone',6],['Perfect 5th',7],['Minor 6th',8],['Major 6th',9],['Minor 7th',10],['Major 7th',11],['Octave',12]];
 const basic=[0,2,4,5,7,12];
 const $=id=>document.getElementById(id);
-let ctx,activeVoices=[],question=null,answered=false,correct=0,attempts=0,count=0,playRequest=0;
- function audioContext(){if(!ctx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)throw new Error('Web Audio is not supported');ctx=new AC();}return ctx;}
- function unlockAudio(){const c=audioContext();if(c.state!=='running'){const p=c.resume();if(p&&typeof p.catch==='function')p.catch(e=>console.warn('Audio resume:',e));}return c;}
+let question=null,answered=false,correct=0,attempts=0,count=0;
+let player=null, currentURL=null;
+function stopAudio(){
+  if(player){player.pause();player.currentTime=0;}
+  if(currentURL){URL.revokeObjectURL(currentURL);currentURL=null;}
+}
+function makeWav(a,b,gap){
+  // Render audio to a standard PCM WAV file. iOS Safari plays this through
+  // its native HTMLAudioElement rather than requiring Web Audio unlocking.
+  const rate=22050, duration=gap+1.75, frames=Math.ceil(duration*rate);
+  const bytes=new ArrayBuffer(44+frames*2), v=new DataView(bytes);
+  const str=(p,s)=>{for(let i=0;i<s.length;i++)v.setUint8(p+i,s.charCodeAt(i));};
+  str(0,'RIFF');v.setUint32(4,36+frames*2,true);str(8,'WAVE');
+  str(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);
+  v.setUint16(22,1,true);v.setUint32(24,rate,true);
+  v.setUint32(28,rate*2,true);v.setUint16(32,2,true);
+  v.setUint16(34,16,true);str(36,'data');v.setUint32(40,frames*2,true);
+  const note=(m,t)=>{
+    if(t<0||t>1.65)return 0;
+    const f=freq(m), attack=Math.min(1,t/.025);
+    const release=Math.min(1,Math.max(0,(1.65-t)/.25));
+    const env=attack*release*Math.exp(-t*.85);
+    return env*(.72*Math.sin(2*Math.PI*f*t)+.16*Math.sin(4*Math.PI*f*t)+
+      .055*Math.sin(6*Math.PI*f*t)+.025*Math.sin(8*Math.PI*f*t));
+  };
+  for(let i=0;i<frames;i++){
+    const t=i/rate;
+    const sample=Math.max(-1,Math.min(1,.31*(note(a,t)+note(b,t-gap))));
+    v.setInt16(44+i*2,Math.round(sample*32767),true);
+  }
+  return new Blob([bytes],{type:'audio/wav'});
+}
 function selected(){return [...document.querySelectorAll('#intervalList input:checked')].map(el=>Number(el.value))}
 function renderChecks(){ $('intervalList').innerHTML='';intervals.forEach(([name,semitones])=>{const label=document.createElement('label');label.className='interval-check';const input=document.createElement('input');input.type='checkbox';input.value=semitones;input.checked=basic.includes(semitones);input.addEventListener('change',reset);label.append(input,document.createTextNode(name));$('intervalList').append(label)})}
 function setChecks(values){document.querySelectorAll('#intervalList input').forEach(el=>el.checked=values.includes(Number(el.value)));reset()}
 function freq(m){return 440*Math.pow(2,(m-69)/12)}
 function noteName(m){return ['C','C♯','D','E♭','E','F','F♯','G','A♭','A','B♭','B'][m%12]+(Math.floor(m/12)-1)}
-function stopAudio(){if(!ctx)return;const now=ctx.currentTime;activeVoices.forEach(({osc,gain})=>{try{gain.gain.cancelScheduledValues(now);gain.gain.setTargetAtTime(.0001,now,.015);osc.stop(now+.12)}catch(e){}});activeVoices=[]}
-function electricPiano(m,start,duration=1.6){const f=freq(m);const master=ctx.createGain();const filter=ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=2400;filter.Q.value=.55;master.connect(filter);filter.connect(ctx.destination);master.gain.setValueAtTime(.0001,start);master.gain.exponentialRampToValueAtTime(.18,start+.028);master.gain.exponentialRampToValueAtTime(.085,start+.22);master.gain.exponentialRampToValueAtTime(.0001,start+duration);[[1,.72],[2,.16],[3,.055],[4,.025]].forEach(([ratio,level])=>{const osc=ctx.createOscillator();const gain=ctx.createGain();osc.type='sine';osc.frequency.value=f*ratio;gain.gain.value=level;osc.connect(gain);gain.connect(master);osc.start(start);osc.stop(start+duration+.04);activeVoices.push({osc,gain:master})})}
-async function play(){if(!question)return;const request=++playRequest;try{const c=unlockAudio();if(c.state!=='running')await c.resume();if(request!==playRequest)return;stopAudio();const gap={slow:1.15,normal:.86,fast:.56}[$('speed').value];const t=c.currentTime+.07;electricPiano(question.a,t,1.35);electricPiano(question.b,t+gap,1.65)}catch(e){console.error('Playback failed:',e);$('feedback').textContent='Audio could not start: '+(e.message||e)+'. Tap Play again.'}}
-function reset(){playRequest++;stopAudio();correct=0;attempts=0;count=0;updateScore();newQuestion()}
+function play(){
+  if(!question)return;
+  try{
+    stopAudio();
+    const gap={slow:1.15,normal:.86,fast:.56}[$('speed').value];
+    currentURL=URL.createObjectURL(makeWav(question.a,question.b,gap));
+    if(!player){
+      player=document.createElement('audio');
+      player.controls=true;
+      player.preload='auto';
+      player.setAttribute('aria-label','Interval audio player');
+      player.style.cssText='display:block;max-width:100%;width:280px;margin:12px auto;';
+      $('replay').closest('.toolbar').insertAdjacentElement('afterend',player);
+    }
+    player.src=currentURL;
+    player.load();
+    const result=player.play();
+    $('feedback').textContent='Playing interval… If silent, tap ▶ on the audio player below.';
+    if(result&&result.catch)result.catch(e=>{
+      console.warn('iOS playback:',e);
+      $('feedback').textContent='Tap ▶ on the audio player below to start sound. ('+e.name+')';
+    });
+  }catch(e){
+    console.error(e);
+    $('feedback').textContent='Playback error: '+(e.message||e);
+  }
+}
+function reset(){stopAudio();correct=0;attempts=0;count=0;updateScore();newQuestion()}
 function updateScore(){$('score').textContent=`${correct} correct · ${attempts} attempted${attempts?' · '+Math.round(correct/attempts*100)+'%':''}`}
-function newQuestion(){playRequest++;stopAudio();const pool=selected();$('answers').replaceChildren();$('next').disabled=true;answered=false;$('noteA').textContent='♪';$('noteB').textContent='?';$('noteA').style.fontSize='';$('noteB').style.fontSize='';if(!pool.length){question=null;$('questionLabel').textContent='Choose intervals';$('feedback').textContent='Select at least one interval to begin.';$('play').disabled=true;$('replay').disabled=true;return} $('play').disabled=false;$('replay').disabled=false;count++;$('questionLabel').textContent='Question '+count;const i=pool[Math.floor(Math.random()*pool.length)];const dir=$('direction').value;const up=dir==='both'?Math.random()<.5:dir==='up';const low=48+Math.floor(Math.random()*13);question={i,a:up?low:low+i,b:up?low+i:low};$('feedback').textContent='Press Play, listen carefully, and choose your answer.';pool.forEach(n=>{const b=document.createElement('button');b.type='button';b.className='interval-option';b.textContent=intervals[n][0];b.dataset.interval=n;b.addEventListener('click',()=>answer(n));$('answers').append(b)})}
+function newQuestion(){stopAudio();const pool=selected();$('answers').replaceChildren();$('next').disabled=true;answered=false;$('noteA').textContent='♪';$('noteB').textContent='?';$('noteA').style.fontSize='';$('noteB').style.fontSize='';if(!pool.length){question=null;$('questionLabel').textContent='Choose intervals';$('feedback').textContent='Select at least one interval to begin.';$('play').disabled=true;$('replay').disabled=true;return} $('play').disabled=false;$('replay').disabled=false;count++;$('questionLabel').textContent='Question '+count;const i=pool[Math.floor(Math.random()*pool.length)];const dir=$('direction').value;const up=dir==='both'?Math.random()<.5:dir==='up';const low=48+Math.floor(Math.random()*13);question={i,a:up?low:low+i,b:up?low+i:low};$('feedback').textContent='Press Play, listen carefully, and choose your answer.';pool.forEach(n=>{const b=document.createElement('button');b.type='button';b.className='interval-option';b.textContent=intervals[n][0];b.dataset.interval=n;b.addEventListener('click',()=>answer(n));$('answers').append(b)})}
 function answer(n){if(answered||!question)return;answered=true;attempts++;if(n===question.i)correct++;updateScore();document.querySelectorAll('.interval-option').forEach(b=>{b.disabled=true;const value=Number(b.dataset.interval);if(value===question.i)b.classList.add('correct');else if(value===n)b.classList.add('incorrect')});$('noteA').textContent=noteName(question.a);$('noteB').textContent=noteName(question.b);$('noteA').style.fontSize='14px';$('noteB').style.fontSize='14px';const good=n===question.i;$('feedback').innerHTML=`<strong>${good?'Correct!':'Not quite.'}</strong>${intervals[question.i][0]} · ${question.i} semitone${question.i===1?'':'s'} · ${noteName(question.a)} → ${noteName(question.b)}`;$('next').disabled=false}
-document.addEventListener('visibilitychange',()=>{if(document.hidden){playRequest++;stopAudio();}});
+
  $('selectAll').addEventListener('click',()=>setChecks(intervals.map(i=>i[1])));$('selectBasic').addEventListener('click',()=>setChecks(basic));$('selectNone').addEventListener('click',()=>setChecks([]));$('direction').addEventListener('change',newQuestion);$('play').addEventListener('click',play);$('replay').addEventListener('click',play);$('next').addEventListener('click',newQuestion);renderChecks();newQuestion();
 })();
 </script>
