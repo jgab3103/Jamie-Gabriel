@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="The Sound of Scales: an ambient listening lab exploring melodic movement above a C drone." />
+<meta name="author" content="SAJA Music" />
+<title>The Sound of Scales | SAJA Music</title>
+<link rel="icon" href="assets/favicon.ico" />
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,500,600,700,800" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
+<style>
+:root{--accent:#8B2E3C;--paper:#FAFAFA;--panel:#F4F1EB;--ink:#282420;--muted:#706761;--line:#ded6cf}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Nunito,system-ui,sans-serif;line-height:1.65}
+main{max-width:990px;margin:0 auto;padding:54px 20px 100px}
+.eyebrow{font-size:.77rem;font-weight:800;text-transform:uppercase;letter-spacing:.17em;color:var(--accent)}
+h1,h2{font-family:'Varela Round',Nunito,sans-serif;font-weight:400}
+h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.14;margin:12px 0 18px}
+h2{font-size:1.27rem;margin:0 0 12px}
+p{color:var(--muted);max-width:730px}
+.lead{font-size:1.11rem;margin-bottom:28px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;margin-top:20px}
+.playpanel{background:#282322;color:#f9f4ed;overflow:hidden;position:relative}
+.playpanel p,.playpanel .eyebrow{color:#d6c7bf}
+.playtop{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.pill{background:#524046;border-radius:30px;padding:5px 12px;font-size:.79rem;color:#fff}
+button,select,input{font:inherit}
+button{border:1px solid var(--accent);background:var(--accent);color:white;border-radius:9px;padding:12px 21px;font-weight:800;cursor:pointer}
+button:hover{filter:brightness(1.1)}
+button.secondary{background:transparent;color:inherit;border-color:#a99793}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #b57d8c;outline-offset:3px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:20px 0}
+.visual{height:128px;display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0 5px;overflow:hidden;position:relative}
+.visual:before,.visual:after{content:'';position:absolute;inset:auto 0 50%;height:1px;background:#6b5a59;opacity:.35}
+.orb{width:24px;height:24px;flex:0 0 24px;border-radius:50%;background:#d8aaba;box-shadow:0 0 16px #d4a9b850;opacity:.3;transform:scale(.7);transition:transform .9s,opacity .8s,box-shadow .9s}
+.orb.lit{opacity:1;transform:scale(1.6);box-shadow:0 0 28px #d4a9b8aa}
+.now{min-height:26px;color:#ead9d4;font-size:.94rem;letter-spacing:.03em}
+.fieldset{display:grid;grid-template-columns:1fr 1fr;gap:18px 28px}
+.field{min-width:0}
+.field label{font-weight:800;font-size:.92rem;display:flex;justify-content:space-between;gap:8px}
+.field label output{font-variant-numeric:tabular-nums;color:var(--accent)}
+.field small{display:block;color:var(--muted);font-size:.82rem;line-height:1.5;margin-top:5px}
+select{background:white;border:1px solid #c8bfb7;border-radius:8px;max-width:100%;width:100%;padding:10px;margin-top:7px;color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--accent);margin:12px 0 0;cursor:pointer}
+.grid2{display:grid;grid-template-columns:1.12fr .88fr;gap:20px}
+.movement{display:grid;gap:17px}
+.note{font-size:.9rem;border-left:3px solid var(--accent);padding:0 0 0 15px;margin-top:18px}
+.note p{margin:0}
+footer{font-size:.85rem;margin-top:35px;color:var(--muted)}
+a{color:var(--accent)}
+#status{font-size:.85rem}
+@media(max-width:680px){main{padding:30px 16px 65px}.panel{padding:19px}.fieldset,.grid2{grid-template-columns:1fr}.visual{gap:5px}.orb{width:17px;height:17px;flex-basis:17px}}
+@media(prefers-reduced-motion:reduce){.orb{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">SAJA Music · Listening Lab</div>
+  <h1>The Sound of Scales</h1>
+  <p class="lead">What does a scale <em>feel</em> like? Let melodies wander through its notes above a continuous C drone. Shift the balance between steps, thirds and fourths, and listen to how the character changes.</p>
+
+  <section class="panel playpanel" aria-label="Playback">
+    <div class="playtop"><div><div class="eyebrow">Ambient scale generator</div><h2 style="margin:7px 0">Listen without an ending</h2></div><span class="pill" id="status" role="status">Ready to play</span></div>
+    <div class="visual" id="visual" aria-hidden="true"></div>
+    <div class="now" id="now" aria-live="off">C drone · choose a scale and press Play</div>
+    <div class="controls"><button id="play" type="button">▶ Play</button><button id="new" type="button" class="secondary">New wandering path</button></div>
+    <p style="font-size:.85rem;margin:0">Audio begins only when you press Play. Headphones recommended.</p>
+  </section>
+
+  <div class="grid2">
+    <section class="panel"><h2>Choose the sound world</h2>
+      <div class="fieldset">
+        <div class="field"><label for="scale">Scale</label><select id="scale">
+          <option value="major">C major · bright, open</option>
+          <option value="lydian">C Lydian · floating</option>
+          <option value="mixolydian">C Mixolydian · earthy</option>
+          <option value="dorian" selected>C Dorian · reflective</option>
+          <option value="minor">C natural minor · wistful</option>
+          <option value="phrygian">C Phrygian · shadowy</option>
+          <option value="pentatonic">C major pentatonic · spacious</option>
+          <option value="minorPent">C minor pentatonic · warm</option>
+          <option value="whole">C whole tone · weightless</option>
+        </select><small>Every scale is rooted on C so the drone stays the same.</small></div>
+        <div class="field"><label for="tone">Instrument colour</label><select id="tone"><option value="glass">Soft glass</option><option value="warm" selected>Warm pad</option><option value="breath">Air and breath</option></select><small>A slowly blooming, synthesised sound.</small></div>
+        <div class="field"><label for="pace">Time between notes <output id="paceVal">3.5 s</output></label><input id="pace" type="range" min="1.2" max="8" step="0.1" value="3.5" /><small>Slower notes leave more space for resonance.</small></div>
+        <div class="field"><label for="space">Reverb <output id="spaceVal">65%</output></label><input id="space" type="range" min="0" max="100" step="1" value="65" /><small>How much the notes dissolve into the room.</small></div>
+        <div class="field"><label for="drone">Drone level <output id="droneVal">35%</output></label><input id="drone" type="range" min="0" max="100" step="1" value="35" /><small>A soft, sustained C beneath everything.</small></div>
+        <div class="field"><label for="volume">Overall volume <output id="volumeVal">55%</output></label><input id="volume" type="range" min="0" max="100" step="1" value="55" /><small>Start quietly and adjust to taste.</small></div>
+      </div>
+    </section>
+    <section class="panel"><h2>How should the melody move?</h2><div class="movement">
+      <div class="field"><label for="steps">By steps <output id="stepsVal">60%</output></label><input id="steps" type="range" min="0" max="100" value="60" /><small>To a neighbouring scale note: up or down.</small></div>
+      <div class="field"><label for="thirds">By thirds <output id="thirdsVal">25%</output></label><input id="thirds" type="range" min="0" max="100" value="25" /><small>Skip one scale note, creating a gentle leap.</small></div>
+      <div class="field"><label for="fourths">By fourths <output id="fourthsVal">15%</output></label><input id="fourths" type="range" min="0" max="100" value="15" /><small>Leap three scale positions: wider and more open.</small></div>
+      <div class="field"><label for="register">Register <output id="registerVal">Mid–high</output></label><input id="register" type="range" min="0" max="2" step="1" value="1" /><small>Change the region where the melody wanders.</small></div>
+    </div><div class="note"><p>These are <strong>relative weights</strong>, not fixed percentages. For example, steps 60, thirds 25 and fourths 15 produces roughly a 60/25/15 blend. Set any slider to zero to exclude that movement.</p></div></section>
+  </div>
+  <section class="panel"><h2>A small listening experiment</h2><p>Begin with only stepwise movement. Then raise the thirds and listen for a more arpeggiated shape. Add fourths and notice the openness they introduce. Finally, change modes while the C drone continues: the root stays fixed, but the sense of colour shifts around it.</p><p>There is no score to follow and no correct answer. This is an exercise in hearing the character of a scale through repeated, evolving musical gestures.</p></section>
+  <footer>SAJA Music · Free music learning resources · <a href="./pathways.html">Learning pathways</a></footer>
+</main>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const scales = {
+ major:[0,2,4,5,7,9,11],lydian:[0,2,4,6,7,9,11],mixolydian:[0,2,4,5,7,9,10],
+ dorian:[0,2,3,5,7,9,10],minor:[0,2,3,5,7,8,10],phrygian:[0,1,3,5,7,8,10],
+ pentatonic:[0,2,4,7,9],minorPent:[0,3,5,7,10],whole:[0,2,4,6,8,10]
+};
+const names=['C','C♯','D','E♭','E','F','F♯','G','A♭','A','B♭','B'];
+let ctx, master, wet, dry, droneGain, droneNodes=[], delay, delayFeedback, delayFilter;
+let playing=false, timer=null, nextAt=0, degree=0, generation=0, scheduled=[], orbIndex=0;
+const orbCount=15;
+for(let i=0;i<orbCount;i++){let o=document.createElement('span');o.className='orb';$('visual').appendChild(o)}
+const orbs=[...$('visual').children];
+const val = id => Number($(id).value);
+const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+const freq=midi=>440*Math.pow(2,(midi-69)/12);
+const noteName=midi=>names[((midi%12)+12)%12]+(Math.floor(midi/12)-1);
+function updateLabels(){
+ for(const id of ['steps','thirds','fourths','space','drone','volume'])$(id+'Val').textContent=val(id)+'%';
+ $('paceVal').textContent=val('pace').toFixed(1)+' s';
+ $('registerVal').textContent=['Low–mid','Mid–high','High–floating'][val('register')];
+}
+for(const id of ['steps','thirds','fourths','space','drone','volume','pace','register'])$(id).addEventListener('input',()=>{updateLabels();liveSettings()});
+$('scale').addEventListener('change',()=>{degree=0;generation++;nextAt=ctx?ctx.currentTime+.15:0;scheduled.forEach(v=>{try{v.stop()}catch(e){}});scheduled=[];if(playing)refreshDrone()});
+$('tone').addEventListener('change',()=>{if(playing)refreshDrone()});
+function impulse(seconds=5,decay=2.4){let len=Math.floor(ctx.sampleRate*seconds),buffer=ctx.createBuffer(2,len,ctx.sampleRate);
+ for(let ch=0;ch<2;ch++){let data=buffer.getChannelData(ch);for(let i=0;i<len;i++){let t=i/len;data[i]=(Math.random()*2-1)*Math.pow(1-t,decay)*(1-.32*t)}}return buffer}
+function setup(){
+ ctx=new (window.AudioContext||window.webkitAudioContext)();
+ master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination);
+ const compressor=ctx.createDynamicsCompressor();compressor.threshold.value=-18;compressor.knee.value=18;compressor.ratio.value=3;compressor.attack.value=.01;compressor.release.value=.3;
+ compressor.connect(master);
+ dry=ctx.createGain();dry.gain.value=.62;dry.connect(compressor);
+ wet=ctx.createGain();wet.gain.value=.55;wet.connect(compressor);
+ const convolver=ctx.createConvolver();convolver.buffer=impulse();convolver.connect(wet);
+ const reverbInput=ctx.createGain();reverbInput.gain.value=.5;reverbInput.connect(convolver);
+ const delayInput=ctx.createGain();delayInput.gain.value=.17;delay=ctx.createDelay(1.5);delay.delayTime.value=.58;
+ delayFeedback=ctx.createGain();delayFeedback.gain.value=.22;delayFilter=ctx.createBiquadFilter();delayFilter.type='lowpass';delayFilter.frequency.value=1600;
+ delayInput.connect(delay);delay.connect(delayFilter);delayFilter.connect(delayFeedback);delayFeedback.connect(delay);delay.connect(reverbInput);
+ const send=ctx.createGain();send.connect(dry);send.connect(reverbInput);send.connect(delayInput);
+ setup.input=send; setup.fxSend=reverbInput;
+ droneGain=ctx.createGain();droneGain.gain.value=0;droneGain.connect(send);
+ liveSettings();
+}
+function liveSettings(){if(!ctx)return;const t=ctx.currentTime;
+ master.gain.setTargetAtTime(val('volume')/100*.7,t,.08);
+ wet.gain.setTargetAtTime(val('space')/100*.84,t,.1);
+ dry.gain.setTargetAtTime(.8-val('space')/100*.34,t,.1);
+ if(droneGain)droneGain.gain.setTargetAtTime(playing?val('drone')/100*.16:0,t,.2);
+}
+function oscill(freqHz,type,at,dest,gainAmount,detune=0){
+ const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.setValueAtTime(freqHz,at);o.detune.value=detune;
+ g.gain.value=gainAmount;o.connect(g);g.connect(dest);o.start(at);return {o,g};
+}
+function startDrone(){
+ if(!ctx)return;let t=ctx.currentTime+.025;droneGain.gain.cancelScheduledValues(t);droneGain.gain.setTargetAtTime(val('drone')/100*.16,t,1);
+ const filt=ctx.createBiquadFilter();filt.type='lowpass';filt.frequency.value=460;filt.Q.value=.3;filt.connect(droneGain);
+ const voices=[[65.406,'sine',.8,-4],[130.813,'triangle',.22,3],[196,'sine',.12,0],[261.626,'sine',.07,2]];
+ const nodes=voices.map(([f,shape,level,det])=>oscill(f,shape,t,filt,level,det).o);
+ droneNodes.push({nodes,filt});
+}
+function refreshDrone(){
+ if(!ctx||!playing)return;const t=ctx.currentTime;
+ droneGain.gain.setTargetAtTime(0,t,.06);
+ setTimeout(()=>{if(!playing)return;droneNodes.forEach(d=>{d.nodes.forEach(o=>{try{o.stop()}catch(e){}});d.filt.disconnect()});droneNodes=[];startDrone()},300);
+}
+function chooseMovement(){const w=[val('steps'),val('thirds'),val('fourths')],sum=w.reduce((a,b)=>a+b,0);
+ if(!sum)return 0;
+ let r=Math.random()*sum;for(let i=0;i<3;i++){r-=w[i];if(r<0)return [1,2,3][i]}return 1;
+}
+function pickNext(){
+ let scale=scales[$('scale').value],len=scale.length,reg=val('register'),range=[[ -len, len],[0,2*len],[len,3*len]][reg];
+ let distance=chooseMovement();if(!distance)return degree;
+ let choices=[];for(const dir of [-1,1]){let d=degree+dir*distance;
+ if(d>=range[0]&&d<=range[1])choices.push(d)}
+ if(!choices.length)return clamp(degree,range[0],range[1]);
+ if(choices.length===2){let midpoint=(range[0]+range[1])/2;let pDown=clamp(.5+(degree-midpoint)/(range[1]-range[0])*.5,.22,.78);return Math.random()<pDown?choices[0]:choices[1]}
+ return choices[0];
+}
+function midiForDegree(d){let scale=scales[$('scale').value],n=scale.length,oct=Math.floor(d/n),index=((d%n)+n)%n;return 60+12*oct+scale[index]}
+function playVoice(midi,at,duration){
+ let colour=$('tone').value,f=freq(midi),amp={warm:.11,glass:.072,breath:.085}[colour],attack={warm:1.05,glass:.32,breath:1.35}[colour];
+ const a=ctx.createGain();a.gain.setValueAtTime(.0001,at);a.gain.exponentialRampToValueAtTime(amp,at+attack);
+ a.gain.setTargetAtTime(amp*.4,at+attack,duration*.38);
+ let end=at+Math.max(duration+2.9,attack+3);a.gain.setTargetAtTime(.00008,end-2.3,.56);
+ a.connect(setup.input);
+ let filter=ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.setValueAtTime(colour==='glass'?3800:colour==='breath'?900:1650,at);
+ if(colour==='warm')filter.frequency.exponentialRampToValueAtTime(950,at+3);
+ filter.connect(a);
+ const partials=colour==='glass'?[['sine',1,1,0],['sine',2.01,.27,2],['sine',3.98,.11,-4]]:
+ colour==='breath'?[['sine',1,1,0],['triangle',1.005,.25,-3],['sine',2,.08,5]]:
+ [['triangle',1,.8,0],['sine',1.002,.55,4],['sine',2,.13,-4]];
+ let nodes=[];
+ partials.forEach(([shape,ratio,level,det])=>{let osc=oscill(f*ratio,shape,at,filter,level,det).o;osc.stop(end+.8);nodes.push(osc);scheduled.push(osc)});
+ let lfo=ctx.createOscillator(),lfoGain=ctx.createGain();lfo.frequency.value=.12+Math.random()*.11;lfoGain.gain.value=colour==='glass'?1.5:4;
+ lfo.connect(lfoGain);nodes.forEach(o=>lfoGain.connect(o.detune));lfo.start(at);lfo.stop(end+.8);scheduled.push(lfo);
+ setTimeout(()=>{try{a.disconnect();filter.disconnect();lfoGain.disconnect()}catch(e){}},Math.max(0,(end-at+1)*1000));
+}
+function schedule(){if(!playing||!ctx)return;const until=ctx.currentTime+.18;
+ while(nextAt<until){
+  let stepTime=val('pace');
+  degree=pickNext();let midi=midiForDegree(degree);
+  let at=Math.max(nextAt,ctx.currentTime+.015);
+  playVoice(midi,at,stepTime*1.05);
+  let token=generation,delayMs=Math.max(0,(at-ctx.currentTime)*1000);
+  setTimeout(()=>{if(!playing||token!==generation)return;
+   $('now').textContent=noteName(midi)+' · '+$('scale').selectedOptions[0].text.split(' · ')[0]+' · over C';
+   orbs.forEach(o=>o.classList.remove('lit'));orbs[orbIndex++%orbCount].classList.add('lit');
+  },delayMs);
+  nextAt=at+stepTime*(.91+Math.random()*.18);
+ }
+}
+function silenceScheduled(){if(!ctx)return;let t=ctx.currentTime;
+ scheduled.forEach(o=>{try{o.stop(t+.02)}catch(e){}});scheduled=[];
+ droneNodes.forEach(d=>{d.nodes.forEach(o=>{try{o.stop(t+.03)}catch(e){}});try{d.filt.disconnect()}catch(e){}});droneNodes=[];
+}
+async function play(){
+ try{if(!ctx)setup();await ctx.resume();playing=true;generation++;
+ master.gain.setTargetAtTime(val('volume')/100*.7,ctx.currentTime,.1);
+ startDrone();liveSettings();degree=val('register')===0?0:val('register')===1?scales[$('scale').value].length:scales[$('scale').value].length*2;
+ nextAt=ctx.currentTime+.18;timer=setInterval(schedule,45);schedule();
+ $('play').textContent='■ Stop';$('status').textContent='Playing';
+ }catch(err){playing=false;$('status').textContent='Audio unavailable';$('now').textContent='Your browser could not start audio: '+err.message}
+}
+function stop(){playing=false;generation++;clearInterval(timer);timer=null;
+ if(ctx){master.gain.setTargetAtTime(0,ctx.currentTime,.04);droneGain.gain.setTargetAtTime(0,ctx.currentTime,.04);setTimeout(()=>{if(!playing)silenceScheduled()},180)}
+ $('play').textContent='▶ Play';$('status').textContent='Stopped';$('now').textContent='C drone · press Play to listen again';orbs.forEach(o=>o.classList.remove('lit'));
+}
+$('play').addEventListener('click',()=>playing?stop():play());
+$('new').addEventListener('click',()=>{degree=val('register')*scales[$('scale').value].length;generation++;if(ctx)nextAt=ctx.currentTime+.11;$('now').textContent=playing?'A new path begins…':'New path ready · press Play';});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)stop()});
+window.addEventListener('pagehide',()=>{if(playing)stop()});
+updateLabels();
+})();
+</script>
+</body>
+</html>
